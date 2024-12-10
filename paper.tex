@@ -1,0 +1,264 @@
+\documentclass[12pt, reqno]{amsart}
+
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{enumerate}
+\tolerance=500
+\setlength{\emergencystretch}{3em}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{xcolor}
+\definecolor{cite}{rgb}{0.30,0.60,1.00}
+\definecolor{url}{rgb}{0.00,0.00,0.80}
+\definecolor{link}{rgb}{0.40,0.10,0.20}
+\usepackage[pdfusetitle,colorlinks,linkcolor=link,urlcolor=url,citecolor=cite,pagebackref,breaklinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{mathdots}
+\usepackage{tikz-cd}
+\usepackage{comment}
+\usepackage{xypic}
+\usepackage{mathtools}
+
+% new environment
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+
+%% frequently used symbols
+% Common math notions
+\newcommand{\zIntegers}{\mathbb{Z}}
+\newcommand{\rReal}{\mathbb{R}}
+\newcommand{\cComplex}{\mathbb{C}}
+\newcommand{\multiplicativegroup}[1]{#1^{\times}}
+\newcommand{\RealPart}{\mathrm{Re}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\EndomorphismRing}{\operatorname{End}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Supp}{\mathrm{supp}}
+\newcommand{\Stab}{\mathrm{stab}}
+\newcommand{\idmap}{\mathrm{id}}
+\newcommand{\conjugate}[1]{\overline{#1}}
+\newcommand{\indicatorFunction}[1]{\delta_{#1}}
+\newcommand{\isomorphic}{\cong}
+\newcommand{\lengthof}{\mathfrak{n}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\sizeof}[1]{\left|#1\right|}
+\newcommand{\lcm}{\operatorname{lcm}}
+
+% Inner product
+\newcommand{\innerproduct}[2]{\left\langle #1,#2\right\rangle}
+\newcommand{\Norm}[1]{\left\Vert #1\right\Vert }
+\newcommand{\standardForm}[2]{\left\langle #1,#2\right\rangle}
+
+% Representation theory
+\newcommand{\fieldCharacter}{\psi}
+\newcommand{\centralCharacter}[1]{\omega_{#1}}
+\newcommand{\Ind}[3]{\mathrm{Ind}_{#1}^{#2}\left(#3\right)}
+\newcommand{\ind}[3]{\mathrm{ind}_{#1}^{#2}\left(#3\right)}
+\newcommand{\Whittaker}{\mathcal{W}}
+\newcommand{\Contragradient}[1]{#1^{\vee}}
+\newcommand{\underlyingVectorSpace}[1]{V_{#1}}
+\newcommand{\representationDeclaration}[1]{#1}
+\newcommand{\besselFunction}{\mathcal{J}}
+\newcommand{\besselFunctionOfFiniteFieldRepresentation}{\besselFunction_{\finiteFieldRepresentation, \fieldCharacter}}
+\newcommand{\SpehRepresentation}[2]{\Delta\left(#1, #2\right)}
+
+\newcommand{\gbesselSpehFunction}[2]{\mathcal{BS}_{#1, #2}}
+\newcommand{\besselSpehFunction}[2]{\mathcal{BS}_{\SpehRepresentation{#1}{#2}, \fieldCharacter}}
+\newcommand{\fourierTransform}[2]{\mathcal{F}_{#1}#2}
+\newcommand{\GKGammaFactor}[3]{\gamma^{\mathrm{GK}}\left(#1 \times #2, #3\right)}
+\newcommand{\LocalGKGammaFactor}[4]{\gamma^{\mathrm{GK}}\left(#1, #2 \times #3, #4\right)}
+
+\newcommand{\GKPreGammaFactor}[3]{\Gamma^{\mathrm{GK}}\left(#1 \times #2, #3\right)}
+\newcommand{\gGJPreGammaFactor}[3]{\Gamma\left(#1 \times #2, #3\right)}
+\newcommand{\GJPreGammaFactor}[2]{\Gamma\left(#1, #2\right)}
+\newcommand{\Irr}{\mathrm{Irr}}
+
+% Group theory macros
+\newcommand{\rquot}[2]{{#1}\slash{#2}}
+\newcommand{\lquot}[2]{{#1}\backslash{#2}}
+\newcommand{\grpIndex}[2]{\left[#1:#2\right]}
+
+% Matrices macros
+\newcommand{\transpose}[1]{\, {}^{t}#1}
+\newcommand{\inverseTranspose}[1]{#1^{\iota}}
+\newcommand{\IdentityMatrix}[1]{I_{#1}}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\antidiag}{\operatorname{\mathrm{antidiag}}}
+\newcommand{\trace}{\operatorname{tr}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\UnipotentSubgroup}{U}
+\newcommand{\UnipotentRadicalForWss}[2]{N_{\left(#2^{#1}\right)}}
+\newcommand{\UnipotentRadicalForWssRecursion}[2]{\mathcal{Y}_{c,k}}
+\newcommand{\UnipotentRadical}{N}
+\newcommand{\ParabolicSubgroup}{P}
+
+% Finite field macros
+\newcommand{\FieldNorm}[2]{\mathrm{N}_{#1:#2}}
+\newcommand{\aFieldNorm}{\mathrm{N}}
+\newcommand{\FieldTrace}{\mathrm{Tr}}
+\newcommand{\finiteField}{\mathbb{F}}
+\newcommand{\finiteFieldExtension}[1]{\finiteField_{#1}}
+\newcommand{\FieldExtension}[2]{{#1} \slash {#2}}
+\newcommand{\algebraicClosure}[1]{\overline{#1}}
+\newcommand{\charactergroup}[1]{\widehat{\multiplicativegroup{\finiteFieldExtension{#1}}}}
+\newcommand{\limitcharactergroup}{\Gamma}
+\newcommand{\Galois}{\operatorname{Gal}}
+\newcommand{\Frobenius}{\operatorname{Fr}}
+\newcommand{\restrictionOfScalars}[3]{\operatorname{Res}_{#1 \slash #2}{#3}}
+\newcommand{\multiplcativeScheme}{\mathbb{G}_m}
+\newcommand{\affineLine}{\mathbb{A}^1}
+\newcommand{\squareMatrix}{\operatorname{Mat}}
+\newcommand{\Mat}[2]{\operatorname{Mat}_{#1 \times #2}}
+\newcommand{\frobeniusDegree}{\operatorname{deg}}
+\newcommand{\Steinberg}{\operatorname{St}}
+\newcommand{\ProjectionOperator}{\operatorname{pr}}
+\newcommand{\SymmetricGroup}{\mathfrak{S}}
+\newcommand{\whittakerVector}[1]{v_{#1, \fieldCharacter}}
+\newcommand{\gwhittakerVector}[2]{v_{#1, #2}}
+\newcommand{\WhittakerProjection}{\ProjectionOperator_{\mathrm{Wh}}}
+\newcommand{\ParabolicForSpeh}[2]{P_{\left({#1}^{#2}\right)}}
+\newcommand{\UnipotentForSpeh}[2]{N_{\left({#1}^{#2}\right)}}
+\newcommand{\PoincarePolynomial}[2]{P_{#2}}
+
+%Partition macros
+\newcommand{\localField}{F}
+\newcommand{\ringOfIntegers}{\mathfrak{o}}
+\newcommand{\residueField}{\mathfrak{f}}
+\newcommand{\maximalIdeal}{\mathfrak{p}}
+\newcommand{\depthZeroRepresentation}{\mathcal{T}}
+\newcommand{\differential}{\mathrm{d}}
+\newcommand{\mdifferential}{\differential^{\times}}
+\newcommand{\quotientMap}{\nu}
+\newcommand{\Lift}{\mathcal{L}}
+\newcommand{\uniformizer}{\varpi}
+\newcommand{\VolumeOf}{\operatorname{Vol}}
+
+\newcommand{\Erdelyi}{Erd{\'e}lyi}
+\newcommand{\Toth}{T{\'o}th}
+
+\newcommand{\parabolicSection}{\Phi^{\left(z_1, \dots, z_c\right)}}
+\newcommand{\intertwiningOperator}{M^{\left(z_1, \dots, z_c\right)}}
+\newcommand{\holomorphicRepresentation}{\depthZeroRepresentation^{\left(z_1, \dots, z_c\right)}}
+\newcommand{\WhittakerFunctional}[1]{\ell_{#1, \fieldCharacter}}
+\newcommand{\gWhittakerFunctional}[2]{\ell_{#1, #2}}
+\newcommand{\gSpehWhittakerFunctional}[3]{\ell_{\SpehRepresentation{#1}{#3}, \fieldCharacter_{\UnipotentRadicalForWss{#2}{#3}}}}
+\newcommand{\gShortSpehWhittakerFunctional}[3]{\ell_{\SpehRepresentation{#1}{#3}}}
+\newcommand{\GaussSum}[2]{\mathcal{G}\left(#1, #2\right)}
+\newcommand{\dblGaussSum}[2]{\mathcal{G}^{\mathrm{dbl}}\left(#1, #2\right)}
+\newcommand{\GaussSumScalar}[2]{\mathrm{G}\left(#1, #2\right)}
+\newcommand{\dblGaussSumScalar}[2]{\mathrm{G}^{\mathrm{dbl}}\left(#1, #2\right)}
+\newcommand{\GKGaussSum}[3]{\mathcal{G}\left(#1 \times #2, #3\right)}
+\newcommand{\GKGaussSumScalar}[3]{\mathrm{G}\left(#1 \times #2, #3\right)}
+\newcommand{\fieldCharacterkc}[2]{\fieldCharacter_{\left({#2}^{#1}\right)}}
+\newcommand{\ExoticKloosterman}{\mathrm{Kl}}
+\newcommand{\GaussSumCharacter}[4]{\tau_{#1}\left(#2 \times #3, #4\right)}
+\newcommand{\IrrCusp}{\Irr_{\mathrm{cusp}}}
+\newcommand{\convolutionWithCompactSupport}{\boldsymbol{\mathrm{R}}}
+\newcommand{\ladicnumbers}{\algebraicClosure{\mathbb{Q}_{\ell}}}
+\newcommand{\artinScrier}{\operatorname{AS}}
+\newcommand{\KloostermanSumClassFunction}{\mathcal{K}}
+
+\hypersetup{pdfauthor={Elad Zelingher},
+	pdfsubject={Number theory, Representation theory},
+	pdfkeywords={Kloosterman sums, Gauss sums}}
+
+\title{Degenerate Gauss sums for $\GL_n\left(\finiteField_q\right)$}
+
+\author{Elad Zelingher}
+\address{Department of Mathematics, University of Michigan, 1844 East Hall, 530 Church Street, Ann Arbor, MI 48109-1043 USA}
+\email{eladz@umich.edu}
+
+\subjclass[2010]{20C33, 11L05, 11T24}
+
+% 11L05    Gauss and Kloosterman sums; generalizations
+% 11T24    Other character sums and Gauss sums
+% 20C33    Representations of finite groups of Lie type
+
+\begin{document}
+
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+\section{Notation}
+Let $\finiteField$ be a finite field with $q$ elements, and let $\fieldCharacter \colon \finiteField \to \multiplicativegroup{\cComplex}$ be a non-trivial character. For any $r \ge 0$, let $B_r \subset \GL_r\left(\finiteField\right)$ be the standard Borel subgroup
+$$B_r = \left\{ \begin{pmatrix}
+	t_1 & \ast & \ast & \ast\\
+	& t_2 & \ast & \ast \\
+	& & \ddots & \ast\\
+	& & & t_r
+\end{pmatrix} \mid t_1,\dots,t_r \in \multiplicativegroup{\finiteField} \right\}.$$
+
+\section{Degenerate Gauss sums}
+Let $\pi$ be an irreducible representation of $\GL_n\left(\finiteField\right)$. The purpose of this section is to study the following operator, which we refer to as a degenerate Gauss sum
+$$\GaussSum{\pi}{\fieldCharacter}_r = \sum_{g \in \GL_n\left(\finiteField\right)} \pi\left(g\right) \fieldCharacter\left(\trace\left(g \begin{pmatrix}
+	0_{r}\\
+	& \IdentityMatrix{n-r}
+\end{pmatrix}\right)\right).$$
+Notice that $\GaussSum{\pi}{\fieldCharacter}_0$ lies in $\Hom_{\GL_n\left(\finiteField\right)}\left(\pi, \pi\right)$ and therefore, $$\GaussSum{\pi}{\fieldCharacter} \coloneqq \GaussSum{\pi}{\fieldCharacter}_0 = \GaussSumScalar{\pi}{\fieldCharacter} \cdot \idmap_\pi,$$
+where $\GaussSumScalar{\pi}{\fieldCharacter} \in \cComplex$. The computation of this scalar is known due to Kondo.
+
+We begin with the following simple observation. We have that for any $b \in B_r$ and any $X \in \Mat{r}{(n-r)}\left(\finiteField\right)$,
+$$ \pi\begin{pmatrix}
+b & X\\
+& \IdentityMatrix{n-r}
+\end{pmatrix} \circ \GaussSum{\pi}{\fieldCharacter}_r = \GaussSum{\pi}{\fieldCharacter}_r.$$
+Therefore, we have that $\GaussSum{\pi}{\fieldCharacter}_r$ can be regarded as an operator $\GaussSum{\pi}{\fieldCharacter}_r \colon \pi \to J\left(\pi, r\right)$, where $$J\left(\pi, r\right) = \left\{ v \in \pi \mid \pi \begin{pmatrix}
+	b & X\\
+	& \IdentityMatrix{n-r}
+\end{pmatrix} v = v, \forall b \in B_r, X \in \Mat{r}{(n-r)}\left(\finiteField\right) \right\},$$
+which is a representation of the group $B_r \times \GL_{n-r}\left(\finiteField\right)$. This space is non-zero if and only if $\pi$ is subrepresentation of a parabolically induced representation of the form $1^{\circ r} \circ \tau = 1 \circ \dots \circ 1 \circ \tau$, where $\tau$ is an irreducible representation of $\GL_{n-r}\left(\finiteField\right)$. 
+
+It follows from this observation that if $\pi$ is an irreducible representation of $\GL_n\left(\finiteField\right)$ such that $1$ is not in the cuspidal support of $\pi$, then for any matrix $A$ with rank $< n$, 
+$$\GaussSum{\pi}{\fieldCharacter}_A \coloneqq \sum_{g \in \GL_n\left(\finiteField\right)} \pi\left(g\right) \fieldCharacter\left(\trace\left(A g\right)\right) = 0.$$
+
+\section{Doubling method Gauss sums}
+
+\subsection{The case of general linear groups}
+
+Let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be a character.
+
+Consider the following assignment $\GL_n\left(\finiteField\right) \to \multiplicativegroup{\cComplex}$
+$$\Phi_{\chi}\left(g\right) = \begin{dcases}
+	\chi\left(\det\left(g-\IdentityMatrix{n}\right)\right) & \text{if }\det\left(g-\IdentityMatrix{n}\right) \ne 0,\\
+	0 & \text{otherwise.}
+\end{dcases}$$
+It is clear that $\Phi_{\chi}$ is a class function of $\GL_n\left(\finiteField\right)$. Given an irreducible representation $\pi$ of $\GL_n\left(\finiteField\right)$, we consider the following \emph{doubling method Gauss sum}:
+$$\dblGaussSum{\pi}{\chi} = \sum_{g \in \GL_n\left(\finiteField\right)} \Phi_{\chi}\left(g\right) \pi\left(g\right).$$
+Then $\dblGaussSum{\pi}{\chi}$ defines an element of $\Hom_{\GL_n\left(\finiteField\right)}\left(\pi, \pi\right)$. Therefore, by Schur's lemma there exists a complex number $\dblGaussSumScalar{\pi}{\chi} \in \cComplex$ such that $$\dblGaussSum{\pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$ 
+
+The goal of this section is to express $\dblGaussSumScalar{\pi}{\chi}$ in terms of Kondo's Gauss sum.
+
+Assume first that $1$ does not appear in the cuspidal support of $\pi$. Let us write
+$$\dblGaussSum{\pi}{\chi} = \sum_{\substack{g \in \GL_n\left(\finiteField\right) \sum_{A \in \squareMatrix_n\left(\finiteField\right)}\\
+\det\left(g - \IdentityMatrix{n}\right) \ne 0}} \chi\left(\det\left(g - \IdentityMatrix{n}\right)\right) \pi\left(g\right).$$
+We rewrite this using a Fourier transform type expression
+$$\dblGaussSum{\pi}{\chi} = q^{-n^2} \sum_{g, h \in \GL_n\left(\finiteField\right)} \sum_{A \in \squareMatrix_n\left(\finiteField\right)} \chi^{-1}\left(\det h\right) \pi\left(g\right) \fieldCharacter\left(\trace\left(A \left(\IdentityMatrix{n} - h \left(g - \IdentityMatrix{n}\right)\right)\right)\right).$$
+
+Replacing $g$ with $h^{-1} g$, we arrive at the expression
+\begin{align*}
+	\dblGaussSum{\pi}{\chi} &= q^{-n^2} \sum_{A \in \squareMatrix_n\left(\finiteField\right)} \fieldCharacter\left(\trace A\right) \sum_{h \in \GL_n\left(\finiteField\right)} \chi^{-1}\left(\det h\right) \pi\left(h^{-1}\right) \fieldCharacter\left(\trace\left(Ah\right)\right)\\
+	& \circ \sum_{g \in \GL_n\left(\finiteField\right)} \pi\left(g\right) \fieldCharacter\left(-\trace Ag\right).
+\end{align*}
+Since the last inner sum is $\GaussSum{\pi}{\fieldCharacter}_{-A}$, we have that the sum can be reduced to $A \in \GL_n\left(\finiteField\right)$. Replacing $h$ with $A^{-1} h$ and $g$ with $-A^{-1} g$, we get the sum
+\begin{align*}
+	\dblGaussSum{\pi}{\chi} &= q^{-n^2} \centralCharacter{\pi}\left(-1\right) \sum_{A \in \GL_n\left(\finiteField\right)} \chi\left(\det A\right) \fieldCharacter\left(\trace A\right) \GaussSumScalar{\Contragradient{\pi} \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\pi}{\fieldCharacter},
+\end{align*}
+which equals
+\begin{align*}
+	\dblGaussSum{\pi}{\chi} &= \left(-1\right)^{n-1} q^{-n^2} \centralCharacter{\pi}\left(-1\right) \GaussSumScalar{\chi}{\fieldCharacter}^n \GaussSumScalar{\Contragradient{\pi} \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\pi}{\fieldCharacter}.
+\end{align*}
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}
