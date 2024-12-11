@@ -53,6 +53,7 @@
 \newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\sizeof}[1]{\left|#1\right|}
 \newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\hermitianSpace}{\mathrm{V}}
 
 % Inner product
 \newcommand{\innerproduct}[2]{\left\langle #1,#2\right\rangle}
@@ -167,6 +168,7 @@
 \newcommand{\ladicnumbers}{\algebraicClosure{\mathbb{Q}_{\ell}}}
 \newcommand{\artinScrier}{\operatorname{AS}}
 \newcommand{\KloostermanSumClassFunction}{\mathcal{K}}
+\newcommand{\IsometryGroup}{\mathrm{Isom}}
 
 \hypersetup{pdfauthor={Elad Zelingher},
 	pdfsubject={Number theory, Representation theory},
@@ -268,6 +270,9 @@ which equals
 	\dblGaussSumScalar{\pi}{\chi} &=  \centralCharacter{\pi}\left(-1\right) \GaussSumScalar{\chi}{\fieldCharacter}^n \GaussSumScalar{\Contragradient{\pi} \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\pi}{\fieldCharacter}.
 \end{align*}
 
+\subsection{The case of classical groups}
+
+Let $\hermitianSpace$ be a vector space of dimension $n$ over $\finiteField$, equipped with a non-degenerate bilinear form $\innerproduct{\cdot}{\cdot} \colon \hermitianSpace \times \hermitianSpace \to \finiteField$ which is either symmetric or anti-symmetric. Let $\IsometryGroup$
 
 \bibliographystyle{abbrv}
 \bibliography{references}
