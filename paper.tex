@@ -333,7 +333,7 @@ Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipot
 	Hence, we have that $\dblGaussSum{\pi}{\chi} f$ is supported on $P$. We move to compute $\left(\dblGaussSum{\pi}{\chi} f\right)\left(\idmap_{\hermitianSpace}\right)$. It is given by
 	\begin{equation}\label{eq:recursive-doubling-gauss-sum}
 		\frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{\substack{p \in P\\
-				\det\left(p - \idmap_{\hermitianSpace}\right) \ne 1}} \chi\left(\det\left(p - \idmap_{\hermitianSpace}\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_{\tau} \otimes v_{\pi'}.
+				\det\left(p - \idmap_{\hermitianSpace}\right) \ne 0}} \chi\left(\det\left(p - \idmap_{\hermitianSpace}\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_{\tau} \otimes v_{\pi'}.
 	\end{equation}
 	Decomposing the sum \eqref{eq:recursive-doubling-gauss-sum} as a sum over $L$ and $N$, and using the fact that if $p \in P$ has Levi part with image $\left(a, g'\right) \in \GL_k\left(\finiteField\right) \times G'$ then $$\det\left(p - \idmap_{\hermitianSpace}\right) = \left(-1\right)^k \det\left(a\right)^{-1}\det\left(a - I_k\right)^2 \det\left( g' - \idmap_{\hermitianSpace'}\right),$$
 	and using the fact that $\sizeof{\lieAlgebra} = \sizeof{\lieAlgebra'} \sizeof{N}^2$, where $\lieAlgebra'$ is the Lie algebra of $G'$,
