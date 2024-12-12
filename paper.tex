@@ -304,7 +304,7 @@ Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipot
 
 \begin{theorem}
 	Let $\pi'$ be an irreducible representation of $G'$ and let $\tau$ be an irreducible representation of $\GL_k\left(\finiteField\right)$. Then for any irreducible representation $\pi$ of $G$ which appears as a subrepresentation the parabolic induction $\rho = \Ind{P}{G}{\tau \overline{\otimes} \pi'}$ and any $\chi \ne 1$, we have
-	$$\dblGaussSumScalar{\pi}{\chi} = \centralCharacter{\tau}\left(-1\right) \chi\left(-1\right)^k q^{\frac{k^2}{2}} \GaussSumScalar{\chi^2}{\fieldCharacter}^k \GaussSumScalar{\tau \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter} \dblGaussSumScalar{\pi'}{\chi}.$$
+	$$\dblGaussSumScalar{\pi}{\chi} = \centralCharacter{\tau}\left(-1\right) \chi\left(-1\right)^k \GaussSumScalar{\chi^2}{\fieldCharacter}^k \GaussSumScalar{\tau \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter} \dblGaussSumScalar{\pi'}{\chi}.$$
 \end{theorem}
 \begin{proof}
 	Let $v_{\pi'} \in \pi'$ and $v_{\tau} \in \tau$. Consider $f \in \rho$ defined as follows. The function $f \in \rho$ is the unique element supported on $P$, such that $f\left(\idmap_{\hermitianSpace}\right) = v_{\tau} \otimes v_{\pi'}$. The projection $f$ to any non-zero invariant subspace of $\rho$ is non-zero. We compute $\dblGaussSum{\pi}{\chi} f$.
@@ -336,15 +336,15 @@ Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipot
 				\det\left(p - \idmap_{\hermitianSpace}\right) \ne 0}} \chi\left(\det\left(p - \idmap_{\hermitianSpace}\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_{\tau} \otimes v_{\pi'}.
 	\end{equation}
 	Decomposing the sum \eqref{eq:recursive-doubling-gauss-sum} as a sum over $L$ and $N$, and using the fact that if $p \in P$ has Levi part with image $\left(a, g'\right) \in \GL_k\left(\finiteField\right) \times G'$ then $$\det\left(p - \idmap_{\hermitianSpace}\right) = \left(-1\right)^k \det\left(a\right)^{-1}\det\left(a - I_k\right)^2 \det\left( g' - \idmap_{\hermitianSpace'}\right),$$
-	and using the fact that $\sizeof{\lieAlgebra} = \sizeof{\lieAlgebra'} \sizeof{N}^2$, where $\lieAlgebra'$ is the Lie algebra of $G'$,
+	and using the fact that $\sizeof{\lieAlgebra} = \sizeof{\lieAlgebra'} \sizeof{\squareMatrix_k\left(\finiteField\right)} \sizeof{N}^2$, where $\lieAlgebra'$ is the Lie algebra of $G'$,
 	we get that \eqref{eq:recursive-doubling-gauss-sum} equals
 	\begin{equation}
-		\frac{1}{\sqrt{\sizeof{\lieAlgebra'}}} \chi\left(-1\right)^k \sum_{a \in \GL_k\left(\finiteField\right)} \Phi_{\chi^2}\left(a\right) \chi^{-1}\left(\det a\right) \tau\left(a\right) v_{\tau} \otimes \sum_{g' \in G'} \Phi_{\chi}\left(g'\right) \pi'\left(g'\right) v_{\pi'},
+		\chi\left(-1\right)^k q^{-\frac{k^2}{2}} \sum_{a \in \GL_k\left(\finiteField\right)} \Phi_{\chi^2}\left(a\right) \chi^{-1}\left(\det a\right) \tau\left(a\right) v_{\tau} \otimes \frac{1}{\sqrt{\sizeof{\lieAlgebra'}}} \sum_{g' \in G'} \Phi_{\chi}\left(g'\right) \pi'\left(g'\right) v_{\pi'},
 	\end{equation}
 	which in turn is
 	\begin{align*}
-		&\chi\left(-1\right)^k q^{\frac{k^2}{2}} \dblGaussSum{\tau \otimes \chi_{\GL_k}^{-1}}{\chi^2} v_{\tau} \otimes \dblGaussSum{\pi'}{\chi} v_{\pi'} \\
-		=& \chi\left(-1\right)^k q^{\frac{k^2}{2}} \dblGaussSumScalar{\tau \otimes \chi_{\GL_k}^{-1}}{\chi^2} \dblGaussSumScalar{\pi'}{\chi} v_{\tau} \otimes v_{\pi'}.
+		&\chi\left(-1\right)^k  \dblGaussSum{\tau \otimes \chi_{\GL_k}^{-1}}{\chi^2} v_{\tau} \otimes \dblGaussSum{\pi'}{\chi} v_{\pi'} \\
+		=& \chi\left(-1\right)^k \dblGaussSumScalar{\tau \otimes \chi_{\GL_k}^{-1}}{\chi^2} \dblGaussSumScalar{\pi'}{\chi} v_{\tau} \otimes v_{\pi'}.
 	\end{align*}
 	The result now follows.
 \end{proof}
@@ -354,8 +354,8 @@ Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipot
 \begin{theorem}
 	Suppose that $\pi$ is an irreducible cuspidal representation of $G$, parameterized by a character $\theta = \theta_1 \times \dots \times \theta_r$ of a torus $T$ isomorphic to $$T \cong \finiteFieldExtension{2n_1}^1 \times \finiteFieldExtension{2n_2}^1 \times \dots \finiteFieldExtension{2n_r}^1,$$
 	where $2n_1 + 2n_2 + \dots + 2n_r = \dim \hermitianSpace$ if $\dim \hermitianSpace$ is even or $2n_1 + 2n_2 + \dots + 2n_r = \dim \hermitianSpace - 1$ if $\dim \hermitianSpace$ is odd, and where $$\finiteFieldExtension{2m}^1 = \left\{ x \in \multiplicativegroup{\finiteFieldExtension{2m}} \mid \FieldNorm{2m}{m}\left(x\right)= 1\right\}.$$
-	Then up to some signs and some power of $\GaussSumScalar{\chi}{\fieldCharacter}$, we have $$\dblGaussSumScalar{\pi}{\chi}= \prod_{j=1}^r \tau\left( \theta_j \times \chi, \fieldCharacter_{2n_j} \right),$$
-	where $$\tau\left( \theta_j \times \chi, \fieldCharacter_{2n_j}\right) = -\sum_{x \in \multiplicativegroup{\finiteFieldExtension{2n_j}}} \theta\left(x\right) \chi\left(\FieldNorm{2n_j}{1}\left(x\right)\right)\fieldCharacter\left(\trace_{\finiteFieldExtension{2n_j} \slash \finiteField}\left(x\right)\right).$$
+	Then up to some signs and some power of $\GaussSumScalar{\chi}{\fieldCharacter}$, we have $$\dblGaussSumScalar{\pi}{\chi}= \prod_{j=1}^r \tau\left( \theta'_j \times \chi, \fieldCharacter_{2n_j} \right),$$
+	where $\theta'_j\left(x\right) = \theta_j\left(x^{1-q^{m_j}}\right)$ and $$\tau\left( \theta'_j \times \chi, \fieldCharacter_{2n_j}\right) = -\sum_{x \in \multiplicativegroup{\finiteFieldExtension{2n_j}}} \theta'_j\left(x\right) \chi\left(\FieldNorm{2n_j}{1}\left(x\right)\right)\fieldCharacter\left(\trace_{\finiteFieldExtension{2n_j} \slash \finiteField}\left(x\right)\right).$$
 \end{theorem}
 
 \bibliographystyle{abbrv}
