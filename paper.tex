@@ -236,6 +236,8 @@ which is a representation of the group $B_r \times \GL_{n-r}\left(\finiteField\r
 
 It follows from this observation that if $\tau$ is an irreducible representation of $\GL_n\left(\finiteField\right)$ such that $1$ is not in the cuspidal support of $\tau$, then for any matrix $A$ with rank $< n$, we have $\GaussSum{\tau}{\fieldCharacter}_A = 0$.
 
+We actually use this later only for the case $\tau = \chi_{\GL_n}$, i.e., $\tau\left(g\right) = \chi\left(\det g\right)$ for some character $1 \ne \chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$. Maybe rewrite for this case. The argument is also simpler.
+
 \section{Doubling method Gauss sums}
 
 \subsection{The case of general linear groups}
@@ -272,10 +274,10 @@ which equals
 \begin{align*}
 	\dblGaussSumScalar{\tau}{\chi} &=  \centralCharacter{\tau}\left(-1\right) \GaussSumScalar{\chi}{\fieldCharacter}^n \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\tau}{\fieldCharacter}.
 \end{align*}
-This is probably also true if $1$ is in the cuspidal support of $\tau$  and $\chi \ne 1$ (return to this later: probably can follow from a multiplicativity arguments). In the meantime, we will check this for $\tau = 1$ the trivial representation of $\GL_1\left(\finiteField\right)$, in which case we have
+This is probably also true if $1$ is in the cuspidal support of $\tau$  and $\chi \ne 1$ (return to this later: should follow from a multiplicativity arguments). In the meantime, we will check this for $\tau = 1$, the trivial representation of $\GL_1\left(\finiteField\right)$, in which case we have
 $$\dblGaussSum{1}{\chi} = q^{-\frac{1}{2}} \sum_{\substack{x \in \multiplicativegroup{\finiteField} \\
-		x \ne 1}} \chi\left(x - 1\right) = q^{-\frac{1}{2}}\left(-1 + \sum_{x \in \multiplicativegroup{\finiteField}} \chi\left(x\right) \right) = \begin{dcases}
-		-q^{-\frac{1}{2}} & \chi \ne 1\\
+		x \ne 1}} \chi\left(x - 1\right) = q^{-\frac{1}{2}}\left(-\chi\left(-1\right) + \sum_{x \in \multiplicativegroup{\finiteField}} \chi\left(x\right) \right) = \begin{dcases}
+		-q^{-\frac{1}{2}} \chi\left(-1\right) & \chi \ne 1\\
 		q^{-\frac{1}{2}} \left(q - 2\right) & \chi = 1
 	\end{dcases}.$$
 
@@ -328,7 +330,7 @@ Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipot
 	\end{align*}
 	By decomposing the sum over $p' \in P$ into a sum over $N$ and $L$, we see that the inner sum over $N$ will vanish unless $p - x^{-1} \in P$, which implies that $x \in P$.
 	
-	Hence, we have that $\left(\dblGaussSum{\pi}{\chi} f\right)\left(x\right)$ is supported on $P$. We move to compute $\left(\dblGaussSum{\pi}{\chi} f\right)\left(\idmap_{\hermitianSpace}\right)$. It is given by
+	Hence, we have that $\dblGaussSum{\pi}{\chi} f$ is supported on $P$. We move to compute $\left(\dblGaussSum{\pi}{\chi} f\right)\left(\idmap_{\hermitianSpace}\right)$. It is given by
 	\begin{equation}\label{eq:recursive-doubling-gauss-sum}
 		\frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{\substack{p \in P\\
 				\det\left(p - \idmap_{\hermitianSpace}\right) \ne 1}} \chi\left(\det\left(p - \idmap_{\hermitianSpace}\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_{\tau} \otimes v_{\pi'}.
@@ -340,8 +342,21 @@ Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipot
 		\frac{1}{\sqrt{\sizeof{\lieAlgebra'}}} \chi\left(-1\right)^k \sum_{a \in \GL_k\left(\finiteField\right)} \Phi_{\chi^2}\left(a\right) \chi^{-1}\left(\det a\right) \tau\left(a\right) v_{\tau} \otimes \sum_{g' \in G'} \Phi_{\chi}\left(g'\right) \pi'\left(g'\right) v_{\pi'},
 	\end{equation}
 	which in turn is
-	$$\chi\left(-1\right)^k q^{\frac{k^2}{2}} \dblGaussSum{\tau \otimes \chi_{\GL_k}^{-1}}{\chi^2} v_{\tau} \otimes \dblGaussSum{\pi'}{\chi} v_{\pi'}.$$
+	\begin{align*}
+		&\chi\left(-1\right)^k q^{\frac{k^2}{2}} \dblGaussSum{\tau \otimes \chi_{\GL_k}^{-1}}{\chi^2} v_{\tau} \otimes \dblGaussSum{\pi'}{\chi} v_{\pi'} \\
+		=& \chi\left(-1\right)^k q^{\frac{k^2}{2}} \dblGaussSumScalar{\tau \otimes \chi_{\GL_k}^{-1}}{\chi^2} \dblGaussSumScalar{\pi'}{\chi} v_{\tau} \otimes v_{\pi'}.
+	\end{align*}
+	The result now follows.
 \end{proof}
+
+\subsubsection{Computation for irreducible cuspidal representations}
+
+\begin{theorem}
+	Suppose that $\pi$ is an irreducible cuspidal representation of $G$, parameterized by a character $\theta = \theta_1 \times \dots \times \theta_r$ of a torus $T$ isomorphic to $$T \cong \finiteFieldExtension{2n_1}^1 \times \finiteFieldExtension{2n_2}^1 \times \dots \finiteFieldExtension{2n_r}^1,$$
+	where $2n_1 + 2n_2 + \dots + 2n_r = \dim \hermitianSpace$ if $\dim \hermitianSpace$ is even or $2n_1 + 2n_2 + \dots + 2n_r = \dim \hermitianSpace - 1$ if $\dim \hermitianSpace$ is odd, and where $$\finiteFieldExtension{2m}^1 = \left\{ x \in \multiplicativegroup{\finiteFieldExtension{2m}} \mid \FieldNorm{2m}{m}\left(x\right)= 1\right\}.$$
+	Then up to some signs and some power of $\GaussSumScalar{\chi}{\fieldCharacter}$, we have $$\dblGaussSumScalar{\pi}{\chi}= \prod_{j=1}^r \tau\left( \theta_j \times \chi, \fieldCharacter_{2n_j} \right),$$
+	where $$\tau\left( \theta_j \times \chi, \fieldCharacter_{2n_j}\right) = -\sum_{x \in \multiplicativegroup{\finiteFieldExtension{2n_j}}} \theta\left(x\right) \chi\left(\FieldNorm{2n_j}{1}\left(x\right)\right)\fieldCharacter\left(\trace_{\finiteFieldExtension{2n_j} \slash \finiteField}\left(x\right)\right).$$
+\end{theorem}
 
 \bibliographystyle{abbrv}
 \bibliography{references}
