@@ -54,6 +54,8 @@
 \newcommand{\sizeof}[1]{\left|#1\right|}
 \newcommand{\lcm}{\operatorname{lcm}}
 \newcommand{\hermitianSpace}{\mathrm{V}}
+\newcommand{\xIsotropic}{\mathrm{X}}
+\newcommand{\yIsotropic}{\mathrm{Y}}
 
 % Inner product
 \newcommand{\innerproduct}[2]{\left\langle #1,#2\right\rangle}
@@ -169,6 +171,7 @@
 \newcommand{\artinScrier}{\operatorname{AS}}
 \newcommand{\KloostermanSumClassFunction}{\mathcal{K}}
 \newcommand{\IsometryGroup}{\mathrm{Isom}}
+\newcommand{\lieAlgebra}{\mathfrak{g}}
 
 \hypersetup{pdfauthor={Elad Zelingher},
 	pdfsubject={Number theory, Representation theory},
@@ -202,36 +205,36 @@ $$B_r = \left\{ \begin{pmatrix}
 \end{pmatrix} \mid t_1,\dots,t_r \in \multiplicativegroup{\finiteField} \right\}.$$
 
 \section{Degenerate Gauss sums}
-Let $\pi$ be an irreducible representation of $\GL_n\left(\finiteField\right)$. For a matrix $A \in \squareMatrix_n\left(\finiteField\right)$, denote
-$$\GaussSum{\pi}{\fieldCharacter}_A \coloneqq q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \pi\left(g\right) \fieldCharacter\left(\trace\left(A g\right)\right).$$
+Let $\tau$ be an irreducible representation of $\GL_n\left(\finiteField\right)$. For a matrix $A \in \squareMatrix_n\left(\finiteField\right)$, denote
+$$\GaussSum{\tau}{\fieldCharacter}_A \coloneqq q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \tau\left(g\right) \fieldCharacter\left(\trace\left(A g\right)\right).$$
 For any such $A$, there exist $h_1, h_2 \in \GL_n\left(\finiteField\right)$ and $0 \le r \le n$, such that $A = h_1 \begin{pmatrix}
 	0_r\\
 	& \IdentityMatrix{n-r}
-\end{pmatrix} h_2$. Changing variables, we see that $$\GaussSum{\pi}{\fieldCharacter}_A = \pi \left(h_2^{-1}\right) \circ \GaussSum{\pi}{\fieldCharacter}_r \circ \pi\left(h_1^{-1}\right),$$
+\end{pmatrix} h_2$. Changing variables, we see that $$\GaussSum{\tau}{\fieldCharacter}_A = \tau \left(h_2^{-1}\right) \circ \GaussSum{\tau}{\fieldCharacter}_r \circ \tau\left(h_1^{-1}\right),$$
 where
-$$\GaussSum{\pi}{\fieldCharacter}_r = q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \pi\left(g\right) \fieldCharacter\left(\trace\left(g \begin{pmatrix}
+$$\GaussSum{\tau}{\fieldCharacter}_r = q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \tau\left(g\right) \fieldCharacter\left(\trace\left(g \begin{pmatrix}
 	0_{r}\\
 	& \IdentityMatrix{n-r}
 \end{pmatrix}\right)\right).$$
-Notice that $\GaussSum{\pi}{\fieldCharacter}_0$ lies in $\Hom_{\GL_n\left(\finiteField\right)}\left(\pi, \pi\right)$ and therefore, $$\GaussSum{\pi}{\fieldCharacter} \coloneqq \GaussSum{\pi}{\fieldCharacter}_0 = \GaussSumScalar{\pi}{\fieldCharacter} \cdot \idmap_\pi,$$
-where $\GaussSumScalar{\pi}{\fieldCharacter} \in \cComplex$. The computation of this scalar is known due to Kondo. Let us also denote for a character $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$, the \emph{twisted Gauss sum}
-$$\GaussSum{\pi \times \chi}{\fieldCharacter} = q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \pi\left(g\right) \chi\left(\det g\right) \fieldCharacter\left(\trace g\right).$$
-This element also lies in $\Hom_{\GL_n\left(\finiteField\right)}\left(\pi, \pi\right)$ and we denote
-$$\GaussSum{\pi \times \chi}{\fieldCharacter} = \GaussSumScalar{\pi \times \chi}{\fieldCharacter} \cdot \idmap_\pi,$$
-where $\GaussSumScalar{\pi \times \chi}{\fieldCharacter} \in \cComplex$.
+Notice that $\GaussSum{\tau}{\fieldCharacter}_0$ lies in $\Hom_{\GL_n\left(\finiteField\right)}\left(\tau, \tau\right)$ and therefore, $$\GaussSum{\tau}{\fieldCharacter} \coloneqq \GaussSum{\tau}{\fieldCharacter}_0 = \GaussSumScalar{\tau}{\fieldCharacter} \cdot \idmap_\tau,$$
+where $\GaussSumScalar{\tau}{\fieldCharacter} \in \cComplex$. The computation of this scalar is known due to Kondo. Let us also denote for a character $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$, the \emph{twisted Gauss sum}
+$$\GaussSum{\tau \times \chi}{\fieldCharacter} = q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \tau\left(g\right) \chi\left(\det g\right) \fieldCharacter\left(\trace g\right).$$
+This element also lies in $\Hom_{\GL_n\left(\finiteField\right)}\left(\tau, \tau\right)$ and we denote
+$$\GaussSum{\tau \times \chi}{\fieldCharacter} = \GaussSumScalar{\tau \times \chi}{\fieldCharacter} \cdot \idmap_\tau,$$
+where $\GaussSumScalar{\tau \times \chi}{\fieldCharacter} \in \cComplex$.
 
-Let us show that if $A$ is singular and $\pi$ does not contain $1$ in its cuspidal support then $\GaussSum{\pi}{\fieldCharacter}_A = 0$. We begin with the following simple observation. We have that for any $b \in B_r$ and any $X \in \Mat{r}{(n-r)}\left(\finiteField\right)$,
-$$ \pi\begin{pmatrix}
-b & X\\
-& \IdentityMatrix{n-r}
-\end{pmatrix} \circ \GaussSum{\pi}{\fieldCharacter}_r = \GaussSum{\pi}{\fieldCharacter}_r.$$
-Therefore, we have that $\GaussSum{\pi}{\fieldCharacter}_r$ can be regarded as an operator $\GaussSum{\pi}{\fieldCharacter}_r \colon \pi \to J\left(\pi, r\right)$, where $$J\left(\pi, r\right) = \left\{ v \in \pi \mid \pi \begin{pmatrix}
+Let us show that if $A$ is singular and $\tau$ does not contain $1$ in its cuspidal support then $\GaussSum{\tau}{\fieldCharacter}_A = 0$. We begin with the following simple observation. We have that for any $b \in B_r$ and any $X \in \Mat{r}{(n-r)}\left(\finiteField\right)$,
+$$ \tau\begin{pmatrix}
+	b & X\\
+	& \IdentityMatrix{n-r}
+\end{pmatrix} \circ \GaussSum{\tau}{\fieldCharacter}_r = \GaussSum{\tau}{\fieldCharacter}_r.$$
+Therefore, we have that $\GaussSum{\tau}{\fieldCharacter}_r$ can be regarded as an operator $\GaussSum{\tau}{\fieldCharacter}_r \colon \tau \to J\left(\tau, r\right)$, where $$J\left(\tau, r\right) = \left\{ v \in \tau \mid \tau \begin{pmatrix}
 	b & X\\
 	& \IdentityMatrix{n-r}
 \end{pmatrix} v = v, \forall b \in B_r, X \in \Mat{r}{(n-r)}\left(\finiteField\right) \right\},$$
-which is a representation of the group $B_r \times \GL_{n-r}\left(\finiteField\right)$. This space is non-zero if and only if $\pi$ is subrepresentation of a parabolically induced representation of the form $1^{\circ r} \circ \tau = 1 \circ \dots \circ 1 \circ \tau$, where $\tau$ is an irreducible representation of $\GL_{n-r}\left(\finiteField\right)$. 
+which is a representation of the group $B_r \times \GL_{n-r}\left(\finiteField\right)$. This space is non-zero if and only if $\tau$ is subrepresentation of a parabolically induced representation of the form $1^{\circ r} \circ \tau = 1 \circ \dots \circ 1 \circ \tau$, where $\tau$ is an irreducible representation of $\GL_{n-r}\left(\finiteField\right)$. 
 
-It follows from this observation that if $\pi$ is an irreducible representation of $\GL_n\left(\finiteField\right)$ such that $1$ is not in the cuspidal support of $\pi$, then for any matrix $A$ with rank $< n$, we have $\GaussSum{\pi}{\fieldCharacter}_A = 0$.
+It follows from this observation that if $\tau$ is an irreducible representation of $\GL_n\left(\finiteField\right)$ such that $1$ is not in the cuspidal support of $\tau$, then for any matrix $A$ with rank $< n$, we have $\GaussSum{\tau}{\fieldCharacter}_A = 0$.
 
 \section{Doubling method Gauss sums}
 
@@ -244,35 +247,101 @@ $$\Phi_{\chi}\left(g\right) = \begin{dcases}
 	\chi\left(\det\left(g-\IdentityMatrix{n}\right)\right) & \text{if }\det\left(g-\IdentityMatrix{n}\right) \ne 0,\\
 	0 & \text{otherwise.}
 \end{dcases}$$
-It is clear that $\Phi_{\chi}$ is a class function of $\GL_n\left(\finiteField\right)$. Given an irreducible representation $\pi$ of $\GL_n\left(\finiteField\right)$, we consider the following \emph{doubling method Gauss sum}:
-$$\dblGaussSum{\pi}{\chi} = q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \Phi_{\chi}\left(g\right) \pi\left(g\right).$$
-Then $\dblGaussSum{\pi}{\chi}$ defines an element of $\Hom_{\GL_n\left(\finiteField\right)}\left(\pi, \pi\right)$. Therefore, by Schur's lemma there exists a complex number $\dblGaussSumScalar{\pi}{\chi} \in \cComplex$ such that $$\dblGaussSum{\pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$ 
+It is clear that $\Phi_{\chi}$ is a class function of $\GL_n\left(\finiteField\right)$. Given an irreducible representation $\tau$ of $\GL_n\left(\finiteField\right)$, we consider the following \emph{doubling method Gauss sum}:
+$$\dblGaussSum{\tau}{\chi} = q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \Phi_{\chi}\left(g\right) \tau\left(g\right).$$
+Then $\dblGaussSum{\tau}{\chi}$ defines an element of $\Hom_{\GL_n\left(\finiteField\right)}\left(\tau, \tau\right)$. Therefore, by Schur's lemma there exists a complex number $\dblGaussSumScalar{\tau}{\chi} \in \cComplex$ such that $$\dblGaussSum{\tau}{\chi} = \dblGaussSumScalar{\tau}{\chi} \cdot \idmap_\tau.$$ 
 
-The goal of this section is to express $\dblGaussSumScalar{\pi}{\chi}$ in terms of Kondo's Gauss sum.
+The goal of this section is to express $\dblGaussSumScalar{\tau}{\chi}$ in terms of Kondo's Gauss sum.
 
-Assume first that $1$ does not appear in the cuspidal support of $\pi$. Let us write
-$$\dblGaussSum{\pi}{\chi} = q^{-\frac{n^2}{2}} \sum_{\substack{g \in \GL_n\left(\finiteField\right) \\
-\det\left(g - \IdentityMatrix{n}\right) \ne 0}} \chi\left(\det\left(g - \IdentityMatrix{n}\right)\right) \pi\left(g\right).$$
+Assume first that $1$ does not appear in the cuspidal support of $\tau$. Let us write
+$$\dblGaussSum{\tau}{\chi} = q^{-\frac{n^2}{2}} \sum_{\substack{g \in \GL_n\left(\finiteField\right) \\
+		\det\left(g - \IdentityMatrix{n}\right) \ne 0}} \chi\left(\det\left(g - \IdentityMatrix{n}\right)\right) \tau\left(g\right).$$
 We rewrite this using a Fourier transform type expression
-$$\dblGaussSum{\pi}{\chi} = q^{-\frac{3n^2}{2}} \sum_{g, h \in \GL_n\left(\finiteField\right)} \sum_{A \in \squareMatrix_n\left(\finiteField\right)} \chi^{-1}\left(\det h\right) \pi\left(g\right) \fieldCharacter\left(\trace\left(A \left(\IdentityMatrix{n} - h \left(g - \IdentityMatrix{n}\right)\right)\right)\right).$$
+$$\dblGaussSum{\tau}{\chi} = q^{-\frac{3n^2}{2}} \sum_{g, h \in \GL_n\left(\finiteField\right)} \sum_{A \in \squareMatrix_n\left(\finiteField\right)} \chi^{-1}\left(\det h\right) \tau\left(g\right) \fieldCharacter\left(\trace\left(A \left(\IdentityMatrix{n} - h \left(g - \IdentityMatrix{n}\right)\right)\right)\right).$$
 
 Replacing $g$ with $h^{-1} g$, we arrive at the expression
 \begin{align*}
-	\dblGaussSum{\pi}{\chi} &= q^{-\frac{3n^2}{2}} \sum_{A \in \squareMatrix_n\left(\finiteField\right)} \fieldCharacter\left(\trace A\right) \sum_{h \in \GL_n\left(\finiteField\right)} \chi^{-1}\left(\det h\right) \pi\left(h^{-1}\right) \fieldCharacter\left(\trace\left(Ah\right)\right)\\
-	& \circ \sum_{g \in \GL_n\left(\finiteField\right)} \pi\left(g\right) \fieldCharacter\left(-\trace Ag\right).
+	\dblGaussSum{\tau}{\chi} =& q^{-\frac{3n^2}{2}} \sum_{A \in \squareMatrix_n\left(\finiteField\right)} \fieldCharacter\left(\trace A\right) \sum_{h \in \GL_n\left(\finiteField\right)} \chi^{-1}\left(\det h\right) \tau\left(h^{-1}\right) \fieldCharacter\left(\trace\left(Ah\right)\right)\\
+	& \circ \sum_{g \in \GL_n\left(\finiteField\right)} \tau\left(g\right) \fieldCharacter\left(-\trace Ag\right).
 \end{align*}
-Since the last inner sum is $q^{\frac{n^2}{2}} \GaussSum{\pi}{\fieldCharacter}_{-A}$, we have that the sum can be reduced to $A \in \GL_n\left(\finiteField\right)$. Replacing $h$ with $A^{-1} h$ and $g$ with $-A^{-1} g$, we get the sum
+Since the last inner sum is $q^{\frac{n^2}{2}} \GaussSum{\tau}{\fieldCharacter}_{-A}$, we have that the sum can be reduced to $A \in \GL_n\left(\finiteField\right)$. Replacing $h$ with $A^{-1} h$ and $g$ with $-A^{-1} g$, we get the sum
 \begin{align*}
-	\dblGaussSumScalar{\pi}{\chi} &= q^{-\frac{n^2}{2}} \centralCharacter{\pi}\left(-1\right) \sum_{A \in \GL_n\left(\finiteField\right)} \chi\left(\det A\right) \fieldCharacter\left(\trace A\right) \GaussSumScalar{\Contragradient{\pi} \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\pi}{\fieldCharacter},
+	\dblGaussSumScalar{\tau}{\chi} &= q^{-\frac{n^2}{2}} \centralCharacter{\tau}\left(-1\right) \sum_{A \in \GL_n\left(\finiteField\right)} \chi\left(\det A\right) \fieldCharacter\left(\trace A\right) \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\tau}{\fieldCharacter},
 \end{align*}
 which equals
 \begin{align*}
-	\dblGaussSumScalar{\pi}{\chi} &=  \centralCharacter{\pi}\left(-1\right) \GaussSumScalar{\chi}{\fieldCharacter}^n \GaussSumScalar{\Contragradient{\pi} \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\pi}{\fieldCharacter}.
+	\dblGaussSumScalar{\tau}{\chi} &=  \centralCharacter{\tau}\left(-1\right) \GaussSumScalar{\chi}{\fieldCharacter}^n \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\tau}{\fieldCharacter}.
 \end{align*}
+This is probably also true if $1$ is in the cuspidal support of $\tau$ (return to this later: probably can follow from a multiplicativity arguments). In the meantime, we will check this for $\tau = 1$ the trivial representation of $\GL_1\left(\finiteField\right)$, in which case we have
+$$\dblGaussSum{1}{\chi} = q^{-\frac{1}{2}} \sum_{\substack{x \in \multiplicativegroup{\finiteField} \\
+		x \ne 1}} \chi\left(x - 1\right) = q^{-\frac{1}{2}}\left(-1 + \sum_{x \in \multiplicativegroup{\finiteField}} \chi\left(x\right) \right) = \begin{dcases}
+		-q^{-\frac{1}{2}} & \chi \ne 1\\
+		q^{-\frac{1}{2}} \left(q - 2\right) & \chi = 1
+	\end{dcases}.$$
 
 \subsection{The case of classical groups}
 
-Let $\hermitianSpace$ be a vector space of dimension $n$ over $\finiteField$, equipped with a non-degenerate bilinear form $\innerproduct{\cdot}{\cdot} \colon \hermitianSpace \times \hermitianSpace \to \finiteField$ which is either symmetric or anti-symmetric. Let $\IsometryGroup$
+Let $\hermitianSpace$ be a vector space of dimension $n$ over $\finiteField$, equipped with a non-degenerate bilinear form $\innerproduct{\cdot}{\cdot} \colon \hermitianSpace \times \hermitianSpace \to \finiteField$ which is either symmetric or anti-symmetric. Let $G = \IsometryGroup \left(\hermitianSpace\right)$ be the isometry group of $\hermitianSpace$, consisting of all the elements of $\GL\left(\hermitianSpace\right)$ that satisfy $\innerproduct{gx}{gy} = \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. Let $\lieAlgebra$ be the Lie algebra of $G$, consisting of all elements $A \in \EndomorphismRing\left(\hermitianSpace\right)$ satisfying $\innerproduct{Ax}{y} + \innerproduct{x}{AY} = 0$ for every $x, y \in \hermitianSpace$.
+
+Let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be a character. As before, the assignment $\Phi_{\chi} \colon \GL\left(\hermitianSpace\right) \to \cComplex$ given by $$\Phi_{\chi}\left(g\right) = \begin{dcases}
+\chi\left(\det\left(g - \idmap_{\hermitianSpace}\right)\right) & \text{if }\det\left(g - \idmap_{\hermitianSpace}\right) \ne 0\\
+0 & \text{otherwise,}
+\end{dcases}$$
+is a class function of $\GL\left(\hermitianSpace\right)$.
+
+Let $\pi$ be an irreducible representation of $G$. Denote $$\dblGaussSum{\pi}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} \pi\left(g\right) \Phi_{\chi}\left(g\right),$$
+where  Since $\Phi_{\chi}$ is a class function of $\GL\left(\hermitianSpace\right)$, it is also a class function of $G$, and therefore $\dblGaussSum{\pi}{\chi} \in \Hom_{G}\left(\pi, \pi\right)$. By Schur's lemma, there exists a constant $\dblGaussSumScalar{\pi}{\fieldCharacter} \in \cComplex$, such that $$\dblGaussSum{\pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$
+We call $\dblGaussSumScalar{\pi}{\chi}$ the \emph{doubling method Gauss sum}.
+
+\subsubsection{Multiplicativity property}
+Our next goal is to understand how the doubling method Gauss sum behaves under parabolic induction.
+
+Let $\xIsotropic$ and $\yIsotropic$ be isotropic spaces of $\hermitianSpace$ of dimension $k$, such that $\xIsotropic$ and $\yIsotropic$ are in duality with respect to form $\innerproduct{\cdot}{\cdot}$. Let us write $$\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic,$$
+where $\hermitianSpace' \subset \hermitianSpace$ is a non-degenerate subspace, orthogonal to $\xIsotropic$ and $\yIsotropic$. Let $P$ be the parabolic subgroup of $G$, consisting of all elements stabilizing the flag $$0 \subset \xIsotropic \subset \xIsotropic \oplus \hermitianSpace' \subset \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic = \hermitianSpace.$$
+Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipotent radical of $P$. Then $L$ is isomorphic to $G' \times \GL_k\left(\finiteField\right)$, where $G' = \IsometryGroup\left(\hermitianSpace'\right)$.
+
+\begin{theorem}
+	Let $\pi'$ be an irreducible representation of $G'$ and let $\tau$ be an irreducible representation of $\GL_k\left(\finiteField\right)$. Then for any irreducible representation $\pi$ of $G$ which appears as a subrepresentation the parabolic induction $\rho = \Ind{P}{G}{\tau \overline{\otimes} \pi'}$ and any $\chi \ne 1$, we have
+	$$\dblGaussSumScalar{\pi}{\chi} = \centralCharacter{\tau}\left(-1\right) \chi\left(-1\right)^k q^{\frac{k^2}{2}} \GaussSumScalar{\chi^2}{\fieldCharacter}^k \GaussSumScalar{\tau \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter} \dblGaussSumScalar{\pi'}{\chi}.$$
+\end{theorem}
+\begin{proof}
+	Let $v_{\pi'} \in \pi'$ and $v_{\tau} \in \tau$. Consider $f \in \rho$ defined as follows. The function $f \in \rho$ is the unique element supported on $P$, such that $f\left(\idmap_{\hermitianSpace}\right) = v_{\tau} \otimes v_{\pi'}$. The projection $f$ to any non-zero invariant subspace of $\rho$ is non-zero. We compute $\dblGaussSum{\pi}{\chi} f$.
+	
+	Notice that for $x \in G$, $$\left(\dblGaussSum{\pi}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} f\left(xg\right) \Phi_{\chi}\left(g\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in P} f\left(p\right) \Phi_{\chi}\left(x^{-1} p\right),$$
+	which can be rewritten as
+	$$\left(\dblGaussSum{\pi}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in P}  \Phi_{\chi}\left(x^{-1} p\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_\tau \otimes v_{\pi'}.$$
+	As before, we may write
+	$$\Phi_{\chi}\left(g\right) = q^{-n^2} \sum_{h \in \GL\left(\hermitianSpace\right)} \sum_{A \in \EndomorphismRing\left(\hermitianSpace\right)} \chi^{-1}\left(\det h\right) \fieldCharacter\left(\trace\left(A \left(g - \idmap_{\hermitianSpace} - h^{-1}\right)\right)\right).$$
+	Hence, \begin{align*}
+		q^{n^2} \sum_{p \in P} \Phi_{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{A \in \EndomorphismRing\left(\hermitianSpace\right)} \sum_{h \in \GL\left(\hermitianSpace\right)} \chi\left(\det h\right)\fieldCharacter\left(\trace\left(Ah\right)\right) \\
+		& \times \sum_{p \in P} \fieldCharacter\left(\trace\left(A \left(xp - \idmap_{\hermitianSpace}\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
+	\end{align*}
+	Assume that $\chi \ne 1$. Then since $\GaussSum{\chi_{\GL\left(\hermitianSpace\right)}}{\fieldCharacter}_A$ appears in the last equation, the sum can be reduced to $A \in \GL\left(\hermitianSpace\right)$. Let us replace $h$ with $A^{-1} h$. We get the sum
+	\begin{align*}
+		\sum_{A \in \GL\left(\hermitianSpace\right)} \chi^{-1}\left(\det A\right) \sum_{h \in \GL\left(\hermitianSpace\right)} \chi\left(\det h\right)\fieldCharacter\left(\trace h\right) \sum_{p \in P} \fieldCharacter\left(\trace\left(A \left(xp - \idmap_{\hermitianSpace}\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
+	\end{align*}
+	Consider the inner sum over $P$, written as $$\sum_{l \in L} \sum_{u \in N} \fieldCharacter\left(\trace\left(A x l u\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(l\right).$$
+	The inner sum over $N$ will vanish unless $Ax \in P$. Thus we have
+	\begin{align*}
+		q^{n^2} \sum_{p \in P} \Phi_{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{h \in \GL\left(\hermitianSpace\right)}  \chi\left(\det\left(xh\right)\right) \fieldCharacter\left(\trace h\right) \\
+		& \times \sum_{p' \in P} \sum_{p \in P} \chi^{-1}\left(\det p'\right) \fieldCharacter\left(\trace\left(p' \left(p - x^{-1}\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
+	\end{align*}
+	By decomposing the sum over $p' \in P$ into a sum over $N$ and $L$, we see that the inner sum over $N$ will vanish unless $p - x^{-1} \in P$, which implies that $x \in P$.
+	
+	Hence, we have that $\left(\dblGaussSum{\pi}{\chi} f\right)\left(x\right)$ is supported on $P$. We move to compute $\left(\dblGaussSum{\pi}{\chi} f\right)\left(\idmap_{\hermitianSpace}\right)$. It is given by
+	\begin{equation}\label{eq:recursive-doubling-gauss-sum}
+		\frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{\substack{p \in P\\
+				\det\left(p - \idmap_{\hermitianSpace}\right) \ne 1}} \chi\left(\det\left(p - \idmap_{\hermitianSpace}\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_{\tau} \otimes v_{\pi'}.
+	\end{equation}
+	Decomposing the sum \eqref{eq:recursive-doubling-gauss-sum} as a sum over $L$ and $N$, and using the fact that if $p \in P$ has Levi part with image $\left(a, g'\right) \in \GL_k\left(\finiteField\right) \times G'$ then $$\det\left(p - \idmap_{\hermitianSpace}\right) = \left(-1\right)^k \det\left(a\right)^{-1}\det\left(a - I_k\right)^2 \det\left( g' - \idmap_{\hermitianSpace'}\right),$$
+	and using the fact that $\sizeof{\lieAlgebra} = \sizeof{\lieAlgebra'} \sizeof{N}^2$, where $\lieAlgebra'$ is the Lie algebra of $G'$,
+	we get that \eqref{eq:recursive-doubling-gauss-sum} equals
+	\begin{equation}
+		\frac{1}{\sqrt{\sizeof{\lieAlgebra'}}} \chi\left(-1\right)^k \sum_{a \in \GL_k\left(\finiteField\right)} \Phi_{\chi^2}\left(a\right) \chi^{-1}\left(\det a\right) \tau\left(a\right) v_{\tau} \otimes \sum_{g' \in G'} \Phi_{\chi}\left(g'\right) \pi'\left(g'\right) v_{\pi'},
+	\end{equation}
+	which in turn is
+	$$\chi\left(-1\right)^k q^{\frac{k^2}{2}} \dblGaussSum{\tau \otimes \chi_{\GL_k}^{-1}}{\chi^2} v_{\tau} \otimes \dblGaussSum{\pi'}{\chi} v_{\pi'}.$$
+\end{proof}
 
 \bibliographystyle{abbrv}
 \bibliography{references}
