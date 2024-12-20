@@ -174,6 +174,7 @@
 \newcommand{\KloostermanSumClassFunction}{\mathcal{K}}
 \newcommand{\IsometryGroup}{\mathrm{Isom}}
 \newcommand{\lieAlgebra}{\mathfrak{g}}
+\newcommand{\DeligneLusztigInduction}[2]{\mathrm{R}_{#1}^{#2}}
 
 \hypersetup{pdfauthor={Calvin Yost-Wolff, Elad Zelingher},
 	pdfsubject={Number theory, Representation theory},
@@ -405,11 +406,11 @@ By the appendix, this equals
 
 To summarize, we have
 $$\sum_{\substack{x \in \finiteFieldExtension{2m}^1\\
-		x \ne 1}} \theta \left(-x\right) \chi\left(\FieldNorm{2m}{1}\left(x - 1\right)\right) = q^{\frac{m}{2}} \tau\left(\chi^{-1}, \fieldCharacter\right)^{2m} \tau\left(\chi, \fieldCharacter\right)^{2m} \tau\left(\chi^{2}, \fieldCharacter_m\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right),$$
+		x \ne 1}} \theta \left(-x\right) \chi\left(\FieldNorm{2m}{1}\left(x - 1\right)\right) = q^{\frac{m}{2}} \tau\left(\chi^{-1}, \fieldCharacter\right)^{2m} \tau\left(\chi, \fieldCharacter\right)^{2m} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right),$$
 	where $\theta'\left(t\right) = \theta\left(t^{1-q^m}\right)$.
 Since $\tau\left(\chi^{-1}, \fieldCharacter\right) = \chi\left(-1\right) \conjugate{\tau\left(\chi, \fieldCharacter\right)}$ and since $\chi \ne 1$, this implies the identity
 $$\sum_{\substack{x \in \finiteFieldExtension{2m}^1\\
-		x \ne 1}} \theta \left(x\right) \chi\left(\FieldNorm{2m}{1}\left(x - 1\right)\right) = \theta\left(-1\right) q^{\frac{m}{2}} \tau\left(\chi^{2}, \fieldCharacter_m\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right).$$
+		x \ne 1}} \theta \left(x\right) \chi\left(\FieldNorm{2m}{1}\left(x - 1\right)\right) = \theta\left(-1\right) q^{\frac{m}{2}} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right).$$
 
 \subsubsection{Computation for irreducible cuspidal representations}
 
@@ -420,6 +421,41 @@ $$\sum_{\substack{x \in \finiteFieldExtension{2m}^1\\
 	Then up to maybe a sign, we have $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \prod_{j=1}^r \tau\left( \theta'_j \times \chi, \fieldCharacter_{2n_j} \right),$$
 	where $\theta'_j\left(x\right) = \theta_j\left(x^{1-q^{n_j}}\right)$ and $$\tau\left( \theta'_j \times \chi, \fieldCharacter_{2n_j}\right) = -q^{-n_j} \sum_{x \in \multiplicativegroup{\finiteFieldExtension{2n_j}}} \theta'_j\left(x\right) \chi\left(\FieldNorm{2n_j}{1}\left(x\right)\right)\fieldCharacter\left(\trace_{\finiteFieldExtension{2n_j} \slash \finiteField}\left(x\right)\right).$$
 \end{theorem}
+
+\subsubsection{Computation for Lusztig series}
+
+Let $T \cong \finiteFieldExtension{2n_1}^1 \times \finiteFieldExtension{2n_2}^1 \times \dots \times \finiteFieldExtension{2n_r}^1 \times \multiplicativegroup{\finiteFieldExtension{m_1}} \times \dots \multiplicativegroup{\finiteFieldExtension{m_s}}$ be a torus such that $\sum_{i=1}^r 2n_i + \sum_{j=1}^s 2m_j = \dim_{\finiteField} \hermitianSpace$. Let $\theta = \alpha_1 \times \dots \times \alpha_r \times \beta_1 \times \dots \times \beta_s$. Consider the Deligne--Lusztig induction $\DeligneLusztigInduction{T}{G}\theta$. Write $$\DeligneLusztigInduction{T}{G}\theta = \sum_{\pi} c_{\pi} \cdot \trace \pi,$$
+where $\pi$ goes over all the irreducible representations of $G$ and $c_{\pi} \in \zIntegers$. Then for any irreducible $\pi$ such that $c_{\pi} \ne 0$, and any $\chi$ such that $\chi^2 \ne 1$, we have
+$$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = q^{-\frac{\dim \hermitianSpace}{2}} \prod_{j=1}^r \GaussSumScalar{\alpha'_j \times \chi^{-1}}{\fieldCharacter_{2n_j}} \prod_{i=1}^s \GaussSumScalar{\beta_i \times \chi^{-1}}{\fieldCharacter_{m_i}} \GaussSumScalar{\beta_i^{-1} \times \chi^{-1}}{\fieldCharacter_{m_i}}.$$
+
+\subsection{Kloosterman type sums}
+
+Let $\chi_1, \dots, \chi_k \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be characters such that $\chi_i^2 \ne 1$ for any $i$. Consider the assignment $K \colon G \to \cComplex$ given by $$K\left(x\right) = K_{\chi_1,\dots,\chi_k}\left(x\right) = \sum_{\substack{g_1, \dots, g_k \in G\\
+g_1 \dots g_k = x}} \Phi_{\chi_1}\left(g_1\right) \dots \Phi_{\chi_k}\left(g_k\right).$$
+It is clear that $K$ is a class function of $G$. Let $\pi$ be an irreducible representation of $G$. Then \begin{align*}
+	 \innerproduct{K}{\conjugate{\trace \pi}} &= \frac{1}{\sizeof{G}}\trace \left(\sum_{g_1,\dots,g_k \in G} \Phi_{\chi_1}\left(g_1\right) \dots \Phi_{\chi_k}\left(g_k\right) \pi\left(g_1 \dots g_k\right) \right) \\
+	 &= \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}}}{\sizeof{G}} \trace\left( \dblGaussSum{\pi}{\chi_1} \circ \dots \dblGaussSum{\pi}{\chi_k} \right).
+\end{align*}
+Thus $$\innerproduct{K}{\conjugate{\trace \pi}} = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \dim \pi}{\sizeof{G}} \cdot \prod_{j=1}^k \dblGaussSumScalar{\pi}{\chi_j}.$$
+It follows that if
+$$\DeligneLusztigInduction{T}{G}\theta = \sum_{\pi} c_{\pi} \cdot \trace \pi,$$
+then $$\innerproduct{K}{\conjugate{\DeligneLusztigInduction{T}{G}\theta}} = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \prod_{j=1}^k \dblGaussSumScalar{\pi}{\chi_j}}{\sizeof{G}} \sum_{\pi} c_{\pi} \dim \pi = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \prod_{j=1}^k \dblGaussSumScalar{\pi}{\chi_j}}{\sizeof{G}} \left(\DeligneLusztigInduction{T}{G}\theta\right)\left(1\right),$$
+where $\pi$ is any irreducible representation of $G$ such that $c_{\pi} \ne 0$.
+
+Suppose that $T \cong \finiteFieldExtension{m}^1$, and let $t \in T$ be an element such that $t$ is contained only in the torus $T$. Then
+$$K\left(t\right) = \sum_{\theta} \theta\left(t\right) \innerproduct{K}{\DeligneLusztigInduction{T}{G}\left(\theta\right)},$$
+where the sum is over all the characters of $T$. Using the formula $$\dblGaussSumScalar{\pi}{\chi} = \tau\left( \theta' \times \chi^{-1}, \fieldCharacter_{2m} \right) \theta\left(-1\right) \tau\left(\chi^2, \fieldCharacter\right)^m,$$
+we get
+$$K\left(t\right) = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \cdot \DeligneLusztigInduction{T}{G}\left(\theta\right)\left(1\right)}{\sizeof{G}} \sum_{\theta} \theta\left( \left(-1\right)^k t\right) \prod_{j=1}^k \tau\left(\theta' \times \chi_j^{-1}, \fieldCharacter_{2m}\right) \tau\left(\chi_j^2, \fieldCharacter\right)^m.$$
+
+Expanding the last sum, we have
+\begin{align*}
+	K\left(t\right) = & \frac{\left(-1\right)^k q^{-km}  \sizeof{\lieAlgebra}^{\frac{k}{2}} \DeligneLusztigInduction{T}{G}\left(\theta\right)\left(1\right)}{\sizeof{G}} \cdot \prod_{j=1}^k \tau\left(\chi_j^2, \fieldCharacter\right)^m \\
+	 & \times \sum_{\theta} \sum_{\xi_1,\dots,\xi_k \in \multiplicativegroup{\finiteFieldExtension{2m}}} \theta\left( \left(-1\right)^k t \xi_1^{1-q^m} \dots \xi_k^{1-q^m} \right) \fieldCharacter_{2m}\left(\sum_{j=1}^k \xi_j\right) \prod_{j=1}^k \chi_j\left(\FieldNorm{2m}{1}\left(\xi_1^{-1} \right)\right).
+\end{align*}
+The sum on the second row becomes
+$$\sum_{\substack{\xi_1,\dots,\xi_k \in \multiplicativegroup{\finiteFieldExtension{2m}}\\
+\prod_{j=1}^k \xi_j^{1-q^m} = \left(-1\right)^k t^{-1}}} \left(\prod_{j=1}^k \chi_j^{-1}\left(\FieldNorm{2m}{1}\left(\xi_j \right)\right)\right) \fieldCharacter_{2m}\left(\sum_{j=1}^k \xi_j\right).$$
 
 \appendix
 \section{Evaluation of an exponential sum}
