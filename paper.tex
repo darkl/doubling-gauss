@@ -298,8 +298,8 @@ Let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cC
 \end{dcases}$$
 is a class function of $\GL\left(\hermitianSpace\right)$.
 
-Let $\pi$ be an irreducible representation of $G$. Denote $$\dblGaussSum{\pi}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} \pi\left(g\right) \Phi_{\chi}\left(g\right),$$
-where  Since $\Phi_{\chi}$ is a class function of $\GL\left(\hermitianSpace\right)$, it is also a class function of $G$, and therefore $\dblGaussSum{\pi}{\chi} \in \Hom_{G}\left(\pi, \pi\right)$. By Schur's lemma, there exists a constant $\dblGaussSumScalar{\pi}{\fieldCharacter} \in \cComplex$, such that $$\dblGaussSum{\pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$
+Let $\pi$ be an irreducible representation of $G$. Denote $$\dblGaussSum{\pi}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} \pi\left(g\right) \Phi_{\chi}\left(g\right).$$
+Since $\Phi_{\chi}$ is a class function of $\GL\left(\hermitianSpace\right)$, it is also a class function of $G$, and therefore $\dblGaussSum{\pi}{\chi} \in \Hom_{G}\left(\pi, \pi\right)$. By Schur's lemma, there exists a constant $\dblGaussSumScalar{\pi}{\fieldCharacter} \in \cComplex$, such that $$\dblGaussSum{\pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$
 We call $\dblGaussSumScalar{\pi}{\chi}$ the \emph{doubling method Gauss sum}.
 
 \subsubsection{Multiplicativity property}
@@ -314,11 +314,11 @@ Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipot
 	$$\dblGaussSumScalar{\pi}{\chi} = \centralCharacter{\tau}\left(-1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^k \GaussSumScalar{\tau \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter} \dblGaussSumScalar{\pi'}{\chi}.$$
 \end{theorem}
 \begin{proof}
-	Let $v_{\pi'} \in \pi'$ and $v_{\tau} \in \tau$. Consider $f \in \rho$ defined as follows. The function $f \in \rho$ is the unique element supported on $P$, such that $f\left(\idmap_{\hermitianSpace}\right) = v_{\tau} \otimes v_{\pi'}$. The projection $f$ to any non-zero invariant subspace of $\rho$ is non-zero. We compute $\dblGaussSum{\pi}{\chi} f$.
+	Let $v_{\pi'} \in \pi'$ and $v_{\tau} \in \tau$. Consider $f \in \rho$ defined as follows. The function $f \in \rho$ is the unique element supported on $P$, such that $f\left(\idmap_{\hermitianSpace}\right) = v_{\tau} \otimes v_{\pi'}$. The projection $f$ to any non-zero invariant subspace of $\rho$ is non-zero. We compute $\dblGaussSum{\rho}{\chi} f$.
 	
-	Notice that for $x \in G$, $$\left(\dblGaussSum{\pi}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} f\left(xg\right) \Phi_{\chi}\left(g\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in P} f\left(p\right) \Phi_{\chi}\left(x^{-1} p\right),$$
+	Notice that for $x \in G$, $$\left(\dblGaussSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} f\left(xg\right) \Phi_{\chi}\left(g\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in P} f\left(p\right) \Phi_{\chi}\left(x^{-1} p\right),$$
 	which can be rewritten as
-	$$\left(\dblGaussSum{\pi}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in P}  \Phi_{\chi}\left(x^{-1} p\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_\tau \otimes v_{\pi'}.$$
+	$$\left(\dblGaussSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in P}  \Phi_{\chi}\left(x^{-1} p\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_\tau \otimes v_{\pi'}.$$
 	As before, we may write
 	$$\Phi_{\chi}\left(g\right) = q^{-n^2} \sum_{h \in \GL\left(\hermitianSpace\right)} \sum_{A \in \EndomorphismRing\left(\hermitianSpace\right)} \chi^{-1}\left(\det h\right) \fieldCharacter\left(\trace\left(A \left(g - \idmap_{\hermitianSpace} - h^{-1}\right)\right)\right).$$
 	Hence, \begin{align*}
@@ -337,7 +337,7 @@ Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipot
 	\end{align*}
 	By decomposing the sum over $p' \in P$ into a sum over $N$ and $L$, we see that the inner sum over $N$ will vanish unless $p - x^{-1} \in P$, which implies that $x \in P$.
 	
-	Hence, we have that $\dblGaussSum{\pi}{\chi} f$ is supported on $P$. We move to compute $\left(\dblGaussSum{\pi}{\chi} f\right)\left(\idmap_{\hermitianSpace}\right)$. It is given by
+	Hence, we have that $\dblGaussSum{\rho}{\chi} f$ is supported on $P$. We move to compute $\left(\dblGaussSum{\rho}{\chi} f\right)\left(\idmap_{\hermitianSpace}\right)$. It is given by
 	\begin{equation}\label{eq:recursive-doubling-gauss-sum}
 		\frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{\substack{p \in P\\
 				\det\left(p - \idmap_{\hermitianSpace}\right) \ne 0}} \chi\left(\det\left(p - \idmap_{\hermitianSpace}\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_{\tau} \otimes v_{\pi'}.
