@@ -203,90 +203,80 @@
 \maketitle
 
 \section{Notation}
-Let $\finiteField$ be a finite field with $q$ elements, and let $\fieldCharacter \colon \finiteField \to \multiplicativegroup{\cComplex}$ be a non-trivial character. For any $r \ge 0$, let $B_r \subset \GL_r\left(\finiteField\right)$ be the standard Borel subgroup
-$$B_r = \left\{ \begin{pmatrix}
-	t_1 & \ast & \ast & \ast\\
-	& t_2 & \ast & \ast \\
-	& & \ddots & \ast\\
-	& & & t_r
-\end{pmatrix} \mid t_1,\dots,t_r \in \multiplicativegroup{\finiteField} \right\}.$$
+Let $\finiteField$ be a finite field with $q$ elements, and let $\fieldCharacter \colon \finiteField \to \multiplicativegroup{\cComplex}$ be a non-trivial character. 
 
-\section{Degenerate Gauss sums}
-Let $\tau$ be an irreducible representation of $\GL_n\left(\finiteField\right)$. For a matrix $A \in \squareMatrix_n\left(\finiteField\right)$, denote
-$$\GaussSum{\tau}{\fieldCharacter}_A \coloneqq q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \tau\left(g\right) \fieldCharacter\left(\trace\left(A g\right)\right).$$
-For any such $A$, there exist $h_1, h_2 \in \GL_n\left(\finiteField\right)$ and $0 \le r \le n$, such that $A = h_1 \begin{pmatrix}
-	0_r\\
-	& \IdentityMatrix{n-r}
-\end{pmatrix} h_2$. Changing variables, we see that $$\GaussSum{\tau}{\fieldCharacter}_A = \tau \left(h_2^{-1}\right) \circ \GaussSum{\tau}{\fieldCharacter}_r \circ \tau\left(h_1^{-1}\right),$$
-where
-$$\GaussSum{\tau}{\fieldCharacter}_r = q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \tau\left(g\right) \fieldCharacter\left(\trace\left(g \begin{pmatrix}
-	0_{r}\\
-	& \IdentityMatrix{n-r}
-\end{pmatrix}\right)\right).$$
-Notice that $\GaussSum{\tau}{\fieldCharacter}_0$ lies in $\Hom_{\GL_n\left(\finiteField\right)}\left(\tau, \tau\right)$ and therefore, $$\GaussSum{\tau}{\fieldCharacter} \coloneqq \GaussSum{\tau}{\fieldCharacter}_0 = \GaussSumScalar{\tau}{\fieldCharacter} \cdot \idmap_\tau,$$
-where $\GaussSumScalar{\tau}{\fieldCharacter} \in \cComplex$. The computation of this scalar is known due to Kondo. Let us also denote for a character $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$, the \emph{twisted Gauss sum}
+\section{Kondo Gauss sums}
+Let $\tau$ be an irreducible representation of $\GL_n\left(\finiteField\right)$. 
+For a character $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$, denote the \emph{twisted Gauss sum}
 $$\GaussSum{\tau \times \chi}{\fieldCharacter} = q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \tau\left(g\right) \chi\left(\det g\right) \fieldCharacter\left(\trace g\right).$$
-This element also lies in $\Hom_{\GL_n\left(\finiteField\right)}\left(\tau, \tau\right)$ and we denote
-$$\GaussSum{\tau \times \chi}{\fieldCharacter} = \GaussSumScalar{\tau \times \chi}{\fieldCharacter} \cdot \idmap_\tau,$$
-where $\GaussSumScalar{\tau \times \chi}{\fieldCharacter} \in \cComplex$.
-
-Let us show that if $A$ is singular and $\tau$ does not contain $1$ in its cuspidal support then $\GaussSum{\tau}{\fieldCharacter}_A = 0$. We begin with the following simple observation. We have that for any $b \in B_r$ and any $X \in \Mat{r}{(n-r)}\left(\finiteField\right)$,
-$$ \tau\begin{pmatrix}
-	b & X\\
-	& \IdentityMatrix{n-r}
-\end{pmatrix} \circ \GaussSum{\tau}{\fieldCharacter}_r = \GaussSum{\tau}{\fieldCharacter}_r.$$
-Therefore, we have that $\GaussSum{\tau}{\fieldCharacter}_r$ can be regarded as an operator $\GaussSum{\tau}{\fieldCharacter}_r \colon \tau \to J\left(\tau, r\right)$, where $$J\left(\tau, r\right) = \left\{ v \in \tau \mid \tau \begin{pmatrix}
-	b & X\\
-	& \IdentityMatrix{n-r}
-\end{pmatrix} v = v, \forall b \in B_r, X \in \Mat{r}{(n-r)}\left(\finiteField\right) \right\},$$
-which is a representation of the group $B_r \times \GL_{n-r}\left(\finiteField\right)$. This space is non-zero if and only if $\tau$ is subrepresentation of a parabolically induced representation of the form $1^{\circ r} \circ \tau = 1 \circ \dots \circ 1 \circ \tau$, where $\tau$ is an irreducible representation of $\GL_{n-r}\left(\finiteField\right)$. 
-
-It follows from this observation that if $\tau$ is an irreducible representation of $\GL_n\left(\finiteField\right)$ such that $1$ is not in the cuspidal support of $\tau$, then for any matrix $A$ with rank $< n$, we have $\GaussSum{\tau}{\fieldCharacter}_A = 0$.
-
-We actually use this later only for the case $\tau = \chi_{\GL_n}$, i.e., $\tau\left(g\right) = \chi\left(\det g\right)$ for some character $1 \ne \chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$. Maybe rewrite for this case. The argument is also simpler.
+This element lies in $\Hom_{\GL_n\left(\finiteField\right)}\left(\tau, \tau\right)$ and therefore by Schur's lemma there exists a complex number $\GaussSumScalar{\tau \times \chi}{\fieldCharacter} \in \cComplex$ such that
+$$\GaussSum{\tau \times \chi}{\fieldCharacter} = \GaussSumScalar{\tau \times \chi}{\fieldCharacter} \cdot \idmap_\tau.$$ The computation of this scalar is known due to Kondo.
 
 \section{Doubling method Gauss sums}
 
 \subsection{The case of general linear groups}
 
-Let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be a character.
+Let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be a non-trivial character.
 
 Consider the following assignment $\GL_k\left(\finiteField\right) \to \cComplex$
 $$\Phi_{\chi}\left(g\right) = \begin{dcases}
 	\chi\left(\det\left(g-\IdentityMatrix{k}\right)\right) & \text{if }\det\left(g-\IdentityMatrix{k}\right) \ne 0,\\
 	0 & \text{otherwise.}
 \end{dcases}$$
-It is clear that $\Phi_{\chi}$ is a class function of $\GL_k\left(\finiteField\right)$. Given an irreducible representation $\tau$ of $\GL_k\left(\finiteField\right)$, we consider the following \emph{doubling method Gauss sum}:
+It is clear that $\Phi_{\chi}$ is a class function of $\GL_k\left(\finiteField\right)$.
+
+Given an irreducible representation $\tau$ of $\GL_k\left(\finiteField\right)$, we consider the following \emph{doubling method Gauss sum}:
 $$\dblGaussSum{\tau}{\chi} = q^{-\frac{k^2}{2}} \sum_{g \in \GL_k\left(\finiteField\right)} \Phi_{\chi}\left(g\right) \tau\left(g\right).$$
 Then $\dblGaussSum{\tau}{\chi}$ defines an element of $\Hom_{\GL_k\left(\finiteField\right)}\left(\tau, \tau\right)$. Therefore, by Schur's lemma there exists a complex number $\dblGaussSumScalar{\tau}{\chi} \in \cComplex$ such that $$\dblGaussSum{\tau}{\chi} = \dblGaussSumScalar{\tau}{\chi} \cdot \idmap_\tau.$$ 
 
 The goal of this section is to express $\dblGaussSumScalar{\tau}{\chi}$ in terms of Kondo's Gauss sum.
 
-Assume first that $1$ does not appear in the cuspidal support of $\tau$. Let us write
-$$\dblGaussSum{\tau}{\chi} = q^{-\frac{k^2}{2}} \sum_{\substack{g \in \GL_k\left(\finiteField\right) \\
-		\det\left(g - \IdentityMatrix{k}\right) \ne 0}} \chi\left(\det\left(g - \IdentityMatrix{k}\right)\right) \tau\left(g\right).$$
-We rewrite this using a Fourier transform type expression
-$$\dblGaussSum{\tau}{\chi} = q^{-\frac{3k^2}{2}} \sum_{g, h \in \GL_k\left(\finiteField\right)} \sum_{A \in \squareMatrix_k\left(\finiteField\right)} \chi^{-1}\left(\det h\right) \tau\left(g\right) \fieldCharacter\left(\trace\left(A \left(\IdentityMatrix{k} - h \left(g - \IdentityMatrix{k}\right)\right)\right)\right).$$
+\begin{proposition}
+	We have the identity
+	$$\Phi_{\chi}\left(g\right) = q^{-\frac{k^2}{2}} \GaussSumScalar{\chi_{\GL_k}}{\fieldCharacter} \sum_{\substack{x, y \in \GL_k\left(\finiteField\right)\\
+			y^{-1} x = -g}} \fieldCharacter\left(\trace x\right) \chi^{-1}\left(\det y\right) \fieldCharacter\left(\trace y\right).$$
+\end{proposition}
+\begin{proof}
+	We write $$\Phi_{\chi}\left(g\right) = \frac{1}{\sizeof{\squareMatrix_k\left(\finiteField\right)}}\sum_{X \in \squareMatrix_k\left(\finiteField\right)} \sum_{h \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace \left(X\left(g-\IdentityMatrix{k}-h\right)\right)\right) \chi\left(\det h\right).$$
+	We claim that for a singular matrix $X \in \squareMatrix_k\left(\finiteField\right)$ the inner sum vanishes. To show this, write $$X = h_1 \begin{pmatrix}
+		\IdentityMatrix{k-r}\\
+		& 0_r
+	\end{pmatrix} h_2,$$
+	where $1 \le r \le k$ and $h_1, h_2 \in \GL_k\left(\finiteField\right)$. Then
+	$$\fieldCharacter\left(\trace Xh\right) = \fieldCharacter\left(\trace\left( \begin{pmatrix}
+		\IdentityMatrix{k-r}\\
+		& 0_r
+	\end{pmatrix} h_2 h h_1\right)\right).$$
+	Changing variables $h \mapsto h_2^{-1} h h_1^{-1},$
+	we obtain the inner sum
+	$$\sum_{h \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace \begin{pmatrix}
+		\IdentityMatrix{k-r}\\
+		& 0_r
+	\end{pmatrix} h \right) \chi\left(\det h\right),$$
+	which equals
+	$$\frac{1}{\sizeof{\multiplicativegroup{\finiteField}}} \sum_{a \in \multiplicativegroup{\finiteField}} \sum_{h \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace \begin{pmatrix}
+		\IdentityMatrix{k-r}\\
+		& 0_r
+	\end{pmatrix} \begin{pmatrix}
+		\IdentityMatrix{k-1}\\
+		& a
+	\end{pmatrix} h \right) \chi\left(\det h\right).$$
+	Changing variables $h \mapsto \left(\begin{smallmatrix}
+		\IdentityMatrix{k-1}\\
+		& a^{-1}
+	\end{smallmatrix}\right) h$, we get the inner sum $$\sum_{a \in \multiplicativegroup{\finiteField}} \chi^{-1}\left(a\right),$$
+	which vanishes because $\chi \ne 1$.
+	Hence, we have
+	$$\Phi_{\chi}\left(g\right) = \frac{1}{\sizeof{\squareMatrix_k\left(\finiteField\right)}} \sum_{X, h \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace \left(X\left(g-\IdentityMatrix{k}-h\right)\right)\right) \chi\left(\det h\right).$$
+	Changing variables $h \mapsto X^{-1} h$, we get
+	$$\Phi_{\chi}\left(g\right) = \frac{1}{\sizeof{\squareMatrix_k\left(\finiteField\right)}} \sum_{X, h \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace \left(Xg\right)\right) \fieldCharacter\left(-\trace h\right) \chi\left(\det h\right) \chi^{-1}\left(\det X\right) \fieldCharacter\left(-\trace X\right).$$
+	Changing variables again $h \mapsto -h$ and setting $Xg = x$ and $-X = y$, we get the equality 
+	$$\Phi_{\chi}\left(g\right) = q^{-\frac{k^2}{2}} \GaussSumScalar{\chi_{\GL_k}}{\fieldCharacter} \sum_{\substack{x, y \in \GL_k\left(\finiteField\right)\\
+			y^{-1} x = -g}} \fieldCharacter\left(\trace x\right) \chi^{-1}\left(\det y\right) \fieldCharacter\left(\trace y\right).$$
+\end{proof}
 
-Replacing $g$ with $h^{-1} g$, we arrive at the expression
-\begin{align*}
-	\dblGaussSum{\tau}{\chi} =& q^{-\frac{3k^2}{2}} \sum_{A \in \squareMatrix_k\left(\finiteField\right)} \fieldCharacter\left(\trace A\right) \sum_{h \in \GL_k\left(\finiteField\right)} \chi^{-1}\left(\det h\right) \tau\left(h^{-1}\right) \fieldCharacter\left(\trace\left(Ah\right)\right)\\
-	& \circ \sum_{g \in \GL_k\left(\finiteField\right)} \tau\left(g\right) \fieldCharacter\left(-\trace Ag\right).
-\end{align*}
-Since the last inner sum is $q^{\frac{k^2}{2}} \GaussSum{\tau}{\fieldCharacter}_{-A}$, we have that the sum can be reduced to $A \in \GL_k\left(\finiteField\right)$. Replacing $h$ with $A^{-1} h$ and $g$ with $-A^{-1} g$, we get the sum
-\begin{align*}
-	\dblGaussSumScalar{\tau}{\chi} &= q^{-\frac{k^2}{2}} \centralCharacter{\tau}\left(-1\right) \sum_{A \in \GL_k\left(\finiteField\right)} \chi\left(\det A\right) \fieldCharacter\left(\trace A\right) \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\tau}{\fieldCharacter},
-\end{align*}
-which equals
-\begin{align*}
-	\dblGaussSumScalar{\tau}{\chi} &=  \centralCharacter{\tau}\left(-1\right) \GaussSumScalar{\chi}{\fieldCharacter}^k \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\tau}{\fieldCharacter}.
-\end{align*}
-This is probably also true if $1$ is in the cuspidal support of $\tau$  and $\chi \ne 1$ (return to this later: should follow from a multiplicativity arguments). In the meantime, we will check this for $\tau = 1$, the trivial representation of $\GL_1\left(\finiteField\right)$, in which case we have
-$$\dblGaussSum{1}{\chi} = q^{-\frac{1}{2}} \sum_{\substack{x \in \multiplicativegroup{\finiteField} \\
-		x \ne 1}} \chi\left(x - 1\right) = q^{-\frac{1}{2}}\left(-\chi\left(-1\right) + \sum_{x \in \multiplicativegroup{\finiteField}} \chi\left(x\right) \right) = \begin{dcases}
-		-q^{-\frac{1}{2}} \chi\left(-1\right) & \chi \ne 1\\
-		q^{-\frac{1}{2}} \left(q - 2\right) & \chi = 1
-	\end{dcases}.$$
+We now use this to compute $\dblGaussSum{\tau}{\chi}$. We have that $$\dblGaussSum{\tau}{\chi} = q^{-k^2} \GaussSumScalar{\chi_{\GL_k}}{\fieldCharacter} \sum_{x, y \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace x\right) \chi^{-1}\left(\det y\right) \fieldCharacter\left(\trace y\right) \pi\left(-y^{-1} x\right).$$
+The last equality implies $$\dblGaussSum{\tau}{\chi} = \centralCharacter{\tau}\left(-1\right) \GaussSum{\chi}{\fieldCharacter}^k \GaussSumScalar{\tau}{\fieldCharacter} \GaussSumScalar{\tau^{\vee} \times \chi^{-1}}{\fieldCharacter}.$$
 
 \subsection{The case of classical groups}
 
