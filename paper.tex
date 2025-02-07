@@ -278,7 +278,10 @@ The goal of this section is to express $\dblGaussSumScalar{\tau}{\chi}$ in terms
 \end{proof}
 
 We now use this to compute $\dblGaussSum{\tau}{\chi}$. We have that $$\dblGaussSum{\tau}{\chi} = q^{-k^2} \GaussSumScalar{\chi_{\GL_k}}{\fieldCharacter} \sum_{x, y \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace x\right) \chi^{-1}\left(\det y\right) \fieldCharacter\left(\trace y\right) \pi\left(-y^{-1} x\right).$$
-The last equality implies $$\dblGaussSum{\tau}{\chi} = \centralCharacter{\tau}\left(-1\right) \GaussSum{\chi}{\fieldCharacter}^k \GaussSumScalar{\tau}{\fieldCharacter} \GaussSumScalar{\tau^{\vee} \times \chi^{-1}}{\fieldCharacter}.$$
+The last equality implies the following result.
+\begin{theorem}\label{thm:gln-doubling-gauss-sum-in-terms-of-kondo}For any irreducible representation $\tau$ of $\GL_k\left(\finiteField\right)$ and any non-trivial character $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$, the following identity holds:
+	$$\dblGaussSumScalar{\tau}{\chi} = \centralCharacter{\tau}\left(-1\right) \GaussSumScalar{\chi}{\fieldCharacter}^k \GaussSumScalar{\tau}{\fieldCharacter} \GaussSumScalar{\tau^{\vee} \times \chi^{-1}}{\fieldCharacter}.$$
+\end{theorem}
 
 \subsection{The case of classical groups}
 
@@ -383,7 +386,32 @@ In the special case that $\theta$ is in general position, the virtual character 
 $$\dblGaussSumScalar{\pi}{\chi} = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \frac{\sizeof{G}_p}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
 Here $\varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{G}}$ and $\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{T}}$, and $\sizeof{G}_p$ is the size of the $p$-Sylow group of $G$, where $p$ is the characteristic of $\finiteField$. 
 
-\subsubsection{Basic torus computation}
+\subsubsection{General linear groups computation}
+Suppose that $F \colon \GL_k\left(\finiteField\right) \to \cComplex$ is a class function. If $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ is a non-trivial character, we define $$\dblVirtualGaussSumScalar{F}{\chi} = q^{-\frac{k^2}{2}} \sum_{g \in \GL_k\left(\finiteField\right)} \Phi_{\chi}\left(g\right) F\left(g\right).$$
+It is clear that for an irreducible representation $\tau$ of $\GL_k\left(\finiteField\right)$, we have $$\dblVirtualGaussSumScalar{\trace \tau}{\chi} = \dblGaussSumScalar{\tau}{\chi} \cdot \dim \tau.$$
+Since the assignment $g \mapsto \Phi_{\chi}\left(g\right)$ depends only on the semisimple part of $g$, by \cite[Theorem in Section 1.2]{SaitoShinoda2000} we have that if $T \cong \multiplicativegroup{\finiteFieldExtension{k}}$ and if $\theta \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ is a character then
+$$\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{\GL_k\left(\finiteField\right)}{T}}{q^{\frac{k^2}{2}}} \sum_{\substack{t \in \multiplicativegroup{\finiteFieldExtension{k}}\\
+t \ne 1}} \theta\left(t\right) \chi\left(\FieldNorm{k}{1}\left(t-1\right)\right).$$
+Using \Cref{thm:gln-doubling-gauss-sum-in-terms-of-kondo} and the fact that Kondo's Gauss sum is the same for every subrepresentation of $R_{T, \theta}$, we have the equality $$\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} = \left(-1\right)^k \theta\left(-1\right) q^{-k} R_{T, \theta}\left(1\right) \tau\left(\chi^2, \fieldCharacter\right)^k \tau\left(\theta, \fieldCharacter\right) \tau\left(\theta^{-1} \times \chi^{-1}, \fieldCharacter\right).$$
+
+\subsubsection{Split torus computation}
+In this section we compute the doubling method Gauss sum for a torus of the form $\multiplicativegroup{\finiteFieldExtension{k}}$. Let $\theta \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be characters such that $\chi^2 \ne 1$. Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
+		x \ne 1}} \theta \left(x\right) \chi\left(\FieldNorm{k}{1}\left(x - 1\right)\right) \chi\left(\FieldNorm{k}{1}\left(x^{-1} - 1\right)\right).$$
+
+	
+This can be rewritten as
+$$\chi\left(-1\right)^k \sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
+		x \ne 1}} \theta \left(x\right) \chi^{-1}\left(\FieldNorm{k}{1}\left(x\right)\right) \chi^2\left(\FieldNorm{k}{1}\left(x - 1\right)\right).$$
+Denote by $\theta_{\chi^{-1}} \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ the character $$\theta_{\chi^{-1}}\left(x\right) = \theta\left(x\right) \chi^{-1}\left(\FieldNorm{k}{1}\left(x\right)\right).$$
+
+Hence we get
+$$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
+		x \ne 1}} \theta \left(x\right) \chi\left(\FieldNorm{k}{1}\left(x - 1\right)\right) \chi\left(\FieldNorm{k}{1}\left(x^{-1} - 1\right)\right) = \frac{q^{\frac{k^2}{2}}}{\grpIndex{\GL_k\left(\finiteField\right)}{T}} \dblVirtualGaussSumScalar{R_{T, \theta_{\chi^{-1}}}}{\chi^2},$$
+which by the results of the previous section equals
+%$$R_{T,\theta}\left(1\right) = \left(-1\right)^{k-1} \frac{\grpIndex{\GL_k\left(\finiteField\right)}{T}}{q^{\frac{k^2 - k}{2}}}$$
+$$-\theta\left(-1\right) q^{-\frac{k}{2}} \tau\left(\chi^4, \fieldCharacter\right)^k \tau\left(\theta \times \chi^{-1}, \fieldCharacter\right) \tau\left(\theta^{-1} \times \chi^{-1}, \fieldCharacter\right).$$
+
+\subsubsection{Elliptic torus computation}
 In this section we compute the doubling method Gauss sum for a torus of the form $\finiteFieldExtension{2m}^1$.
 
 If $\alpha \colon \multiplicativegroup{\finiteFieldExtension{n}} \to \multiplicativegroup{\cComplex}$ is a character, denote $$\tau\left(\alpha, \fieldCharacter_n\right) = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha\left(x\right) \fieldCharacter_n\left(x\right),$$
@@ -452,7 +480,7 @@ $$\DeligneLusztigInduction{T}{G}\theta = \sum_{\pi} c_{\pi} \cdot \trace \pi,$$
 then $$\innerproduct{K}{\conjugate{\DeligneLusztigInduction{T}{G}\theta}} = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \prod_{j=1}^k \dblGaussSumScalar{\pi}{\chi_j}}{\sizeof{G}} \sum_{\pi} c_{\pi} \dim \pi = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \prod_{j=1}^k \dblGaussSumScalar{\pi}{\chi_j}}{\sizeof{G}} \left(\DeligneLusztigInduction{T}{G}\theta\right)\left(1\right),$$
 where $\pi$ is any irreducible representation of $G$ such that $c_{\pi} \ne 0$.
 
-Suppose that $T \cong \finiteFieldExtension{m}^1$, and let $t \in T$ be an element such that $t$ is contained only in the torus $T$. Then
+Suppose that $T \cong \finiteFieldExtension{2m}^1$, and let $t \in T$ be an element such that $t$ is contained only in the torus $T$. Then
 $$K\left(t\right) = \sum_{\theta} \theta\left(t\right) \innerproduct{K}{\DeligneLusztigInduction{T}{G}\left(\theta\right)},$$
 where the sum is over all the characters of $T$. Using the formula $$\dblGaussSumScalar{\pi}{\chi} = \tau\left( \theta' \times \chi^{-1}, \fieldCharacter_{2m} \right) \theta\left(-1\right) \tau\left(\chi^2, \fieldCharacter\right)^m,$$
 we get
