@@ -379,8 +379,8 @@ Notice that the assignment $g \mapsto \Phi_{\chi}\left(g\right)$ only depends on
 	For any $\Frobenius$-stable maximal torus $\algebraicGroup{T}$ of $\algebraicGroup{G}$, and any character $\theta \colon T \to \multiplicativegroup{\cComplex}$, where $T = \algebraicGroup{T}^{\Frobenius}$, we have
 	$$ \dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{G}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
 \end{proposition}
-In particular, if $\theta$ is in general position, then $\varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} R_{T, \theta}$ equals $\trace \pi$ for some irreducible representation $\pi$ of $G$ and we have that for this $\pi$,
-$$\dblGaussSumScalar{\pi}{\chi} = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \sizeof{G}_p \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
+In the special case that $\theta$ is in general position, the virtual character $\varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} R_{T, \theta}$ equals $\trace \pi$ for some irreducible representation $\pi$ of $G$ and we have that for this $\pi$,
+$$\dblGaussSumScalar{\pi}{\chi} = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \frac{\sizeof{G}_p}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
 Here $\varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{G}}$ and $\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{T}}$, and $\sizeof{G}_p$ is the size of the $p$-Sylow group of $G$, where $p$ is the characteristic of $\finiteField$. 
 
 \subsubsection{Basic torus computation}
