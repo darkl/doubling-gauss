@@ -160,6 +160,7 @@
 \newcommand{\dblGaussSum}[2]{\mathcal{G}^{\mathrm{dbl}}\left(#1, #2\right)}
 \newcommand{\GaussSumScalar}[2]{\mathrm{G}\left(#1, #2\right)}
 \newcommand{\dblGaussSumScalar}[2]{\mathrm{G}^{\mathrm{dbl}}\left(#1, #2\right)}
+\newcommand{\dblVirtualGaussSumScalar}[2]{\mathrm{g}^{\mathrm{dbl}}\left(#1, #2\right)}
 \newcommand{\dblGammaFactor}[3]{\Gamma^{\mathrm{dbl}}\left(#1 \times #2, #3\right)}
 \newcommand{\dblGammaFactorSpace}[4]{\Gamma^{\mathrm{dbl}}_{#1}\left(#2 \times #3, #4\right)}
 \newcommand{\GKGaussSum}[3]{\mathcal{G}\left(#1 \times #2, #3\right)}
@@ -175,6 +176,7 @@
 \newcommand{\IsometryGroup}{\mathrm{Isom}}
 \newcommand{\lieAlgebra}{\mathfrak{g}}
 \newcommand{\DeligneLusztigInduction}[2]{\mathrm{R}_{#1}^{#2}}
+\newcommand{\algebraicGroup}[1]{\boldsymbol{\mathrm{#1}}}
 
 \hypersetup{pdfauthor={Calvin Yost-Wolff, Elad Zelingher},
 	pdfsubject={Number theory, Representation theory},
@@ -362,6 +364,25 @@ Using this notation and using the multiplicativity property of Kondo's Gauss sum
 	\end{enumerate}
 \end{theorem}
 
+
+\subsection{Computation in terms of Deligne--Lusztig data}
+
+The goal of this section is to compute $\dblGaussSumScalar{\pi}{\chi}$ for $\pi$ that appears in a Deligne--Lusztig virtual character $R_{T,\theta}$ for a suitable maximal torus $T$ and $\theta \colon T \to \multiplicativegroup{\cComplex}$.
+
+Let us realize $G$ as the fixed points of the Frobenius map $\Frobenius$ acting on a connected reductive algebraic group $\algebraicGroup{G}$.
+
+Given a class function $F \colon G \to \cComplex$ (i.e., a function that is invariant under conjugation by elements of $G$), let us define $$\dblVirtualGaussSumScalar{F}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} F\left(g\right) \Phi_{\chi}\left(g\right).$$
+
+It is clear that if $\pi$ is an irreducible representation of $G$ then $$\dblVirtualGaussSumScalar{\trace \pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \dim \pi.$$
+Notice that the assignment $g \mapsto \Phi_{\chi}\left(g\right)$ only depends on the semisimple part of $g \in G$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result.
+\begin{proposition}
+	For any $\Frobenius$-stable maximal torus $\algebraicGroup{T}$ of $\algebraicGroup{G}$, and any character $\theta \colon T \to \multiplicativegroup{\cComplex}$, where $T = \algebraicGroup{T}^{\Frobenius}$, we have
+	$$ \dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{G}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
+\end{proposition}
+In particular, if $\theta$ is in general position, then $\varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} R_{T, \theta}$ equals $\trace \pi$ for some irreducible representation $\pi$ of $G$ and we have that for this $\pi$,
+$$\dblGaussSumScalar{\pi}{\chi} = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \sizeof{G}_p \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
+Here $\varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{G}}$ and $\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{T}}$, and $\sizeof{G}_p$ is the size of the $p$-Sylow group of $G$, where $p$ is the characteristic of $\finiteField$. 
+
 \subsubsection{Basic torus computation}
 In this section we compute the doubling method Gauss sum for a torus of the form $\finiteFieldExtension{2m}^1$.
 
@@ -403,7 +424,6 @@ $$\sum_{\substack{x \in \finiteFieldExtension{2m}^1\\
 		x \ne 1}} \theta \left(x\right) \chi\left(\FieldNorm{2m}{1}\left(x - 1\right)\right) = \theta\left(-1\right) q^{\frac{m}{2}} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right).$$
 
 \subsubsection{Computation for irreducible cuspidal representations}
-
 
 \begin{theorem}
 	Suppose that $\pi$ is an irreducible cuspidal representation of $G$, parameterized by a character $\theta = \theta_1 \times \dots \times \theta_r$ of a torus $T$ such that $$T \cong \finiteFieldExtension{2n_1}^1 \times \finiteFieldExtension{2n_2}^1 \times \dots \times \finiteFieldExtension{2n_r}^1,$$
