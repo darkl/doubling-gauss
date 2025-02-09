@@ -272,7 +272,7 @@ The goal of this section is to express $\dblGaussSumScalar{\tau}{\chi}$ in terms
 	$$\Phi_{\chi}\left(g\right) = \frac{1}{\sizeof{\squareMatrix_k\left(\finiteField\right)}} \sum_{X, h \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace \left(X\left(g-\IdentityMatrix{k}-h\right)\right)\right) \chi\left(\det h\right).$$
 	Changing variables $h \mapsto X^{-1} h$, we get
 	$$\Phi_{\chi}\left(g\right) = \frac{1}{\sizeof{\squareMatrix_k\left(\finiteField\right)}} \sum_{X, h \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace \left(Xg\right)\right) \fieldCharacter\left(-\trace h\right) \chi\left(\det h\right) \chi^{-1}\left(\det X\right) \fieldCharacter\left(-\trace X\right).$$
-	Changing variables again $h \mapsto -h$ and setting $Xg = x$ and $-X = y$, we get the equality 
+	Changing variables again $h \mapsto -h$ and setting $Xg = x$ and $-X = y$, we get  
 	$$\Phi_{\chi}\left(g\right) = q^{-\frac{k^2}{2}} \GaussSumScalar{\chi_{\GL_k}}{\fieldCharacter} \sum_{\substack{x, y \in \GL_k\left(\finiteField\right)\\
 			y^{-1} x = -g}} \fieldCharacter\left(\trace x\right) \chi^{-1}\left(\det y\right) \fieldCharacter\left(\trace y\right).$$
 \end{proof}
@@ -392,7 +392,7 @@ It is clear that for an irreducible representation $\tau$ of $\GL_k\left(\finite
 Since the assignment $g \mapsto \Phi_{\chi}\left(g\right)$ depends only on the semisimple part of $g$, by \cite[Theorem in Section 1.2]{SaitoShinoda2000} we have that if $T \cong \multiplicativegroup{\finiteFieldExtension{k}}$ and if $\theta \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ is a character then
 $$\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{\GL_k\left(\finiteField\right)}{T}}{q^{\frac{k^2}{2}}} \sum_{\substack{t \in \multiplicativegroup{\finiteFieldExtension{k}}\\
 t \ne 1}} \theta\left(t\right) \chi\left(\FieldNorm{k}{1}\left(t-1\right)\right).$$
-Using \Cref{thm:gln-doubling-gauss-sum-in-terms-of-kondo} and the fact that Kondo's Gauss sum is the same for every subrepresentation of $R_{T, \theta}$, we have the equality $$\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} = \left(-1\right)^k \theta\left(-1\right) q^{-\frac{3k}{2}} R_{T, \theta}\left(1\right) \tau\left(\chi, \fieldCharacter\right)^k \tau\left(\theta, \fieldCharacter\right) \tau\left(\theta^{-1} \times \chi^{-1}, \fieldCharacter\right).$$
+Using \Cref{thm:gln-doubling-gauss-sum-in-terms-of-kondo} and the fact that Kondo's Gauss sum is the same for every subrepresentation of $R_{T, \theta}$, we have the equality $$\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} = \left(-1\right)^k \theta\left(-1\right) R_{T, \theta}\left(1\right) \tau\left(\chi, \fieldCharacter\right)^k \tau\left(\theta, \fieldCharacter\right) \tau\left(\theta^{-1} \times \chi^{-1}, \fieldCharacter\right).$$
 
 \subsubsection{Split torus computation}
 In this section we compute the doubling method Gauss sum for a torus of the form $\multiplicativegroup{\finiteFieldExtension{k}}$. Let $\theta \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be characters such that $\chi^2 \ne 1$. Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
@@ -408,10 +408,7 @@ Hence we get
 $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
 		x \ne 1}} \theta \left(x\right) \chi\left(\FieldNorm{k}{1}\left(x - 1\right)\right) \chi\left(\FieldNorm{k}{1}\left(x^{-1} - 1\right)\right) = \frac{q^{\frac{k^2}{2}}}{\grpIndex{\GL_k\left(\finiteField\right)}{T}} \dblVirtualGaussSumScalar{R_{T, \theta_{\chi^{-1}}}}{\chi^2},$$
 which by the results of the previous section equals
-%$$\frac{q^{\frac{k^2}{2}}}{\grpIndex{\GL_k\left(\finiteField\right)}{T}} \left(-1\right)^k \theta\left(-1\right) q^{-\frac{3k}{2}} R_{T, \theta}\left(1\right) \tau\left(\chi^2, \fieldCharacter\right)^k \tau\left(\theta, \fieldCharacter\right) \tau\left(\theta^{-1} \times \chi^{-1}, \fieldCharacter\right). $$
-%$$\frac{q^{\frac{k^2}{2}}}{\grpIndex{\GL_k\left(\finiteField\right)}{T}} \left(-1\right)^k \theta\left(-1\right) q^{-\frac{3k}{2}} \left(-1\right)^{k-1} \frac{\grpIndex{\GL_k\left(\finiteField\right)}{T}}{q^{\frac{k^2 - k}{2}}} \tau\left(\chi^2, \fieldCharacter\right)^k \tau\left(\theta, \fieldCharacter\right) \tau\left(\theta^{-1} \times \chi^{-1}, \fieldCharacter\right).$$
-%$$R_{T,\theta}\left(1\right) = \left(-1\right)^{k-1} \frac{\grpIndex{\GL_k\left(\finiteField\right)}{T}}{q^{\frac{k^2 - k}{2}}}$$
-$$-\theta\left(-1\right) q^{-k} \tau\left(\chi^2, \fieldCharacter\right)^k \tau\left(\theta \times \chi^{-1}, \fieldCharacter\right) \tau\left(\theta^{-1} \times \chi^{-1}, \fieldCharacter\right).$$
+$$-\theta\left(-1\right) q^{\frac{k}{2}} \tau\left(\chi^2, \fieldCharacter\right)^k \tau\left(\theta \times \chi^{-1}, \fieldCharacter\right) \tau\left(\theta^{-1} \times \chi^{-1}, \fieldCharacter\right).$$
 
 \subsubsection{Elliptic torus computation}
 In this section we compute the doubling method Gauss sum for a torus of the form $\finiteFieldExtension{2m}^1$.
@@ -501,7 +498,7 @@ $$\sum_{\substack{\xi_1,\dots,\xi_k \in \multiplicativegroup{\finiteFieldExtensi
 \section{Evaluation of an exponential sum}
 
 In this appendix, we evaluate the following exponential sum. Let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be a non-trivial character. We compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{2}}\\
-	\trace_{\finiteFieldExtension{2} \slash \finiteField}\left(x\right) \ne 0}} \chi\left(\FieldNorm{2}{1}\left(\frac{x}{\trace_{\finiteFieldExtension{2} \colon \finiteField} x}\right) \right).$$
+	\trace_{\finiteFieldExtension{2} \slash \finiteField}\left(x\right) \ne 0}} \chi\left(\FieldNorm{2}{1}\left(\frac{x}{\trace_{\finiteFieldExtension{2} \slash \finiteField} x}\right) \right).$$
 As usual, we rewrite this sum as
 $$\frac{1}{q} \sum_{z \in \finiteField} \sum_{y \in \multiplicativegroup{\finiteField}} \sum_{x \in \multiplicativegroup{\finiteFieldExtension{2}}} \chi\left(\FieldNorm{2}{1}\left(xy\right)\right) \fieldCharacter\left(z\left(y \trace_{\finiteFieldExtension{2} \slash \finiteField} x - 1\right)\right).$$
 It is clear that if $z = 0$, then the sum over $x$ will vanish. Hence, we may reduce the sum to a sum over $z \in \multiplicativegroup{\finiteField}$. By replacing $y$ with $z^{-1} y$ and then replacing $z$ with $-z$, we arrive at the sum
