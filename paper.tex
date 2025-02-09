@@ -378,7 +378,7 @@ Given a class function $F \colon G \to \cComplex$ (i.e., a function that is inva
 
 It is clear that if $\pi$ is an irreducible representation of $G$ then $$\dblVirtualGaussSumScalar{\trace \pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \dim \pi.$$
 Notice that the assignment $g \mapsto \Phi_{\chi}\left(g\right)$ only depends on the semisimple part of $g \in G$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result.
-\begin{proposition}
+\begin{proposition}\label{prop:reduction-of-gauss-sum-to-torus}
 	For any $\Frobenius$-stable maximal torus $\algebraicGroup{T}$ of $\algebraicGroup{G}$, and any character $\theta \colon T \to \multiplicativegroup{\cComplex}$, where $T = \algebraicGroup{T}^{\Frobenius}$, we have
 	$$ \dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{G}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
 \end{proposition}
@@ -457,20 +457,20 @@ Since $\tau\left(\chi^{-1}, \fieldCharacter\right) = \chi\left(-1\right) \conjug
 $$\sum_{\substack{x \in \finiteFieldExtension{2m}^1\\
 		x \ne 1}} \theta \left(x\right) \chi\left(\FieldNorm{2m}{1}\left(x - 1\right)\right) = \theta\left(-1\right) q^{\frac{m}{2}} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right).$$
 
-\subsubsection{Computation for irreducible cuspidal representations}
+\subsubsection{Computation for Deligne--Lusztig characters}
+Combining the results of the previous sections with \Cref{prop:reduction-of-gauss-sum-to-torus} and the fact that $$R_{T,\theta}\left(1\right) = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \frac{\grpIndex{G}{T}}{\sizeof{G}_p},$$ we arrive at the following result.
 
-\begin{theorem}
-	Suppose that $\pi$ is an irreducible cuspidal representation of $G$, parameterized by a character $\theta = \theta_1 \times \dots \times \theta_r$ of a torus $T$ such that $$T \cong \finiteFieldExtension{2n_1}^1 \times \finiteFieldExtension{2n_2}^1 \times \dots \times \finiteFieldExtension{2n_r}^1,$$
-	where $2n_1 + 2n_2 + \dots + 2n_r = \dim \hermitianSpace$ if $\dim \hermitianSpace$ is even or $2n_1 + 2n_2 + \dots + 2n_r = \dim \hermitianSpace - 1$ if $\dim \hermitianSpace$ is odd, and where $$\finiteFieldExtension{2m}^1 = \left\{ x \in \multiplicativegroup{\finiteFieldExtension{2m}} \mid \FieldNorm{2m}{m}\left(x\right)= 1\right\}.$$
-	Then up to maybe a sign, we have $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \prod_{j=1}^r \tau\left( \theta'_j \times \chi, \fieldCharacter_{2n_j} \right),$$
-	where $\theta'_j\left(x\right) = \theta_j\left(x^{1-q^{n_j}}\right)$ and $$\tau\left( \theta'_j \times \chi, \fieldCharacter_{2n_j}\right) = -q^{-n_j} \sum_{x \in \multiplicativegroup{\finiteFieldExtension{2n_j}}} \theta'_j\left(x\right) \chi\left(\FieldNorm{2n_j}{1}\left(x\right)\right)\fieldCharacter\left(\trace_{\finiteFieldExtension{2n_j} \slash \finiteField}\left(x\right)\right).$$
-\end{theorem}
+\begin{proposition}
+	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1 \times \left[\{\pm 1\}\right]$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_s \times \theta_1 \times \dots \times \theta_r$, where $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Then
+	\begin{align*}
+		\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& \sizeof{\lieAlgebra}^{-\frac{1}{2}} \left(q^{\frac{1}{2}} \tau\left(\chi^2, \fieldCharacter\right)\right)^{\left[\frac{\dim \hermitianSpace}{2}\right]} \sizeof{G}_p \varepsilon_{\algebraicGroup{G}} \left(-1\right)^r R_{T,\theta}\left(1\right) \\
+		& \times \prod_{i=1}^s \theta_i\left(-1\right) \GaussSumCharacter{\theta'_i}{\chi^{-1}}{\fieldCharacter_{2m_i}} \\
+		& \times  \prod_{j=1}^r \alpha_j\left(-1\right)  \GaussSumCharacter{\alpha_j}{\chi^{-1}}{\fieldCharacter_{k_j}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{k_j}}\\
+		& \times \left[\chi\left(-2\right)\right],
+	\end{align*}
+	where the factors $\{\pm 1\}$ and $\chi\left(-2\right)$ only appear in the odd orthogonal group case.
+\end{proposition}
 
-\subsubsection{Computation for Lusztig series}
-
-Let $T \cong \finiteFieldExtension{2n_1}^1 \times \finiteFieldExtension{2n_2}^1 \times \dots \times \finiteFieldExtension{2n_r}^1 \times \multiplicativegroup{\finiteFieldExtension{m_1}} \times \dots \multiplicativegroup{\finiteFieldExtension{m_s}}$ be a torus such that $\sum_{i=1}^r 2n_i + \sum_{j=1}^s 2m_j = \dim_{\finiteField} \hermitianSpace$. Let $\theta = \alpha_1 \times \dots \times \alpha_r \times \beta_1 \times \dots \times \beta_s$. Consider the Deligne--Lusztig induction $\DeligneLusztigInduction{T}{G}\theta$. Write $$\DeligneLusztigInduction{T}{G}\theta = \sum_{\pi} c_{\pi} \cdot \trace \pi,$$
-where $\pi$ goes over all the irreducible representations of $G$ and $c_{\pi} \in \zIntegers$. Then for any irreducible $\pi$ such that $c_{\pi} \ne 0$, and any $\chi$ such that $\chi^2 \ne 1$, we have
-$$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = q^{-\frac{\dim \hermitianSpace}{2}} \prod_{j=1}^r \GaussSumCharacter{\alpha'_j}{\chi^{-1}}{\fieldCharacter_{2n_j}} \prod_{i=1}^s \GaussSumCharacter{\beta_i}{\chi^{-1}}{\fieldCharacter_{m_i}} \GaussSumCharacter{\beta_i^{-1}}{\chi^{-1}}{\fieldCharacter_{m_i}}.$$
 
 \subsection{Kloosterman type sums}
 
