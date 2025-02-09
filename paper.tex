@@ -414,7 +414,12 @@ This can be rewritten as
 $$\chi\left(-1\right)^k \sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
 		x \ne 1}} \alpha \left(x\right) \chi^{-1}\left(\FieldNorm{k}{1}\left(x\right)\right) \chi^2\left(\FieldNorm{k}{1}\left(x - 1\right)\right).$$
 By the previous section, this equals
-$$- q^{\frac{k}{2}} \alpha\left(-1\right)  \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_k} \GaussSumCharacter{\alpha}{\chi^{-1}}{\fieldCharacter_k} \tau\left(\chi^2, \fieldCharacter\right)^k.$$
+\begin{equation}\label{eq:identity-for-multiplicative-group-of-f-k-gauss-sum}
+	-q^{\frac{k}{2}} \alpha\left(-1\right)  \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_k} \GaussSumCharacter{\alpha}{\chi^{-1}}{\fieldCharacter_k} \tau\left(\chi^2, \fieldCharacter\right)^k.
+\end{equation}
+
+Notice that if $k = md$ and $\alpha = \beta \circ \FieldNorm{k}{m}$ where $\beta \colon \multiplicativegroup{\finiteFieldExtension{m}} \to \multiplicativegroup{\cComplex}$ is a character, then \eqref{eq:identity-for-multiplicative-group-of-f-k-gauss-sum} equals
+$$-\left(q^{\frac{m}{2}} \GaussSumCharacter{\beta^{-1}}{\chi^{-1}}{\fieldCharacter_m} \GaussSumCharacter{\beta}{\chi^{-1}}{\fieldCharacter_m} \tau\left(\chi^2, \fieldCharacter\right)^m\right)^{d}.$$
 
 \subsubsection{Elliptic torus computation}
 In this section we compute the doubling method Gauss sum for a torus of the form $\finiteFieldExtension{2m}^1$.
