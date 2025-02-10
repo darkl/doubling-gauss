@@ -511,7 +511,7 @@ It is clear that $$g\left(s, \fieldCharacter\right) = g\left(s_0,\fieldCharacter
 We will need the following two facts:
 \begin{enumerate}
 	\item For classical groups $G$ (as the ones we consider in this paper), the Lusztig series $\LusztigSeries{G}{s}$ contains at most one irreducible cuspidal representation.
-	\item The Lustzig series $\LusztigSeries{G}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(P,\sigma\right)$ where $P$ is a parabolic subgroup of $G$ with Levi part $L$ and $\sigma \in \LusztigSeries{L}{s}$ is an irreducible cuspidal representation.
+	\item The Lusztig series $\LusztigSeries{G}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(P,\sigma\right)$ where $P$ is a parabolic subgroup of $G$ with Levi part $L$ and $\sigma \in \LusztigSeries{L}{s}$ is an irreducible cuspidal representation.
 \end{enumerate}
 Our theorem is equivalent to the following statement.
 \begin{proposition}
@@ -521,11 +521,11 @@ Our theorem is equivalent to the following statement.
 	The proof is by induction on $\dim \hermitianSpace$.
 	
 	Suppose first that $L \ne G$. Then by using the multiplicativity property repeatedly (\Cref{thm:multiplicativity-in-terms-of-gamma-factors}), we have $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace'}{\pi'}{\chi}{\fieldCharacter} \cdot \prod_{j=1}^r g_{\GL}\left(s_j, \fieldCharacter\right),$$
-	where $\pi'$ is an irreducible cuspidal representation of $G'$ that lies in the Lustzig series $\LusztigSeries{\pi'}{s_0}$. By the induction hypothesis, we have $$\dblGammaFactorSpace{\hermitianSpace'}{\pi'}{\chi}{\fieldCharacter} = g\left(s_0, \fieldCharacter\right),$$
+	where $\pi'$ is an irreducible cuspidal representation of $G'$ that lies in the Lusztig series $\LusztigSeries{\pi'}{s_0}$. By the induction hypothesis, we have $$\dblGammaFactorSpace{\hermitianSpace'}{\pi'}{\chi}{\fieldCharacter} = g\left(s_0, \fieldCharacter\right),$$
 	which implies the result.
 	
 	Next, suppose that $L = G$ and that $\pi = \sigma$ is an irreducible cuspidal representation. Let us write $$R_{T, \theta} = \sum_{\Pi} c_\Pi \trace \Pi,$$
-	where $\Pi$ goes over all the irreducible representations of $G$ and $c_{\Pi} \in \zIntegers$. For every $\Pi$ with $c_{\Pi} \ne 0$ and $\Pi \ne \pi$, we have that $\Pi$ lies in a Harish--Chandra series as above, and therefore $$\dblVirtualGaussSumScalar{\trace \Pi}{\chi} = \dim \Pi \cdot \centralCharacter{\Pi}\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} \cdot g\left(s, \fieldCharacter\right).$$
+	where $\Pi$ goes over all the irreducible representations of $G$ and $c_{\Pi} \in \zIntegers$. For every $\Pi$ with $c_{\Pi} \ne 0$ and $\Pi \ne \pi$, we have that $\Pi$ lies in a Harish--Chandra series with $L \ne G$ as above, and therefore $$\dblVirtualGaussSumScalar{\trace \Pi}{\chi} = \dim \Pi \cdot \centralCharacter{\Pi}\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} \cdot g\left(s, \fieldCharacter\right).$$
 	By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}, we have $$\dblVirtualGaussSumScalar{R_{T,\theta}}{\fieldCharacter} = R_{T,\theta}\left(1\right) \cdot \theta\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} \cdot g\left(s, \fieldCharacter\right).$$
 	Since $\centralCharacter{\Pi}\left(-1\right) = \theta\left(-1\right)$ for every $\Pi$ with $c_{\Pi} \ne 0$,
 	$$c_{\pi} \cdot \dblVirtualGaussSumScalar{\trace \pi}{\fieldCharacter} = \left(R_{T,\theta}\left(1\right) - \sum_{\substack{\Pi \ne \pi\\
