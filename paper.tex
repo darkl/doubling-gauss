@@ -355,7 +355,7 @@ Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipot
 In order to make the computations more tolerable, it is beneficial to work with fully multiplicative functions. We introduce the doubling method gamma factors.
 
 Let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be a character. For an irreducible representation  $\tau$ of $\GL_k\left(\finiteField\right)$, define $$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \GaussSumScalar{\tau \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter}.$$
-For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \centralCharacter{\pi}\left(-1\right) \frac{\dblGaussSumScalar{\pi}{\chi}}{\GaussSumScalar{\chi^2}{\fieldCharacter}^{\left[\frac{\dim \hermitianSpace}{2}\right]}}.$$
+For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \centralCharacter{\pi}\left(-1\right) \frac{\dblGaussSumScalar{\pi}{\chi}}{\GaussSumScalar{\chi^2}{\fieldCharacter}^{\lfloor\frac{\dim \hermitianSpace}{2}\rfloor}}.$$
 Using this notation and using the multiplicativity property of Kondo's Gauss sum and \Cref{thm:multiplicativity-in-terms-of-gauss-sums}, we have the following multiplicativity property.
 
 \begin{theorem}
@@ -458,19 +458,25 @@ $$\sum_{\substack{x \in \finiteFieldExtension{2m}^1\\
 		x \ne 1}} \theta \left(x\right) \chi\left(\FieldNorm{2m}{1}\left(x - 1\right)\right) = \theta\left(-1\right) q^{\frac{m}{2}} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right).$$
 
 \subsubsection{Computation for Deligne--Lusztig characters}
-Combining the results of the previous sections with \Cref{prop:reduction-of-gauss-sum-to-torus} and the fact that $$R_{T,\theta}\left(1\right) = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \frac{\grpIndex{G}{T}}{\sizeof{G}_p},$$ we arrive at the following result.
+Combining the results of the previous sections with \Cref{prop:reduction-of-gauss-sum-to-torus}, we arrive at the following result.
 
 \begin{proposition}
-	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1 \times \left[\{\pm 1\}\right]$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_s \times \theta_1 \times \dots \times \theta_r$, where $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Then
+	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1 \left[\times \{\pm 1\}\right]$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s \times \epsilon$, where  $\left[\epsilon \colon \left\{\pm 1\right\} \to \multiplicativegroup{\cComplex},\right]$ $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Then
 	\begin{align*}
-		\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& \sizeof{\lieAlgebra}^{-\frac{1}{2}} \left(q^{\frac{1}{2}} \tau\left(\chi^2, \fieldCharacter\right)\right)^{\left[\frac{\dim \hermitianSpace}{2}\right]} \sizeof{G}_p \varepsilon_{\algebraicGroup{G}} \left(-1\right)^r R_{T,\theta}\left(1\right) \\
+		 \dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\lfloor\frac{\dim \hermitianSpace}{2}\rfloor} \\
 		& \times \prod_{i=1}^s \theta_i\left(-1\right) \GaussSumCharacter{\theta'_i}{\chi^{-1}}{\fieldCharacter_{2m_i}} \\
 		& \times  \prod_{j=1}^r \alpha_j\left(-1\right)  \GaussSumCharacter{\alpha_j}{\chi^{-1}}{\fieldCharacter_{k_j}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{k_j}}\\
-		& \times \left[\chi\left(-2\right)\right],
+		& \left[\times \epsilon\left(-1\right) \chi\left(-2\right)\right],
 	\end{align*}
-	where the factors $\{\pm 1\}$ and $\chi\left(-2\right)$ only appear in the odd orthogonal group case.
+	where the terms in $\left[\right]$ only appear in the odd orthogonal group case.
 \end{proposition}
-
+\begin{proof}
+	This follows from the results mentioned above and from the formula $$R_T\left(1\right) = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \frac{\grpIndex{G}{T}}{\sizeof{G}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{G}_p^2 \cdot q^{\lfloor\frac{\dim \hermitianSpace}{2}\rfloor},$$
+	the facts \begin{equation*}
+		\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^r \text{\,\,\,\,\,\, and \,\,\,\,\,\,}  \varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\lfloor\frac{\dim \hermitianSpace}{2}\rfloor},
+	\end{equation*}
+	and finally from $$\GaussSumScalar{\chi^2}{\fieldCharacter} = -\tau\left(\chi^2, \fieldCharacter\right).$$
+\end{proof}
 
 \subsection{Kloosterman type sums}
 
