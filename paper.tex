@@ -461,11 +461,10 @@ $$\sum_{\substack{x \in \finiteFieldExtension{2m}^1\\
 Combining the results of the previous sections with \Cref{prop:reduction-of-gauss-sum-to-torus}, we arrive at the following result.
 
 \begin{proposition}
-	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1 \left[\times \{\pm 1\}\right]$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s \times \epsilon$, where  $\left[\epsilon \colon \left\{\pm 1\right\} \to \multiplicativegroup{\cComplex},\right]$ $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Then
+	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1 \left[\times \{\pm 1\}\right]$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s \times \epsilon$, where  $\left[\epsilon \colon \left\{\pm 1\right\} \to \multiplicativegroup{\cComplex},\right]$ $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote $$g_T\left(\theta, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\theta'_i}{\chi^{-1}}{\fieldCharacter_{2m_i}} \cdot  \prod_{j=1}^r \GaussSumCharacter{\alpha_j}{\chi^{-1}}{\fieldCharacter_{k_j}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{k_j}}.$$ Then
 	\begin{align*}
-		 \dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\lfloor\frac{\dim \hermitianSpace}{2}\rfloor} \\
-		& \times \prod_{i=1}^s \theta_i\left(-1\right) \GaussSumCharacter{\theta'_i}{\chi^{-1}}{\fieldCharacter_{2m_i}} \\
-		& \times  \prod_{j=1}^r \alpha_j\left(-1\right)  \GaussSumCharacter{\alpha_j}{\chi^{-1}}{\fieldCharacter_{k_j}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{k_j}}\\
+		 \dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\lfloor\frac{\dim \hermitianSpace}{2}\rfloor} g_T\left(\theta, \fieldCharacter\right) \\
+		& \times \prod_{i=1}^s \theta_i\left(-1\right) \cdot \prod_{j=1}^r \alpha_j\left(-1\right) \\
 		& \left[\times \epsilon\left(-1\right) \chi\left(-2\right)\right],
 	\end{align*}
 	where the terms in $\left[\right]$ only appear in the odd orthogonal group case.
@@ -477,6 +476,8 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 	\end{equation*}
 	and finally from $$\GaussSumScalar{\chi^2}{\fieldCharacter} = -\tau\left(\chi^2, \fieldCharacter\right).$$
 \end{proof}
+
+\subsubsection{Computation for Lusztig series}
 
 \subsection{Kloosterman type sums}
 
