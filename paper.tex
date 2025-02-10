@@ -177,6 +177,7 @@
 \newcommand{\lieAlgebra}{\mathfrak{g}}
 \newcommand{\DeligneLusztigInduction}[2]{\mathrm{R}_{#1}^{#2}}
 \newcommand{\algebraicGroup}[1]{\boldsymbol{\mathrm{#1}}}
+\newcommand{\LusztigSeries}[2]{\mathcal{E}\left(#1, (#2)\right)}
 
 \hypersetup{pdfauthor={Calvin Yost-Wolff, Elad Zelingher},
 	pdfsubject={Number theory, Representation theory},
@@ -358,7 +359,7 @@ Let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cC
 For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \centralCharacter{\pi}\left(-1\right) \frac{\dblGaussSumScalar{\pi}{\chi}}{\GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor}}.$$
 Using this notation and using the multiplicativity property of Kondo's Gauss sum and \Cref{thm:multiplicativity-in-terms-of-gauss-sums}, we have the following multiplicativity property.
 
-\begin{theorem}
+\begin{theorem}\label{thm:multiplicativity-in-terms-of-gamma-factors}
 	\begin{enumerate}
 		\item If $\tau_1$ and $\tau_2$ are irreducible representations of $\GL_{k_1}\left(\finiteField\right)$ and $\GL_{k_2}\left(\finiteField\right)$, respectively, then for any irreducible subrepresentation $\tau$ of the parabolic induction $\tau_1 \circ \tau_2$, we have
 		$$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \dblGammaFactor{\tau_1}{\chi}{\fieldCharacter} \dblGammaFactor{\tau_2}{\chi}{\fieldCharacter}.$$
@@ -476,21 +477,61 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 	\end{equation*}
 	and finally from $$\GaussSumScalar{\chi^2}{\fieldCharacter} = -\tau\left(\chi^2, \fieldCharacter\right).$$
 \end{proof}
+\begin{remark}
+	Suppose that $\pi$ is any irreducible representation of $G$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$. Then the central character of $\pi$ satisfies
+	$$ \centralCharacter{\pi}\left(-1\right) = \prod_{j=1}^r \alpha_j\left(-1\right) \cdot \prod_{i=1}^s \theta_i\left(-1\right).$$
+	Thus \begin{align*}
+		\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} \centralCharacter{\pi}\left(-1\right) g_T\left(\theta, \fieldCharacter\right) \\
+		& \left[\times \epsilon\left(-1\right) \chi\left(-2\right)\right].
+	\end{align*}
+\end{remark}
 
 \subsubsection{Computation for Lusztig series}
 
 Using \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and results of Lusztig, we are able to determine $\dblGaussSumScalar{\pi}{\fieldCharacter}$ for any irreducible representation $\pi$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$.
 
 \begin{theorem}
-	Let $T \subset G$ be a maximal torus and let $\theta \colon T \to \multiplicativegroup{\cComplex}$ be a character. Write $$R_{T,\theta} = \sum_{\pi} c_{\pi} \trace \pi,$$
-	where $\pi$ goes over all the irreducible representations of $G$ and $c_{\pi} \in \zIntegers$. Suppose that $\pi$ is an irreducible representation such that $c_{\pi} \ne 0$. Then $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_T\left(\theta, \fieldCharacter\right).$$
+	Let $T \subset G$ be a maximal torus and let $\theta \colon T \to \multiplicativegroup{\cComplex}$ be a character. Write $$R_{T,\theta} = \sum_{\Pi} c_{\Pi} \trace \Pi,$$
+	where $\Pi$ goes over all the irreducible representations of $G$ and $c_{\Pi} \in \zIntegers$. Suppose that $\pi$ is an irreducible representation such that $c_{\pi} \ne 0$. Then $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_T\left(\theta, \fieldCharacter\right).$$
 \end{theorem}
+In order to prove this theorem, we will use the theory of Lusztig series.
+
+TODO: Fix isomorphism for all tori and their dual that are compatible in the sense that inclusion corresponds to the norm map.
+
+TODO: Define $g_{\GL}\left(s, \fieldCharacter\right)$ for $\GL_n$.
+
+Fix an isomorphism $T^{\ast} \cong T$, where $T$ is the dual torus of $T$. If the image of $\theta$ is $s$ under the above isomorphism, define $g\left(s, \fieldCharacter\right) = g_T\left(\theta, \fieldCharacter\right)$. The Hasse--Davenport relation shows that this does not depend on the torus $T$.
+
+The \emph{Lusztig series} $\LusztigSeries{G}{s}$ consists of the irreducible representations $\pi$ of $R_{T, \theta}$ with $c_{\pi} \ne 0$ as in the theorem.
+
+Let $L \subset G$ be a Levi subgroup of $G$, and suppose that $L \cong \prod_{j=1}^\ell \GL_{t_j}\left(\finiteField\right) \times G'$ where $G' = \IsometryGroup\left(\hermitianSpace'\right)$ where $\hermitianSpace'$ is a non-degenerate hermitian subspace and $\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic$, where $\xIsotropic$ and $\yIsotropic$ are totally isotropic subspace in duality. Suppose that $s \in T$ is such that $s \in L$, and denote by $s_i$ the projection of $s$ to $\GL_{t_i}\left(\finiteField\right)$ for $1 \le i \le \ell$ and by $s_0$ the projection of $s$ to $G'$. We denote
+$$\LusztigSeries{L}{s} = \left(\bigotimes_{j=1}^{\ell} \LusztigSeries{\GL_{t_j}\left(\finiteField\right)}{s_j}\right) \otimes \LusztigSeries{G'}{s_0}.$$
+It is clear that $$g\left(s, \fieldCharacter\right) = g\left(s_0,\fieldCharacter\right) \cdot \prod_{j=1}^r g_{\GL}\left(s_j, \fieldCharacter\right).$$
+
+We will need the following two facts:
+\begin{enumerate}
+	\item For classical groups $G$ (as the ones we consider in this paper), the Lusztig series $\LusztigSeries{G}{s}$ contains at most one irreducible cuspidal representation.
+	\item The Lustzig series $\LusztigSeries{G}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(P,\sigma\right)$ where $P$ is a parabolic subgroup of $G$ with Levi part $L$ and $\sigma \in \LusztigSeries{L}{s}$ is an irreducible cuspidal representation.
+\end{enumerate}
+Our theorem is equivalent to the following statement.
+\begin{proposition}
+	Keep the notations as above. Suppose that $P$ is a parabolic subgroup of $G$ with Levi part $L$. Then for any irreducible cuspidal $\sigma \in \LusztigSeries{L}{s}$ and for any irreducible subrepresentation $\pi \subset \Ind{P}{G}{\sigma}$, $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g\left(s, \fieldCharacter\right).$$
+\end{proposition}
 \begin{proof}
-	We will prove this by induction on $\dim \hermitianSpace$. Let us keep the notation as in \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}. If $\left(T,\theta\right)$ is in general position, then $\varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} R_{T,\theta} = \trace \pi$ and $$\dim \pi \cdot \dblGaussSumScalar{\pi}{\chi} = \dblVirtualGaussSumScalar{\trace \pi}{\chi} = \varepsilon_{\algebraicGroup{T}} \varepsilon_{\algebraicGroup{G}} \dblVirtualGaussSumScalar{R_{T,\theta}}{\chi}.$$ We also have in this case $$\centralCharacter{\pi}\left(-1\right) = \prod_{j=1}^r \alpha_j\left(-1\right) \cdot \prod_{i=1}^s \theta_j\left(-1\right).$$
-	Hence from \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}, $$\dblGaussSumScalar{\pi}{\chi} = \frac{\dblVirtualGaussSumScalar{R_{T,\theta}}{\chi}}{R_{T,\theta}\left(1\right)} = \centralCharacter{\pi}\left(-1\right) g_T\left(\theta, \fieldCharacter\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor},$$
-	which implies that $\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_T\left(\epsilon, \fieldCharacter\right)$.
+	The proof is by induction on $\dim \hermitianSpace$.
 	
-	Suppose that $\left(T,\theta\right)$ is not in general position and that $\pi$ is such that $c_{\pi} \ne 0$. Fix an isomorphism $T^{\ast} \cong T$, where $T$ is the dual torus of $T$ and let $s$ be the image of $\theta$ under this isomorphism. Then $\pi$ belongs to the Lusztig series $\mathcal{E}\left(G, s\right)$. Suppose first that $\pi$ is not cuspidal. Then $\pi$ appears in a Harish--Chandra series of the form $\left(L, \sigma\right)$, where $L$ is a Levi subgroup of $G$ and where $\sigma$ belongs to the Lusztig--Series $\mathcal{E}\left(L, s\right)$. We may write $L \cong \GL_{t_1}\left(\finiteField\right) \times \dots \times \GL_{t_\ell}\left(\finiteField\right) \times G'$, where $G' = \IsometryGroup\left(\hermitianSpace'\right)$. By the multiplicativity property we have
+	Suppose first that $L \ne G$. Then by using the multiplicativity property repeatedly (\Cref{thm:multiplicativity-in-terms-of-gamma-factors}), we have $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace'}{\pi'}{\chi}{\fieldCharacter} \cdot \prod_{j=1}^r g_{\GL}\left(s_j, \fieldCharacter\right),$$
+	where $\pi'$ is an irreducible cuspidal representation of $G'$ that lies in the Lustzig series $\LusztigSeries{\pi'}{s_0}$. By the induction hypothesis, we have $$\dblGammaFactorSpace{\hermitianSpace'}{\pi'}{\chi}{\fieldCharacter} = g\left(s_0, \fieldCharacter\right),$$
+	which implies the result.
+	
+	Next, suppose that $L = G$ and that $\pi = \sigma$ is an irreducible cuspidal representation. Let us write $$R_{T, \theta} = \sum_{\Pi} c_\Pi \trace \Pi,$$
+	where $\Pi$ goes over all the irreducible representations of $G$ and $c_{\Pi} \in \zIntegers$. For every $\Pi$ with $c_{\Pi} \ne 0$ and $\Pi \ne \pi$, we have that $\Pi$ lies in a Harish--Chandra series as above, and therefore $$\dblVirtualGaussSumScalar{\trace \Pi}{\chi} = \dim \Pi \cdot \centralCharacter{\Pi}\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} \cdot g\left(s, \fieldCharacter\right).$$
+	By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}, we have $$\dblVirtualGaussSumScalar{R_{T,\theta}}{\fieldCharacter} = R_{T,\theta}\left(1\right) \cdot \theta\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} \cdot g\left(s, \fieldCharacter\right).$$
+	Since $\centralCharacter{\Pi}\left(-1\right) = \theta\left(-1\right)$ for every $\Pi$ with $c_{\Pi} \ne 0$,
+	$$c_{\pi} \cdot \dblVirtualGaussSumScalar{\trace \pi}{\fieldCharacter} = \left(R_{T,\theta}\left(1\right) - \sum_{\substack{\Pi \ne \pi\\
+	c_{\Pi} \ne 0}} c_{\Pi} \dim \Pi\right) \cdot \theta\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} \cdot g\left(s, \fieldCharacter\right).$$
+	Since $$R_{T,\theta}\left(1\right) = \sum_{\Pi} c_{\Pi} \trace \Pi,$$ it follows that $$\dblVirtualGaussSumScalar{\trace \pi}{\chi} = \dim \pi \cdot \centralCharacter{\pi}\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} \cdot g\left(s, \fieldCharacter\right).$$
+	Since $\dblVirtualGaussSumScalar{\trace \pi}{\chi} = \dim \pi \cdot \dblGaussSumScalar{\pi}{\chi}$, the result follows.
 \end{proof}
 
 \subsection{Kloosterman type sums}
