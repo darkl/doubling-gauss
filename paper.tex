@@ -178,6 +178,11 @@
 \newcommand{\DeligneLusztigInduction}[2]{\mathrm{R}_{#1}^{#2}}
 \newcommand{\algebraicGroup}[1]{\boldsymbol{\mathrm{#1}}}
 \newcommand{\LusztigSeries}[2]{\mathcal{E}\left(#1, (#2)\right)}
+\newcommand{\ToriDualToriIsomorphism}{\kappa}
+\newcommand{\characteristicPolynomial}{\operatorname{CharPoly}}
+
+\newcommand{\calvin}[1]{\textcolor{orange}{\sffamily ((CALVIN: #1))}}
+\newcommand{\elad}[1]{\textcolor{blue}{\sffamily ((ELAD: #1))}}
 
 \hypersetup{pdfauthor={Calvin Yost-Wolff, Elad Zelingher},
 	pdfsubject={Number theory, Representation theory},
@@ -369,9 +374,13 @@ Using this notation and using the multiplicativity property of Kondo's Gauss sum
 \end{theorem}
 
 
-\subsection{Computation in terms of Deligne--Lusztig data}
+\subsection{Computation of character sums attached Deligne--Lusztig data}
 
-The goal of this section is to compute $\dblGaussSumScalar{\pi}{\chi}$ for $\pi$ that appears in a Deligne--Lusztig virtual character $R_{T,\theta}$ for a suitable maximal torus $T$ and $\theta \colon T \to \multiplicativegroup{\cComplex}$.
+The goal of the next two sections is to compute $\dblGaussSumScalar{\pi}{\chi}$ for $\pi$ that appears in a Deligne--Lusztig virtual character $R_{T,\theta}$ for a suitable maximal torus $T$ and $\theta \colon T \to \multiplicativegroup{\cComplex}$.
+
+In this section, we focus on the computing the analogous character sum corresponding to $\dblGaussSumScalar{\pi}{\fieldCharacter}$ for the virtual character $R_{T,\theta}$.
+
+\calvin{I kinda prefer the normalization where we divide by $|G|$. I guess both for little and upper $G$. That way it is the honest product of characters in the representation ring.}
 
 Let us realize $G$ as the fixed points of the Frobenius map $\Frobenius$ acting on a connected reductive algebraic group $\algebraicGroup{G}$.
 
@@ -470,6 +479,7 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 	\end{align*}
 	where the terms in $\left[\right]$ only appear in the odd orthogonal group case.
 \end{theorem}
+    \calvin{What does the $\chi(-2)$ come from? I didn't quite get that when I was messing around}
 \begin{proof}
 	This follows from the results mentioned above and from the formula $$R_T\left(1\right) = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \frac{\grpIndex{G}{T}}{\sizeof{G}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{G}_p^2 \cdot q^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor},$$
 	the facts \begin{equation*}
@@ -479,16 +489,19 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 \end{proof}
 \begin{remark}
 	Suppose that $\pi$ is any irreducible representation of $G$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$. Then the central character of $\pi$ satisfies
-	$$ \centralCharacter{\pi}\left(-1\right) = \theta\left(-1\right) = \prod_{j=1}^r \alpha_j\left(-1\right) \cdot \prod_{i=1}^s \theta_i\left(-1\right).$$
+	\begin{align*}
+		\centralCharacter{\pi}\left(-1\right) = \theta\left(-1\right) =& \prod_{j=1}^r \alpha_j\left(-1\right) \cdot \prod_{i=1}^s \theta_i\left(-1\right)\\
+		& \times \left[\epsilon\left(-1\right)\right].
+	\end{align*}
 	Thus \begin{align*}
 		\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} \centralCharacter{\pi}\left(-1\right) g_T\left(\theta, \fieldCharacter\right) \\
-		& \left[\times \epsilon\left(-1\right) \chi\left(-2\right)\right].
+		& \left[\times \chi\left(-2\right)\right].
 	\end{align*}
 \end{remark}
 
-\subsubsection{Computation for Lusztig series}
+\subsection{Computation for Lusztig series}
 
-Using \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and results of Lusztig, we are able to determine $\dblGaussSumScalar{\pi}{\fieldCharacter}$ for any irreducible representation $\pi$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$.
+The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and results of Lusztig to determine $\dblGaussSumScalar{\pi}{\fieldCharacter}$ for any irreducible representation $\pi$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$.
 
 \begin{theorem}
 	Let $T \subset G$ be a maximal torus and let $\theta \colon T \to \multiplicativegroup{\cComplex}$ be a character. Write $$R_{T,\theta} = \sum_{\Pi} c_{\Pi} \trace \Pi,$$
@@ -496,10 +509,74 @@ Using \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-cha
 \end{theorem}
 In order to prove this theorem, we will use the theory of Lusztig series.
 
-TODO: Fix isomorphism for all tori and their dual that are compatible in the sense that inclusion corresponds to the norm map.
+\subsubsection{Tori isomorphism}
+
+For any finite abelian group $G$, let $\widehat{G}$ be the character group of $G$, consisting of characters $\theta \colon G \to \multiplicativegroup{\cComplex}$.
+
+Let $\left(\ToriDualToriIsomorphism_k\right)_{k=1}^{\infty}$ be a family of isomorphisms $\ToriDualToriIsomorphism_k \colon \charactergroup{k} \to \multiplicativegroup{\finiteFieldExtension{k}}$ such that if $k' \mid k$ then $\ToriDualToriIsomorphism_k^{-1}\left(\xi_{k'}\right) = \ToriDualToriIsomorphism_{k'}^{-1}\left(\xi_{k'}\right) \circ \FieldNorm{k}{k'}$ for any $\xi_{k'} \in \multiplicativegroup{\finiteFieldExtension{k'}}$.
+
+Using the Hilbert 90 isomorphism $\finiteFieldExtension{2m} \slash \finiteFieldExtension{m} \to \finiteFieldExtension{2m}^{1}$ given by $$x \mapsto \frac{x}{x^{q^m}} = x^{1 - q^m},$$ we see that characters of $\finiteFieldExtension{2m}^1$ are in bijection with characters of $\multiplicativegroup{\finiteFieldExtension{2m}}$ such that their restriction to $\multiplicativegroup{\finiteFieldExtension{m}}$ is trivial. Using the surjective norm map $\multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\finiteFieldExtension{m}}$, such characters are precisely characters $\theta \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex}$ such that $\theta \circ \FieldNorm{2m}{m} = \theta^{1 + q^m} = 1$. By realizing the character group $\widehat{\finiteFieldExtension{2m}^1}$ as the subgroup of $\charactergroup{2m}$ given by $$\left\{ \theta \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex} \mid \theta^{1+q^m} = 1\right\},$$
+we have that $$\ToriDualToriIsomorphism_{2m}\left(\widehat{\finiteFieldExtension{2m}^1}\right) = \left\{\xi \in \multiplicativegroup{\finiteFieldExtension{2m}} \mid \xi^{1+q^m} = 1\right\} = \finiteFieldExtension{2m}^1.$$
+Let us denote the restriction of $\ToriDualToriIsomorphism_{2m}$ to $\widehat{\finiteFieldExtension{2m}^1}$ by $\ToriDualToriIsomorphism_{2m}^1 \colon \widehat{\finiteFieldExtension{2m}^1} \to \finiteFieldExtension{2m}^1$.
+
+The family $\left(\ToriDualToriIsomorphism_k\right)_{k=1}^{\infty}$ allows us to define $\ToriDualToriIsomorphism_T \colon \widehat{T} \to T$ for any maximal torus $T$ of $G$. Recall that for a maximal torus $T$ of $G$ there exists an isomorphism of groups $$e_T \colon T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1,$$
+satisfying that if the image of $t \in T$ in $\GL\left(\hermitianSpace\right)$ has an $\finiteField$-characteristic polynomial $\characteristicPolynomial_{t}\left(X\right)$ and $$e_T\left(t\right) = \left(t_1,\dots,t_r,u_1,\dots,u_s\right)$$ then $$\characteristicPolynomial_{t}\left(X\right) = \prod_{j=1}^r \characteristicPolynomial_{t_j, \finiteFieldExtension{k_j}}\left(X\right) \characteristicPolynomial_{t_j^{-1}, \finiteFieldExtension{k_j}}\left(X\right) \cdot \prod_{i=1}^s \characteristicPolynomial_{u_i, \finiteFieldExtension{2 m_i}}\left(X\right),$$
+where for $\xi \in \multiplicativegroup{\finiteFieldExtension{k}}$, $\characteristicPolynomial_{\xi, \finiteFieldExtension{k}}\left(X\right)$ is the $\finiteField$-characteristic polynomial of the multiplication by $\xi$ map $\finiteFieldExtension{k} \to \finiteFieldExtension{k}$.
+
+The isomorphism $e_T$ induces an isomorphism for the character group $$e_{\widehat{T}} \colon \widehat{T} \to \prod_{j=1}^r \charactergroup{k_j} \times \prod_{i=1}^s \widehat{\finiteFieldExtension{2m_i}^1},$$
+given by
+$$e_{\widehat{T}}\left(\theta\right) = \theta \circ e_T^{-1}.$$
+Using the isomorphisms $\ToriDualToriIsomorphism_{k_j} \colon \charactergroup{k_j} \to \multiplicativegroup{\finiteFieldExtension{k_j}}$ and $\ToriDualToriIsomorphism_{2m_i} \colon \widehat{\finiteFieldExtension{2m_i}^1} \to \finiteFieldExtension{2m_i}^1$ and using $e_T$ and $r_{\widehat{T}}$, we obtain an isomorphism $\ToriDualToriIsomorphism_{T} \colon \widehat{T} \to T$. Note that this construction depends on the family $\left(\ToriDualToriIsomorphism_k\right)_{k=1}^{\infty}$ and on the isomorphism $e_T$.
+
+\subsubsection{Gauss sums attached to semisimple elements}
+
+Let $T$ be as in the previous section. Let $t \in T$ and suppose that $\ToriDualToriIsomorphism_{T}^{-1}\left(t\right) = \theta$ is given by $$\theta = \left(\alpha_1,\dots,\alpha_r,\theta_1,\dots,\theta_s\right) \circ e_T,$$ where $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$.
+We define $$g_T\left(t, \fieldCharacter\right) = g_T\left(\theta, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\theta'_i}{\chi^{-1}}{\fieldCharacter_{2m_i}} \cdot  \prod_{j=1}^r \GaussSumCharacter{\alpha_j}{\chi^{-1}}{\fieldCharacter_{k_j}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{k_j}}.$$
+We claim that this definition only depends on $t$ and not on the maximal torus $T$ containing it.
+
+To see this, suppose that $\deg \alpha_1 = d_1$, $\dots$, $\deg \alpha_k = d_k$, $\deg \theta'_1 = d'_1$, $\dots$, $\deg \theta'_s = d'_s$ and that $k_1 = b_1 d_1$, $\dots$, $k_r = b_r d_r$, $2m_1 = b'_1 d'_1$, $\dots$, $2m_s = b'_s d'_s$. Then for every $j$
+$\alpha_j = \beta_j \circ \FieldNorm{b_j d_j}{d_j}$ for some $\beta_j \colon \multiplicativegroup{\finiteFieldExtension{d_j}} \to \multiplicativegroup{\cComplex}$, and similarly for every $i$ $\theta'_i = \vartheta_i \circ \FieldNorm{b'_i d'_i}{d'_i}$ for some $\vartheta_i \colon \multiplicativegroup{\finiteFieldExtension{d'_i}} \to \multiplicativegroup{\cComplex}$. By the Hasse--Davenport relation we have \begin{equation}\label{eq:hasse-davenport-for-semisimple-elements}
+	g_T\left(t, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\vartheta_i}{\chi^{-1}}{\fieldCharacter_{d'_i}}^{b'_i} \cdot  \prod_{j=1}^r \GaussSumCharacter{\beta_j}{\chi^{-1}}{\fieldCharacter_{d_j}}^{b_j} \GaussSumCharacter{\beta_j^{-1}}{\chi^{-1}}{\fieldCharacter_{d_j}}^{b_j}.
+\end{equation}
+On the other hand, let $$e_T\left(t\right) = \left(t_1,\dots,t_r,u_1,\dots,u_s\right),$$
+where $t_j \in \multiplicativegroup{\finiteFieldExtension{k_j}}$ and $u_i \in \finiteFieldExtension{2m_i}^1$ for every $i$ and $j$. Then since $\ToriDualToriIsomorphism_k$ preserves degrees of Frobenius orbits, we have that $t_j \in \multiplicativegroup{\finiteFieldExtension{d_j}}$ and $u_i \in \multiplicativegroup{\finiteFieldExtension{d'_i}}$ for every $i$ and $j$ (and they do not belong to smaller field extensions). Thus
+\begin{equation}\label{eq:characteristic-polynomial-equality-for-semisimple-elements}
+	\characteristicPolynomial_{t}\left(X\right) = \prod_{i=1}^s \characteristicPolynomial_{u_i, \finiteFieldExtension{d'_i}}\left(X\right)^{b'_i} \cdot \prod_{j=1}^r \characteristicPolynomial_{t_j, \finiteFieldExtension{d_j}}\left(X\right)^{b_j}\characteristicPolynomial_{t_j^{-1}, \finiteFieldExtension{d_j}}\left(X\right)^{b_j}.
+\end{equation}
+The equalities \eqref{eq:hasse-davenport-for-semisimple-elements} and \eqref{eq:characteristic-polynomial-equality-for-semisimple-elements} imply that may define $g_T\left(t,\fieldCharacter\right)$ using the $\finiteField$-characteristic polynomial of $t$ (viewed as an element of $\GL\left(\hermitianSpace\right)$) by defining a fully multiplicative function $\tau_{\chi, \fieldCharacter} \colon \finiteField\left[X\right]_{\mathrm{monic}} \to \cComplex$, sending $1$ to $1$ and any monic irreducible polynomial $p\left(X\right)$ of degree $d \ge 1$ to $\GaussSumCharacter{\ToriDualToriIsomorphism_{d}^{-1}\left(\xi\right)}{\chi}{\fieldCharacter_d}$, where $\xi \in \multiplicativegroup{\finiteFieldExtension{d}}$ is any root of the polynomial $P\left(X\right)$. This map is well defined because Gauss sums are constant on Frobenius orbits of characters.
+
+If $s \in \GL_n\left(\finiteField\right)$ is semisimple, we denote $$\tau_{\chi, \GL_n\left(\finiteField\right)}\left(s\right) = \tau_{\chi, \fieldCharacter}\left(\characteristicPolynomial_s\left(X\right)\right),$$
+
+Since the $\finiteField$-characteristic polynomial of $t$ does not depend on the maximal torus $T$ containing $t$, we conclude that the map $t \mapsto g_T\left(t, \fieldCharacter\right)$ does not depend on $t$ and we denote for any semisimple element $s \in G$, $$\tau_{G, \chi, \fieldCharacter}\left(s, \fieldCharacter\right) = g_T\left(s, \fieldCharacter\right) = \tau_{\chi, \fieldCharacter}\left(\characteristicPolynomial_{s}\left(X\right)\right),$$
+where $T$ is any maximal torus containing $s$ and $\characteristicPolynomial_{s}$ is the $\finiteField$-characteristic polynomial of $s$, viewed as an element of $\GL\left(\hermitianSpace\right)$.
+
+\subsubsection{Proof of the main result}
+
+\begin{proposition}
+\label{prop:geoconj}
+    Let $(T,\theta)$ be geometrically conjugate to $(T',\theta')$ inside $G^\vee$ i.e. there exists $g \in T(\mathbb{F}_n)$ such that $gTg^{-1} = T'$ and $\theta'(Nm_{n:1}(x)) = \theta(Nm_{n:1}(g^{-1}xg))$ for $x \in T'(\mathbb{F}_n)$. Then $g_T(\theta,\psi_{tr}) = g_{T'}(\theta',\psi_{tr})$
+\end{proposition}
+
+\calvin{here is the geometric idea:}
+\begin{lemma}
+    Let $\mathcal{F} := \mathcal{L}(\theta) \otimes tr^{*}\mathcal{L}(\psi)$. Then
+    \[
+        dim H_c^i(T,\mathcal{F}) = \begin{cases}
+        0    & i \neq dim(T) \\
+        1    & i = dim(T)
+        \end{cases}
+    \]
+\end{lemma}
+\calvin{Might exist in literature somewhere otherwise is a little bit of a pain. It should be analogous to the fact that the Guass sum on a field of size $p^d$ is of magnitude $\sqrt{p^d}$.}
+Combining this with Grothendieck-Lefschetz we get
+\begin{corollary}
+    $g_T(\theta,\psi)^k = g_T(\theta \circ Nm_{k:1},\psi)$.
+\end{corollary}
+\calvin{there might be a simple non-geometric way to do this corollary not sure.}
+\calvin{The corollary plus the definition of geometric conjugacy imply $g_T(\theta,\psi) = \mu_kg_{T'}(\theta',\psi)$ for some $k$-th root of unity $\mu_k$. Not sure how to finish from here.}
 
 TODO: Define $g_{\GL}\left(s, \fieldCharacter\right)$ for $\GL_n$.
-
+\calvin{this is a good idea but I'm not sure it'll work. I guess you can cancel some stuff out to get the Guass sum over the norm one elements via adding some characters from composing with Nm. Similarly you need to cancel stuff on the other side.}
 Fix an isomorphism $T^{\ast} \cong T$, where $T$ is the dual torus of $T$. If the image of $\theta$ is $s$ under the above isomorphism, define $g\left(s, \fieldCharacter\right) = g_T\left(\theta, \fieldCharacter\right)$. The Hasse--Davenport relation shows that this does not depend on the torus $T$.
 
 The \emph{Lusztig series} $\LusztigSeries{G}{s}$ consists of the irreducible representations $\pi$ of $R_{T, \theta}$ with $c_{\pi} \ne 0$ as in the theorem.
