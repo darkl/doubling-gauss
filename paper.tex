@@ -471,7 +471,7 @@ $$\sum_{\substack{x \in \finiteFieldExtension{2m}^1\\
 Combining the results of the previous sections with \Cref{prop:reduction-of-gauss-sum-to-torus}, we arrive at the following result.
 
 \begin{theorem}\label{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}
-	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1 \left[\times \{\pm 1\}\right]$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s \times \epsilon$, where  $\left[\epsilon \colon \left\{\pm 1\right\} \to \multiplicativegroup{\cComplex},\right]$ $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote $$g_T\left(\theta, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\theta'_i}{\chi^{-1}}{\fieldCharacter_{2m_i}} \cdot  \prod_{j=1}^r \GaussSumCharacter{\alpha_j}{\chi^{-1}}{\fieldCharacter_{k_j}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{k_j}}.$$ Then
+	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1 \left[\times \{\pm 1\}\right]$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s \times \epsilon$, where  $\left[\epsilon \colon \left\{\pm 1\right\} \to \multiplicativegroup{\cComplex},\right]$ $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote $$g_T\left(\theta, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\theta'_i}{\chi^{-1}}{\fieldCharacter_{2m_i}} \cdot  \prod_{j=1}^r \GaussSumCharacter{\alpha_j}{\chi^{-1}}{\fieldCharacter_{k_j}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{k_j}}.$$ \calvin{we should add a $\chi$ as a variable to the left hand side of the above} Then
 	\begin{align*}
 		 \dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} g_T\left(\theta, \fieldCharacter\right) \\
 		& \times \prod_{i=1}^s \theta_i\left(-1\right) \cdot \prod_{j=1}^r \alpha_j\left(-1\right) \\
@@ -498,6 +498,85 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 		& \left[\times \chi\left(-2\right)\right].
 	\end{align*}
 \end{remark}
+\subsection{Independence of geometric conjugacy for Gauss sums}
+\calvin{here is the section I am adding in.}
+\subsubsection{Geomtric Conjugacy and Lusztig Series}
+(following chapter 13 of Digne and Michel's Representations of Finite Groups of Lie Type)
+Let $\mathbb{G}$ be a reductive group over $\mathbb{F}$ and fix a torus $\mathbb{T}$ defined over $\mathbb{F}$. A \emph{dual group over $\mathbb{F}$} $\mathbb{G}^*$ with a dual torus $\mathbb{T}^*$ is a group with an isomorphism $X_*(T) \cong X^*(T^*)$ which is compatible with the action of Frobenius and sends roots to coroots \calvin{check if I flipped upper and lower star}.
+
+Associated with a torus character pair $(T,\theta)$ is a  Frobenius stable $W(\mathbb{T})$ orbit in $X_*(\mathbb{T}) = X^*(\mathbb{T}^*)$. Under a choice of $\overline{\mathbb{F}}^\times \cong \left(\mathbb{Q}/\mathbb{Z}\right)_{p'}$, $X^*(\mathbb{T}^*) \otimes \left(\mathbb{Q}/\mathbb{Z}\right)_{p'} \cong \mathbb{T}^*(\overline{\mathbb{F}})$, this associates to $(T,\theta)$ a Frobenius stable semisimple conjugacy class in $\mathbb{G}^*$.
+
+\begin{definition}
+    The \emph{Lusztig series} $\LusztigSeries{G}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \in \mathbb{G}^*$ consists of (equivalence classes of) the irreducible representations $\pi$ which appear with nonzero multiplicity in $R_{T, \theta}$ for some $(T,\theta)$ pair associated to $(s)$.
+\end{definition}
+
+\begin{center}
+\begin{tabular}{ c c c c c c}
+ Group & Fixed Torus & Frobenius on $X(T)$ & Frobenius on $W$ &Dual Group & Dual Torus \\ 
+ $Sp(2n)$ & $(\mathbb{F}^\times)^n$ & 1 & 1 &$SO(2n+1)$ & $(\mathbb{F}^\times)^n$\\  
+ $GSp(2n)$ & $(\mathbb{F}^\times)^{n+1}$ & 1 & 1 &$GSpin(2n+1)$ &  $(\mathbb{F}^\times)^{n+1}$ \\
+ $SO(2n)$ & $(\mathbb{F}^\times)^{n}$ & 1 & 1 &$SO(2n)$ &  $(\mathbb{F}^\times)^{n}$ \\
+ $GO(2n)$ & $(\mathbb{F}^\times)^{n+1}$ & 1 & 1 &? &  $(\mathbb{F}^\times)^{n+1}$ \\
+ $SO(2n+1)$ & $(\mathbb{F}^\times)^{n}$ & 1 & 1 &$Sp(2n)$ &  $(\mathbb{F}^\times)^{n}$ \\
+ $GO(2n+1)$ & $(\mathbb{F}^\times)^{n+1}$ &1 & 1 &? &  $(\mathbb{F}^\times)^{n+1}$ \\ 
+  $U(n)$ & $(\mathbb{F}_2^{Nm=1})^{n}$ & -1 & 1 & $U(n)$ &  $(\mathbb{F}_2^{Nm=1})^{n}$ 
+\end{tabular}
+\end{center}
+
+The pairs $(T,\theta),(T',\theta')$ are said to be geometrically conjugate if they are associated to the same Frobenius stable geometric conjugacy class. The main point of this section is the following
+
+\begin{proposition}
+\label{prop:geoconj}
+Suppose that $(T,\theta)(T',\theta')$ are maximal torus, character pairs of $G$ for a classical group $G$ which are geometrically conjugate. Then $g_T(\theta,\psi_{tr}) = g_{T'}(\theta',\psi_{tr})$.
+\end{proposition}
+
+\subsubsection{Guass sums attatched to semisimple elements in $GL_n$}
+Copy over the gauss sums attatched to semisimple elements section.
+
+\subsubsection{Proof of proposition \ref{prop:geoconj}}
+First we fix representations $\Phi$ of the dual groups:
+\begin{center}
+\begin{tabular}{ c c}
+ Group & Dual group representations $\Phi$ \\ 
+ $Sp(2n)$ &$SO(2n+1) \to GL(2n+1)$\\  
+ $GSp(2n)$  &$GSpin(2n+1) \to GL(2n+1)$ \\
+ $SO(2n)$ &$SO(2n) \to GL(2n)$ \\
+ $GO(2n)$ & ? \\
+ $SO(2n+1)$ &$Sp(2n) \to GL(2n)$ \\
+ $GO(2n+1)$ & ? \\ 
+  $U(n)$  & $U(n) \to GL(2n)$  
+\end{tabular}
+\end{center}
+
+\begin{lemma}
+\label{lem:reducetoGLn}
+Let $(T,\theta)$ be a torus character pair in $G$ with associated Frobenius stable semisimple conjugacy class $(s) \subset G^*$. Then   
+    \[
+    g_T(\theta,\psi) = c\cdot g(\Phi(s),\psi),
+    \]
+where $c = g(1,\psi_1)$ if $G=Sp$ or $GSp$ and otherwise $c=1$.
+\end{lemma}
+Before proving this we recal that in the type B Weyl group the conjugacy classes of permutations are given by two partitions $(\lambda,\lambda')$ where $\lambda$ corresponds to cycles with an even number of sign changes and $\lambda'$ corresponds to cycles with an odd number of sign changes. In type D some of these classes split into two but for our purposes we will only care about the union of such classes.
+
+\begin{proof}
+We will have to treat the unitary group case seperatedly. First for the non-unitary group case:\\
+Write $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1 \left[\times \{\pm 1\}\right]$ with $k_1 \geq k_2 \hdots \geq k_r$ and $m_1 \geq m_2 \hdots \geq m_r$ and under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s \times \epsilon$, where  $\left[\epsilon \colon \left\{\pm 1\right\} \to \multiplicativegroup{\cComplex},\right]$ $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$. Then the Frobenius conjugacy class of the Weyl group corresponding to $T$ is represented by $((k_1,k_2, \hdots, k_r), (m_1,m_2 \hdots m_s))$. The map $\Phi$ sends this conjugacy class (or union of two conjugacy classes) to the conjugacy class with cycle decomposition the union of cycles of lengths $k_1,k_1,k_2,k_2 \hdots, k_r,k_r, 2m_1,2m_2 \hdots 2m_r$ along with a cycle of length $1$ in the $Sp$ and $GSp$ case. Let $\tilde{T}$ be the torus in $GL$ corresponding to the conjugacy class above and let $\tilde{\theta}$ be the character of $\tilde{T}$ corresponding to $\Phi(s)$. Then 
+\[
+    \sum_{t \in \tilde{T}} \tilde{\theta}(t) \chi(det(t-1)) = \begin{cases}
+        g_T(\theta,\psi)  & G \neq Sp \textnormal{ or } GSp\\
+        g_T(\theta,\psi) \cdot g(1,\psi_1) & G = Sp \textnormal{ or } GSp
+    \end{cases}.
+\]
+Since the sum above is a Gauss sum for $GL$ it is equal to the Gauss sum attatched to the semisimple element $\Phi(s)$. \\
+Now for the unitary case: \calvin{this needs to be checked... I used engineers induction to guess at how the Weyl group conjugacy classes match the torus}
+Write $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s (\finiteFieldExtension{2m_i}^1)^2$ with $k_i$'s even and $m_i$'s odd \calvin{this is what I need to check... what tori you can get here} and under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s \times \epsilon$, where  $\left[\epsilon \colon \left\{\pm 1\right\} \to \multiplicativegroup{\cComplex},\right]$ $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$. Then the Frobenius conjugacy class of the Weyl group corresponding to $T$ is represented by having even cycles of lengths $k_1,k_2 \hdots k_r$ and odd cycles of lengths $m_1,m_1,m_2,m_2, \hdots, m_s,m_s$. The map $\Phi$ sends this conjugacy class to the conjugacy class with even cycles $k_1,k_1,k_2,k_2 \hdots k_r,k_r$ and odd cycles $m_1,m_1,m_1,m_1,m_2,m_2,m_2,m_2, \hdots, m_s,m_s,m_s,m_s$. Let $\tilde{T}$ be the torus in $GL$ corresponding to the conjugacy class with all even cycles of lengths $k_1,k_1,k_2,k_2 \hdots k_r,k_r$ and $2m_1,2m_1,2m_2,2m_2, \hdots, 2m_s,2m_s$. Then $\Phi(s)$ is in this torus \calvin{write out what that means} giving a character $\tilde{\theta}$ on it and 
+\[
+    \sum_{t \in \tilde{T}} \tilde{\theta}(t) \chi(det(t-1)) = g_T(\theta,\psi).
+\]
+Since the sum above is a Gauss sum for $GL$ it is equal to the Gauss sum attatched to the semisimple element $\Phi(s)$.
+\end{proof}
+
+This completes the proof of proposition \ref{prop:geoconj}.
 
 \subsection{Computation for Lusztig series}
 
@@ -539,11 +618,11 @@ We define $$g_T\left(t, \fieldCharacter\right) = g_T\left(\theta, \fieldCharacte
 We claim that this definition only depends on $t$ and not on the maximal torus $T$ containing it.
 
 To see this, suppose that $\deg \alpha_1 = d_1$, $\dots$, $\deg \alpha_k = d_k$, $\deg \theta'_1 = d'_1$, $\dots$, $\deg \theta'_s = d'_s$ and that $k_1 = b_1 d_1$, $\dots$, $k_r = b_r d_r$, $2m_1 = b'_1 d'_1$, $\dots$, $2m_s = b'_s d'_s$. Then for every $j$,
-$\alpha_j = \beta_j \circ \FieldNorm{b_j d_j}{d_j}$ for some $\beta_j \colon \multiplicativegroup{\finiteFieldExtension{d_j}} \to \multiplicativegroup{\cComplex}$, and similarly for every $i$, $\theta'_i = \vartheta_i \circ \FieldNorm{b'_i d'_i}{d'_i}$ for some $\vartheta_i \colon \multiplicativegroup{\finiteFieldExtension{d'_i}} \to \multiplicativegroup{\cComplex}$. By the Hasse--Davenport relation we have \begin{equation}\label{eq:hasse-davenport-for-semisimple-elements}
+$\alpha_j = \beta_j \circ \FieldNorm{b_j d_j}{d_j}$ for some regular character $\beta_j \colon \multiplicativegroup{\finiteFieldExtension{d_j}} \to \multiplicativegroup{\cComplex}$, and similarly for every $i$, $\theta'_i = \vartheta_i \circ \FieldNorm{b'_i d'_i}{d'_i}$ for some regular character $\vartheta_i \colon \multiplicativegroup{\finiteFieldExtension{d'_i}} \to \multiplicativegroup{\cComplex}$. By the Hasse--Davenport relation we have \begin{equation}\label{eq:hasse-davenport-for-semisimple-elements}
 	g_T\left(t, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\vartheta_i}{\chi^{-1}}{\fieldCharacter_{d'_i}}^{b'_i} \cdot  \prod_{j=1}^r \GaussSumCharacter{\beta_j}{\chi^{-1}}{\fieldCharacter_{d_j}}^{b_j} \GaussSumCharacter{\beta_j^{-1}}{\chi^{-1}}{\fieldCharacter_{d_j}}^{b_j}.
 \end{equation}
 On the other hand, let $$e_T\left(t\right) = \left(t_1,\dots,t_r,u_1,\dots,u_s\right),$$
-where $t_j \in \multiplicativegroup{\finiteFieldExtension{k_j}}$ and $u_i \in \finiteFieldExtension{2m_i}^1$ for every $i$ and $j$. Then since $\ToriDualToriIsomorphism_k$ preserves degrees of Frobenius orbits, we have that $t_j \in \multiplicativegroup{\finiteFieldExtension{d_j}}$ and $u_i \in \multiplicativegroup{\finiteFieldExtension{d'_i}}$ for every $i$ and $j$ (and they do not belong to smaller field extensions). Thus
+where $t_j \in \multiplicativegroup{\finiteFieldExtension{k_j}}$ and $u_i \in \finiteFieldExtension{2m_i}^1$ for every $i$ and $j$. Then we have that $t_j \in \multiplicativegroup{\finiteFieldExtension{d_j}}$ and $u_i \in \multiplicativegroup{\finiteFieldExtension{d'_i}}$ for every $i$ and $j$ (and these elements do not belong to smaller field extensions). Thus
 \begin{equation}\label{eq:characteristic-polynomial-equality-for-semisimple-elements}
 	\characteristicPolynomial_{t}\left(X\right) = \prod_{i=1}^s \characteristicPolynomial_{u_i, \finiteFieldExtension{d'_i}}\left(X\right)^{b'_i} \cdot \prod_{j=1}^r \characteristicPolynomial_{t_j, \finiteFieldExtension{d_j}}\left(X\right)^{b_j}\characteristicPolynomial_{t_j^{-1}, \finiteFieldExtension{d_j}}\left(X\right)^{b_j}.
 \end{equation}
@@ -556,11 +635,7 @@ where $T$ is any maximal torus containing $s$ and $\characteristicPolynomial_{s}
 
 \subsubsection{Proof of the main result}
 
-\begin{proposition}
-\label{prop:geoconj}
-    Let $(T,\theta)$ be geometrically conjugate to $(T',\theta')$ inside $G^\vee$ i.e. there exists $g \in T(\mathbb{F}_n)$ such that $gTg^{-1} = T'$ and $\theta'(Nm_{n:1}(x)) = \theta(Nm_{n:1}(g^{-1}xg))$ for $x \in T'(\mathbb{F}_n)$. Then $g_T(\theta,\psi_{tr}) = g_{T'}(\theta',\psi_{tr})$
-\end{proposition}
-
+\begin{comment}
 \calvin{here is the geometric idea:}
 \begin{lemma}
     Let $\mathcal{F} := \mathcal{L}(\theta) \otimes tr^{*}\mathcal{L}(\psi)$. Then
@@ -578,7 +653,7 @@ Combining this with Grothendieck-Lefschetz we get
 \end{corollary}
 \calvin{there might be a simple non-geometric way to do this corollary not sure.}
 \calvin{The corollary plus the definition of geometric conjugacy imply $g_T(\theta,\psi) = \mu_kg_{T'}(\theta',\psi)$ for some $k$-th root of unity $\mu_k$. Not sure how to finish from here.}
-
+\end{comment}
 Let $\ToriDualToriIsomorphism_T \colon \widehat{T} \to T$ be as in the previous sections. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that $\ToriDualToriIsomorphism_T\left(\theta\right) = s$. The \emph{Lusztig series} $\LusztigSeries{G}{s}$ consists of (equivalence classes of) the irreducible representations $\pi$ of $R_{T, \theta}$ with $c_{\pi} \ne 0$ as in the theorem.
 
 Let $L \subset G$ be a Levi subgroup of $G$, and suppose that $L \cong \prod_{j=1}^\ell \GL_{t_j}\left(\finiteField\right) \times G'$ where $G' = \IsometryGroup\left(\hermitianSpace'\right)$ where $\hermitianSpace'$ is a non-degenerate hermitian subspace and $\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic$, where $\xIsotropic$ and $\yIsotropic$ are totally isotropic subspace in duality. Suppose that $s \in L$, and denote by $s_i$ the projection of $s$ to $\GL_{t_i}\left(\finiteField\right)$ for $1 \le i \le \ell$ and by $s_0$ the projection of $s$ to $G'$. We denote
@@ -587,7 +662,8 @@ It is clear that $$\tau_{G, \chi, \fieldCharacter}\left(s\right) = \tau_{G', \ch
 
 We will need the following two facts:
 \begin{enumerate}
-	\item For classical groups $G$ (as the ones we consider in this paper), the Lusztig series $\LusztigSeries{G}{s}$ contains at most one irreducible cuspidal representation.
+	\item For classical groups $G$ (as the ones we consider in this paper), the Lusztig series $\LusztigSeries{G}{s}$ contains at most one irreducible cuspidal representation. \calvin{False for $SL_2$? True for GSP though. Maybe true with connected center?}
+    \elad{No assumption on the center}\calvin{what about the two representations of $SL_2$ in anisotropic torus with the $-1$ character?}\elad{Maybe one of them is not cuspidal (has unipotent fixed vectors). See Lusztig's paper Irreducible Representations of Finite Classical Groups page 172}\calvin{I'm pretty sure neither has them. I haven't read this paper but my guess is the problem is that the centralizer of the $s$ in its Lusztig series is not connected: it is a seimdirect product of $\mathbb{G}_m$ and $\mathbb{Z}/2\mathbb{Z}$.}\elad{You are right, I checked Lusztig's paper and he takes $q$ to be a power of $2$ in the cases with disconnected center. I guess we have to switch to the similitude groups (for which Lusztig explains that we have unique cuspidals)}
 	\item The Lusztig series $\LusztigSeries{G}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(P,\sigma\right)$ where $P$ is a parabolic subgroup of $G$ with Levi part $L$ and $\sigma \in \LusztigSeries{L}{s}$ is an irreducible cuspidal representation.
 \end{enumerate}
 Our theorem is equivalent to the following statement.
