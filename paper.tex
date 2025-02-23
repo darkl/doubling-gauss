@@ -502,9 +502,29 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 \calvin{here is the section I am adding in.}
 \subsubsection{Geomtric Conjugacy and Lusztig Series}
 (following chapter 13 of Digne and Michel's Representations of Finite Groups of Lie Type)
-Let $\mathbb{G}$ be a reductive group over $\mathbb{F}$ and fix a torus $\mathbb{T}$ defined over $\mathbb{F}$. A \emph{dual group over $\mathbb{F}$} $\mathbb{G}^*$ with a dual torus $\mathbb{T}^*$ is a group with an isomorphism $X_*(T) \cong X^*(T^*)$ which is compatible with the action of Frobenius and sends roots to coroots \calvin{check if I flipped upper and lower star}.
+Let $\mathbb{G}$ be a reductive group over $\mathbb{F}$ and fix a torus $\mathbb{T}$ defined over $\mathbb{F}$. The \emph{dual group over $\mathbb{F}$} of $\mathbb{G}$ with respect to the torus $\mathbb{T}$ corresponds to the group $\mathbb{G}^*$ with a dual torus $\mathbb{T}^*$ and root datum
+\[
+    (X^*(\mathbb{T}^*),\Phi_{\mathbb{T}^*},X_*(\mathbb{T}^*),\Phi_{\mathbb{T}^*}^\vee) \cong (X_*(\mathbb{T}),\Phi_{\mathbb{T}}^\vee,X^*(\mathbb{T}),\Phi_{\mathbb{T}})
+\]
+such that the isomorphism respects the Frobenius action on $X^*$ and $X_*$.
 
-Associated with a torus character pair $(T,\theta)$ is a  Frobenius stable $W(\mathbb{T})$ orbit in $X_*(\mathbb{T}) = X^*(\mathbb{T}^*)$. Under a choice of $\overline{\mathbb{F}}^\times \cong \left(\mathbb{Q}/\mathbb{Z}\right)_{p'}$, $X^*(\mathbb{T}^*) \otimes \left(\mathbb{Q}/\mathbb{Z}\right)_{p'} \cong \mathbb{T}^*(\overline{\mathbb{F}})$, this associates to $(T,\theta)$ a Frobenius stable semisimple conjugacy class in $\mathbb{G}^*$.
+Fix an isomorphism $\overline{\mathbb{F}}^\times \cong (\mathbb{Q}/\mathbb{Z})_{p'}$ and an embedding $\overline{\mathbb{F}}^\times \cong \overline{\mathbb{Q}_\ell}^\times$. By homing the exact sequence
+\[
+    0 \to T \to \mathbb{T}(\overline{\mathbb{F}}) \to_{F-1} \mathbb{T}(\overline{\mathbb{F}}) \to 0
+\]
+into $\mathbb{G}_m(\overline{\mathbb{F}})$, we get an exact sequence
+\[
+    1 \to X^*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \to_{F-1}X^*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \to \mathrm{Irr}(T) \to 1
+\]
+(the last map is surjective by including $T$ into $\mathbb{T}$ as a finite set of points and giving a surjection of group algebras). 
+
+Hence for a torus character pair $(T',\theta')$ for $G$, we may conjugate $\mathbb{T}'$ to a fixed torus $\mathbb{T}$ and associate to $\theta$ to an element of 
+\[
+\frac{(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}}{\{(\tilde{F}-1)x: x \in (\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}\}}
+\]
+where $\tilde{F}$ is the Frobeinus twisted by a Weyl group element.
+
+Frobenius stable $W(\mathbb{T})$ orbit in $X_*(\mathbb{T}) = X^*(\mathbb{T})$. Under a choice of $\overline{\mathbb{F}}^\times \cong \left(\mathbb{Q}/\mathbb{Z}\right)_{p'}$, $X^*(\mathbb{T}^*) \otimes \left(\mathbb{Q}/\mathbb{Z}\right)_{p'} \cong \mathbb{T}^*(\overline{\mathbb{F}})$, this associates to $(T,\theta)$ a Frobenius stable semisimple conjugacy class in $\mathbb{G}^*$.
 
 \begin{definition}
     The \emph{Lusztig series} $\LusztigSeries{G}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \in \mathbb{G}^*$ consists of (equivalence classes of) the irreducible representations $\pi$ which appear with nonzero multiplicity in $R_{T, \theta}$ for some $(T,\theta)$ pair associated to $(s)$.
