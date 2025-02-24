@@ -508,26 +508,20 @@ Let $\mathbb{G}$ be a reductive group over $\mathbb{F}$ and fix a torus $\mathbb
 \]
 such that the isomorphism respects the Frobenius action on $X^*$ and $X_*$.
 
-Fix an isomorphism $\overline{\mathbb{F}}^\times \cong (\mathbb{Q}/\mathbb{Z})_{p'}$ and an embedding $\overline{\mathbb{F}}^\times \cong \overline{\mathbb{Q}_\ell}^\times$. By homing the exact sequence
-\[
-    0 \to T \to \mathbb{T}(\overline{\mathbb{F}}) \to_{F-1} \mathbb{T}(\overline{\mathbb{F}}) \to 0
-\]
-into $\mathbb{G}_m(\overline{\mathbb{F}})$, we get an exact sequence
-\[
-    1 \to X^*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \to_{F-1}X^*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \to \mathrm{Irr}(T) \to 1
-\]
-(the last map is surjective by including $T$ into $\mathbb{T}$ as a finite set of points and giving a surjection of group algebras). 
+Fix an isomorphism $\overline{\mathbb{F}}^\times \cong (\mathbb{Q}/\mathbb{Z})_{p'}$ and an embedding $\overline{\mathbb{F}}^\times \cong \overline{\mathbb{Q}_\ell}^\times$. 
+We get an isomorphism
+\begin{align*}
+\label{eq:DL}
+0 \to X_*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \to_{F-1} X_*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \to \mathbb{T}(\overline{\mathbb{F}}) \to 0
+\end{align*}
+with the last map being $y \mapsto N_{\mathbb{F}^n/\mathbb{F}}(y(\zeta))$
+for the $\zeta=q^n-1$-root of unity corresponding to $1/(q^n-1) \in (\mathbb{Q}/\mathbb{Z})_{p'}$ and sufficiently large $n$ (large enough so that $\mathbb{T}$ is split).
 
-Hence for a torus character pair $(T',\theta')$ for $G$, we may conjugate $\mathbb{T}'$ to a fixed torus $\mathbb{T}$ and associate to $\theta$ to an element of 
-\[
-\frac{(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}}{\{(\tilde{F}-1)x: x \in (\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}\}}
-\]
-where $\tilde{F}$ is the Frobeinus twisted by a Weyl group element.
-
-Frobenius stable $W(\mathbb{T})$ orbit in $X_*(\mathbb{T}) = X^*(\mathbb{T})$. Under a choice of $\overline{\mathbb{F}}^\times \cong \left(\mathbb{Q}/\mathbb{Z}\right)_{p'}$, $X^*(\mathbb{T}^*) \otimes \left(\mathbb{Q}/\mathbb{Z}\right)_{p'} \cong \mathbb{T}^*(\overline{\mathbb{F}})$, this associates to $(T,\theta)$ a Frobenius stable semisimple conjugacy class in $\mathbb{G}^*$.
+Hence for a torus character pair $(T',\theta')$ for $G$, we may conjugate $\mathbb{T}'$ to a fixed torus $\mathbb{T}$ and associate to $\theta$ to an element of $X^*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ by treating $\theta$ as a linear functional on $Y(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ by composing with the map to $\mathbb{T}(\mathbb{F})$. This is well defined up to the Weyl group, and in fact there is a correspondence between $(T',\theta')$ pairs and $F$-stable Weyl group orbits in $X^*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ [Coloarry 13.9].  By composing with \ref{eq:DL}, we assocaited to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
 
 \begin{definition}
-    The \emph{Lusztig series} $\LusztigSeries{G}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \in \mathbb{G}^*$ consists of (equivalence classes of) the irreducible representations $\pi$ which appear with nonzero multiplicity in $R_{T, \theta}$ for some $(T,\theta)$ pair associated to $(s)$.
+    The pairs $(T',\theta'),(T,\theta)$ are said to be \emph{geometrically conjugate} if their associated semisimple conjugacy classes in $G^*$ are the same.
+    The \emph{Lusztig series} $\LusztigSeries{G}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \mathbb{G}^*$ consists of (equivalence classes of) the irreducible representations $\pi$ which appear with nonzero multiplicity in $R_{T, \theta}$ for some $(T,\theta)$ pair associated to $(s)$.
 \end{definition}
 
 \begin{center}
@@ -543,17 +537,22 @@ Frobenius stable $W(\mathbb{T})$ orbit in $X_*(\mathbb{T}) = X^*(\mathbb{T})$. U
 \end{tabular}
 \end{center}
 
-The pairs $(T,\theta),(T',\theta')$ are said to be geometrically conjugate if they are associated to the same Frobenius stable geometric conjugacy class. The main point of this section is the following
+The pairs $(T,\theta),(T',\theta')$ are said to be geometrically conjugate if they are associated to the same Frobenius stable geometric conjugacy class. The main point of this section is the following:
+
+For a torus $T$ is a classical group $G$ embedded in $GL_n$ via $\rho$, define
+\[
+    g_{T,\rho}(\theta,\psi,\chi) := \frac{\sum_{t\in T} \theta(t)\chi(det(\rho(t)-1))}{}
+\]
 
 \begin{proposition}
 \label{prop:geoconj}
-Suppose that $(T,\theta)(T',\theta')$ are maximal torus, character pairs of $G$ for a classical group $G$ which are geometrically conjugate. Then $g_T(\theta,\psi_{tr}) = g_{T'}(\theta',\psi_{tr})$.
+Suppose that $(T,\theta)(T',\theta')$ are maximal torus, character pairs of $G$ for a classical group $G$ which are geometrically conjugate. Then $g_{T,\rho}(\theta,\psi,\chi) = g_{T',\rho}(\theta',\psi,\chi)$ where $\rho$ is the natural embedding of $GL_n$
 \end{proposition}
 
-\subsubsection{Guass sums attatched to semisimple elements in $GL_n$}
-Copy over the gauss sums attatched to semisimple elements section.
+\subsubsection{Gauss sums attached to semisimple elements}
 
-\subsubsection{Proof of proposition \ref{prop:geoconj}}
+
+\subsubsection{General case of \ref{prop:geoconj}}
 First we fix representations $\Phi$ of the dual groups:
 \begin{center}
 \begin{tabular}{ c c}
