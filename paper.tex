@@ -515,11 +515,11 @@ We get an isomorphism
 with the last map being $y \mapsto N_{T(\mathbb{F}^n):T(\mathbb{F})}(y(\zeta_n))$
 for the $\zeta_n=q^n-1$-root of unity corresponding to $1/(q^n-1) \in (\mathbb{Q}/\mathbb{Z})_{p'}$ and sufficiently large $n$ (large enough so that $\mathbb{T}$ is split).
 
-Hence for a torus character pair $(T',\theta')$ for $G$, we may conjugate $\mathbb{T}'$ to a fixed torus $\mathbb{T}$ and associate to $\theta$ to an element $x_{T,\theta}$ of $X^*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ via the equality
+Hence for a torus character pair $(T,\theta)$ for $G$, we may conjugate $\mathbb{T}$ to a fixed torus $\mathbb{T}'$ and associate to $\theta$ a twisted Frobenius (twisted by an element of $W$ in the twisted Weyl group conjugacy class corresponding to $T$) stable element $x_{T,\theta}$ of $X^*(\mathbb{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ via the equality
 \[
     exp(\langle x_{T,\theta},y\rangle) = \theta(N_{T(\mathbb{F}^n):T(\mathbb{F})}(y(\zeta_n)))
 \]
-for large enough $n$. This is well defined up to the Weyl group, and in fact there is a correspondence between $(T',\theta')$ pairs and $F$-stable Weyl group orbits in $X^*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ [Coloarry 13.9].  By composing with \ref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
+for large enough $n$. This is well defined up to the Weyl group, and in fact there is a correspondence between $(T,\theta)$ pairs and $F$-stable Weyl group orbits in $X^*(\mathbb{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ [Corollary 13.9].  By composing with \ref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
 
 \begin{definition}
     Denote the Frobenius semisimple conjugacy class associated to a torus character pair $(T,\theta)$ by $(s_{T,\theta})$. Similarly denote the Frobenius stable Weyl group element of $X^*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ corresponding to $(T,\theta)$ by $(x_{T,\theta})$
@@ -595,7 +595,7 @@ The idea of the proof is that the formula from Theorem \ref{thm:thm:computation-
         \item $x_{\mathbb{F}_n^\times \times \mathbb{F}_n^\times,\alpha \times \alpha^{-1}} = \phi(x_{\mathbb{F}_n,\alpha})$
         \item $x_{\mathbb{F}_{2n}^\times,\theta'}=\phi(x_{(\mathbb{F}_{2n})^{Nm=1},\theta})$
     \end{enumerate}
-    where $\theta'(t) = \theta(t^{1-q^m})$.
+    where $\theta'(t) = \theta(t^{1-q^n})$.
 \end{lemma}
 \begin{proof}
 Recall that $x_{T,\theta}$ is defined by for sufficiently large $m$ with $\zeta_m = 1/(q^m-1)$ under the fixed identification $\overline{\mathbb{F}}^\times \cong (\mathbb{Q}/\mathbb{Z})_{p'}$
