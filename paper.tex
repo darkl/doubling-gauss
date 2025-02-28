@@ -56,6 +56,7 @@
 \newcommand{\hermitianSpace}{\mathrm{V}}
 \newcommand{\xIsotropic}{\mathrm{X}}
 \newcommand{\yIsotropic}{\mathrm{Y}}
+\newcommand{\similitudeCharacter}{\operatorname{sim}}
 
 % Inner product
 \newcommand{\innerproduct}[2]{\left\langle #1,#2\right\rangle}
@@ -94,6 +95,7 @@
 % Matrices macros
 \newcommand{\transpose}[1]{\, {}^{t}#1}
 \newcommand{\inverseTranspose}[1]{#1^{\iota}}
+\newcommand{\involution}[1]{#1^{c}}
 \newcommand{\IdentityMatrix}[1]{I_{#1}}
 \newcommand{\diag}{\mathrm{diag}}
 \newcommand{\antidiag}{\operatorname{\mathrm{antidiag}}}
@@ -104,12 +106,14 @@
 \newcommand{\UnipotentRadicalForWssRecursion}[2]{\mathcal{Y}_{c,k}}
 \newcommand{\UnipotentRadical}{N}
 \newcommand{\ParabolicSubgroup}{P}
+\newcommand{\GroupExtension}[1]{{#1}^{\mathrm{ext}}}
 
 % Finite field macros
 \newcommand{\FieldNorm}[2]{\mathrm{N}_{#1:#2}}
 \newcommand{\aFieldNorm}{\mathrm{N}}
 \newcommand{\FieldTrace}{\mathrm{Tr}}
 \newcommand{\finiteField}{\mathbb{F}}
+\newcommand{\quadraticExtension}{\mathbb{E}}
 \newcommand{\finiteFieldExtension}[1]{\finiteField_{#1}}
 \newcommand{\FieldExtension}[2]{{#1} \slash {#2}}
 \newcommand{\algebraicClosure}[1]{\overline{#1}}
@@ -291,7 +295,16 @@ The last equality implies the following result.
 
 \subsection{The case of classical groups}
 
-Let $\hermitianSpace$ be a vector space of dimension $n$ over $\finiteField$, equipped with a non-degenerate bilinear form $\innerproduct{\cdot}{\cdot} \colon \hermitianSpace \times \hermitianSpace \to \finiteField$ which is either symmetric or anti-symmetric. Let $G = \IsometryGroup \left(\hermitianSpace\right)$ be the isometry group of $\hermitianSpace$, consisting of all the elements of $\GL\left(\hermitianSpace\right)$ that satisfy $\innerproduct{gx}{gy} = \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. Let $\lieAlgebra$ be the Lie algebra of $G$, consisting of all elements $A \in \EndomorphismRing\left(\hermitianSpace\right)$ satisfying $\innerproduct{Ax}{y} + \innerproduct{x}{AY} = 0$ for every $x, y \in \hermitianSpace$.
+Let $\quadraticExtension \slash \finiteField$ be a field extension of degree $1$ or $2$. Let $x \mapsto \involution{x}$ be the generator of $\Galois\left(\quadraticExtension \slash \finiteField\right)$.
+
+Let $\hermitianSpace$ be a vector space of dimension $n$ over $\quadraticExtension$, equipped with a non-degenerate sesquilinear form $\innerproduct{\cdot}{\cdot} \colon \hermitianSpace \times \hermitianSpace \to \quadraticExtension$ which is $\epsilon$-symmetric for $\epsilon \in \left\{\pm 1\right\}$. By this we mean that:
+\begin{enumerate}
+	\item For every $x_1,x_2,y \in \hermitianSpace$, $$\innerproduct{x_1 + x_2}{y} = \innerproduct{x_1}{y} + \innerproduct{x_2}{y}.$$
+	\item For every $x,y \in \hermitianSpace$ and $t \in \quadraticExtension$, $$\innerproduct{tx}{y} = t\innerproduct{x}{y}.$$
+	\item ($\epsilon$-symmetric) For every $x,y \in \hermitianSpace$, $$\innerproduct{x}{y} = \epsilon \involution{\innerproduct{y}{x}}.$$
+	\item (non-degenerate) For every $0 \ne x \in \hermitianSpace$ there exists $y \in \hermitianSpace$ such that $$\innerproduct{x}{y} \ne 0.$$
+\end{enumerate}
+Let $\IsometryGroup \left(\hermitianSpace\right)$ be the isometry group of $\hermitianSpace$, consisting of all the elements of $\GL\left(\hermitianSpace\right)$ that satisfy $\innerproduct{gx}{gy} = \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. We denote by $G$ the identity component of $\IsometryGroup\left(\hermitianSpace\right)$. Let $\GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ be the similitude group version of $\IsometryGroup\left(\hermitianSpace\right)$, consisting of the elements $g \in \GL\left(\hermitianSpace\right)$ with the property that there exists a constant $\similitudeCharacter\left(g\right) \in \multiplicativegroup{\quadraticExtension}$ such that for every $\innerproduct{gx}{gy} = \similitudeCharacter\left(g\right) \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. Let $\GroupExtension{G}$ be the identity component of $\GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$. Let $\lieAlgebra$ be the Lie algebra of $G$, consisting of all elements $A \in \EndomorphismRing\left(\hermitianSpace\right)$ satisfying $\innerproduct{Ax}{y} + \involution{\innerproduct{x}{AY}} = 0$ for every $x, y \in \hermitianSpace$.
 
 Let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be a character. As before, the assignment $\Phi_{\chi} \colon \GL\left(\hermitianSpace\right) \to \cComplex$ given by $$\Phi_{\chi}\left(g\right) = \begin{dcases}
 \chi\left(\det\left(g - \idmap_{\hermitianSpace}\right)\right) & \text{if }\det\left(g - \idmap_{\hermitianSpace}\right) \ne 0\\
@@ -299,19 +312,19 @@ Let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cC
 \end{dcases}$$
 is a class function of $\GL\left(\hermitianSpace\right)$.
 
-Let $\pi$ be an irreducible representation of $G$. Denote $$\dblGaussSum{\pi}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} \pi\left(g\right) \Phi_{\chi}\left(g\right).$$
-Since $\Phi_{\chi}$ is a class function of $\GL\left(\hermitianSpace\right)$, it is also a class function of $G$, and therefore $\dblGaussSum{\pi}{\chi} \in \Hom_{G}\left(\pi, \pi\right)$. By Schur's lemma, there exists a constant $\dblGaussSumScalar{\pi}{\fieldCharacter} \in \cComplex$, such that $$\dblGaussSum{\pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$
+Let $\pi$ be an irreducible representation of $H$ where $H \in \{G, \GroupExtension{G}\}$. Denote $$\dblGaussSum{\pi}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} \pi\left(g\right) \Phi_{\chi}\left(g\right).$$
+Since $\Phi_{\chi}$ is a class function of $\GL\left(\hermitianSpace\right)$, it is also a class function of $G$. Since $G$ is a normal subgroup of $H$, we have that $\dblGaussSum{\pi}{\chi} \in \Hom_{H}\left(\pi, \pi\right)$. By Schur's lemma, there exists a constant $\dblGaussSumScalar{\pi}{\fieldCharacter} \in \cComplex$, such that $$\dblGaussSum{\pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$
 We call $\dblGaussSumScalar{\pi}{\chi}$ the \emph{doubling method Gauss sum}.
 
 \subsubsection{Multiplicativity property}
 Our next goal is to understand how the doubling method Gauss sum behaves under parabolic induction.
 
 Let $\xIsotropic$ and $\yIsotropic$ be isotropic spaces of $\hermitianSpace$ of dimension $k$, such that $\xIsotropic$ and $\yIsotropic$ are in duality with respect to form $\innerproduct{\cdot}{\cdot}$. Let us write $$\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic,$$
-where $\hermitianSpace' \subset \hermitianSpace$ is a non-degenerate subspace, orthogonal to $\xIsotropic$ and $\yIsotropic$. Let $P$ be the parabolic subgroup of $G$, consisting of all elements stabilizing the flag $$0 \subset \xIsotropic \subset \xIsotropic \oplus \hermitianSpace' \subset \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic = \hermitianSpace.$$
-Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipotent radical of $P$. Then $L$ is isomorphic to $G' \times \GL_k\left(\finiteField\right)$, where $G' = \IsometryGroup\left(\hermitianSpace'\right)$.
+where $\hermitianSpace' \subset \hermitianSpace$ is a non-degenerate subspace, orthogonal to $\xIsotropic$ and $\yIsotropic$. Let $P$ be the parabolic subgroup of $H$, consisting of all elements stabilizing the flag $$0 \subset \xIsotropic \subset \xIsotropic \oplus \hermitianSpace' \subset \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic = \hermitianSpace.$$
+Let $G' = \IsometryGroup\left(\hermitianSpace'\right)$. Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipotent radical of $P$. Then $L$ is isomorphic to $H' \times \GL_k\left(\finiteField\right)$, where $H' \in \left\{G',\GroupExtension{G'}\right\}$ is of the same type as $H$. 
 
 \begin{theorem}\label{thm:multiplicativity-in-terms-of-gauss-sums}
-	Let $\pi'$ be an irreducible representation of $G'$ and let $\tau$ be an irreducible representation of $\GL_k\left(\finiteField\right)$. Then for any irreducible representation $\pi$ of $G$ which appears as a subrepresentation the parabolic induction $\rho = \Ind{P}{G}{\tau \overline{\otimes} \pi'}$ and any $\chi$ such that $\chi^2 \ne 1$, we have
+	Let $\pi'$ be an irreducible representation of $H'$ and let $\tau$ be an irreducible representation of $\GL_k\left(\finiteField\right)$. Then for any irreducible representation $\pi$ of $H$ which appears as a subrepresentation the parabolic induction $\rho = \Ind{P}{H}{\tau \overline{\otimes} \pi'}$ and any $\chi$ such that $\chi^2 \ne 1$, we have
 	$$\dblGaussSumScalar{\pi}{\chi} = \centralCharacter{\tau}\left(-1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^k \GaussSumScalar{\tau \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter} \dblGaussSumScalar{\pi'}{\chi}.$$
 \end{theorem}
 \begin{proof}
@@ -336,14 +349,14 @@ Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipot
 		q^{n^2} \sum_{p \in P} \Phi_{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{h \in \GL\left(\hermitianSpace\right)}  \chi\left(\det\left(xh\right)\right) \fieldCharacter\left(\trace h\right) \\
 		& \times \sum_{p' \in P} \sum_{p \in P} \chi^{-1}\left(\det p'\right) \fieldCharacter\left(\trace\left(p' \left(p - x^{-1}\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
 	\end{align*}
-	By decomposing the sum over $p' \in P$ into a sum over $N$ and $L$, we see that the inner sum over $N$ will vanish unless $p - x^{-1} \in P$, which implies that $x \in P$.
+	By decomposing the sum over $p' \in P$ into a sum over $N$ and $L$, we see that the inner sum over $N$ will vanish unless $p - x^{-1} \in P$, which implies that $x \in P \cap G$.
 	
 	Hence, we have that $\dblGaussSum{\rho}{\chi} f$ is supported on $P$. We move to compute $\left(\dblGaussSum{\rho}{\chi} f\right)\left(\idmap_{\hermitianSpace}\right)$. It is given by
 	\begin{equation}\label{eq:recursive-doubling-gauss-sum}
-		\frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{\substack{p \in P\\
+		\frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{\substack{p \in P \cap G\\
 				\det\left(p - \idmap_{\hermitianSpace}\right) \ne 0}} \chi\left(\det\left(p - \idmap_{\hermitianSpace}\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_{\tau} \otimes v_{\pi'}.
 	\end{equation}
-	Decomposing the sum \eqref{eq:recursive-doubling-gauss-sum} as a sum over $L$ and $N$, and using the fact that if $p \in P$ has Levi part with image $\left(a, g'\right) \in \GL_k\left(\finiteField\right) \times G'$ then $$\det\left(p - \idmap_{\hermitianSpace}\right) = \left(-1\right)^k \det\left(a\right)^{-1}\det\left(a - I_k\right)^2 \det\left( g' - \idmap_{\hermitianSpace'}\right),$$
+	Decomposing the sum \eqref{eq:recursive-doubling-gauss-sum} as a sum over $L$ and $N$, and using the fact that if $p \in P \cap G$ has Levi part with image $\left(a, g'\right) \in \GL_k\left(\finiteField\right) \times G'$ then $$\det\left(p - \idmap_{\hermitianSpace}\right) = \left(-1\right)^k \det\left(a\right)^{-1}\det\left(a - I_k\right)^2 \det\left( g' - \idmap_{\hermitianSpace'}\right),$$
 	and using the fact that $\sizeof{\lieAlgebra} = \sizeof{\lieAlgebra'} \sizeof{\squareMatrix_k\left(\finiteField\right)} \sizeof{N}^2$, where $\lieAlgebra'$ is the Lie algebra of $G'$,
 	we get that \eqref{eq:recursive-doubling-gauss-sum} equals
 	\begin{equation}
@@ -498,170 +511,6 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 		& \left[\times \chi\left(-2\right)\right].
 	\end{align*}
 \end{remark}
-\subsubsection{Geomtric Conjugacy and Lusztig Series}
-(following chapter 13 of Digne and Michel's Representations of Finite Groups of Lie Type)
-Let $\mathbb{G}$ be a reductive group over $\mathbb{F}$ and fix a torus $\mathbb{T}$ defined over $\mathbb{F}$. The \emph{dual group over $\mathbb{F}$} of $\mathbb{G}$ with respect to the torus $\mathbb{T}$ corresponds to the group $\mathbb{G}^*$ with a dual torus $\mathbb{T}^*$ and root datum
-\[
-    (X^*(\mathbb{T}^*),\Phi_{\mathbb{T}^*},X_*(\mathbb{T}^*),\Phi_{\mathbb{T}^*}^\vee) \cong (X_*(\mathbb{T}),\Phi_{\mathbb{T}}^\vee,X^*(\mathbb{T}),\Phi_{\mathbb{T}})
-\]
-such that the isomorphism respects the Frobenius action on $X^*$ and $X_*$.
-
-Fix an isomorphism $\overline{\mathbb{F}}^\times \cong (\mathbb{Q}/\mathbb{Z})_{p'}$ and an embedding $exp:(\mathbb{Q}/\mathbb{Z})_{p'} \to \overline{\mathbb{Q}_\ell}^\times$. 
-We get an isomorphism
-\begin{align*}
-\label{eq:DL}
-0 \to X_*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \to_{F-1} X_*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \to \mathbb{T}(\overline{\mathbb{F}}) \to 0
-\end{align*}
-with the last map being $y \mapsto N_{T(\mathbb{F}^n):T(\mathbb{F})}(y(\zeta_n))$
-for the $\zeta_n=q^n-1$-root of unity corresponding to $1/(q^n-1) \in (\mathbb{Q}/\mathbb{Z})_{p'}$ and sufficiently large $n$ (large enough so that $\mathbb{T}$ is split).
-
-Hence for a torus character pair $(T,\theta)$ for $G$, we may conjugate $\mathbb{T}$ to a fixed torus $\mathbb{T}'$ and associate to $\theta$ a twisted Frobenius (twisted by an element of $W$ in the twisted Weyl group conjugacy class corresponding to $T$) stable element $x_{T,\theta}$ of $X^*(\mathbb{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ via the equality
-\[
-    exp(\langle x_{T,\theta},y\rangle) = \theta(N_{T(\mathbb{F}^n):T(\mathbb{F})}(y(\zeta_n)))
-\]
-for large enough $n$. This is well defined up to the Weyl group, and in fact there is a correspondence between $(T,\theta)$ pairs and $F$-stable Weyl group orbits in $X^*(\mathbb{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ [Corollary 13.9].  By composing with \ref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
-
-\begin{definition}
-    Denote the Frobenius semisimple conjugacy class associated to a torus character pair $(T,\theta)$ by $(s_{T,\theta})$. Similarly denote the Frobenius stable Weyl group element of $X^*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ corresponding to $(T,\theta)$ by $(x_{T,\theta})$
-    \\
-    The pairs $(T',\theta'),(T,\theta)$ are said to be \emph{geometrically conjugate} is the geometric conjugacy classes $(s_{T,\theta}), (s_{T,\theta'})$ are equal.\\
-    The \emph{Lusztig series} $\LusztigSeries{G}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \mathbb{G}^*$ consists of (equivalence classes of) the irreducible representations $\pi$ which appear with nonzero multiplicity in $R_{T, \theta}$ for some $(T,\theta)$ such that $(s_{T,\theta}) = (s)$.
-\end{definition}
-
-\begin{center}
-\begin{tabular}{ c c c c c c}
- Group & Fixed Torus & Frobenius on $X(T)$ & Frobenius on $W$ &Dual Group & Dual Torus \\ 
- $Sp(2n)$ & $(\mathbb{F}^\times)^n$ & 1 & 1 &$SO(2n+1)$ & $(\mathbb{F}^\times)^n$\\  
- $GSp(2n)$ & $(\mathbb{F}^\times)^{n+1}$ & 1 & 1 &$GSpin(2n+1)$ &  $(\mathbb{F}^\times)^{n+1}$ \\
- $SO(2n)$ & $(\mathbb{F}^\times)^{n}$ & 1 & 1 &$SO(2n)$ &  $(\mathbb{F}^\times)^{n}$ \\
- $GO(2n)$ & $(\mathbb{F}^\times)^{n+1}$ & 1 & 1 &? &  $(\mathbb{F}^\times)^{n+1}$ \\
- $SO(2n+1)$ & $(\mathbb{F}^\times)^{n}$ & 1 & 1 &$Sp(2n)$ &  $(\mathbb{F}^\times)^{n}$ \\
- $GO(2n+1)$ & $(\mathbb{F}^\times)^{n+1}$ &1 & 1 &? &  $(\mathbb{F}^\times)^{n+1}$ \\ 
-  $U(n)$ & $(\mathbb{F}_2^{Nm=1})^{n}$ & -1 & 1 & $U(n)$ &  $(\mathbb{F}_2^{Nm=1})^{n}$ 
-\end{tabular}
-\end{center}
-
-For a torus theta pair $(T,\theta)$ with associated Frobenius conjugacy classes $w \in W(\mathbb{T})$ and $(s) \subset G^*$ and an embedding $\rho:G^* \to  GL_n$.  Fix a Frobenius stable maximal torus $\mathbb{T}^* \subset G^*$ and a Frobenius stable maximal torus $\mathbb{T} \subset GL_n$ which contains $\rho(\mathbb{T}^*)$. Let $\tilde{T}$ be the torus of $GL_n$ corresponding to the Frobenius conjugacy class of $\rho(w) \in W(\mathbb{T})$ and $\tilde{\theta}$ such that $(\rho(s)) = (s_{\tilde{T},\tilde{\theta}})$. Define
-\[
-    g_{T,\rho}(\theta,\psi,\chi) := \varepsilon_{\algebraicGroup{
-    \tilde{T}}}\sum_{t\in \tilde{T}} \tilde{\theta}(t)\chi(det(t))\psi(tr(t)).
-\]
-\calvin{check $\epsilon$ factors and Hasse-Davenport} The following lemma shows that this is well defined.
-\begin{lemma}
-\label{lemma:gl_invariance}
-\begin{enumerate}[(i)]
-	\item In the case $G = GL_n$ and $\rho$ is the standard representation, $g_{T,\rho}(\theta,\psi,\chi)$ depends only on the semisimple conjugacy class of $(s)$.
-	\item $g_{T,\rho}(\theta,\psi,\chi)$ is well defined i.e. independent of choice of $\mathbb{T}^* \subset G^*$ and $\mathbb{T} \subset GL_n$.
-\end{enumerate}
-\end{lemma}
-\begin{proof}
-(i) In this case when $T = \Pi_{i} \mathbb{F}^{n_i}$ and $\theta = \Pi_{i} \alpha_i$, we recover the Gauss sum
-\[
-	g_{T,\rho}(\theta,\psi,\chi)  = \varepsilon_{\algebraicGroup{T}} \Pi_i \tau(\alpha_i \times (\chi\circ Nm),\psi) .
-\]
-By by the Hasse-Davenport relation depends only on the geometric conjugacy class of $(T,\theta)$ hence the semisimple conjugacy class of $(s_{T,\theta})$ \calvin{maybe write more or less?}. 
-\\
-(ii) For a Frobenius stable semisimple conjugacy class $(s)$ in $GL_n$ in $GL_n$, we define
-\[
-	g_{(s)}(\psi,\chi) := g_{T,\rho}(\theta,\psi,\chi) \textnormal{ for some } (T,\theta) \textnormal{ such that } (s_{T,\theta}) = (s)
-\]
-By (i) this is well defined. Then
-\[
-	g_{T,\rho}(\theta,\psi,\chi)  = g_{(\rho(s_{T,\theta}))}(\psi,\chi)
-\]
-which is independent of of choice of $\mathbb{T}^* \subset G^*$ and $\mathbb{T} \subset GL_n$.
-\end{proof}
-
-\begin{corollary}
-\label{cor:geoconj}
-Suppose that $(T,\theta)(T',\theta')$ are geometrically conjugate torus character pairs in $G$. Then $g_{T,\rho}(\theta,\psi,\chi) = g_{T',\rho}(\theta',\psi,\chi)$.
-\end{corollary}
-\begin{proof}
-Both are equal to $g_{(\rho(s_{T,\theta}))}(\psi,\chi) = g_{(\rho(s_{T',\theta'}))}(\psi,\chi)$.
-\end{proof}
-
-\subsubsection{Invariance under geometric conjugacy in Theorem \ref{thm:thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}}
-The main result of this subsection is 
-\begin{theorem}
-\label{thm:indep_geo_conj}
-	$\frac{\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi}}{R_{T,\theta}(1)}$ only depends on the geometric conjugacy class of $(T,\theta)$.
-\end{theorem}
-
-The idea of the proof is that the formula from Theorem \ref{thm:thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} relates $\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi}/R_{T,\theta}(1)$ to $g_{T,\rho}(\theta,\psi,\chi)$ for an appropriate $\rho$. We will need the following computation:
-\begin{lemma}
-\label{lem:cochar_computation}
-    Define $\phi:(\mathbb{Q}/\mathbb{Z})_{p'}^n \to (\mathbb{Q}/\mathbb{Z})_{p'}^{2n} = X_*(GL_{2n})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ by $\phi(x) = (x,-x)$.
-    \begin{enumerate}
-        \item $x_{\mathbb{F}_n^\times \times \mathbb{F}_n^\times,\alpha \times \alpha^{-1}} = \phi(x_{\mathbb{F}_n,\alpha})$
-        \item $x_{\mathbb{F}_{2n}^\times,\theta'}=\phi(x_{(\mathbb{F}_{2n})^{Nm=1},\theta})$
-    \end{enumerate}
-    where $\theta'(t) = \theta(t^{1-q^n})$.
-\end{lemma}
-\begin{proof}
-Recall that $x_{T,\theta}$ is defined by for sufficiently large $m$ with $\zeta_m = 1/(q^m-1)$ under the fixed identification $\overline{\mathbb{F}}^\times \cong (\mathbb{Q}/\mathbb{Z})_{p'}$
-\[
-    exp(\langle x_{T,\theta},y\rangle) = \theta(y(Nm_{T(\mathbb{F}_m):T(\mathbb{F})}(y(\zeta_m))).
-\]
-Thus the result follows from the computations:\\
-(i)
-\begin{align*}
-    exp(\langle\phi(x_{\mathbb{F}_n,\alpha}),(y_1,y_2)\rangle) &= exp(\langle x_{\mathbb{F}_n,\alpha},\phi^*(y_1,y_2)\rangle) \\
-    &= \alpha\left(Nm_{mn:n}(y_1(\zeta_{mn})\right) \alpha\left(Nm_{mn:n}(y_2(\zeta_{mn})\right)^{-1} \\
-    &= \left(\alpha\times\alpha^{-1}\right)\left(Nm_{mn:n}((y_1,y_2)(\zeta_{mn}))\right)
-\end{align*}
-(ii)
-\begin{align*}
-    exp(\langle\phi(x_{(\mathbb{F}_{2n})^{Nm=1},\theta}),(y_1,y_2)\rangle) &= exp(\langle x_{(\mathbb{F}_{2n})^{Nm=1},\theta},\phi^*(y_1,y_2)\rangle) \\
-    &= \theta\left(\frac{Nm_{2mn:2n}(y_1(\zeta_{2mn})}{Nm_{2mn:2n}(y_1(\zeta_{2mn})^{q^n}}\right) \theta\left(\frac{Nm_{2mn:2n}(y_2(\zeta_{2mn})}{Nm_{2mn:2n}(y_2(\zeta_{2mn})^{q^n}}\right)^{-1} \\
-    &= \theta'\left(Nm_{2mn:2n}((y_1,y_2)(\zeta_{mn}))\right)
-\end{align*}
-\end{proof}
-
-Now we fix representations $\rho$ of the dual groups:
-\begin{center}
-\begin{tabular}{ c c}
- Group & Dual group representations $\rho$ \\ 
- $Sp(2n)$ &$SO(2n+1) \to GL(2n+1)$\\  
- $GSp(2n)$  &$GSpin(2n+1) \to GL(2n+1)$ \\
- $SO(2n)$ &$SO(2n) \to GL(2n)$ \\
- $GO(2n)$ & ? \\
- $SO(2n+1)$ &$Sp(2n) \to GL(2n)$ \\
- $GO(2n+1)$ & ? \\ 
-  $U(n)$  & $U(n) \to GL(2n)$  
-\end{tabular}
-\end{center}
-Note that in the $SO$ and $GSO$ case, the map $\rho$ sends the split torus of $G^*$ into the split torus of $GL(2n)$ and the induced map of cocharacters sends $x \mapsto (x,-x)$. In the $Sp,GSp$ cases the map is similar: the induced map of cocharacters sends $x \mapsto (x,1,-x)$. In the unitary case, the torus whose $\mathbb{F}$ points are $(\mathbb{F}_2^{Nm=1})^n \subset G^*(\mathbb{F})$ includes into the torus in $GL(2n)$ whose $\mathbb{F}$ points are $(\mathbb{F}_2^\times)^n$ and the induced map of cocharacters is $(x_1,x_2, \hdots, x_n) \mapsto (x_1,-x_1,x_2,-x_2, \hdots ,x_n,-x_n)$. In all these cases we can apply lemma \ref{lem:cochar_computation}:
-
-\begin{proof}[Proof of theorem \ref{thm:indep_geo_conj}] Let $T$ be a torus in $G$ and suppose $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$. We compute $g_{T,\rho}(\theta,\psi,\chi)$ using the the split torus $\mathbb{T}^*$ in $G^*$ including into the split torus $\mathbb{T}'$ in $GL$ in the non unitary case and in the unitary case we use the tori $\mathbb{T}^*$ whose $\mathbb{F}$ points are $(\mathbb{F}_2^{Nm=1})^n \subset G^*(\mathbb{F})$ includes into the torus $\mathbb{T}'$ in $GL(2n)$ whose $\mathbb{F}$ points are $(\mathbb{F}_2^\times)^n$. We then define $\tilde{T}$ as the $\mathbb{F}$-rational torus corresponding to the Frobenius stable Weyl group orbit of $\rho(w)$ inside $W(\mathbb{T}')$ where $(w)$ inside $W(\mathbb{T}^*)$ is the Frobenius stable Weyl group orbit associated to $T$. Lemma \ref{lem:cochar_computation} above implies that
-\[
-g_{T,\rho}(\theta,\psi,\chi)= \varepsilon_{\algebraicGroup{T}}\varepsilon_{\algebraicGroup{\tilde{T}}}g_{T}(\theta,\psi,\chi) \cdot \begin{cases}
-        1  & G \neq Sp, GSp\\
-        \tau(1,\psi_1) & G = Sp \textnormal{ or } GSp
-    \end{cases}
-\]
-where $g_T(\theta,\psi,\chi)$ is the expression from theorem \ref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}. \calvin{how does $\epsilon$ depend on $w$? Is the product always one?}.
-Corollary \ref{cor:geoconj} then implies that $g_T(\theta,\psi,\chi)$ only depends on the geometric conjugacy class of $(T,\theta)$. Now the formula for $\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi}$ in theorem \ref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} finishes the proof.
-\begin{comment}
-We will have to treat the unitary group case seperatedly. First for the non-unitary group case:\\
-
-
-
-Write $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1 \left[\times \{\pm 1\}\right]$ with $k_1 \geq k_2 \hdots \geq k_r$ and $m_1 \geq m_2 \hdots \geq m_r$ and under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s \times \epsilon$, where  $\left[\epsilon \colon \left\{\pm 1\right\} \to \multiplicativegroup{\cComplex},\right]$ $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$. Then the Frobenius conjugacy class of the Weyl group corresponding to $T$ is represented by $((k_1,k_2, \hdots, k_r), (m_1,m_2 \hdots m_s))$. The map $\rho$ sends this conjugacy class (or union of two conjugacy classes) to the conjugacy class with cycle decomposition the union of cycles of lengths $k_1,k_1,k_2,k_2 \hdots, k_r,k_r, 2m_1,2m_2 \hdots 2m_r$ along with a cycle of length $1$ in the $Sp$ and $GSp$ case. Let $\tilde{T}$ be the torus in $GL$ corresponding to the conjugacy class above and let $\tilde{\theta}$ be the character of $\tilde{T}$ corresponding to $\Phi(s)$. Then by theorem \ref{thm:thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}
-\[
-    \sum_{t \in \tilde{T}} \tilde{\theta}(t) \chi(det(t-1)) = \begin{cases}
-        g_T(\theta,\psi)  & G \neq Sp \textnormal{ or } GSp\\
-        g_T(\theta,\psi) \cdot g(1,\psi_1) & G = Sp \textnormal{ or } GSp
-    \end{cases}.
-\]
-Since the sum above is a Gauss sum for $GL$ it is equal to the Gauss sum attatched to the semisimple element $\Phi(s)$. \\
-Now for the unitary case: \calvin{this needs to be checked... I used engineers induction to guess at how the Weyl group conjugacy classes match the torus}
-Write $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s (\finiteFieldExtension{2m_i}^1)^2$ with $k_i$'s even and $m_i$'s odd \calvin{this is what I need to check... what tori you can get here} and under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s \times \epsilon$, where  $\left[\epsilon \colon \left\{\pm 1\right\} \to \multiplicativegroup{\cComplex},\right]$ $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$. Then the Frobenius conjugacy class of the Weyl group corresponding to $T$ is represented by having even cycles of lengths $k_1,k_2 \hdots k_r$ and odd cycles of lengths $m_1,m_1,m_2,m_2, \hdots, m_s,m_s$. The map $\Phi$ sends this conjugacy class to the conjugacy class with even cycles $k_1,k_1,k_2,k_2 \hdots k_r,k_r$ and odd cycles $m_1,m_1,m_1,m_1,m_2,m_2,m_2,m_2, \hdots, m_s,m_s,m_s,m_s$. Let $\tilde{T}$ be the torus in $GL$ corresponding to the conjugacy class with all even cycles of lengths $k_1,k_1,k_2,k_2 \hdots k_r,k_r$ and $2m_1,2m_1,2m_2,2m_2, \hdots, 2m_s,2m_s$. Then $\Phi(s)$ is in this torus \calvin{write out what that means} giving a character $\tilde{\theta}$ on it and 
-\[
-    \sum_{t \in \tilde{T}} \tilde{\theta}(t) \chi(det(t-1)) = g_T(\theta,\psi).
-\]
-Since the sum above is a Gauss sum for $GL$ it is equal to the Gauss sum attatched to the semisimple element $\Phi(s)$.
-\end{comment}
-\end{proof}
 
 \subsection{Computation for Lusztig series}
 
