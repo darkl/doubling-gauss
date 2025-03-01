@@ -118,6 +118,7 @@
 \newcommand{\finiteFieldExtension}[1]{\finiteField_{#1}}
 \newcommand{\quadraticFieldExtension}[1]{\quadraticExtension_{#1}}
 \newcommand{\FieldExtension}[2]{{#1} \slash {#2}}
+\newcommand{\NormOneGroup}[1]{\finiteFieldExtension{#1}^{\aFieldNorm = 1}}
 \newcommand{\algebraicClosure}[1]{\overline{#1}}
 \newcommand{\charactergroup}[1]{\widehat{\multiplicativegroup{\finiteFieldExtension{#1}}}}
 \newcommand{\limitcharactergroup}{\Gamma}
@@ -426,7 +427,7 @@ where $\fieldCharacter_n \colon \finiteFieldExtension{n} \to \multiplicativegrou
 $$\tau\left(\alpha \times \chi, \fieldCharacter_n\right) = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha\left(x\right) \chi\left( \FieldNorm{n}{1}\left(x\right)\right) \fieldCharacter_n\left(x\right).$$
 
 If $m \ge 1$, we denote 
-$$\finiteFieldExtension{2m}^1 = \left\{ x \in \multiplicativegroup{\finiteFieldExtension{2m}} \mid \FieldNorm{2m}{m}\left(x\right)= 1\right\}.$$
+$$\NormOneGroup{2m} = \left\{ x \in \multiplicativegroup{\finiteFieldExtension{2m}} \mid \FieldNorm{2m}{m}\left(x\right)= 1\right\}.$$
 
 \subsubsection{Split torus computation I}
 Let $\alpha \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ be a character and let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be a non-trivial character.
@@ -456,17 +457,17 @@ Notice that if $k = md$ and $\alpha = \beta \circ \FieldNorm{k}{m}$ where $\beta
 $$-\left(q^{\frac{m}{2}} \GaussSumCharacter{\beta^{-1}}{\chi^{-1}}{\fieldCharacter_m} \GaussSumCharacter{\beta}{\chi^{-1}}{\fieldCharacter_m} \tau\left(\chi^2, \fieldCharacter\right)^m\right)^{d}.$$
 
 \subsubsection{Elliptic torus computation}
-In this section we compute the doubling method Gauss sum for a torus of the form $\finiteFieldExtension{2m}^1$.
+In this section we compute the doubling method Gauss sum for a torus of the form $\NormOneGroup{2m}$.
 
-Let $\theta \colon \finiteFieldExtension{2m}^1 \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be non-trivial characters, such that $\chi^2 \ne 1$. It follows that $\theta\left(x^{1-q^m}\right) \ne \chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x\right)$ for some $x \in \multiplicativegroup{\finiteFieldExtension{2m}}$. Our goal is to compute $$\sum_{\substack{x \in \finiteFieldExtension{2m}^1\\
+Let $\theta \colon \NormOneGroup{2m} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be non-trivial characters, such that $\chi^2 \ne 1$. It follows that $\theta\left(x^{1-q^m}\right) \ne \chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x\right)$ for some $x \in \multiplicativegroup{\finiteFieldExtension{2m}}$. Our goal is to compute $$\sum_{\substack{x \in \NormOneGroup{2m}\\
 		x \ne 1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x - 1\right)\right).$$
 
 As usual, we rewrite this sum as follows
-$$q^{-2m} \sum_{z \in \finiteFieldExtension{2m}} \sum_{y \in \multiplicativegroup{\finiteFieldExtension{2m}}} \sum_{x \in \finiteFieldExtension{2m}^1} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(y\right)\right) \fieldCharacter_{2m}\left(z\left(y-x+1\right)\right).$$
+$$q^{-2m} \sum_{z \in \finiteFieldExtension{2m}} \sum_{y \in \multiplicativegroup{\finiteFieldExtension{2m}}} \sum_{x \in \NormOneGroup{2m}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(y\right)\right) \fieldCharacter_{2m}\left(z\left(y-x+1\right)\right).$$
 If $z=0$ then the sum over $y$ will vanish. Hence we can reduce the sum to $z \in \multiplicativegroup{\finiteFieldExtension{2m}}$. Replacing $y$ with $z^{-1} y$ we get the sum
-$$-q^{-m} \tau\left(\chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}, \fieldCharacter_{2m}\right) \sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(z\right)\right) \fieldCharacter_{2m}\left(z\right)  \sum_{x \in \finiteFieldExtension{2m}^1} \theta \left(-x\right) \fieldCharacter_{2m}\left(xz\right).$$
-To proceed, we use the Hilbert 90 map $\multiplicativegroup{\finiteFieldExtension{2m}} \to \finiteFieldExtension{2m}^1$ given by $t \mapsto t^{1 - q^m}$. This map is surjective, and its kernel is $\multiplicativegroup{\finiteFieldExtension{m}}$. Define $\theta' \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex}$ by $\theta'\left(t\right) = \theta\left(t^{1-q^m}\right)$. Replacing the sum over $x \in \finiteFieldExtension{2m}^1$ with a sum over $t \in \multiplicativegroup{\finiteFieldExtension{2m}}$, we get \begin{align*}
-	& \sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(z\right)\right) \fieldCharacter_{2m}\left(z\right) \sum_{x \in \finiteFieldExtension{2m}^1} \theta \left(x\right) \fieldCharacter_{2m}\left(xz\right) \\
+$$-q^{-m} \tau\left(\chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}, \fieldCharacter_{2m}\right) \sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(z\right)\right) \fieldCharacter_{2m}\left(z\right)  \sum_{x \in \NormOneGroup{2m}} \theta \left(-x\right) \fieldCharacter_{2m}\left(xz\right).$$
+To proceed, we use the Hilbert 90 map $\multiplicativegroup{\finiteFieldExtension{2m}} \to \NormOneGroup{2m}$ given by $t \mapsto t^{1 - q^m}$. This map is surjective, and its kernel is $\multiplicativegroup{\finiteFieldExtension{m}}$. Define $\theta' \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex}$ by $\theta'\left(t\right) = \theta\left(t^{1-q^m}\right)$. Replacing the sum over $x \in \NormOneGroup{2m}$ with a sum over $t \in \multiplicativegroup{\finiteFieldExtension{2m}}$, we get \begin{align*}
+	& \sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(z\right)\right) \fieldCharacter_{2m}\left(z\right) \sum_{x \in \NormOneGroup{2m}} \theta \left(x\right) \fieldCharacter_{2m}\left(xz\right) \\
 	= & \frac{1}{q^m-1}\sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \sum_{t \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(z\right)\right) \fieldCharacter_{2m}\left(z^{q^m}\right) \theta' \left(t\right) \fieldCharacter_{2m}\left(t^{1-q^m} z\right).
 \end{align*}
 Replacing $z$ with $t^{q^m} z$, this becomes
@@ -484,11 +485,11 @@ By the appendix, this equals
 \end{align*}
 
 To summarize, we have
-$$\sum_{\substack{x \in \finiteFieldExtension{2m}^1\\
+$$\sum_{\substack{x \in \NormOneGroup{2m}\\
 		x \ne 1}} \theta \left(-x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x - 1\right)\right) = q^{\frac{m}{2}} \tau\left(\chi^{-1}, \fieldCharacter\right)^{2m} \tau\left(\chi, \fieldCharacter\right)^{2m} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right),$$
 	where $\theta'\left(t\right) = \theta\left(t^{1-q^m}\right)$.
 Since $\tau\left(\chi^{-1}, \fieldCharacter\right) = \chi\left(-1\right) \conjugate{\tau\left(\chi, \fieldCharacter\right)}$ and since $\chi \ne 1$, this implies the identity
-$$\sum_{\substack{x \in \finiteFieldExtension{2m}^1\\
+$$\sum_{\substack{x \in \NormOneGroup{2m}\\
 		x \ne 1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x - 1\right)\right) = \theta\left(-1\right) q^{\frac{m}{2}} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right).$$
 
 \subsubsection{Computation for Deligne--Lusztig characters}
@@ -533,9 +534,9 @@ For any finite abelian group $G$, let $\widehat{G}$ be the character group of $G
 
 Let $\left(\ToriDualToriIsomorphism_k\right)_{k=1}^{\infty}$ be a family of isomorphisms $\ToriDualToriIsomorphism_k \colon \charactergroup{k} \to \multiplicativegroup{\finiteFieldExtension{k}}$ such that if $k' \mid k$ then $\ToriDualToriIsomorphism_k^{-1}\left(\xi_{k'}\right) = \ToriDualToriIsomorphism_{k'}^{-1}\left(\xi_{k'}\right) \circ \FieldNorm{k}{k'}$ for any $\xi_{k'} \in \multiplicativegroup{\finiteFieldExtension{k'}}$.
 
-Using the Hilbert 90 isomorphism $\finiteFieldExtension{2m} \slash \finiteFieldExtension{m} \to \finiteFieldExtension{2m}^{1}$ given by $$x \mapsto \frac{x}{x^{q^m}} = x^{1 - q^m},$$ we see that characters of $\finiteFieldExtension{2m}^1$ are in bijection with characters of $\multiplicativegroup{\finiteFieldExtension{2m}}$ such that their restriction to $\multiplicativegroup{\finiteFieldExtension{m}}$ is trivial. Using the surjective norm map $\multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\finiteFieldExtension{m}}$, such characters are precisely characters $\theta \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex}$ such that $\theta \circ \FieldNorm{2m}{m} = \theta^{1 + q^m} = 1$. By realizing the character group $\widehat{\finiteFieldExtension{2m}^1}$ as the subgroup of $\charactergroup{2m}$ given by $$\left\{ \theta \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex} \mid \theta^{1+q^m} = 1\right\},$$
-we have that $$\ToriDualToriIsomorphism_{2m}\left(\widehat{\finiteFieldExtension{2m}^1}\right) = \left\{\xi \in \multiplicativegroup{\finiteFieldExtension{2m}} \mid \xi^{1+q^m} = 1\right\} = \finiteFieldExtension{2m}^1.$$
-Let us denote the restriction of $\ToriDualToriIsomorphism_{2m}$ to $\widehat{\finiteFieldExtension{2m}^1}$ by $\ToriDualToriIsomorphism_{2m}^1 \colon \widehat{\finiteFieldExtension{2m}^1} \to \finiteFieldExtension{2m}^1$.
+Using the Hilbert 90 isomorphism $\finiteFieldExtension{2m} \slash \finiteFieldExtension{m} \to \finiteFieldExtension{2m}^{1}$ given by $$x \mapsto \frac{x}{x^{q^m}} = x^{1 - q^m},$$ we see that characters of $\NormOneGroup{2m}$ are in bijection with characters of $\multiplicativegroup{\finiteFieldExtension{2m}}$ such that their restriction to $\multiplicativegroup{\finiteFieldExtension{m}}$ is trivial. Using the surjective norm map $\multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\finiteFieldExtension{m}}$, such characters are precisely characters $\theta \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex}$ such that $\theta \circ \FieldNorm{2m}{m} = \theta^{1 + q^m} = 1$. By realizing the character group $\widehat{\NormOneGroup{2m}}$ as the subgroup of $\charactergroup{2m}$ given by $$\left\{ \theta \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex} \mid \theta^{1+q^m} = 1\right\},$$
+we have that $$\ToriDualToriIsomorphism_{2m}\left(\widehat{\NormOneGroup{2m}}\right) = \left\{\xi \in \multiplicativegroup{\finiteFieldExtension{2m}} \mid \xi^{1+q^m} = 1\right\} = \NormOneGroup{2m}.$$
+Let us denote the restriction of $\ToriDualToriIsomorphism_{2m}$ to $\widehat{\NormOneGroup{2m}}$ by $\ToriDualToriIsomorphism_{2m}^1 \colon \widehat{\NormOneGroup{2m}} \to \NormOneGroup{2m}$.
 
 The family $\left(\ToriDualToriIsomorphism_k\right)_{k=1}^{\infty}$ allows us to define $\ToriDualToriIsomorphism_T \colon \widehat{T} \to T$ for any maximal torus $T$ of $G$. Recall that for a maximal torus $T$ of $G$ there exists an isomorphism of groups $$e_T \colon T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1,$$
 satisfying that if the image of $t \in T$ in $\GL\left(\hermitianSpace\right)$ has an $\finiteField$-characteristic polynomial $\characteristicPolynomial_{t}\left(X\right)$ and $$e_T\left(t\right) = \left(t_1,\dots,t_r,u_1,\dots,u_s\right)$$ then $$\characteristicPolynomial_{t}\left(X\right) = \prod_{j=1}^r \characteristicPolynomial_{t_j, \finiteFieldExtension{k_j}}\left(X\right) \characteristicPolynomial_{t_j^{-1}, \finiteFieldExtension{k_j}}\left(X\right) \cdot \prod_{i=1}^s \characteristicPolynomial_{u_i, \finiteFieldExtension{2 m_i}}\left(X\right),$$
@@ -640,7 +641,7 @@ $$\DeligneLusztigInduction{T}{G}\theta = \sum_{\pi} c_{\pi} \cdot \trace \pi,$$
 then $$\innerproduct{K}{\conjugate{\DeligneLusztigInduction{T}{G}\theta}} = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \prod_{j=1}^k \dblGaussSumScalar{\pi}{\chi_j}}{\sizeof{G}} \sum_{\pi} c_{\pi} \dim \pi = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \prod_{j=1}^k \dblGaussSumScalar{\pi}{\chi_j}}{\sizeof{G}} \left(\DeligneLusztigInduction{T}{G}\theta\right)\left(1\right),$$
 where $\pi$ is any irreducible representation of $G$ such that $c_{\pi} \ne 0$.
 
-Suppose that $T \cong \finiteFieldExtension{2m}^1$, and let $t \in T$ be an element such that $t$ is contained only in the torus $T$. Then
+Suppose that $T \cong \NormOneGroup{2m}$, and let $t \in T$ be an element such that $t$ is contained only in the torus $T$. Then
 $$K\left(t\right) = \sum_{\theta} \theta\left(t\right) \innerproduct{K}{\DeligneLusztigInduction{T}{G}\left(\theta\right)},$$
 where the sum is over all the characters of $T$. Using the formula $$\dblGaussSumScalar{\pi}{\chi} = \tau\left( \theta' \times \chi^{-1}, \fieldCharacter_{2m} \right) \theta\left(-1\right) \tau\left(\chi^2, \fieldCharacter\right)^m,$$
 we get
