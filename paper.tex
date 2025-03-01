@@ -224,6 +224,42 @@ $$\GaussSum{\tau \times \chi}{\fieldCharacter} = q^{-\frac{n^2}{2}} \sum_{g \in 
 This element lies in $\Hom_{\GL_n\left(\finiteField\right)}\left(\tau, \tau\right)$ and therefore by Schur's lemma there exists a complex number $\GaussSumScalar{\tau \times \chi}{\fieldCharacter} \in \cComplex$ such that
 $$\GaussSum{\tau \times \chi}{\fieldCharacter} = \GaussSumScalar{\tau \times \chi}{\fieldCharacter} \cdot \idmap_\tau.$$ The computation of this scalar is known due to Kondo.
 
+\begin{lemma}\label{lem:sum-vanishes-for-singular-matrices}
+	For any singular matrix $X \in \squareMatrix_n\left(\finiteField\right)$ and any $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$, the sum
+	$$\sum_{h \in \GL_n\left(\finiteField\right)} \chi\left(\det h\right) \fieldCharacter\left(\trace\left(Xh\right)\right)$$
+	is zero.
+\end{lemma}
+\begin{proof}
+	Write $$X = h_1 \begin{pmatrix}
+		\IdentityMatrix{n-r}\\
+		& 0_r
+	\end{pmatrix} h_2,$$
+	where $1 \le r \le n$ and $h_1, h_2 \in \GL_n\left(\finiteField\right)$. Then
+	$$\fieldCharacter\left(\trace Xh\right) = \fieldCharacter\left(\trace\left( \begin{pmatrix}
+		\IdentityMatrix{n-r}\\
+		& 0_r
+	\end{pmatrix} h_2 h h_1\right)\right).$$
+	Changing variables $h \mapsto h_2^{-1} h h_1^{-1},$
+	we obtain the inner sum
+	$$\sum_{h \in \GL_n\left(\finiteField\right)} \fieldCharacter\left(\trace \begin{pmatrix}
+		\IdentityMatrix{n-r}\\
+		& 0_r
+	\end{pmatrix} h \right) \chi\left(\det h\right),$$
+	which equals
+	$$\frac{1}{\sizeof{\multiplicativegroup{\finiteField}}} \sum_{a \in \multiplicativegroup{\finiteField}} \sum_{h \in \GL_n\left(\finiteField\right)} \fieldCharacter\left(\trace \begin{pmatrix}
+		\IdentityMatrix{n-r}\\
+		& 0_r
+	\end{pmatrix} \begin{pmatrix}
+		\IdentityMatrix{n-1}\\
+		& a
+	\end{pmatrix} h \right) \chi\left(\det h\right).$$
+	Changing variables $h \mapsto \left(\begin{smallmatrix}
+		\IdentityMatrix{n-1}\\
+		& a^{-1}
+	\end{smallmatrix}\right) h$, we get the inner sum $$\sum_{a \in \multiplicativegroup{\finiteField}} \chi^{-1}\left(a\right),$$
+	which vanishes because $\chi \ne 1$.
+\end{proof}
+
 \section{Doubling method Gauss sums}
 
 \subsection{The case of general linear groups}
@@ -250,36 +286,7 @@ The goal of this section is to express $\dblGaussSumScalar{\tau}{\chi}$ in terms
 \end{proposition}
 \begin{proof}
 	We write $$\Phi_{\chi}\left(g\right) = \frac{1}{\sizeof{\squareMatrix_k\left(\finiteField\right)}}\sum_{X \in \squareMatrix_k\left(\finiteField\right)} \sum_{h \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace \left(X\left(g-\IdentityMatrix{k}-h\right)\right)\right) \chi\left(\det h\right).$$
-	We claim that for a singular matrix $X \in \squareMatrix_k\left(\finiteField\right)$ the inner sum vanishes. To show this, write $$X = h_1 \begin{pmatrix}
-		\IdentityMatrix{k-r}\\
-		& 0_r
-	\end{pmatrix} h_2,$$
-	where $1 \le r \le k$ and $h_1, h_2 \in \GL_k\left(\finiteField\right)$. Then
-	$$\fieldCharacter\left(\trace Xh\right) = \fieldCharacter\left(\trace\left( \begin{pmatrix}
-		\IdentityMatrix{k-r}\\
-		& 0_r
-	\end{pmatrix} h_2 h h_1\right)\right).$$
-	Changing variables $h \mapsto h_2^{-1} h h_1^{-1},$
-	we obtain the inner sum
-	$$\sum_{h \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace \begin{pmatrix}
-		\IdentityMatrix{k-r}\\
-		& 0_r
-	\end{pmatrix} h \right) \chi\left(\det h\right),$$
-	which equals
-	$$\frac{1}{\sizeof{\multiplicativegroup{\finiteField}}} \sum_{a \in \multiplicativegroup{\finiteField}} \sum_{h \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace \begin{pmatrix}
-		\IdentityMatrix{k-r}\\
-		& 0_r
-	\end{pmatrix} \begin{pmatrix}
-		\IdentityMatrix{k-1}\\
-		& a
-	\end{pmatrix} h \right) \chi\left(\det h\right).$$
-	Changing variables $h \mapsto \left(\begin{smallmatrix}
-		\IdentityMatrix{k-1}\\
-		& a^{-1}
-	\end{smallmatrix}\right) h$, we get the inner sum $$\sum_{a \in \multiplicativegroup{\finiteField}} \chi^{-1}\left(a\right),$$
-	which vanishes because $\chi \ne 1$.
-	Hence, we have
-	$$\Phi_{\chi}\left(g\right) = \frac{1}{\sizeof{\squareMatrix_k\left(\finiteField\right)}} \sum_{X, h \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace \left(X\left(g-\IdentityMatrix{k}-h\right)\right)\right) \chi\left(\det h\right).$$
+	By \Cref{lem:sum-vanishes-for-singular-matrices}, we can reduce the sum to $X \in \GL_k\left(\finiteField\right)$. Thus	$$\Phi_{\chi}\left(g\right) = \frac{1}{\sizeof{\squareMatrix_k\left(\finiteField\right)}} \sum_{X, h \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace \left(X\left(g-\IdentityMatrix{k}-h\right)\right)\right) \chi\left(\det h\right).$$
 	Changing variables $h \mapsto X^{-1} h$, we get
 	$$\Phi_{\chi}\left(g\right) = \frac{1}{\sizeof{\squareMatrix_k\left(\finiteField\right)}} \sum_{X, h \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace \left(Xg\right)\right) \fieldCharacter\left(-\trace h\right) \chi\left(\det h\right) \chi^{-1}\left(\det X\right) \fieldCharacter\left(-\trace X\right).$$
 	Changing variables again $h \mapsto -h$ and setting $Xg = x$ and $-X = y$, we get  
@@ -341,7 +348,7 @@ Let $G' = \IsometryGroup\left(\hermitianSpace'\right)$. Write $P = L \ltimes N$,
 		q^{n^2} \sum_{p \in P} \Phi_{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{A \in \EndomorphismRing\left(\hermitianSpace\right)} \sum_{h \in \GL\left(\hermitianSpace\right)} \chi\left(\det h\right)\fieldCharacter\left(\trace\left(Ah\right)\right) \\
 		& \times \sum_{p \in P} \fieldCharacter\left(\trace\left(A \left(xp - \idmap_{\hermitianSpace}\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
 	\end{align*}
-	Assume that $\chi \ne 1$. Then since $\GaussSum{\chi_{\GL\left(\hermitianSpace\right)}}{\fieldCharacter}_A$ appears in the last equation, the sum can be reduced to $A \in \GL\left(\hermitianSpace\right)$. Let us replace $h$ with $A^{-1} h$. We get the sum
+	Assume that $\chi \ne 1$. By \Cref{lem:sum-vanishes-for-singular-matrices}, we can reduce the sum to $A \in \GL\left(\hermitianSpace\right)$. Let us replace $h$ with $A^{-1} h$. We get the sum
 	\begin{align*}
 		\sum_{A \in \GL\left(\hermitianSpace\right)} \chi^{-1}\left(\det A\right) \sum_{h \in \GL\left(\hermitianSpace\right)} \chi\left(\det h\right)\fieldCharacter\left(\trace h\right) \sum_{p \in P} \fieldCharacter\left(\trace\left(A \left(xp - \idmap_{\hermitianSpace}\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
 	\end{align*}
