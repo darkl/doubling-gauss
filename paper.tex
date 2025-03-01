@@ -518,6 +518,172 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 	\end{align*}
 \end{remark}
 
+\subsubsection{Geomtric Conjugacy and Lusztig Series}
+(following chapter 13 of Digne and Michel's Representations of Finite Groups of Lie Type)
+Let $\mathbb{G}$ be a reductive group over $\mathbb{F}$ and fix a torus $\mathbb{T}$ defined over $\mathbb{F}$. The \emph{dual group over $\mathbb{F}$} of $\mathbb{G}$ with respect to the torus $\mathbb{T}$ corresponds to the group $\mathbb{G}^*$ with a dual torus $\mathbb{T}^*$ and root datum
+\[
+    (X^*(\mathbb{T}^*),\Phi_{\mathbb{T}^*},X_*(\mathbb{T}^*),\Phi_{\mathbb{T}^*}^\vee) \cong (X_*(\mathbb{T}),\Phi_{\mathbb{T}}^\vee,X^*(\mathbb{T}),\Phi_{\mathbb{T}})
+\]
+such that the isomorphism respects the Frobenius action on $X^*$ and $X_*$.
+
+Fix an isomorphism $\overline{\mathbb{F}}^\times \cong (\mathbb{Q}/\mathbb{Z})_{p'}$ and an embedding $exp:(\mathbb{Q}/\mathbb{Z})_{p'} \to \overline{\mathbb{Q}_\ell}^\times$. 
+We get an isomorphism
+\begin{align*}
+\label{eq:DL}
+0 \to X_*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \to_{F-1} X_*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \to \mathbb{T}(\overline{\mathbb{F}}) \to 0
+\end{align*}
+with the last map being $y \mapsto N_{T(\mathbb{F}^n):T(\mathbb{F})}(y(\zeta_n))$
+for the $\zeta_n=q^n-1$-root of unity corresponding to $1/(q^n-1) \in (\mathbb{Q}/\mathbb{Z})_{p'}$ and sufficiently large $n$ (large enough so that $\mathbb{T}$ is split).
+
+Hence for a torus character pair $(T,\theta)$ for $G$, we may conjugate $\mathbb{T}$ to a fixed torus $\mathbb{T}'$ and associate to $\theta$ a twisted Frobenius (twisted by an element of $W$ in the twisted Weyl group conjugacy class corresponding to $T$) stable element $x_{T,\theta}$ of $X^*(\mathbb{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ via the equality
+\[
+    exp(\langle x_{T,\theta},y\rangle) = \theta(N_{T(\mathbb{F}^n):T(\mathbb{F})}(y(\zeta_n)))
+\]
+for large enough $n$, where $N_{T(\mathbb{F}^n):T(\mathbb{F})}(t) = t\cdot F(t)\cdot F^2(t)\cdot  \hdots \cdot F^{n-1}(t)$ is the torus norm map. This $x_{T,\theta}$ is well defined up to the Weyl group, and in fact there is a correspondence between $(T,\theta)$ pairs and $F$-stable Weyl group orbits in $X^*(\mathbb{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ [Corollary 13.9].  By composing with \ref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
+
+\begin{definition}
+    Denote the Frobenius semisimple conjugacy class associated to a torus character pair $(T,\theta)$ by $(s_{T,\theta})$. Similarly denote the Frobenius stable Weyl group element of $X^*(\mathbb{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ corresponding to $(T,\theta)$ by $(x_{T,\theta})$
+    \\
+    The pairs $(T',\theta'),(T,\theta)$ are said to be \emph{geometrically conjugate} is the geometric conjugacy classes $(s_{T,\theta}), (s_{T,\theta'})$ are equal.\\
+    The \emph{Lusztig series} $\LusztigSeries{G}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \mathbb{G}^*$ consists of (equivalence classes of) the irreducible representations $\pi$ which appear with nonzero multiplicity in $R_{T, \theta}$ for some $(T,\theta)$ such that $(s_{T,\theta}) = (s)$.
+\end{definition}
+
+\begin{center}
+\begin{tabular}{ c c c c c c}
+ Group & Fixed Torus & Frobenius on $X(T)$ & Frobenius on $W$ &Dual Group & Dual Torus \\ 
+ $Sp(2n)$ & $(\mathbb{F}^\times)^n$ & 1 & 1 &$SO(2n+1)$ & $(\mathbb{F}^\times)^n$\\  
+ $GSp(2n)$ & $(\mathbb{F}^\times)^{n+1}$ & 1 & 1 &$GSpin(2n+1)$ &  $(\mathbb{F}^\times)^{n+1}$ \\
+ $SO(2n)$ & $(\mathbb{F}^\times)^{n}$ & 1 & 1 &$SO(2n)$ &  $(\mathbb{F}^\times)^{n}$ \\
+ $GO(2n)$ & $(\mathbb{F}^\times)^{n+1}$ & 1 & 1 &? &  $(\mathbb{F}^\times)^{n+1}$ \\
+ $SO(2n+1)$ & $(\mathbb{F}^\times)^{n}$ & 1 & 1 &$Sp(2n)$ &  $(\mathbb{F}^\times)^{n}$ \\
+ $GO(2n+1)$ & $(\mathbb{F}^\times)^{n+1}$ &1 & 1 &? &  $(\mathbb{F}^\times)^{n+1}$ \\ 
+  $U(n)$ & $(\mathbb{F}_2^{Nm=1})^{n}$ & -1 & 1 & $U(n)$ &  $(\mathbb{F}_2^{Nm=1})^{n}$ 
+\end{tabular}
+\end{center}
+
+For a torus theta pair $(T,\theta)$ with associated Frobenius conjugacy classes $w \in W(\mathbb{T})$ and $(s) \subset G^*$ and an embedding $\rho:G^* \to  GL_n$.  Fix a Frobenius stable maximal torus $\mathbb{T}^* \subset G^*$ and a Frobenius stable maximal torus $\mathbb{T} \subset GL_n$ which contains $\rho(\mathbb{T}^*)$. Let $\tilde{T}$ be the torus of $GL_n$ corresponding to the Frobenius conjugacy class of $\rho(w) \in W(\mathbb{T})$ and $\tilde{\theta}$ such that $(\rho(s)) = (s_{\tilde{T},\tilde{\theta}})$. Define
+\[
+    g_{T,\rho}(\theta,\psi,\chi) := \varepsilon_{\algebraicGroup{
+    \tilde{T}}}\sum_{t\in \tilde{T}} \tilde{\theta}(t)\chi(det(t))\psi(tr(t)).
+\]
+\calivn{check $\epsilon$ factors and Hasse-Davenport} The following lemma shows that this is well defined.
+\begin{lemma}
+\label{lemma:gl_invariance}
+\begin{enumerate}[(i)]
+	\item In the case $G = GL_n$ and $\rho$ is the standard representation, $g_{T,\rho}(\theta,\psi,\chi)$ depends only on the semisimple conjugacy class of $(s)$.
+	\item $g_{T,\rho}(\theta,\psi,\chi)$ is well defined i.e. independent of choice of $\mathbb{T}^* \subset G^*$ and $\mathbb{T} \subset GL_n$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(i) In this case when $T = \Pi_{i} \mathbb{F}^{n_i}$ and $\theta = \Pi_{i} \alpha_i$, we recover the Gauss sum
+\[
+	g_{T,\rho}(\theta,\psi,\chi)  = \varepsilon_{\algebraicGroup{T}} \Pi_i \tau(\alpha_i \times (\chi\circ Nm),\psi) .
+\]
+By by the Hasse-Davenport relation depends only on the geometric conjugacy class of $(T,\theta)$ hence the semisimple conjugacy class of $(s_{T,\theta})$ \calvin{maybe write more or less?}. 
+\\
+(ii) For a Frobenius stable semisimple conjugacy class $(s)$ in $GL_n$ in $GL_n$, we define
+\[
+	g_{(s)}(\psi,\chi) := g_{T,\rho}(\theta,\psi,\chi) \textnormal{ for some } (T,\theta) \textnormal{ such that } (s_{T,\theta}) = (s)
+\]
+By (i) this is well defined. Then
+\[
+	g_{T,\rho}(\theta,\psi,\chi)  = g_{(\rho(s_{T,\theta}))}(\psi,\chi)
+\]
+which is independent of of choice of $\mathbb{T}^* \subset G^*$ and $\mathbb{T} \subset GL_n$.
+\end{proof}
+
+\begin{corollary}
+\label{cor:geoconj}
+Suppose that $(T,\theta)(T',\theta')$ are geometrically conjugate torus character pairs in $G$. Then $g_{T,\rho}(\theta,\psi,\chi) = g_{T',\rho}(\theta',\psi,\chi)$.
+\end{corollary}
+\begin{proof}
+Both are equal to $g_{(\rho(s_{T,\theta}))}(\psi,\chi) = g_{(\rho(s_{T',\theta'}))}(\psi,\chi)$.
+\end{proof}
+
+\subsubsection{Invariance under geometric conjugacy in Theorem \ref{thm:thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}}
+The main result of this subsection is 
+\begin{theorem}
+\label{thm:indep_geo_conj}
+	$\frac{\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi}}{R_{T,\theta}(1)}$ only depends on the geometric conjugacy class of $(T,\theta)$.
+\end{theorem}
+
+The idea of the proof is that the formula from Theorem \ref{thm:thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} relates $\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi}/R_{T,\theta}(1)$ to $g_{T,\rho}(\theta,\psi,\chi)$ for an appropriate $\rho$. We will need the following computation:
+\begin{lemma}
+\label{lem:cochar_computation}
+    Define $\phi:(\mathbb{Q}/\mathbb{Z})_{p'}^n \to (\mathbb{Q}/\mathbb{Z})_{p'}^{2n} = X_*(GL_{2n})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ by $\phi(x) = (x,-x)$. We will consider two different Frobeinus actions on these characters:
+    \begin{enumerate}
+        \item When $F$ acts by trivially on both, $x_{\mathbb{F}_n^\times \times \mathbb{F}_n^\times,\alpha \times \alpha^{-1}} = \phi(x_{\mathbb{F}_n,\alpha})$
+        \item When $F$ acts by $-1$ on the domain and by $\begin{pmatrix}
+            0 & 1 \\
+            1 & 0\end{pmatrix}$ on the codomain, $x_{\mathbb{F}_{2n}^\times,\theta'}=\phi(x_{(\mathbb{F}_{2n})^{Nm=1},\theta})$ where $\theta'(t) = \theta(t^{1-q^n})$
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+Recall that $x_{T,\theta}$ is defined by for sufficiently large $m$ with $\zeta_m = 1/(q^m-1)$ under the fixed identification $\overline{\mathbb{F}}^\times \cong (\mathbb{Q}/\mathbb{Z})_{p'}$
+\[
+    exp(\langle x_{T,\theta},y\rangle) = \theta(y(N_{T(\mathbb{F}_m):T(\mathbb{F})}(y(\zeta_m))).
+\]
+Thus the result follows from the computations:\\
+(i)
+\begin{align*}
+    exp(\langle\phi(x_{\mathbb{F}_n,\alpha}),(y_1,y_2)\rangle) &= exp(\langle x_{\mathbb{F}_n,\alpha},\phi^*(y_1,y_2)\rangle) \\
+    &= \alpha\left(Nm_{mn:n}(y_1(\zeta_{mn})\right) \alpha\left(Nm_{mn:n}(y_2(\zeta_{mn})\right)^{-1} \\
+    &= \left(\alpha\times\alpha^{-1}\right)\left(Nm_{mn:n}((y_1,y_2)(\zeta_{mn}))\right)
+\end{align*}
+(ii)
+\begin{align*}
+    exp(\langle\phi(x_{(\mathbb{F}_{2n})^{Nm=1},\theta}),(y_1,y_2)\rangle) &= exp(\langle x_{(\mathbb{F}_{2n})^{Nm=1},\theta},\phi^*(y_1,y_2)\rangle) \\
+    &= \theta\left(\frac{Nm_{2mn:2n}(y_1(\zeta_{2mn})}{Nm_{2mn:2n}(y_1(\zeta_{2mn})^{q^n}}\right) \theta\left(\frac{Nm_{2mn:2n}(y_2(\zeta_{2mn})}{Nm_{2mn:2n}(y_2(\zeta_{2mn})^{q^n}}\right)^{-1} \\
+    &= \theta'\left(Nm_{2mn:2n}((y_1,y_2)(\zeta_{mn}))\right)
+\end{align*}
+\end{proof}
+
+Now we fix representations $\rho$ of the dual groups:
+\begin{center}
+\begin{tabular}{ c c}
+ Group & Dual group representations $\rho$ \\ 
+ $Sp(2n)$ &$SO(2n+1) \to GL(2n+1)$\\  
+ $GSp(2n)$  &$GSpin(2n+1) \to GL(2n+1)$ \\
+ $SO(2n)$ &$SO(2n) \to GL(2n)$ \\
+ $GO(2n)$ & ? \\
+ $SO(2n+1)$ &$Sp(2n) \to GL(2n)$ \\
+ $GO(2n+1)$ & ? \\ 
+  $U(n)$  & $U(n) \to GL(2n)$  
+\end{tabular}
+\end{center}
+Note that in the $SO$ and $GSO$ case, the map $\rho$ sends the split torus of $G^*$ into the split torus of $GL(2n)$ and the induced map of cocharacters sends $x \mapsto (x,-x)$. In the $Sp,GSp$ cases the map is similar: the induced map of cocharacters sends $x \mapsto (x,1,-x)$. In the unitary case, the torus whose $\mathbb{F}$ points are $(\mathbb{F}_2^{Nm=1})^n \subset G^*(\mathbb{F})$ includes into the torus in $GL(2n)$ whose $\mathbb{F}$ points are $(\mathbb{F}_2^\times)^n$ and the induced map of cocharacters is $(x_1,x_2, \hdots, x_n) \mapsto (x_1,-x_1,x_2,-x_2, \hdots ,x_n,-x_n)$. In all these cases we can apply lemma \ref{lem:cochar_computation}:
+
+\begin{proof}[Proof of theorem \ref{thm:indep_geo_conj}] Let $T$ be a torus in $G$ and suppose $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$. We compute $g_{T,\rho}(\theta,\psi,\chi)$ using the the split torus $\mathbb{T}^*$ in $G^*$ including into the split torus $\mathbb{T}'$ in $GL$ in the non unitary case and in the unitary case we use the tori $\mathbb{T}^*$ whose $\mathbb{F}$ points are $(\mathbb{F}_2^{Nm=1})^n \subset G^*(\mathbb{F})$ includes into the torus $\mathbb{T}'$ in $GL(2n)$ whose $\mathbb{F}$ points are $(\mathbb{F}_2^\times)^n$. We then define $\tilde{T}$ as the $\mathbb{F}$-rational torus corresponding to the Frobenius stable Weyl group orbit of $\rho(w)$ inside $W(\mathbb{T}')$ where $(w)$ inside $W(\mathbb{T}^*)$ is the Frobenius stable Weyl group orbit associated to $T$. Lemma \ref{lem:cochar_computation} above implies that
+\[
+g_{T,\rho}(\theta,\psi,\chi)= \varepsilon_{\algebraicGroup{T}}\varepsilon_{\algebraicGroup{\tilde{T}}}g_{T}(\theta,\psi,\chi) \cdot \begin{cases}
+        1  & G \neq Sp, GSp\\
+        \tau(1,\psi_1) & G = Sp \textnormal{ or } GSp
+    \end{cases}
+\]
+where $g_T(\theta,\psi,\chi)$ is the expression from theorem \ref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}. \calvin{how does $\epsilon$ depend on $w$? Is the product always one?}.
+Corollary \ref{cor:geoconj} then implies that $g_T(\theta,\psi,\chi)$ only depends on the geometric conjugacy class of $(T,\theta)$. Now the formula for $\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi}$ in theorem \ref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} finishes the proof.
+\begin{comment}
+We will have to treat the unitary group case seperatedly. First for the non-unitary group case:\\
+
+
+
+Write $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1 \left[\times \{\pm 1\}\right]$ with $k_1 \geq k_2 \hdots \geq k_r$ and $m_1 \geq m_2 \hdots \geq m_r$ and under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s \times \epsilon$, where  $\left[\epsilon \colon \left\{\pm 1\right\} \to \multiplicativegroup{\cComplex},\right]$ $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$. Then the Frobenius conjugacy class of the Weyl group corresponding to $T$ is represented by $((k_1,k_2, \hdots, k_r), (m_1,m_2 \hdots m_s))$. The map $\rho$ sends this conjugacy class (or union of two conjugacy classes) to the conjugacy class with cycle decomposition the union of cycles of lengths $k_1,k_1,k_2,k_2 \hdots, k_r,k_r, 2m_1,2m_2 \hdots 2m_r$ along with a cycle of length $1$ in the $Sp$ and $GSp$ case. Let $\tilde{T}$ be the torus in $GL$ corresponding to the conjugacy class above and let $\tilde{\theta}$ be the character of $\tilde{T}$ corresponding to $\Phi(s)$. Then by theorem \ref{thm:thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}
+\[
+    \sum_{t \in \tilde{T}} \tilde{\theta}(t) \chi(det(t-1)) = \begin{cases}
+        g_T(\theta,\psi)  & G \neq Sp \textnormal{ or } GSp\\
+        g_T(\theta,\psi) \cdot g(1,\psi_1) & G = Sp \textnormal{ or } GSp
+    \end{cases}.
+\]
+Since the sum above is a Gauss sum for $GL$ it is equal to the Gauss sum attatched to the semisimple element $\Phi(s)$. \\
+Now for the unitary case: \calvin{this needs to be checked... I used engineers induction to guess at how the Weyl group conjugacy classes match the torus}
+Write $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s (\finiteFieldExtension{2m_i}^1)^2$ with $k_i$'s even and $m_i$'s odd \calvin{this is what I need to check... what tori you can get here} and under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s \times \epsilon$, where  $\left[\epsilon \colon \left\{\pm 1\right\} \to \multiplicativegroup{\cComplex},\right]$ $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$. Then the Frobenius conjugacy class of the Weyl group corresponding to $T$ is represented by having even cycles of lengths $k_1,k_2 \hdots k_r$ and odd cycles of lengths $m_1,m_1,m_2,m_2, \hdots, m_s,m_s$. The map $\Phi$ sends this conjugacy class to the conjugacy class with even cycles $k_1,k_1,k_2,k_2 \hdots k_r,k_r$ and odd cycles $m_1,m_1,m_1,m_1,m_2,m_2,m_2,m_2, \hdots, m_s,m_s,m_s,m_s$. Let $\tilde{T}$ be the torus in $GL$ corresponding to the conjugacy class with all even cycles of lengths $k_1,k_1,k_2,k_2 \hdots k_r,k_r$ and $2m_1,2m_1,2m_2,2m_2, \hdots, 2m_s,2m_s$. Then $\Phi(s)$ is in this torus \calvin{write out what that means} giving a character $\tilde{\theta}$ on it and 
+\[
+    \sum_{t \in \tilde{T}} \tilde{\theta}(t) \chi(det(t-1)) = g_T(\theta,\psi).
+\]
+Since the sum above is a Gauss sum for $GL$ it is equal to the Gauss sum attatched to the semisimple element $\Phi(s)$.
+\end{comment}
+\end{proof}
+
 \subsection{Computation for Lusztig series}
 
 The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and results of Lusztig to determine $\dblGaussSumScalar{\pi}{\fieldCharacter}$ for any irreducible representation $\pi$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$.
