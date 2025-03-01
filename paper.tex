@@ -493,15 +493,11 @@ $$\sum_{\substack{x \in \finiteFieldExtension{2m}^1\\
 Combining the results of the previous sections with \Cref{prop:reduction-of-gauss-sum-to-torus}, we arrive at the following result.
 
 \begin{theorem}\label{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}
-	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1 \left[\times \{\pm 1\}\right]$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s \times \epsilon$, where  $\left[\epsilon \colon \left\{\pm 1\right\} \to \multiplicativegroup{\cComplex},\right]$ $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote $$g_T\left(\theta, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\theta'_i}{\chi^{-1}}{\fieldCharacter_{2m_i}} \cdot  \prod_{j=1}^r \GaussSumCharacter{\alpha_j}{\chi^{-1}}{\fieldCharacter_{k_j}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{k_j}}.$$ \calvin{we should add a $\chi$ as a variable to the left hand side of the above} Then
+	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s \times \epsilon$, where $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote $$g_T\left(\chi, \theta, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\theta'_i}{\chi^{-1}}{\fieldCharacter_{2m_i}} \cdot  \prod_{j=1}^r \GaussSumCharacter{\alpha_j}{\chi^{-1}}{\fieldCharacter_{k_j}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{k_j}}.$$ Then
 	\begin{align*}
-		 \dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} g_T\left(\theta, \fieldCharacter\right) \\
-		& \times \prod_{i=1}^s \theta_i\left(-1\right) \cdot \prod_{j=1}^r \alpha_j\left(-1\right) \\
-		& \left[\times \epsilon\left(-1\right) \chi\left(-2\right)\right],
+		 \dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} g_T\left(\chi, \theta, \fieldCharacter\right) \prod_{i=1}^s \theta_i\left(-1\right) \cdot \prod_{j=1}^r \alpha_j\left(-1\right).
 	\end{align*}
-	where the terms in $\left[\right]$ only appear in the odd orthogonal group case.
 \end{theorem}
-    \calvin{What does the $\chi(-2)$ come from? I didn't quite get that when I was messing around}
 \begin{proof}
 	This follows from the results mentioned above and from the formula $$R_T\left(1\right) = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \frac{\grpIndex{G}{T}}{\sizeof{G}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{G}_p^2 \cdot q^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor},$$
 	the facts \begin{equation*}
@@ -512,12 +508,10 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 \begin{remark}
 	Suppose that $\pi$ is any irreducible representation of $G$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$. Then the central character of $\pi$ satisfies
 	\begin{align*}
-		\centralCharacter{\pi}\left(-1\right) = \theta\left(-1\right) =& \prod_{j=1}^r \alpha_j\left(-1\right) \cdot \prod_{i=1}^s \theta_i\left(-1\right)\\
-		& \times \left[\epsilon\left(-1\right)\right].
+		\centralCharacter{\pi}\left(-1\right) = \theta\left(-1\right) =& \prod_{j=1}^r \alpha_j\left(-1\right) \cdot \prod_{i=1}^s \theta_i\left(-1\right).
 	\end{align*}
 	Thus \begin{align*}
-		\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} \centralCharacter{\pi}\left(-1\right) g_T\left(\theta, \fieldCharacter\right) \\
-		& \left[\times \chi\left(-2\right)\right].
+		\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim \hermitianSpace}{2}\right\rfloor} \centralCharacter{\pi}\left(-1\right) g_T\left(\theta, \fieldCharacter\right).
 	\end{align*}
 \end{remark}
 
