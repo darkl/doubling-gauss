@@ -311,18 +311,18 @@ Let $\hermitianSpace$ be a vector space of dimension $n$ over $\quadraticExtensi
 	\item ($\epsilon$-symmetric) For every $x,y \in \hermitianSpace$, $$\innerproduct{x}{y} = \epsilon \involution{\innerproduct{y}{x}}.$$
 	\item (non-degenerate) For every $0 \ne x \in \hermitianSpace$ there exists $y \in \hermitianSpace$ such that $$\innerproduct{x}{y} \ne 0.$$
 \end{enumerate}
-Let $\IsometryGroup \left(\hermitianSpace\right)$ be the isometry group of $\hermitianSpace$, consisting of all the elements of $\GL\left(\hermitianSpace\right)$ that satisfy $\innerproduct{gx}{gy} = \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. We denote by $G$ the identity component of $\IsometryGroup\left(\hermitianSpace\right)$. Let $\GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ be the similitude group version of $\IsometryGroup\left(\hermitianSpace\right)$, consisting of the elements $g \in \GL\left(\hermitianSpace\right)$ with the property that there exists a constant $\similitudeCharacter\left(g\right) \in \multiplicativegroup{\quadraticExtension}$ such that for every $\innerproduct{gx}{gy} = \similitudeCharacter\left(g\right) \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. Let $\GroupExtension{G}$ be the identity component of $\GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$. If $\quadraticExtension = \finiteField$ and $\dim_{\finiteField} \hermitianSpace = 2n$ is even, then $\GroupExtension{G}$ consists of all elements in $\GroupExtension{\IsometryGroup\left(G\right)}$ satisfying $\similitudeCharacter\left(g\right) = \left(\det g\right)^n$. Let $\lieAlgebra$ be the Lie algebra of $G$, consisting of all elements $A \in \EndomorphismRing\left(\hermitianSpace\right)$ satisfying $\innerproduct{Ax}{y} + \involution{\innerproduct{x}{AY}} = 0$ for every $x, y \in \hermitianSpace$.
+Let $\IsometryGroup \left(\hermitianSpace\right)$ be the isometry group of $\hermitianSpace$, consisting of all the elements of $\GL_{\quadraticExtension}\left(\hermitianSpace\right)$ that satisfy $\innerproduct{gx}{gy} = \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. We denote by $G$ the identity component of $\IsometryGroup\left(\hermitianSpace\right)$. Let $\GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ be the similitude group version of $\IsometryGroup\left(\hermitianSpace\right)$, consisting of the elements $g \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)$ with the property that there exists a constant $\similitudeCharacter\left(g\right) \in \multiplicativegroup{\quadraticExtension}$ such that for every $\innerproduct{gx}{gy} = \similitudeCharacter\left(g\right) \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. Let $\GroupExtension{G}$ be the identity component of $\GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$. If $\quadraticExtension = \finiteField$ and $\dim_{\finiteField} \hermitianSpace = 2n$ is even, then $\GroupExtension{G}$ consists of all elements in $\GroupExtension{\IsometryGroup\left(G\right)}$ satisfying $\similitudeCharacter\left(g\right) = \left(\det g\right)^n$. Let $\lieAlgebra$ be the Lie algebra of $G$, consisting of all elements $A \in \EndomorphismRing\left(\hermitianSpace\right)$ satisfying $\innerproduct{Ax}{y} + \involution{\innerproduct{x}{AY}} = 0$ for every $x, y \in \hermitianSpace$.
 
 We will assume that $\dim_{\finiteField} \hermitianSpace$ is even. This is automatic in all cases, expect for when $\quadraticExtension = \finiteField$ and $\epsilon = 1$, in which case we will only consider even special orthogonal groups.
 
-Let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be a character. As before, the assignment $\Phi_{\chi} \colon \GL\left(\hermitianSpace\right) \to \cComplex$ given by $$\Phi_{\chi}\left(g\right) = \begin{dcases}
+Let $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be a character. As before, the assignment $\Phi_{\chi} \colon \GL_{\quadraticExtension}\left(\hermitianSpace\right) \to \cComplex$ given by $$\Phi_{\chi}\left(g\right) = \begin{dcases}
 \chi\left(\det\left(g - \idmap_{\hermitianSpace}\right)\right) & \text{if }\det\left(g - \idmap_{\hermitianSpace}\right) \ne 0\\
 0 & \text{otherwise,}
 \end{dcases}$$
-is a class function of $\GL\left(\hermitianSpace\right)$.
+is a class function of $\GL_{\quadraticExtension}\left(\hermitianSpace\right)$.
 
 Let $\pi$ be an irreducible representation of $H$ where $H \in \{G, \GroupExtension{G}\}$ if $\quadraticExtension = \finiteField$ and $H = G$ if $\quadraticExtension \ne \finiteField$. Denote $$\dblGaussSum{\pi}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} \pi\left(g\right) \Phi_{\chi}\left(g\right).$$
-Since $\Phi_{\chi}$ is a class function of $\GL\left(\hermitianSpace\right)$, it is also a class function of $G$. Since $G$ is a normal subgroup of $H$, we have that $\dblGaussSum{\pi}{\chi} \in \Hom_{H}\left(\pi, \pi\right)$. By Schur's lemma, there exists a constant $\dblGaussSumScalar{\pi}{\fieldCharacter} \in \cComplex$, such that $$\dblGaussSum{\pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$
+Since $\Phi_{\chi}$ is a class function of $\GL_{\quadraticExtension}\left(\hermitianSpace\right)$, it is also a class function of $G$. Since $G$ is a normal subgroup of $H$, we have that $\dblGaussSum{\pi}{\chi} \in \Hom_{H}\left(\pi, \pi\right)$. By Schur's lemma, there exists a constant $\dblGaussSumScalar{\pi}{\fieldCharacter} \in \cComplex$, such that $$\dblGaussSum{\pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$
 We call $\dblGaussSumScalar{\pi}{\chi}$ the \emph{doubling method Gauss sum}.
 
 \subsubsection{Multiplicativity property}
@@ -330,10 +330,10 @@ Our next goal is to understand how the doubling method Gauss sum behaves under p
 
 Let $\xIsotropic$ and $\yIsotropic$ be isotropic spaces of $\hermitianSpace$ of dimension $k$, such that $\xIsotropic$ and $\yIsotropic$ are in duality with respect to form $\innerproduct{\cdot}{\cdot}$. Let us write $$\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic,$$
 where $\hermitianSpace' \subset \hermitianSpace$ is a non-degenerate subspace, orthogonal to $\xIsotropic$ and $\yIsotropic$. Let $P$ be the parabolic subgroup of $H$, consisting of all elements stabilizing the flag $$0 \subset \xIsotropic \subset \xIsotropic \oplus \hermitianSpace' \subset \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic = \hermitianSpace.$$
-Let $G' = \IsometryGroup\left(\hermitianSpace'\right)$. Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipotent radical of $P$. Then $L$ is isomorphic to $H' \times \GL_k\left(\finiteField\right)$, where $H' \in \left\{G',\GroupExtension{G'}\right\}$ is of the same type as $H$. 
+Let $G' = \IsometryGroup\left(\hermitianSpace'\right)$. Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipotent radical of $P$. Then $L$ is isomorphic to $H' \times \GL_k\left(\quadraticExtension\right)$, where $H' \in \left\{G',\GroupExtension{G'}\right\}$ is of the same type as $H$. 
 
 \begin{theorem}\label{thm:multiplicativity-in-terms-of-gauss-sums}
-	Let $\pi'$ be an irreducible representation of $H'$ and let $\tau$ be an irreducible representation of $\GL_k\left(\finiteField\right)$. Then for any irreducible representation $\pi$ of $H$ which appears as a subrepresentation the parabolic induction $\rho = \Ind{P}{H}{\tau \overline{\otimes} \pi'}$ and any $\chi$ such that $\chi^2 \ne 1$, we have
+	Let $\pi'$ be an irreducible representation of $H'$ and let $\tau$ be an irreducible representation of $\GL_k\left(\quadraticExtension\right)$. Then for any irreducible representation $\pi$ of $H$ which appears as a subrepresentation the parabolic induction $\rho = \Ind{P}{H}{\tau \overline{\otimes} \pi'}$ and any $\chi$ such that $\chi^2 \ne 1$, we have
 	$$\dblGaussSumScalar{\pi}{\chi} = \centralCharacter{\tau}\left(-1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^k \GaussSumScalar{\tau \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter} \dblGaussSumScalar{\pi'}{\chi}.$$
 \end{theorem}
 \begin{proof}
@@ -343,19 +343,19 @@ Let $G' = \IsometryGroup\left(\hermitianSpace'\right)$. Write $P = L \ltimes N$,
 	which can be rewritten as
 	$$\left(\dblGaussSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in P}  \Phi_{\chi}\left(x^{-1} p\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_\tau \otimes v_{\pi'}.$$
 	As before, we may write
-	$$\Phi_{\chi}\left(g\right) = q^{-n^2} \sum_{h \in \GL\left(\hermitianSpace\right)} \sum_{A \in \EndomorphismRing\left(\hermitianSpace\right)} \chi^{-1}\left(\det h\right) \fieldCharacter\left(\trace\left(A \left(g - \idmap_{\hermitianSpace} - h^{-1}\right)\right)\right).$$
+	$$\Phi_{\chi}\left(g\right) = q^{-k^2} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \chi^{-1}\left(\det h\right) \fieldCharacter\left(\trace\left(A \left(g - \idmap_{\hermitianSpace} - h^{-1}\right)\right)\right).$$
 	Hence, \begin{align*}
-		q^{n^2} \sum_{p \in P} \Phi_{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{A \in \EndomorphismRing\left(\hermitianSpace\right)} \sum_{h \in \GL\left(\hermitianSpace\right)} \chi\left(\det h\right)\fieldCharacter\left(\trace\left(Ah\right)\right) \\
+		q^{k^2} \sum_{p \in P} \Phi_{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\det h\right)\fieldCharacter\left(\trace\left(Ah\right)\right) \\
 		& \times \sum_{p \in P} \fieldCharacter\left(\trace\left(A \left(xp - \idmap_{\hermitianSpace}\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
 	\end{align*}
-	Assume that $\chi \ne 1$. By \Cref{lem:sum-vanishes-for-singular-matrices}, we can reduce the sum to $A \in \GL\left(\hermitianSpace\right)$. Let us replace $h$ with $A^{-1} h$. We get the sum
+	Assume that $\chi \ne 1$. By \Cref{lem:sum-vanishes-for-singular-matrices}, we can reduce the sum to $A \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)$. Let us replace $h$ with $A^{-1} h$. We get the sum
 	\begin{align*}
-		\sum_{A \in \GL\left(\hermitianSpace\right)} \chi^{-1}\left(\det A\right) \sum_{h \in \GL\left(\hermitianSpace\right)} \chi\left(\det h\right)\fieldCharacter\left(\trace h\right) \sum_{p \in P} \fieldCharacter\left(\trace\left(A \left(xp - \idmap_{\hermitianSpace}\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
+		\sum_{A \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi^{-1}\left(\det A\right) \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\det h\right)\fieldCharacter\left(\trace h\right) \sum_{p \in P} \fieldCharacter\left(\trace\left(A \left(xp - \idmap_{\hermitianSpace}\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
 	\end{align*}
 	Consider the inner sum over $P$, written as $$\sum_{l \in L} \sum_{u \in N} \fieldCharacter\left(\trace\left(A x l u\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(l\right).$$
 	The inner sum over $N$ will vanish unless $Ax \in P$. Thus we have
 	\begin{align*}
-		q^{n^2} \sum_{p \in P} \Phi_{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{h \in \GL\left(\hermitianSpace\right)}  \chi\left(\det\left(xh\right)\right) \fieldCharacter\left(\trace h\right) \\
+		q^{k^2} \sum_{p \in P} \Phi_{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)}  \chi\left(\det\left(xh\right)\right) \fieldCharacter\left(\trace h\right) \\
 		& \times \sum_{p' \in P} \sum_{p \in P} \chi^{-1}\left(\det p'\right) \fieldCharacter\left(\trace\left(p' \left(p - x^{-1}\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
 	\end{align*}
 	By decomposing the sum over $p' \in P$ into a sum over $N$ and $L$, we see that the inner sum over $N$ will vanish unless $p - x^{-1} \in P$, which implies that $x \in P \cap G$.
@@ -365,11 +365,11 @@ Let $G' = \IsometryGroup\left(\hermitianSpace'\right)$. Write $P = L \ltimes N$,
 		\frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{\substack{p \in P \cap G\\
 				\det\left(p - \idmap_{\hermitianSpace}\right) \ne 0}} \chi\left(\det\left(p - \idmap_{\hermitianSpace}\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_{\tau} \otimes v_{\pi'}.
 	\end{equation}
-	Decomposing the sum \eqref{eq:recursive-doubling-gauss-sum} as a sum over $L$ and $N$, and using the fact that if $p \in P \cap G$ has Levi part with image $\left(a, g'\right) \in \GL_k\left(\finiteField\right) \times G'$ then $$\det\left(p - \idmap_{\hermitianSpace}\right) = \left(-1\right)^k \det\left(a\right)^{-1}\det\left(a - I_k\right)^2 \det\left( g' - \idmap_{\hermitianSpace'}\right),$$
+	Decomposing the sum \eqref{eq:recursive-doubling-gauss-sum} as a sum over $L$ and $N$, and using the fact that if $p \in P \cap G$ has Levi part with image $\left(a, g'\right) \in \GL_k\left(\quadraticExtension\right) \times G'$ then $$\det\left(p - \idmap_{\hermitianSpace}\right) = \left(-1\right)^k \det\left(a\right)^{-1}\det\left(a - I_k\right)^2 \det\left( g' - \idmap_{\hermitianSpace'}\right),$$
 	and using the fact that $\sizeof{\lieAlgebra} = \sizeof{\lieAlgebra'} \sizeof{\squareMatrix_k\left(\finiteField\right)} \sizeof{N}^2$, where $\lieAlgebra'$ is the Lie algebra of $G'$,
 	we get that \eqref{eq:recursive-doubling-gauss-sum} equals
 	\begin{equation}
-		\chi\left(-1\right)^k q^{-\frac{k^2}{2}} \sum_{a \in \GL_k\left(\finiteField\right)} \Phi_{\chi^2}\left(a\right) \chi^{-1}\left(\det a\right) \tau\left(a\right) v_{\tau} \otimes \frac{1}{\sqrt{\sizeof{\lieAlgebra'}}} \sum_{g' \in G'} \Phi_{\chi}\left(g'\right) \pi'\left(g'\right) v_{\pi'},
+		\chi\left(-1\right)^k q^{-\frac{k^2}{2}} \sum_{a \in \GL_k\left(\quadraticExtension\right)} \Phi_{\chi^2}\left(a\right) \chi^{-1}\left(\det a\right) \tau\left(a\right) v_{\tau} \otimes \frac{1}{\sqrt{\sizeof{\lieAlgebra'}}} \sum_{g' \in G'} \Phi_{\chi}\left(g'\right) \pi'\left(g'\right) v_{\pi'},
 	\end{equation}
 	which in turn is
 	\begin{align*}
