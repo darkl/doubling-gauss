@@ -240,7 +240,7 @@
 	\item In the computations of $\dblGammaFactor{\pi}{\chi}{\fieldCharacter}$ in terms of Deligne--Lusztig we should say that when we take a torus of $\GroupExtension{G}$ and intersect it with $G$ we get a torus of $G$ and hence it suffices to compute whatever we are computing.
 	\item The proof of \Cref{prop:gamma-factor-is-constant-on-lusztig-series} should be modified. We should first use $\GroupExtension{G}$. For this group we have the ``at most one cuspidal'' property. Then we should use \cite[Page 140]{DigneMichel2020} $$R_{\GroupExtension{T}}^{\GroupExtension{G}}\left(\tilde{\theta}\right) \restriction_{G} = R_{T}^G \left(\tilde{\theta}\restriction_{T}\right),$$
 	where we need to explain the notation.
-	\item \Cref{subsec:tori-isomorphism} should be removed and replaced with Calvin's arguments.
+	\item \Cref{subsec:tori-isomorphism} and \Cref{subsec:gauss-sums-attached-to-semi-simple} should be removed and replaced with Calvin's arguments.
 \end{enumerate}
 
 \section{Notation}
@@ -815,7 +815,7 @@ Using the isomorphisms $\ToriDualToriIsomorphism_{k_j} \colon \charactergroup{k_
 
 %% Okay cool! good luck with your talk
 
-\subsubsection{Gauss sums attached to semisimple elements}
+\subsubsection{Gauss sums attached to semisimple elements}\label{subsec:gauss-sums-attached-to-semi-simple}
 
 Let $T$ be as in the previous section. Let $t \in T$ and suppose that $\ToriDualToriIsomorphism_{T}^{-1}\left(t\right) = \theta$ is given by $$\theta = \left(\alpha_1,\dots,\alpha_r,\theta_1,\dots,\theta_s\right) \circ e_T,$$ where $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$.
 We define $$g_T\left(t, \fieldCharacter\right) = g_T\left(\theta, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\theta'_i}{\chi^{-1}}{\fieldCharacter_{2m_i}} \cdot  \prod_{j=1}^r \GaussSumCharacter{\alpha_j}{\chi^{-1}}{\fieldCharacter_{k_j}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{k_j}}.$$
