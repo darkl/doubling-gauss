@@ -573,10 +573,12 @@ COMPLEXES has this definition}
 A basic example of a class function which doesn't depend of geometric conjugacy 
 \begin{proposition}[FIND SOMEWHERE TO CITE or put in appendix]
 \label{prop:central_char}
-    Any function supported on the center of $\algebraicGroup{G}(\finiteField)$ is a stable function. \calvin{maybe add in connected group} 
+    Any function supported on the center $\algebraicGroup{Z}(\mathbb{F})$ of $\algebraicGroup{G}(\finiteField)$ is a stable function. \calvin{maybe add in connected group} 
 \end{proposition}
 \begin{proof}
-The representation $R_T^G(\theta)$ is equal to $M \otimes_{}$
+\calvin{can probably delete this first part or put in appendix}
+The representation $R_T^G(\theta)$ is equal to $M \otimes_{\mathbb{C}[T]} \theta$ where $M$ is the virtual module corresponding to the Euler characteristic of cohomology on $X$ which as a variety is a subvariety of $\algebraicGroup{G}$ with the $G \times T$ action via $(g,\ell).x = gx\ell$. The center $\algebraicGroup{Z}$ then commutes across $X$ so the action of $(z,1)$ equals the action of $(1,z)$. The result is on the $\theta$ component of $M$, $z$ acts by $\theta(z)$.\\
+
 \calvin{todo. Here is a sketch. Use the definition of RTtheta to show for all torus theta pairs $(T,\theta)$, central element $x$ acts by scalar (in fact the scalar $\theta(x)$). This can also be showed using the character formula plus the ``only one cuspidal'' trick but it is probably overkill. Then if two pairs are conjugate, their hom dimesnion is nonzero, hence $x$ the scalar in both RTThetas} 
 \end{proof}
 
