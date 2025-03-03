@@ -519,7 +519,7 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 \end{remark}
 
 \subsubsection{Geometric Conjugacy and Lusztig Series}
-(Following chapter 13 of \cite{DigneMichel2020})
+(Following Chapter 13 of \cite{DigneMichel2020})
 Let $\algebraicGroup{G}$ be a reductive group over $\finiteField$ and fix a torus $\algebraicGroup{T}$ defined over $\finiteField$. The \emph{dual group over $\finiteField$} of $\algebraicGroup{G}$ with respect to the torus $\algebraicGroup{T}$ corresponds to the group $\algebraicGroup{G}^*$ with a dual torus $\algebraicGroup{T}^*$ and root datum
 \[
     (X^*(\algebraicGroup{T}^*),\Phi_{\algebraicGroup{T}^*},X_*(\algebraicGroup{T}^*),\Phi_{\algebraicGroup{T}^*}^\vee) \cong (X_*(\algebraicGroup{T}),\Phi_{\algebraicGroup{T}}^\vee,X^*(\algebraicGroup{T}),\Phi_{\algebraicGroup{T}})
@@ -576,6 +576,7 @@ A basic example of a class function which doesn't depend of geometric conjugacy
     Any function supported on the center of $\algebraicGroup{G}(\finiteField)$ is a stable function. \calvin{maybe add in connected group} 
 \end{proposition}
 \begin{proof}
+The representation $R_T^G(\theta)$ is equal to $M \otimes_{}$
 \calvin{todo. Here is a sketch. Use the definition of RTtheta to show for all torus theta pairs $(T,\theta)$, central element $x$ acts by scalar (in fact the scalar $\theta(x)$). This can also be showed using the character formula plus the ``only one cuspidal'' trick but it is probably overkill. Then if two pairs are conjugate, their hom dimesnion is nonzero, hence $x$ the scalar in both RTThetas} 
 \end{proof}
 
@@ -606,7 +607,7 @@ The following lemma shows that this is well defined.
 \end{lemma}
 \begin{proof}
 \begin{enumerate}[(i)]
-	\item In this case when $T = \prod_{i} \finiteFieldExtension{n_i}$ and $\theta = \prod_{i} \alpha_i$, we recover the Gauss sum
+	\item In this case when $T = \prod_{i} \multiplicativegroup{\finiteFieldExtension{n_i}}$ and $\theta = \prod_{i} \alpha_i$, we recover the Gauss sum
 	\[
 	g_{T,\rho}(\theta,\psi,\chi)  = \prod_i \tau(\alpha_i \times \chi, \fieldCharacter_{n_i}),
 	\]
