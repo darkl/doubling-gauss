@@ -222,6 +222,27 @@
 \end{abstract}
 \maketitle
 
+\subsection{TODO list}
+
+\begin{enumerate}
+	\item (Minor) Change terminology of Gauss sums $\dblGaussSumScalar{\pi}{\chi}$ to Jacobi sums and the notation to $J^{\mathrm{dbl}}\left(\pi, \chi\right)$ as they are similar to the Jacobi sums
+	$$J\left(\alpha, \beta\right) = \sum_{\substack{x,y \in \multiplicativegroup{\finiteField}\\
+	x+y = 1}} \alpha\left(x\right) \beta\left(y\right),$$
+	compare with $$\dblGaussSumScalar{\pi}{\chi} = \sum_{\substack{g \in G\\
+			h \in \GL\left(\hermitianSpace\right)\\
+	g + h = \idmap_{\hermitianSpace}}} \pi\left(g\right) \chi\left(\det\left(-h\right)\right).$$
+	Consider replacing $\chi\left(\det\left(g - \idmap_{\hermitianSpace}\right)\right)$ with $\chi\left(\det\left(\idmap_{\hermitianSpace} - g\right)\right)$ for aesthetics (probably not worth it).
+	\item Maybe define the algebraic group versions $\algebraicGroup{G}$ and $\GroupExtension{\algebraicGroup{G}}$ in Section 3.2. For instance for $\algebraicGroup{\Sp}_{2n}$ we can define
+	$$\algebraicGroup{\tilde{G}} = \left\{ \left(g,\lambda\right) \in \algebraicGroup{\GL}\left(\hermitianSpace\right) \times \multiplcativeScheme \mid \involution{\transpose{g}} J g = \lambda J,\ \right\}$$ for suitable $J$ and then define the torus $\algebraicGroup{S}$ that appears in \cite[Page 140]{DigneMichel2020} as $$\algebraicGroup{S} = \left\{\left(\begin{pmatrix}
+		t \IdentityMatrix{n}\\
+		& \IdentityMatrix{n}
+	\end{pmatrix}, t\right) \mid t \in \multiplcativeScheme \right\} \subset \GroupExtension{\algebraicGroup{G}}.$$
+	\item In the computations of $\dblGammaFactor{\pi}{\chi}{\fieldCharacter}$ in terms of Deligne--Lusztig we should say that when we take a torus of $\GroupExtension{G}$ and intersect it with $G$ we get a torus of $G$ and hence it suffices to compute whatever we are computing.
+	\item The proof of \Cref{prop:gamma-factor-is-constant-on-lusztig-series} should be modified. We should first use $\GroupExtension{G}$. For this group we have the ``at most one cuspidal'' property. Then we should use \cite[Page 140]{DigneMichel2020} $$R_{\GroupExtension{T}}^{\GroupExtension{G}}\left(\tilde{\theta}\right) \restriction_{G} = R_{T}^G \left(\tilde{\theta}\restriction_{T}\right),$$
+	where we need to explain the notation.
+	\item \Cref{subsec:tori-isomorphism} should be removed and replaced with Calvin's arguments.
+\end{enumerate}
+
 \section{Notation}
 Let $\finiteField$ be a finite field with $q$ elements, and let $\fieldCharacter_{\finiteField} \colon \finiteField \to \multiplicativegroup{\cComplex}$ be a non-trivial character. Fix an algebraic closure $\algebraicClosure{\finiteField}$ of $\finiteField$. For any $k \ge 1$, let $\finiteFieldExtension{k} \slash \finiteField$ be the unique field extension of degree $k$ contained in $\algebraicClosure{\finiteField}$.
 
@@ -621,7 +642,7 @@ Note it is enough to prove the statement for $f = 1_z$ an indicator function of 
 Claim 1: $z$ acts by the scalar $\theta(z)$ in the virtual representation $R_{T,\theta}$.\\
 Claim 2: If $(T,\theta),(T',\theta')$ are geometrically conjugate then $\theta|_{\algebraicGroup{Z}(\mathbb{F})} = \theta'_{\algebraicGroup{Z}(\mathbb{F})}$.\\
 Proof of claim 1: The representation $R_T^G(\theta)$ is equal to $M \otimes_{\mathbb{C}[T]} \theta$ where $M$ is the virtual module corresponding to the Euler characteristic of cohomology on $X$ which as a variety is a subvariety of $\algebraicGroup{G}$ with the $G \times T$ action via $(g,\ell).x = gx\ell$. The center $\algebraicGroup{Z}$ then commutes across $X$ so the action of $(z,1)$ equals the action of $(1,z)$. The result is on the $\theta$ component of $M$, $z$ acts by $\theta(z)$.\\
-Proof of claim 2: Geometric conjugacy is equivalent to for large enough $n$, there exists $g \in \algebraicGroup{G}(\mathbb{F}^n)$ such that $g\algebraicGroup{T}g^{-1} = \algebraicGroup{T}'$ and $g(\theta \circ Nm) g^{-1} = (\theta' \circ Nm)$. So when restricted to the center, $\theta \circ Nm = \theta' \circ Nm$. Since $Nm$ is surjective onto the $\mathbb{F}$-points, $\theta|_{\algebraicGroup{Z}(\mathbb{F})} = \theta'|_{\algebraicGroup{Z}(\mathbb{F})}$.
+Proof of claim 2: Geometric conjugacy is equivalent to for large enough $n$, there exists $g \in \algebraicGroup{G}(\mathbb{F}^n)$ \elad{Here you mean $\algebraicGroup{G}\left(\finiteFieldExtension{n}\right)$?} such that $g\algebraicGroup{T}g^{-1} = \algebraicGroup{T}'$ and $g(\theta \circ Nm) g^{-1} = (\theta' \circ Nm)$. So when restricted to the center, $\theta \circ Nm = \theta' \circ Nm$. Since $Nm$ is surjective onto the $\mathbb{F}$-points, $\theta|_{\algebraicGroup{Z}(\mathbb{F})} = \theta'|_{\algebraicGroup{Z}(\mathbb{F})}$.
 \end{proof}
 
 
@@ -771,7 +792,7 @@ The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-s
 \end{theorem}
 In order to prove this theorem, we will use the theory of Lusztig series.
 
-\subsubsection{Tori isomorphism}
+\subsubsection{Tori isomorphism}\label{subsec:tori-isomorphism}
 
 For any finite abelian group $G$, let $\widehat{G}$ be the character group of $G$, consisting of characters $\theta \colon G \to \multiplicativegroup{\cComplex}$.
 
@@ -850,7 +871,7 @@ We will need the following two facts:
 	\item The Lusztig series $\LusztigSeries{\GroupExtension{G}}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(P,\sigma\right)$ where $P$ is a parabolic subgroup of $\GroupExtension{G}$ with Levi part $L$ and $\sigma \in \LusztigSeries{L}{s}$ is an irreducible cuspidal representation.
 \end{enumerate}
 Our theorem is equivalent to the following statement.
-\begin{proposition}
+\begin{proposition}\label{prop:gamma-factor-is-constant-on-lusztig-series}
 	Keep the notations as above. Suppose that $P$ is a parabolic subgroup of $G$ with Levi part $L$. Then for any irreducible cuspidal $\sigma \in \LusztigSeries{L}{s}$ and for any irreducible subrepresentation $\pi \subset \Ind{P}{G}{\sigma}$, $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
 \end{proposition}
 \begin{proof}
