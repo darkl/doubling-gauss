@@ -223,7 +223,7 @@
 \maketitle
 
 \subsection{TODO list}
-
+\calvin{I mentioned this to Charlotte and will meet with her sometime after Arizona to discuss specifically the DL stuff to make sure that it ok. So we could try to have a draft }
 \begin{enumerate}
 	\item (Minor) Change terminology of Gauss sums $\dblGaussSumScalar{\pi}{\chi}$ to Jacobi sums and the notation to $J^{\mathrm{dbl}}\left(\pi, \chi\right)$ as they are similar to the Jacobi sums
 	$$J\left(\alpha, \beta\right) = \sum_{\substack{x,y \in \multiplicativegroup{\finiteField}\\
@@ -254,7 +254,7 @@ This element lies in $\Hom_{\GL_n\left(\finiteField\right)}\left(\tau, \tau\righ
 $$\GaussSum{\tau \times \chi}{\fieldCharacter_{\finiteField}} = \GaussSumScalar{\tau \times \chi}{\fieldCharacter_{\finiteField}} \cdot \idmap_\tau.$$ The computation of this scalar is known due to Kondo.
 
 \begin{lemma}\label{lem:sum-vanishes-for-singular-matrices}
-	For any singular matrix $X \in \squareMatrix_n\left(\finiteField\right)$ and any $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$, the sum
+	For any singular matrix $X \in \squareMatrix_n\left(\finiteField\right)$ and any $1 \ne \chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$, the sum
 	$$\sum_{h \in \GL_n\left(\finiteField\right)} \chi\left(\det h\right) \fieldCharacter_{\finiteField}\left(\trace\left(Xh\right)\right)$$
 	is zero.
 \end{lemma}
@@ -642,7 +642,7 @@ Note it is enough to prove the statement for $f = 1_z$ an indicator function of 
 Claim 1: $z$ acts by the scalar $\theta(z)$ in the virtual representation $R_{T,\theta}$.\\
 Claim 2: If $(T,\theta),(T',\theta')$ are geometrically conjugate then $\theta|_{\algebraicGroup{Z}(\mathbb{F})} = \theta'_{\algebraicGroup{Z}(\mathbb{F})}$.\\
 Proof of claim 1: The representation $R_T^G(\theta)$ is equal to $M \otimes_{\mathbb{C}[T]} \theta$ where $M$ is the virtual module corresponding to the Euler characteristic of cohomology on $X$ which as a variety is a subvariety of $\algebraicGroup{G}$ with the $G \times T$ action via $(g,\ell).x = gx\ell$. The center $\algebraicGroup{Z}$ then commutes across $X$ so the action of $(z,1)$ equals the action of $(1,z)$. The result is on the $\theta$ component of $M$, $z$ acts by $\theta(z)$.\\
-Proof of claim 2: Geometric conjugacy is equivalent to for large enough $n$, there exists $g \in \algebraicGroup{G}(\mathbb{F}^n)$ \elad{Here you mean $\algebraicGroup{G}\left(\finiteFieldExtension{n}\right)$?} such that $g\algebraicGroup{T}g^{-1} = \algebraicGroup{T}'$ and $g(\theta \circ Nm) g^{-1} = (\theta' \circ Nm)$. So when restricted to the center, $\theta \circ Nm = \theta' \circ Nm$. Since $Nm$ is surjective onto the $\mathbb{F}$-points, $\theta|_{\algebraicGroup{Z}(\mathbb{F})} = \theta'|_{\algebraicGroup{Z}(\mathbb{F})}$.
+Proof of claim 2: Geometric conjugacy is equivalent to for large enough $n$, there exists $g \in \algebraicGroup{G}(\mathbb{F}_n)$ \elad{Here you mean $\algebraicGroup{G}\left(\finiteFieldExtension{n}\right)$?}\calvin{oops yes} such that $g\algebraicGroup{T}g^{-1} = \algebraicGroup{T}'$ and $g(\theta \circ Nm) g^{-1} = (\theta' \circ Nm)$. So when restricted to the center, $\theta \circ Nm = \theta' \circ Nm$. Since $Nm$ is surjective onto the $\mathbb{F}$-points, $\theta|_{\algebraicGroup{Z}(\mathbb{F})} = \theta'|_{\algebraicGroup{Z}(\mathbb{F})}$.
 \end{proof}
 
 
