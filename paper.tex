@@ -102,6 +102,11 @@
 \newcommand{\antidiag}{\operatorname{\mathrm{antidiag}}}
 \newcommand{\trace}{\operatorname{tr}}
 \newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\GSO}{\mathrm{GSO}}
+\newcommand{\Sp}{\mathrm{Sp}}
+\newcommand{\GSp}{\mathrm{GSp}}
+\newcommand{\UnitaryGroup}{\mathrm{U}}
 \newcommand{\UnipotentSubgroup}{U}
 \newcommand{\UnipotentRadicalForWss}[2]{N_{\left(#2^{#1}\right)}}
 \newcommand{\UnipotentRadicalForWssRecursion}[2]{\mathcal{Y}_{c,k}}
@@ -314,9 +319,44 @@ Let $\hermitianSpace$ be a vector space of dimension $n$ over $\quadraticExtensi
 	\item ($\epsilon$-symmetric) For every $x,y \in \hermitianSpace$, $$\innerproduct{x}{y} = \epsilon \involution{\innerproduct{y}{x}}.$$
 	\item (non-degenerate) For every $0 \ne x \in \hermitianSpace$ there exists $y \in \hermitianSpace$ such that $$\innerproduct{x}{y} \ne 0.$$
 \end{enumerate}
-Let $\IsometryGroup \left(\hermitianSpace\right)$ be the isometry group of $\hermitianSpace$, consisting of all the elements of $\GL_{\quadraticExtension}\left(\hermitianSpace\right)$ that satisfy $\innerproduct{gx}{gy} = \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. We denote by $G$ the identity component of $\IsometryGroup\left(\hermitianSpace\right)$. Let $\GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ be the similitude group version of $\IsometryGroup\left(\hermitianSpace\right)$, consisting of the elements $g \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)$ with the property that there exists a constant $\similitudeCharacter\left(g\right) \in \multiplicativegroup{\quadraticExtension}$ such that for every $\innerproduct{gx}{gy} = \similitudeCharacter\left(g\right) \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. Let $\GroupExtension{G}$ be the identity component of $\GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$. If $\quadraticExtension = \finiteField$ and $\dim_{\finiteField} \hermitianSpace = 2n$ is even, then $\GroupExtension{G}$ consists of all elements in $\GroupExtension{\IsometryGroup\left(G\right)}$ satisfying $\similitudeCharacter\left(g\right) = \left(\det g\right)^n$. Let $\lieAlgebra$ be the Lie algebra of $G$, consisting of all elements $A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)$ satisfying $\innerproduct{Ax}{y} + \involution{\innerproduct{x}{AY}} = 0$ for every $x, y \in \hermitianSpace$.
+Let $\IsometryGroup \left(\hermitianSpace\right)$ be the isometry group of $\hermitianSpace$, consisting of all the elements of $\GL_{\quadraticExtension}\left(\hermitianSpace\right)$ that satisfy $\innerproduct{gx}{gy} = \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. We denote by $G$ the identity component of $\IsometryGroup\left(\hermitianSpace\right)$. If $\quadraticExtension = \finiteField$, let $\GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ be the similitude group version of $\IsometryGroup\left(\hermitianSpace\right)$, consisting of the elements $g \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)$ with the property that there exists a constant $\similitudeCharacter\left(g\right) \in \multiplicativegroup{\quadraticExtension}$ such that for every $\innerproduct{gx}{gy} = \similitudeCharacter\left(g\right) \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. Let $\GroupExtension{G}$ be the identity component of $\GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$. If $\quadraticExtension \ne \finiteField$, let $\GroupExtension{G} = G$.
 
-We will assume that $\dim_{\finiteField} \hermitianSpace$ is even. This is automatic in all cases, expect for when $\quadraticExtension = \finiteField$ and $\epsilon = 1$, in which case we will only consider even special orthogonal groups.
+We will assume that $\dim_{\finiteField} \hermitianSpace$ is even. This is automatic in all cases, expect for when $\quadraticExtension = \finiteField$ and $\epsilon = 1$. The group $\GroupExtension{G}$ has connected center and contains $G$.
+
+Let us summarize all possible cases for $G$ and $\GroupExtension{G}$. Let $$w_n = \begin{pmatrix}
+	& & & 1\\
+	& & 1\\
+	& \iddots\\
+	1
+\end{pmatrix} \in \GL_n\left(\finiteField\right)$$ be the longest Weyl element.
+\begin{enumerate}
+	\item (Even special orthogonal groups): $\quadraticExtension = \finiteField$ and $\epsilon = 1$. Denote $\dim_{\finiteField} \hermitianSpace = 2n$. In this case, we have that $G$ consists of all elements $g \in \IsometryGroup\left(\hermitianSpace\right)$ with $\det \hermitianSpace = 1$, and that $\GroupExtension{G}$ consists of all elements $g \in \GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ such that $\det g = \similitudeCharacter\left(g\right)^n$. There are two cases here.
+	\begin{enumerate}
+		\item Split case: in this case, we can write $\hermitianSpace = \xIsotropic \oplus \yIsotropic$ where $\xIsotropic$ and $\yIsotropic$ are totally isotropic (that is, for every $x \in \xIsotropic$, $\innerproduct{x}{x} = 0$ and similarly for $\yIsotropic$) and these spaces are in duality with respect to $\innerproduct{\cdot}{\cdot}$, i.e., the map $\yIsotropic \to \Hom_{\finiteField}\left(\xIsotropic, \finiteField\right)$ given by $y \mapsto \left(x \mapsto \innerproduct{x}{y}\right)$ is an isomorphism. In this case, we have that $G$ is isomorphic to the subgroup $\SO_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$ consisting of elements $g$ satisfying $$g \cdot w_{2n} \cdot \transpose{g} = w_{2n}$$ and $\det g = 1$.
+		The group $\tilde{G}$ is isomorphic to the subgroup $\GSO_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$, consisting of elements $g$ such that $$g \cdot w_{2n} \cdot \transpose{g} = \similitudeCharacter\left(g\right) w_{2n},$$
+		and such that $\det g = \similitudeCharacter\left(g\right)^n$, where $\similitudeCharacter\left(g\right)$ is a non-zero scalar.
+		\item Non-split case:
+	\end{enumerate}
+	\item (Symplectic groups): $\quadraticExtension = \finiteField$ and $\epsilon = -1$. In this case, $\dim_{\finiteField} \hermitianSpace = 2n$ for some positive integer $n$ and $G$ is isomorphic to subgroup $\Sp_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$ consisting of all elements $g$ satisfying $$g \cdot \begin{pmatrix}
+		& w_n\\
+		-w_n
+	\end{pmatrix} \cdot \transpose{g} = \begin{pmatrix}
+	& w_n\\
+	-w_n
+	\end{pmatrix}.$$ The group $\GroupExtension{G}$ is is isomorphic to the subgroup $\GSp_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$ consisting of all elements $g$ such that $$g \cdot \begin{pmatrix}
+	& w_n\\
+	-w_n
+	\end{pmatrix} \cdot \transpose{g} = \similitudeCharacter\left(g\right) \begin{pmatrix}
+	& w_n\\
+	-w_n
+	\end{pmatrix},$$
+	where $\similitudeCharacter\left(g\right)$ is a non-zero scalar.
+	\item (Unitary groups): $\quadraticExtension \ne \finiteField$. Denote $\dim_{\quadraticExtension} \hermitianSpace = n$. In this case, the group $G = \GroupExtension{G}$ is isomorphic to the subgroup $\UnitaryGroup_n\left(\finiteField\right)$ of $\GL_{n}\left(\quadraticExtension\right)$ consisting of all elements $g$ such that $$g \cdot w_n \cdot \involution{\left(\transpose{g}\right)} = w_n.$$
+\end{enumerate}
+
+Let $\lieAlgebra$ be the Lie algebra of $G$, consisting of all elements $A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)$ satisfying $\innerproduct{Ax}{y} + \involution{\innerproduct{x}{AY}} = 0$ for every $x, y \in \hermitianSpace$.
+
+
 
 Let $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be a character. As before, the assignment $\Phi_{\chi} \colon \GL_{\quadraticExtension}\left(\hermitianSpace\right) \to \cComplex$ given by $$\Phi_{\chi}\left(g\right) = \begin{dcases}
 \chi\left(\detQuadratic\left(g - \idmap_{\hermitianSpace}\right)\right) & \text{if }\detQuadratic\left(g - \idmap_{\hermitianSpace}\right) \ne 0\\
@@ -324,7 +364,7 @@ Let $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegr
 \end{dcases}$$
 is a class function of $\GL_{\quadraticExtension}\left(\hermitianSpace\right)$.
 
-Let $\pi$ be an irreducible representation of $H$ where $H \in \{G, \GroupExtension{G}\}$ if $\quadraticExtension = \finiteField$ and $H = G$ if $\quadraticExtension \ne \finiteField$. Denote $$\dblGaussSum{\pi}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} \pi\left(g\right) \Phi_{\chi}\left(g\right).$$
+Let $\pi$ be an irreducible representation of $H$ where $H \in \{G, \GroupExtension{G}\}$. Denote $$\dblGaussSum{\pi}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} \pi\left(g\right) \Phi_{\chi}\left(g\right).$$
 Since $\Phi_{\chi}$ is a class function of $\GL_{\quadraticExtension}\left(\hermitianSpace\right)$, it is also a class function of $G$. Since $G$ is a normal subgroup of $H$, we have that $\dblGaussSum{\pi}{\chi} \in \Hom_{H}\left(\pi, \pi\right)$. By Schur's lemma, there exists a constant $\dblGaussSumScalar{\pi}{\fieldCharacter} \in \cComplex$, such that $$\dblGaussSum{\pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$
 We call $\dblGaussSumScalar{\pi}{\chi}$ the \emph{doubling method Gauss sum}.
 
