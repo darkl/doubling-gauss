@@ -218,7 +218,7 @@
 \maketitle
 
 \section{Notation}
-Let $\finiteField$ be a finite field with $q$ elements, and let $\fieldCharacter_{\finiteField} \colon \finiteField \to \multiplicativegroup{\cComplex}$ be a non-trivial character. 
+Let $\finiteField$ be a finite field with $q$ elements, and let $\fieldCharacter_{\finiteField} \colon \finiteField \to \multiplicativegroup{\cComplex}$ be a non-trivial character. Fix an algebraic closure $\algebraicClosure{\finiteField}$ of $\finiteField$. For any $k \ge 1$, let $\finiteFieldExtension{k} \slash \finiteField$ be the unique field extension of degree $k$ contained in $\algebraicClosure{\finiteField}$.
 
 \section{Kondo Gauss sums}
 Let $\tau$ be an irreducible representation of $\GL_n\left(\finiteField\right)$. 
@@ -305,7 +305,7 @@ The last equality implies the following result.
 
 \subsection{The case of classical groups}
 
-Let $\quadraticExtension \slash \finiteField$ be a field extension of degree $1$ or $2$. Let $x \mapsto \involution{x}$ be the generator of $\Galois\left(\quadraticExtension \slash \finiteField\right)$. Let $\fieldCharacter \colon \quadraticExtension \to \multiplicativegroup{\cComplex}$ be a non-trivial character.
+Let $\quadraticExtension \slash \finiteField$ be a field extension of degree $1$ or $2$ contained in $\algebraicClosure{\finiteField}$. For any $k \ge 1$, let $\quadraticFieldExtension{k} \slash \quadraticExtension$ be the unique field extension of degree $k$ contained in $\algebraicClosure{\finiteField}$. Let $x \mapsto \involution{x}$ be the generator of $\Galois\left(\quadraticExtension \slash \finiteField\right)$. Let $\fieldCharacter \colon \quadraticExtension \to \multiplicativegroup{\cComplex}$ be a non-trivial character.
 
 Let $\hermitianSpace$ be a vector space of dimension $n$ over $\quadraticExtension$, equipped with a non-degenerate sesquilinear form $\innerproduct{\cdot}{\cdot} \colon \hermitianSpace \times \hermitianSpace \to \quadraticExtension$ which is $\epsilon$-symmetric for $\epsilon \in \left\{\pm 1\right\}$. By this we mean that:
 \begin{enumerate}
