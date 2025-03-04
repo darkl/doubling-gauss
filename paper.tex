@@ -416,7 +416,7 @@ $$\minusInvolution{\chi}\left(x\right) = \chi^{-1}\left(\involution{x}\right).$$
 	which can be rewritten as
 	$$\left(\dblJacobiSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in P}  \Phi_{\chi}\left(x^{-1} p\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_\tau \otimes v_{\pi'}.$$
 	As before, we may write
-	$$\Phi_{\chi}\left(g\right) = q^{-k^2} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(-\detQuadratic h\right) \fieldCharacter_{\quadraticExtension}\left(\trace\left(A \left(g - \idmap_{\hermitianSpace} - h\right)\right)\right).$$
+	$$\Phi_{\chi}\left(g\right) = q^{-k^2} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic \left(-h\right)\right) \fieldCharacter_{\quadraticExtension}\left(\trace\left(A \left(g - \idmap_{\hermitianSpace} - h\right)\right)\right).$$
 	Hence, \begin{align*}
 		\chi\left(-1\right)^k q^{k^2} \sum_{p \in P} \Phi_{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic h\right)\fieldCharacter_{\quadraticExtension}\left(\trace\left(Ah\right)\right) \\
 		& \times \sum_{p \in P} \fieldCharacter_{\quadraticExtension}\left(\trace\left(A \left(xp - \idmap_{\hermitianSpace}\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
