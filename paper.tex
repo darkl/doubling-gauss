@@ -1,4 +1,5 @@
 \documentclass[12pt, reqno]{amsart}
+\usepackage[normalem]{ulem}
 
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage{enumerate}
@@ -171,10 +172,10 @@
 \newcommand{\gSpehWhittakerFunctional}[3]{\ell_{\SpehRepresentation{#1}{#3}, \fieldCharacter_{\UnipotentRadicalForWss{#2}{#3}}}}
 \newcommand{\gShortSpehWhittakerFunctional}[3]{\ell_{\SpehRepresentation{#1}{#3}}}
 \newcommand{\GaussSum}[2]{\mathcal{G}\left(#1, #2\right)}
-\newcommand{\dblGaussSum}[2]{\mathcal{G}^{\mathrm{dbl}}\left(#1, #2\right)}
+\newcommand{\dblJacobiSum}[2]{\mathcal{J}^{\mathrm{dbl}}\left(#1, #2\right)}
 \newcommand{\GaussSumScalar}[2]{\mathrm{G}\left(#1, #2\right)}
-\newcommand{\dblGaussSumScalar}[2]{\mathrm{G}^{\mathrm{dbl}}\left(#1, #2\right)}
-\newcommand{\dblVirtualGaussSumScalar}[2]{\mathrm{g}^{\mathrm{dbl}}\left(#1, #2\right)}
+\newcommand{\dblJacobiSumScalar}[2]{\mathrm{J}^{\mathrm{dbl}}\left(#1, #2\right)}
+\newcommand{\dblVirtualJacobiSumScalar}[2]{\mathrm{j}^{\mathrm{dbl}}\left(#1, #2\right)}
 \newcommand{\dblGammaFactor}[3]{\Gamma^{\mathrm{dbl}}\left(#1 \times #2, #3\right)}
 \newcommand{\dblGammaFactorSpace}[4]{\Gamma^{\mathrm{dbl}}_{#1}\left(#2 \times #3, #4\right)}
 \newcommand{\GKGaussSum}[3]{\mathcal{G}\left(#1 \times #2, #3\right)}
@@ -200,7 +201,7 @@
 
 \hypersetup{pdfauthor={Calvin Yost-Wolff, Elad Zelingher},
 	pdfsubject={Number theory, Representation theory},
-	pdfkeywords={Kloosterman sums, Gauss sums}}
+	pdfkeywords={Kloosterman sums, Exponential sums}}
 
 \title{On exponential sums arising from the classical doubling method}
 
@@ -227,10 +228,10 @@
 \subsection{TODO list}
 \calvin{I mentioned this to Charlotte and will meet with her sometime after Arizona to discuss specifically the DL stuff to make sure that it ok. So we could try to have a draft }
 \begin{enumerate}
-	\item (Minor) Change terminology of Gauss sums $\dblGaussSumScalar{\pi}{\chi}$ to Jacobi sums and the notation to $J^{\mathrm{dbl}}\left(\pi, \chi\right)$ as they are similar to the Jacobi sums
+	\item (Minor) \sout{Change terminology of Gauss sums $\dblJacobiSumScalar{\pi}{\chi}$ to Jacobi sums and the notation to $J^{\mathrm{dbl}}\left(\pi, \chi\right)$ as they are similar to the Jacobi sums}
 	$$J\left(\alpha, \beta\right) = \sum_{\substack{x,y \in \multiplicativegroup{\finiteField}\\
 	x+y = 1}} \alpha\left(x\right) \beta\left(y\right),$$
-	compare with $$\dblGaussSumScalar{\pi}{\chi} = \sum_{\substack{g \in G\\
+	compare with $$\dblJacobiSumScalar{\pi}{\chi} = \sum_{\substack{g \in G\\
 			h \in \GL\left(\hermitianSpace\right)\\
 	g + h = \idmap_{\hermitianSpace}}} \pi\left(g\right) \chi\left(\det\left(-h\right)\right).$$
 	Consider replacing $\chi\left(\det\left(g - \idmap_{\hermitianSpace}\right)\right)$ with $\chi\left(\det\left(\idmap_{\hermitianSpace} - g\right)\right)$ for aesthetics (probably not worth it).
@@ -291,7 +292,7 @@ $$\GaussSum{\tau \times \chi}{\fieldCharacter} = \GaussSumScalar{\tau \times \ch
 	which vanishes because $\chi \ne 1$.
 \end{proof}
 
-\section{Doubling method Gauss sums}
+\section{Doubling method Jacobi sums}
 
 \subsection{The case of general linear groups}
 
@@ -304,11 +305,11 @@ $$\Phi_{\chi}\left(g\right) = \begin{dcases}
 \end{dcases}$$
 It is clear that $\Phi_{\chi}$ is a class function of $\GL_k\left(\finiteField\right)$.
 
-Given an irreducible representation $\tau$ of $\GL_k\left(\finiteField\right)$, we consider the following \emph{doubling method Gauss sum}:
-$$\dblGaussSum{\tau}{\chi} = q^{-\frac{k^2}{2}} \sum_{g \in \GL_k\left(\finiteField\right)} \Phi_{\chi}\left(g\right) \tau\left(g\right).$$
-Then $\dblGaussSum{\tau}{\chi}$ defines an element of $\Hom_{\GL_k\left(\finiteField\right)}\left(\tau, \tau\right)$. Therefore, by Schur's lemma there exists a complex number $\dblGaussSumScalar{\tau}{\chi} \in \cComplex$ such that $$\dblGaussSum{\tau}{\chi} = \dblGaussSumScalar{\tau}{\chi} \cdot \idmap_\tau.$$ 
+Given an irreducible representation $\tau$ of $\GL_k\left(\finiteField\right)$, we consider the following \emph{doubling method Jacobi sum}:
+$$\dblJacobiSum{\tau}{\chi} = q^{-\frac{k^2}{2}} \sum_{g \in \GL_k\left(\finiteField\right)} \Phi_{\chi}\left(g\right) \tau\left(g\right).$$
+Then $\dblJacobiSum{\tau}{\chi}$ defines an element of $\Hom_{\GL_k\left(\finiteField\right)}\left(\tau, \tau\right)$. Therefore, by Schur's lemma there exists a complex number $\dblJacobiSumScalar{\tau}{\chi} \in \cComplex$ such that $$\dblJacobiSum{\tau}{\chi} = \dblJacobiSumScalar{\tau}{\chi} \cdot \idmap_\tau.$$ 
 
-The goal of this section is to express $\dblGaussSumScalar{\tau}{\chi}$ in terms of Kondo's Gauss sum.
+The goal of this section is to express $\dblJacobiSumScalar{\tau}{\chi}$ in terms of Kondo's Gauss sum.
 
 \begin{proposition}\label{prop:doubling-for-gln-in-terms-of-kondo}
 	We have the identity
@@ -325,10 +326,10 @@ The goal of this section is to express $\dblGaussSumScalar{\tau}{\chi}$ in terms
 			y^{-1} x = -g}} \fieldCharacter\left(\trace x\right) \chi^{-1}\left(\det y\right) \fieldCharacter\left(\trace y\right).$$
 \end{proof}
 
-We now use this to compute $\dblGaussSum{\tau}{\chi}$. We have that $$\dblGaussSum{\tau}{\chi} = q^{-k^2} \GaussSumScalar{\chi_{\GL_k}}{\fieldCharacter} \sum_{x, y \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace x\right) \chi^{-1}\left(\det y\right) \fieldCharacter\left(\trace y\right) \pi\left(-y^{-1} x\right).$$
+We now use this to compute $\dblJacobiSum{\tau}{\chi}$. We have that $$\dblJacobiSum{\tau}{\chi} = q^{-k^2} \GaussSumScalar{\chi_{\GL_k}}{\fieldCharacter} \sum_{x, y \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace x\right) \chi^{-1}\left(\det y\right) \fieldCharacter\left(\trace y\right) \pi\left(-y^{-1} x\right).$$
 The last equality implies the following result.
 \begin{theorem}\label{thm:gln-doubling-gauss-sum-in-terms-of-kondo}For any irreducible representation $\tau$ of $\GL_k\left(\finiteField\right)$ and any non-trivial character $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$, the following identity holds:
-	$$\dblGaussSumScalar{\tau}{\chi} = \centralCharacter{\tau}\left(-1\right) \GaussSumScalar{\chi}{\fieldCharacter}^k \GaussSumScalar{\tau}{\fieldCharacter} \GaussSumScalar{\tau^{\vee} \times \chi^{-1}}{\fieldCharacter}.$$
+	$$\dblJacobiSumScalar{\tau}{\chi} = \centralCharacter{\tau}\left(-1\right) \GaussSumScalar{\chi}{\fieldCharacter}^k \GaussSumScalar{\tau}{\fieldCharacter} \GaussSumScalar{\tau^{\vee} \times \chi^{-1}}{\fieldCharacter}.$$
 \end{theorem}
 
 \subsection{The case of classical groups}
@@ -387,12 +388,12 @@ Let $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegr
 \end{dcases}$$
 is a class function of $\GL_{\quadraticExtension}\left(\hermitianSpace\right)$.
 
-Let $\pi$ be an irreducible representation of $H$ where $H \in \{G, \GroupExtension{G}\}$. Denote $$\dblGaussSum{\pi}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} \pi\left(g\right) \Phi_{\chi}\left(g\right).$$
-Since $\Phi_{\chi}$ is a class function of $\GL_{\quadraticExtension}\left(\hermitianSpace\right)$, it is also a class function of $G$. Since $G$ is a normal subgroup of $H$, we have that $\dblGaussSum{\pi}{\chi} \in \Hom_{H}\left(\pi, \pi\right)$. By Schur's lemma, there exists a constant $\dblGaussSumScalar{\pi}{\fieldCharacter} \in \cComplex$, such that $$\dblGaussSum{\pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$
-We call $\dblGaussSumScalar{\pi}{\chi}$ the \emph{doubling method Gauss sum}.
+Let $\pi$ be an irreducible representation of $H$ where $H \in \{G, \GroupExtension{G}\}$. Denote $$\dblJacobiSum{\pi}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} \pi\left(g\right) \Phi_{\chi}\left(g\right).$$
+Since $\Phi_{\chi}$ is a class function of $\GL_{\quadraticExtension}\left(\hermitianSpace\right)$, it is also a class function of $G$. Since $G$ is a normal subgroup of $H$, we have that $\dblJacobiSum{\pi}{\chi} \in \Hom_{H}\left(\pi, \pi\right)$. By Schur's lemma, there exists a constant $\dblJacobiSumScalar{\pi}{\fieldCharacter} \in \cComplex$, such that $$\dblJacobiSum{\pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$
+We call $\dblJacobiSumScalar{\pi}{\chi}$ the \emph{doubling method Jacobi sum}.
 
 \subsubsection{Multiplicativity property}
-Our next goal is to understand how the doubling method Gauss sum behaves under parabolic induction.
+Our next goal is to understand how the doubling method Jacobi sum behaves under parabolic induction.
 
 Let $\xIsotropic$ and $\yIsotropic$ be isotropic spaces of $\hermitianSpace$ of dimension $k$, such that $\xIsotropic$ and $\yIsotropic$ are in duality with respect to form $\innerproduct{\cdot}{\cdot}$. Let us write $$\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic,$$
 where $\hermitianSpace' \subset \hermitianSpace$ is a non-degenerate subspace, orthogonal to $\xIsotropic$ and $\yIsotropic$. Let $P$ be the parabolic subgroup of $H$, consisting of all elements stabilizing the flag $$0 \subset \xIsotropic \subset \xIsotropic \oplus \hermitianSpace' \subset \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic = \hermitianSpace.$$
@@ -406,14 +407,14 @@ $$\minusInvolution{\chi}\left(x\right) = \chi^{-1}\left(\involution{x}\right).$$
 
 \begin{theorem}\label{thm:multiplicativity-in-terms-of-gauss-sums}
 	Let $\pi'$ be an irreducible representation of $H'$ and let $\tau$ be an irreducible representation of $\GL_k\left(\quadraticExtension\right)$. Then for any irreducible representation $\pi$ of $H$ which appears as a subrepresentation the parabolic induction $\rho = \Ind{P}{H}{\tau \overline{\otimes} \pi'}$ and any $\chi$ such that $\involutionPlusOne{\chi} \ne 1$, we have
-	$$\dblGaussSumScalar{\pi}{\chi} = \centralCharacter{\tau}\left(-1\right) \GaussSumScalar{\involutionPlusOne{\chi}}{\fieldCharacter_{\quadraticExtension}}^k \GaussSumScalar{\tau \times \minusInvolution{\chi}}{\fieldCharacter_{\quadraticExtension}} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter_{\quadraticExtension}} \dblGaussSumScalar{\pi'}{\chi}.$$
+	$$\dblJacobiSumScalar{\pi}{\chi} = \centralCharacter{\tau}\left(-1\right) \GaussSumScalar{\involutionPlusOne{\chi}}{\fieldCharacter_{\quadraticExtension}}^k \GaussSumScalar{\tau \times \minusInvolution{\chi}}{\fieldCharacter_{\quadraticExtension}} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter_{\quadraticExtension}} \dblJacobiSumScalar{\pi'}{\chi}.$$
 \end{theorem}
 \begin{proof}
-	Let $v_{\pi'} \in \pi'$ and $v_{\tau} \in \tau$. Consider $f \in \rho$ defined as follows. The function $f \in \rho$ is the unique element supported on $P$, such that $f\left(\idmap_{\hermitianSpace}\right) = v_{\tau} \otimes v_{\pi'}$. The projection $f$ to any non-zero invariant subspace of $\rho$ is non-zero. We compute $\dblGaussSum{\rho}{\chi} f$.
+	Let $v_{\pi'} \in \pi'$ and $v_{\tau} \in \tau$. Consider $f \in \rho$ defined as follows. The function $f \in \rho$ is the unique element supported on $P$, such that $f\left(\idmap_{\hermitianSpace}\right) = v_{\tau} \otimes v_{\pi'}$. The projection $f$ to any non-zero invariant subspace of $\rho$ is non-zero. We compute $\dblJacobiSum{\rho}{\chi} f$.
 	
-	Notice that for $x \in G$, $$\left(\dblGaussSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} f\left(xg\right) \Phi_{\chi}\left(g\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in P} f\left(p\right) \Phi_{\chi}\left(x^{-1} p\right),$$
+	Notice that for $x \in G$, $$\left(\dblJacobiSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} f\left(xg\right) \Phi_{\chi}\left(g\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in P} f\left(p\right) \Phi_{\chi}\left(x^{-1} p\right),$$
 	which can be rewritten as
-	$$\left(\dblGaussSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in P}  \Phi_{\chi}\left(x^{-1} p\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_\tau \otimes v_{\pi'}.$$
+	$$\left(\dblJacobiSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in P}  \Phi_{\chi}\left(x^{-1} p\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_\tau \otimes v_{\pi'}.$$
 	As before, we may write
 	$$\Phi_{\chi}\left(g\right) = q^{-k^2} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \chi^{-1}\left(\detQuadratic h\right) \fieldCharacter_{\quadraticExtension}\left(\trace\left(A \left(g - \idmap_{\hermitianSpace} - h^{-1}\right)\right)\right).$$
 	Hence, \begin{align*}
@@ -432,7 +433,7 @@ $$\minusInvolution{\chi}\left(x\right) = \chi^{-1}\left(\involution{x}\right).$$
 	\end{align*}
 	By decomposing the sum over $p' \in P$ into a sum over $N$ and $L$, we see that the inner sum over $N$ will vanish unless $p - x^{-1} \in P$, which implies that $x \in P \cap G$.
 	
-	Hence, we have that $\dblGaussSum{\rho}{\chi} f$ is supported on $P$. We move to compute $\left(\dblGaussSum{\rho}{\chi} f\right)\left(\idmap_{\hermitianSpace}\right)$. It is given by
+	Hence, we have that $\dblJacobiSum{\rho}{\chi} f$ is supported on $P$. We move to compute $\left(\dblJacobiSum{\rho}{\chi} f\right)\left(\idmap_{\hermitianSpace}\right)$. It is given by
 	\begin{equation}\label{eq:recursive-doubling-gauss-sum}
 		\frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{\substack{p \in P \cap G\\
 				\detQuadratic\left(p - \idmap_{\hermitianSpace}\right) \ne 0}} \chi\left(\detQuadratic\left(p - \idmap_{\hermitianSpace}\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_{\tau} \otimes v_{\pi'}.
@@ -445,8 +446,8 @@ $$\minusInvolution{\chi}\left(x\right) = \chi^{-1}\left(\involution{x}\right).$$
 	\end{equation}
 	which in turn is
 	\begin{align*}
-		&\chi\left(-1\right)^k \dblGaussSum{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} v_{\tau} \otimes \dblGaussSum{\pi'}{\chi} v_{\pi'}\\
-		=& \chi\left(-1\right)^k\dblGaussSumScalar{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} \dblGaussSumScalar{\pi'}{\chi} v_{\tau} \otimes v_{\pi'}.
+		&\chi\left(-1\right)^k \dblJacobiSum{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} v_{\tau} \otimes \dblJacobiSum{\pi'}{\chi} v_{\pi'}\\
+		=& \chi\left(-1\right)^k\dblJacobiSumScalar{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} \dblJacobiSumScalar{\pi'}{\chi} v_{\tau} \otimes v_{\pi'}.
 	\end{align*}
 	The result now follows.
 \end{proof}
@@ -463,7 +464,7 @@ We define a normalization factor as follows $$c_{\hermitianSpace}\left(\chi, \fi
 Notice that if $\quadraticExtension \ne \finiteField$ then by the Hasse--Davenport relation $\tau\left(\chi\restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^{2} = \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)$.
 
 For an irreducible representation  $\tau$ of $\GL_k\left(\quadraticExtension\right)$, define $$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \GaussSumScalar{\tau \times \minusInvolution{\chi}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter}.$$
-For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \centralCharacter{\pi}\left(-1\right) \frac{\dblGaussSumScalar{\pi}{\chi}}{c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)}.$$
+For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \centralCharacter{\pi}\left(-1\right) \frac{\dblJacobiSumScalar{\pi}{\chi}}{c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)}.$$
 Using this notation and using the multiplicativity property of Kondo's Gauss sum and \Cref{thm:multiplicativity-in-terms-of-gauss-sums}, we have the following multiplicativity property.
 
 \begin{theorem}\label{thm:multiplicativity-in-terms-of-gamma-factors}
@@ -478,24 +479,24 @@ Using this notation and using the multiplicativity property of Kondo's Gauss sum
 
 \subsection{Computation of character sums attached to Deligne--Lusztig data}
 
-The goal of the next two sections is to compute $\dblGaussSumScalar{\pi}{\chi}$ for $\pi$ that appears in a Deligne--Lusztig virtual character $R_{T,\theta}$ for a suitable maximal torus $T$ and $\theta \colon T \to \multiplicativegroup{\cComplex}$.
+The goal of the next two sections is to compute $\dblJacobiSumScalar{\pi}{\chi}$ for $\pi$ that appears in a Deligne--Lusztig virtual character $R_{T,\theta}$ for a suitable maximal torus $T$ and $\theta \colon T \to \multiplicativegroup{\cComplex}$.
 
-In this section, we focus on the computing the analogous character sum corresponding to $\dblGaussSumScalar{\pi}{\fieldCharacter}$ for the virtual character $R_{T,\theta}$.
+In this section, we focus on the computing the analogous character sum corresponding to $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ for the virtual character $R_{T,\theta}$.
 
 \calvin{I kinda prefer the normalization where we divide by $|G|$. I guess both for little and upper $G$. That way it is the honest product of characters in the representation ring.}
 
 Let us realize $G$ as the fixed points of the Frobenius map $\Frobenius$ acting on a connected reductive algebraic group $\algebraicGroup{G}$.
 
-Given a class function $F \colon G \to \cComplex$ (i.e., a function that is invariant under conjugation by elements of $G$), let us define $$\dblVirtualGaussSumScalar{F}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} F\left(g\right) \Phi_{\chi}\left(g\right).$$
+Given a class function $F \colon G \to \cComplex$ (i.e., a function that is invariant under conjugation by elements of $G$), let us define $$\dblVirtualJacobiSumScalar{F}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} F\left(g\right) \Phi_{\chi}\left(g\right).$$
 
-It is clear that if $\pi$ is an irreducible representation of $G$ then $$\dblVirtualGaussSumScalar{\trace \pi}{\chi} = \dblGaussSumScalar{\pi}{\chi} \cdot \dim \pi.$$
+It is clear that if $\pi$ is an irreducible representation of $G$ then $$\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \dim \pi.$$
 Notice that the assignment $g \mapsto \Phi_{\chi}\left(g\right)$ only depends on the semisimple part of $g \in G$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result.
 \begin{proposition}\label{prop:reduction-of-gauss-sum-to-torus}
 	For any $\Frobenius$-stable maximal torus $\algebraicGroup{T}$ of $\algebraicGroup{G}$, and any character $\theta \colon T \to \multiplicativegroup{\cComplex}$, where $T = \algebraicGroup{T}^{\Frobenius}$, we have
-	$$ \dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{G}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
+	$$ \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{G}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
 \end{proposition}
 In the special case that $\theta$ is in general position, the virtual character $\varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} R_{T, \theta}$ equals $\trace \pi$ for some irreducible representation $\pi$ of $G$ and we have that for this $\pi$,
-$$\dblGaussSumScalar{\pi}{\chi} = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \frac{\sizeof{G}_p}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
+$$\dblJacobiSumScalar{\pi}{\chi} = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \frac{\sizeof{G}_p}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
 Here $\varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{G}}$ and $\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{T}}$, and $\sizeof{G}_p$ is the size of the $p$-Sylow group of $G$, where $p$ is the characteristic of $\finiteField$. 
 
 \subsubsection{Gauss sum notations}
@@ -520,7 +521,7 @@ Hence, we have the identity
 $$\sum_{x \in \multiplicativegroup{\finiteFieldExtension{k}}} \alpha\left(x\right) \chi\left(\FieldNorm{k}{1}\left(x-1\right)\right) = -q^{\frac{k}{2}} \alpha\left(-1\right) \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_k} \tau\left(\alpha, \fieldCharacter_k\right) \tau\left(\chi_{\GL_k}, \fieldCharacter_k\right).$$
 
 \subsubsection{Split torus computation II}
-We use the results from the previous section to compute the doubling method Gauss sum for a torus of the form $\multiplicativegroup{\finiteFieldExtension{k}}$. Let $\alpha \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be characters such that $\involutionPlusOne{\chi} \ne 1$. Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
+We use the results from the previous section to compute the doubling method Jacobi sum for a torus of the form $\multiplicativegroup{\finiteFieldExtension{k}}$. Let $\alpha \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be characters such that $\involutionPlusOne{\chi} \ne 1$. Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
 		x \ne 1}} \alpha \left(x\right) \chi\left(\FieldNorm{k}{1}\left(x - 1\right)\right) \chi\left(\FieldNorm{k}{1}\left(\minusInvolution{x} - 1\right)\right).$$
 This can be rewritten as
 $$\chi\left(-1\right)^k \sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
@@ -534,7 +535,7 @@ Notice that if $k = md$ and $\alpha = \beta \circ \FieldNorm{k}{m}$ where $\beta
 $$-\left(q^{\frac{m}{2}} \GaussSumCharacter{\beta^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{m}}} \GaussSumCharacter{\beta}{\minusInvolution{\chi}}{\fieldCharacter_{\quadraticFieldExtension{m}}} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^m\right)^{d}.$$
 
 \subsubsection{Elliptic torus computation}
-In the next two sections we compute the doubling method Gauss sum for a torus of the form $\NormOneGroup{2m}$.
+In the next two sections we compute the doubling method Jacobi sum for a torus of the form $\NormOneGroup{2m}$.
 
 Let $\theta \colon \NormOneGroup{2m} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be non-trivial characters, such that $\chi^2 \ne 1$. It follows that $\theta\left(x^{1-q^m}\right) \ne \chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x\right)$ for some $x \in \multiplicativegroup{\finiteFieldExtension{2m}}$. Our goal is to compute $$\sum_{\substack{x \in \NormOneGroup{2m}\\
 		x \ne 1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x - 1\right)\right).$$
@@ -590,7 +591,7 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 \begin{theorem}\label{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}
 	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s$, where $\alpha_j \colon \multiplicativegroup{\quadraticFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote $$g_T\left(\chi, \theta, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\theta'_i}{\minusInvolution{\chi}}{\fieldCharacter_{2m_i}} \cdot  \prod_{j=1}^r \GaussSumCharacter{\alpha_j}{\minusInvolution{\chi}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}}.$$ Then
 	\begin{align*}
-		 \dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} g_T\left(\chi, \theta, \fieldCharacter\right) \prod_{i=1}^s \theta_i\left(-1\right) \cdot \prod_{j=1}^r \alpha_j\left(-1\right).
+		 \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} g_T\left(\chi, \theta, \fieldCharacter\right) \prod_{i=1}^s \theta_i\left(-1\right) \cdot \prod_{j=1}^r \alpha_j\left(-1\right).
 	\end{align*}
 \end{theorem}
 \begin{proof}
@@ -606,7 +607,7 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 		\centralCharacter{\pi}\left(-1\right) = \theta\left(-1\right) =& \prod_{j=1}^r \alpha_j\left(-1\right) \cdot \prod_{i=1}^s \theta_i\left(-1\right).
 	\end{align*}
 	Thus \begin{align*}
-		\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} \centralCharacter{\pi}\left(-1\right) g_T\left(\theta, \fieldCharacter\right).
+		\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} \centralCharacter{\pi}\left(-1\right) g_T\left(\theta, \fieldCharacter\right).
 	\end{align*}
 \end{remark}
 
@@ -681,7 +682,7 @@ The main result of this subsection is
 \begin{theorem}
 \label{thm:indep_geo_conj}
 	$\Phi_{\chi}(g)$ is a stable function.
-	%Equivalently	$\frac{\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi}}{R_{T,\theta}(1)}$ only depends on the geometric conjugacy class of $(T,\theta)$.
+	%Equivalently	$\frac{\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi}}{R_{T,\theta}(1)}$ only depends on the geometric conjugacy class of $(T,\theta)$.
 \end{theorem}
 
 In the $\GL_n$ case this follows from \Cref{thm:gln-doubling-gauss-sum-in-terms-of-kondo} along with \calvin{Hasse-Davenport? Something else?}.
@@ -728,7 +729,7 @@ Suppose that $(T,\theta)$ and $(T',\theta')$ are geometrically conjugate torus c
 Both are equal to $g_{(\rho(s_{T,\theta}))}(\psi,\chi) = g_{(\rho(s_{T',\theta'}))}(\psi,\chi)$.
 \end{proof}
 
-The idea behind the proof of \Cref{thm:indep_geo_conj} is that the formula from \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} relates $\dblVirtualGaussSumScalar{R_{T, \theta}}{\chi}/R_{T,\theta}(1)$ to $g_{T,\rho}(\theta,\psi,\chi)$ for the appropriate $\rho$ in the table below. 
+The idea behind the proof of \Cref{thm:indep_geo_conj} is that the formula from \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} relates $\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi}/R_{T,\theta}(1)$ to $g_{T,\rho}(\theta,\psi,\chi)$ for the appropriate $\rho$ in the table below. 
 \begin{center}
 \begin{tabular}{ c c}
  Group & Dual group representations $\rho$ \\ 
@@ -815,7 +816,7 @@ Since the sum above is a Gauss sum for $\GL$ it is equal to the Gauss sum attatc
 
 \subsection{Computation for Lusztig series}
 
-The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and results of Lusztig to determine $\dblGaussSumScalar{\pi}{\fieldCharacter}$ for any irreducible representation $\pi$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$.
+The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and results of Lusztig to determine $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ for any irreducible representation $\pi$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$.
 
 \begin{theorem}
 	Let $T \subset G$ be a maximal torus and let $\theta \colon T \to \multiplicativegroup{\cComplex}$ be a character. Write $$R_{T,\theta} = \sum_{\Pi} c_{\Pi} \trace \Pi,$$
@@ -913,13 +914,13 @@ Our theorem is equivalent to the following statement.
 	which implies the result.
 	
 	Next, suppose that $L = G$ and that $\pi = \sigma$ is an irreducible cuspidal representation. Let us write $$R_{T, \theta} = \sum_{\Pi} c_\Pi \trace \Pi,$$
-	where $\Pi$ goes over all the irreducible representations of $G$ and $c_{\Pi} \in \zIntegers$. For every $\Pi$ with $c_{\Pi} \ne 0$ and $\Pi \ne \pi$, we have that $\Pi$ lies in a Harish--Chandra series with $L \ne G$ as above, and therefore $$\dblVirtualGaussSumScalar{\trace \Pi}{\chi} = \dim \Pi \cdot \centralCharacter{\Pi}\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
-	By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}, we have $$\dblVirtualGaussSumScalar{R_{T,\theta}}{\fieldCharacter} = R_{T,\theta}\left(1\right) \cdot \theta\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
+	where $\Pi$ goes over all the irreducible representations of $G$ and $c_{\Pi} \in \zIntegers$. For every $\Pi$ with $c_{\Pi} \ne 0$ and $\Pi \ne \pi$, we have that $\Pi$ lies in a Harish--Chandra series with $L \ne G$ as above, and therefore $$\dblVirtualJacobiSumScalar{\trace \Pi}{\chi} = \dim \Pi \cdot \centralCharacter{\Pi}\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
+	By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}, we have $$\dblVirtualJacobiSumScalar{R_{T,\theta}}{\fieldCharacter} = R_{T,\theta}\left(1\right) \cdot \theta\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
 	Since $\centralCharacter{\Pi}\left(-1\right) = \theta\left(-1\right)$ for every $\Pi$ with $c_{\Pi} \ne 0$,
-	$$c_{\pi} \cdot \dblVirtualGaussSumScalar{\trace \pi}{\fieldCharacter} = \left(R_{T,\theta}\left(1\right) - \sum_{\substack{\Pi \ne \pi\\
+	$$c_{\pi} \cdot \dblVirtualJacobiSumScalar{\trace \pi}{\fieldCharacter} = \left(R_{T,\theta}\left(1\right) - \sum_{\substack{\Pi \ne \pi\\
 	c_{\Pi} \ne 0}} c_{\Pi} \dim \Pi\right) \cdot \theta\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
-	Since $$R_{T,\theta}\left(1\right) = \sum_{\Pi} c_{\Pi} \trace \Pi,$$ it follows that $$\dblVirtualGaussSumScalar{\trace \pi}{\chi} = \dim \pi \cdot \centralCharacter{\pi}\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
-	Since $\dblVirtualGaussSumScalar{\trace \pi}{\chi} = \dim \pi \cdot \dblGaussSumScalar{\pi}{\chi}$, the result follows.
+	Since $$R_{T,\theta}\left(1\right) = \sum_{\Pi} c_{\Pi} \trace \Pi,$$ it follows that $$\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dim \pi \cdot \centralCharacter{\pi}\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
+	Since $\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dim \pi \cdot \dblJacobiSumScalar{\pi}{\chi}$, the result follows.
 \end{proof}
 
 \subsection{Kloosterman type sums}
@@ -928,17 +929,17 @@ Let $\chi_1, \dots, \chi_k \colon \multiplicativegroup{\finiteField} \to \multip
 g_1 \dots g_k = x}} \Phi_{\chi_1}\left(g_1\right) \dots \Phi_{\chi_k}\left(g_k\right).$$
 It is clear that $K$ is a class function of $G$. Let $\pi$ be an irreducible representation of $G$. Then \begin{align*}
 	 \innerproduct{K}{\conjugate{\trace \pi}} &= \frac{1}{\sizeof{G}}\trace \left(\sum_{g_1,\dots,g_k \in G} \Phi_{\chi_1}\left(g_1\right) \dots \Phi_{\chi_k}\left(g_k\right) \pi\left(g_1 \dots g_k\right) \right) \\
-	 &= \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}}}{\sizeof{G}} \trace\left( \dblGaussSum{\pi}{\chi_1} \circ \dots \dblGaussSum{\pi}{\chi_k} \right).
+	 &= \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}}}{\sizeof{G}} \trace\left( \dblJacobiSum{\pi}{\chi_1} \circ \dots \dblJacobiSum{\pi}{\chi_k} \right).
 \end{align*}
-Thus $$\innerproduct{K}{\conjugate{\trace \pi}} = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \dim \pi}{\sizeof{G}} \cdot \prod_{j=1}^k \dblGaussSumScalar{\pi}{\chi_j}.$$
+Thus $$\innerproduct{K}{\conjugate{\trace \pi}} = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \dim \pi}{\sizeof{G}} \cdot \prod_{j=1}^k \dblJacobiSumScalar{\pi}{\chi_j}.$$
 It follows that if
 $$\DeligneLusztigInduction{T}{G}\theta = \sum_{\pi} c_{\pi} \cdot \trace \pi,$$
-then $$\innerproduct{K}{\conjugate{\DeligneLusztigInduction{T}{G}\theta}} = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \prod_{j=1}^k \dblGaussSumScalar{\pi}{\chi_j}}{\sizeof{G}} \sum_{\pi} c_{\pi} \dim \pi = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \prod_{j=1}^k \dblGaussSumScalar{\pi}{\chi_j}}{\sizeof{G}} \left(\DeligneLusztigInduction{T}{G}\theta\right)\left(1\right),$$
+then $$\innerproduct{K}{\conjugate{\DeligneLusztigInduction{T}{G}\theta}} = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \prod_{j=1}^k \dblJacobiSumScalar{\pi}{\chi_j}}{\sizeof{G}} \sum_{\pi} c_{\pi} \dim \pi = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \prod_{j=1}^k \dblJacobiSumScalar{\pi}{\chi_j}}{\sizeof{G}} \left(\DeligneLusztigInduction{T}{G}\theta\right)\left(1\right),$$
 where $\pi$ is any irreducible representation of $G$ such that $c_{\pi} \ne 0$.
 
 Suppose that $T \cong \NormOneGroup{2m}$, and let $t \in T$ be an element such that $t$ is contained only in the torus $T$. Then
 $$K\left(t\right) = \sum_{\theta} \theta\left(t\right) \innerproduct{K}{\DeligneLusztigInduction{T}{G}\left(\theta\right)},$$
-where the sum is over all the characters of $T$. Using the formula $$\dblGaussSumScalar{\pi}{\chi} = \tau\left( \theta' \times \chi^{-1}, \fieldCharacter_{2m} \right) \theta\left(-1\right) \tau\left(\chi^2, \fieldCharacter\right)^m,$$
+where the sum is over all the characters of $T$. Using the formula $$\dblJacobiSumScalar{\pi}{\chi} = \tau\left( \theta' \times \chi^{-1}, \fieldCharacter_{2m} \right) \theta\left(-1\right) \tau\left(\chi^2, \fieldCharacter\right)^m,$$
 we get
 $$K\left(t\right) = \frac{\sizeof{\lieAlgebra}^{\frac{k}{2}} \cdot \DeligneLusztigInduction{T}{G}\left(\theta\right)\left(1\right)}{\sizeof{G}} \sum_{\theta} \theta\left( \left(-1\right)^k t\right) \prod_{j=1}^k \tau\left(\theta' \times \chi_j^{-1}, \fieldCharacter_{2m}\right) \tau\left(\chi_j^2, \fieldCharacter\right)^m.$$
 
