@@ -234,12 +234,13 @@
 	compare with $$\dblJacobiSumScalar{\pi}{\chi} = \sum_{\substack{g \in G\\
 			h \in \GL\left(\hermitianSpace\right)\\
 	g + h = \idmap_{\hermitianSpace}}} \pi\left(g\right) \chi\left(\det\left(-h\right)\right).$$
-	Consider replacing $\chi\left(\det\left(g - \idmap_{\hermitianSpace}\right)\right)$ with $\chi\left(\det\left(\idmap_{\hermitianSpace} - g\right)\right)$ for aesthetics (probably not worth it).
+	\sout{Consider replacing $\chi\left(\det\left(g - \idmap_{\hermitianSpace}\right)\right)$ with $\chi\left(\det\left(\idmap_{\hermitianSpace} - g\right)\right)$ for aesthetics (probably not worth it).}
 	\item Maybe define the algebraic group versions $\algebraicGroup{G}$ and $\GroupExtension{\algebraicGroup{G}}$ in Section 3.2. For instance for $\algebraicGroup{\Sp}_{2n}$ we can define
 	$$\algebraicGroup{\tilde{G}} = \left\{ \left(g,\lambda\right) \in \algebraicGroup{\GL}\left(\hermitianSpace\right) \times \multiplcativeScheme \mid \involution{\transpose{g}} J g = \lambda J,\ \right\}$$ for suitable $J$ and then define the torus $\algebraicGroup{S}$ that appears in \cite[Page 140]{DigneMichel2020} as $$\algebraicGroup{S} = \left\{\left(\begin{pmatrix}
 		t \IdentityMatrix{n}\\
 		& \IdentityMatrix{n}
 	\end{pmatrix}, t\right) \mid t \in \multiplcativeScheme \right\} \subset \GroupExtension{\algebraicGroup{G}}.$$
+	Actually it appears to me that we are not in the same situation as in \cite[Page 140]{DigneMichel2020}.
 	\item In the computations of $\dblGammaFactor{\pi}{\chi}{\fieldCharacter}$ in terms of Deligne--Lusztig we should say that when we take a torus of $\GroupExtension{G}$ and intersect it with $G$ we get a torus of $G$ and hence it suffices to compute whatever we are computing.
 	\item The proof of \Cref{prop:gamma-factor-is-constant-on-lusztig-series} should be modified. We should first use $\GroupExtension{G}$. For this group we have the ``at most one cuspidal'' property. Then we should use \cite[Page 140]{DigneMichel2020} $$R_{\GroupExtension{T}}^{\GroupExtension{G}}\left(\tilde{\theta}\right) \restriction_{G} = R_{T}^G \left(\tilde{\theta}\restriction_{T}\right),$$
 	where we need to explain the notation.
