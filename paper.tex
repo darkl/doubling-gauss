@@ -227,7 +227,6 @@
 \subsection{TODO list}
 \calvin{I mentioned this to Charlotte and will meet with her sometime after Arizona to discuss specifically the DL stuff to make sure that it ok. So we could try to have a draft }
 \begin{enumerate}
-	\item It seems like the unitary group case adds factors of the form $\tau\left(\chi\restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)$ and $\tau\left(\involutionPlusOne{\chi}, \fieldCharacter\right)$, which are related ($\tau\left(\chi\restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right) = \tau\left(\involutionPlusOne{\chi}, \fieldCharacter\right)^2$). The character $\fieldCharacter$ should be of $\finiteField$ and not of $\quadraticExtension$. Should clean up and try to write in a uniform way.
 	\item (Minor) Change terminology of Gauss sums $\dblGaussSumScalar{\pi}{\chi}$ to Jacobi sums and the notation to $J^{\mathrm{dbl}}\left(\pi, \chi\right)$ as they are similar to the Jacobi sums
 	$$J\left(\alpha, \beta\right) = \sum_{\substack{x,y \in \multiplicativegroup{\finiteField}\\
 	x+y = 1}} \alpha\left(x\right) \beta\left(y\right),$$
@@ -399,7 +398,8 @@ Let $\xIsotropic$ and $\yIsotropic$ be isotropic spaces of $\hermitianSpace$ of 
 where $\hermitianSpace' \subset \hermitianSpace$ is a non-degenerate subspace, orthogonal to $\xIsotropic$ and $\yIsotropic$. Let $P$ be the parabolic subgroup of $H$, consisting of all elements stabilizing the flag $$0 \subset \xIsotropic \subset \xIsotropic \oplus \hermitianSpace' \subset \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic = \hermitianSpace.$$
 Let $G' = \IsometryGroup\left(\hermitianSpace'\right)$. Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipotent radical of $P$. Then $L$ is isomorphic to $H' \times \GL_k\left(\quadraticExtension\right)$, where $H' \in \left\{G',\GroupExtension{G'}\right\}$ is of the same type as $H$. 
 
-Let $\fieldCharacter_{\quadraticExtension} \colon \quadraticExtension \to \multiplicativegroup{\cComplex}$ be the character  $\fieldCharacter_{\quadraticExtension} = \fieldCharacter \circ \trace_{\quadraticExtension \slash \finiteField}$.
+Let $\fieldCharacter_{\quadraticExtension} \colon \quadraticExtension \to \multiplicativegroup{\cComplex}$ be the character  $\fieldCharacter_{\quadraticExtension} = \fieldCharacter \circ \trace_{\quadraticExtension \slash \finiteField}$. Similarly, for any $k \ge 1$, let $\fieldCharacter_{\quadraticFieldExtension{k}} \colon \quadraticFieldExtension{k} \to \multiplicativegroup{\cComplex}$ be the character $\fieldCharacter_{\quadraticFieldExtension{k}} = \fieldCharacter \circ \trace_{\quadraticFieldExtension{k} \slash \finiteField}$.
+
 Given a multiplicative character $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$, let $\involutionPlusOne{\chi} \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be the character given by
 $$\involutionPlusOne{\chi}\left(x\right) = \chi\left(x \cdot \involution{x}\right).$$ Similarly, let $\minusInvolution{\chi} \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be the character given by
 $$\minusInvolution{\chi}\left(x\right) = \chi^{-1}\left(\involution{x}\right).$$
@@ -463,7 +463,7 @@ We define a normalization factor as follows $$c_{\hermitianSpace}\left(\chi, \fi
 Notice that if $\quadraticExtension \ne \finiteField$ then by the Hasse--Davenport relation $\tau\left(\chi\restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^{2} = \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)$.
 
 For an irreducible representation  $\tau$ of $\GL_k\left(\quadraticExtension\right)$, define $$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \GaussSumScalar{\tau \times \minusInvolution{\chi}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter}.$$
-For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \centralCharacter{\pi}\left(-1\right) \frac{\dblGaussSumScalar{\pi}{\chi}}{c_{\hermitianSpace}\left(\chi, \finiteField\right)}.$$
+For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \centralCharacter{\pi}\left(-1\right) \frac{\dblGaussSumScalar{\pi}{\chi}}{c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)}.$$
 Using this notation and using the multiplicativity property of Kondo's Gauss sum and \Cref{thm:multiplicativity-in-terms-of-gauss-sums}, we have the following multiplicativity property.
 
 \begin{theorem}\label{thm:multiplicativity-in-terms-of-gamma-factors}
@@ -527,11 +527,11 @@ $$\chi\left(-1\right)^k \sum_{\substack{x \in \multiplicativegroup{\finiteFieldE
 		x \ne 1}} \alpha \left(x\right) \minusInvolution{\chi}\left(\FieldNorm{k}{1}\left(x\right)\right) \involutionPlusOne{\chi}\left(\FieldNorm{k}{1}\left(x - 1\right)\right).$$
 By the previous section, this equals
 \begin{equation}\label{eq:identity-for-multiplicative-group-of-f-k-gauss-sum}
-	-q^{\frac{k}{2}} \alpha\left(-1\right)  \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_k} \GaussSumCharacter{\alpha}{\minusInvolution{\chi}}{\fieldCharacter_k} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter\right)^k.
+	-q^{\frac{k}{2}} \alpha\left(-1\right)  \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\alpha}{\minusInvolution{\chi}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^k.
 \end{equation}
 
 Notice that if $k = md$ and $\alpha = \beta \circ \FieldNorm{k}{m}$ where $\beta \colon \multiplicativegroup{\finiteFieldExtension{m}} \to \multiplicativegroup{\cComplex}$ is a character, then \eqref{eq:identity-for-multiplicative-group-of-f-k-gauss-sum} equals
-$$-\left(q^{\frac{m}{2}} \GaussSumCharacter{\beta^{-1}}{\chi^{-1}}{\fieldCharacter_m} \GaussSumCharacter{\beta}{\minusInvolution{\chi}}{\fieldCharacter_m} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter\right)^m\right)^{d}.$$
+$$-\left(q^{\frac{m}{2}} \GaussSumCharacter{\beta^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{m}}} \GaussSumCharacter{\beta}{\minusInvolution{\chi}}{\fieldCharacter_{\quadraticFieldExtension{m}}} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^m\right)^{d}.$$
 
 \subsubsection{Elliptic torus computation}
 In the next two sections we compute the doubling method Gauss sum for a torus of the form $\NormOneGroup{2m}$.
@@ -588,7 +588,7 @@ $$\theta\left(-1\right) q^{\frac{m}{2}} \tau\left(\chi \restriction_{\multiplica
 Combining the results of the previous sections with \Cref{prop:reduction-of-gauss-sum-to-torus}, we arrive at the following result.
 
 \begin{theorem}\label{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}
-	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s$, where $\alpha_j \colon \multiplicativegroup{\quadraticFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote $$g_T\left(\chi, \theta, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\theta'_i}{\minusInvolution{\chi}}{\fieldCharacter_{2m_i}} \cdot  \prod_{j=1}^r \GaussSumCharacter{\alpha_j}{\minusInvolution{\chi}}{\fieldCharacter_{k_j}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{k_j}}.$$ Then
+	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s$, where $\alpha_j \colon \multiplicativegroup{\quadraticFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote $$g_T\left(\chi, \theta, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\theta'_i}{\minusInvolution{\chi}}{\fieldCharacter_{2m_i}} \cdot  \prod_{j=1}^r \GaussSumCharacter{\alpha_j}{\minusInvolution{\chi}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}}.$$ Then
 	\begin{align*}
 		 \dblVirtualGaussSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} g_T\left(\chi, \theta, \fieldCharacter\right) \prod_{i=1}^s \theta_i\left(-1\right) \cdot \prod_{j=1}^r \alpha_j\left(-1\right).
 	\end{align*}
