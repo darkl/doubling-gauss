@@ -510,18 +510,18 @@ Hence, we have the identity
 $$\sum_{x \in \multiplicativegroup{\finiteFieldExtension{k}}} \alpha\left(x\right) \chi\left(\FieldNorm{k}{1}\left(x-1\right)\right) = -q^{\frac{k}{2}} \alpha\left(-1\right) \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_k} \tau\left(\alpha, \fieldCharacter_k\right) \tau\left(\chi_{\GL_k}, \fieldCharacter_k\right).$$
 
 \subsubsection{Split torus computation II}
-We use the results from the previous section to compute the doubling method Gauss sum for a torus of the form $\multiplicativegroup{\finiteFieldExtension{k}}$. Let $\alpha \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be characters such that $\chi^2 \ne 1$. Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
-		x \ne 1}} \alpha \left(x\right) \chi\left(\FieldNorm{k}{1}\left(x - 1\right)\right) \chi\left(\FieldNorm{k}{1}\left(x^{-1} - 1\right)\right).$$
+We use the results from the previous section to compute the doubling method Gauss sum for a torus of the form $\multiplicativegroup{\finiteFieldExtension{k}}$. Let $\alpha \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be characters such that $\involutionPlusOne{\chi} \ne 1$. Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
+		x \ne 1}} \alpha \left(x\right) \chi\left(\FieldNorm{k}{1}\left(x - 1\right)\right) \chi\left(\FieldNorm{k}{1}\left(\minusInvolution{x} - 1\right)\right).$$
 This can be rewritten as
 $$\chi\left(-1\right)^k \sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
-		x \ne 1}} \alpha \left(x\right) \chi^{-1}\left(\FieldNorm{k}{1}\left(x\right)\right) \chi^2\left(\FieldNorm{k}{1}\left(x - 1\right)\right).$$
+		x \ne 1}} \alpha \left(x\right) \minusInvolution{\chi}\left(\FieldNorm{k}{1}\left(x\right)\right) \involutionPlusOne{\chi}\left(\FieldNorm{k}{1}\left(x - 1\right)\right).$$
 By the previous section, this equals
 \begin{equation}\label{eq:identity-for-multiplicative-group-of-f-k-gauss-sum}
-	-q^{\frac{k}{2}} \alpha\left(-1\right)  \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_k} \GaussSumCharacter{\alpha}{\chi^{-1}}{\fieldCharacter_k} \tau\left(\chi^2, \fieldCharacter\right)^k.
+	-q^{\frac{k}{2}} \alpha\left(-1\right)  \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_k} \GaussSumCharacter{\alpha}{\minusInvolution{\chi}}{\fieldCharacter_k} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter\right)^k.
 \end{equation}
 
 Notice that if $k = md$ and $\alpha = \beta \circ \FieldNorm{k}{m}$ where $\beta \colon \multiplicativegroup{\finiteFieldExtension{m}} \to \multiplicativegroup{\cComplex}$ is a character, then \eqref{eq:identity-for-multiplicative-group-of-f-k-gauss-sum} equals
-$$-\left(q^{\frac{m}{2}} \GaussSumCharacter{\beta^{-1}}{\chi^{-1}}{\fieldCharacter_m} \GaussSumCharacter{\beta}{\chi^{-1}}{\fieldCharacter_m} \tau\left(\chi^2, \fieldCharacter\right)^m\right)^{d}.$$
+$$-\left(q^{\frac{m}{2}} \GaussSumCharacter{\beta^{-1}}{\chi^{-1}}{\fieldCharacter_m} \GaussSumCharacter{\beta}{\minusInvolution{\chi}}{\fieldCharacter_m} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter\right)^m\right)^{d}.$$
 
 \subsubsection{Elliptic torus computation}
 In this section we compute the doubling method Gauss sum for a torus of the form $\NormOneGroup{2m}$.
