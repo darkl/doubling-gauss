@@ -524,42 +524,56 @@ Notice that if $k = md$ and $\alpha = \beta \circ \FieldNorm{k}{m}$ where $\beta
 $$-\left(q^{\frac{m}{2}} \GaussSumCharacter{\beta^{-1}}{\chi^{-1}}{\fieldCharacter_m} \GaussSumCharacter{\beta}{\minusInvolution{\chi}}{\fieldCharacter_m} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter\right)^m\right)^{d}.$$
 
 \subsubsection{Elliptic torus computation}
-In this section we compute the doubling method Gauss sum for a torus of the form $\NormOneGroup{2m}$.
+In the next two sections we compute the doubling method Gauss sum for a torus of the form $\NormOneGroup{2m}$.
 
 Let $\theta \colon \NormOneGroup{2m} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be non-trivial characters, such that $\chi^2 \ne 1$. It follows that $\theta\left(x^{1-q^m}\right) \ne \chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x\right)$ for some $x \in \multiplicativegroup{\finiteFieldExtension{2m}}$. Our goal is to compute $$\sum_{\substack{x \in \NormOneGroup{2m}\\
 		x \ne 1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x - 1\right)\right).$$
 
-As usual, we rewrite this sum as follows
-$$q^{-2m} \sum_{z \in \finiteFieldExtension{2m}} \sum_{y \in \multiplicativegroup{\finiteFieldExtension{2m}}} \sum_{x \in \NormOneGroup{2m}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(y\right)\right) \fieldCharacter_{2m}\left(z\left(y-x+1\right)\right),$$
-where $\fieldCharacter_{2m} = \fieldCharacter \circ \trace_{\finiteFieldExtension{2m} \slash \quadraticExtension}$
+We separate two cases: the case $\quadraticExtension = \finiteField$ and the case $\quadraticExtension \ne \finiteField$.
+
+\subsubsection{Elliptic torus computation: the case $\quadraticExtension = \finiteField$}
+In this section, we compute the above exponential sum for the case $\quadraticExtension = \finiteField$.
+
+As usual, we rewrite the sum as follows
+$$q^{-2m} \sum_{z \in \finiteFieldExtension{2m}} \sum_{y \in \multiplicativegroup{\finiteFieldExtension{2m}}} \sum_{x \in \NormOneGroup{2m}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(y\right)\right) \fieldCharacter_{2m}\left(z\left(y-x+1\right)\right),$$
+where $\fieldCharacter_{2m} = \fieldCharacter \circ \trace_{\finiteFieldExtension{2m} \slash \finiteField}$.
 
 If $z=0$ then the sum over $y$ will vanish. Hence we can reduce the sum to $z \in \multiplicativegroup{\finiteFieldExtension{2m}}$. Replacing $y$ with $z^{-1} y$ we get the sum
-$$-q^{-m} \tau\left(\chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}, \fieldCharacter_{2m}\right) \sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(z\right)\right) \fieldCharacter_{2m}\left(z\right)  \sum_{x \in \NormOneGroup{2m}} \theta \left(-x\right) \fieldCharacter_{2m}\left(xz\right).$$
+$$-q^{-m} \tau\left(\chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}, \fieldCharacter_{2m}\right) \sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(z\right)\right) \fieldCharacter_{2m}\left(z\right)  \sum_{x \in \NormOneGroup{2m}} \theta \left(-x\right) \fieldCharacter_{2m}\left(xz\right).$$
 To proceed, we use the Hilbert 90 map $\multiplicativegroup{\finiteFieldExtension{2m}} \to \NormOneGroup{2m}$ given by $t \mapsto t^{1 - q^m}$. This map is surjective, and its kernel is $\multiplicativegroup{\finiteFieldExtension{m}}$. Define $\theta' \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex}$ by $\theta'\left(t\right) = \theta\left(t^{1-q^m}\right)$. Replacing the sum over $x \in \NormOneGroup{2m}$ with a sum over $t \in \multiplicativegroup{\finiteFieldExtension{2m}}$, we get \begin{align*}
-	& \sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(z\right)\right) \fieldCharacter_{2m}\left(z\right) \sum_{x \in \NormOneGroup{2m}} \theta \left(x\right) \fieldCharacter_{2m}\left(xz\right) \\
-	= & \frac{1}{q^m-1}\sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \sum_{t \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(z\right)\right) \fieldCharacter_{2m}\left(z^{q^m}\right) \theta' \left(t\right) \fieldCharacter_{2m}\left(t^{1-q^m} z\right).
+	& \sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(z\right)\right) \fieldCharacter_{2m}\left(z\right) \sum_{x \in \NormOneGroup{2m}} \theta \left(x\right) \fieldCharacter_{2m}\left(xz\right) \\
+	= & \frac{1}{q^m-1}\sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \sum_{t \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(z\right)\right) \fieldCharacter_{2m}\left(z^{q^m}\right) \theta' \left(t\right) \fieldCharacter_{2m}\left(t^{1-q^m} z\right).
 \end{align*}
 Replacing $z$ with $t^{q^m} z$, this becomes
 \begin{align*}
-	\frac{1}{q^m-1}\sum_{t,z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(z\right)\right) \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(t\right)\right) \theta' \left(t\right) \fieldCharacter_{2m}\left(\trace_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{m}}\left(z\right) t\right).
+	\frac{1}{q^m-1}\sum_{t,z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(z\right)\right) \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(t\right)\right) \theta' \left(t\right) \fieldCharacter_{2m}\left(\trace_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{m}}\left(z\right) t\right).
 \end{align*}
-Since $\chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension} \ne \theta'$, if $\trace_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{m}}\left(z\right) = 0$, we have that the inner sum over $t$ is zero. Hence, we may reduce the sum over $z$ to $z$ such that $\trace_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{m}}\left(z\right) \ne 0$. Using the fact that $\theta'$ is trivial on $\multiplicativegroup{\finiteFieldExtension{m}}$, we have after replacing variables $t \mapsto \frac{t}{\trace_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{m}}\left(z\right)}$,
+Since $\chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField} \ne \theta'$, if $\trace_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{m}}\left(z\right) = 0$, we have that the inner sum over $t$ is zero. Hence, we may reduce the sum over $z$ to $z$ such that $\trace_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{m}}\left(z\right) \ne 0$. Using the fact that $\theta'$ is trivial on $\multiplicativegroup{\finiteFieldExtension{m}}$, we have after replacing variables $t \mapsto \frac{t}{\trace_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{m}}\left(z\right)}$,
 \begin{align*}
 	\frac{1}{q^m-1}\sum_{\substack{t,z \in \multiplicativegroup{\finiteFieldExtension{2m}}\\
-	\trace_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{m}}\left(z\right) \ne 0}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(\frac{z}{\trace_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{m}}\left(z\right) }\right)\right) \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(t\right)\right) \theta' \left(t\right) \fieldCharacter_{2m}\left(t\right).
+			\trace_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{m}}\left(z\right) \ne 0}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(\frac{z}{\trace_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{m}}\left(z\right) }\right)\right) \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(t\right)\right) \theta' \left(t\right) \fieldCharacter_{2m}\left(t\right).
 \end{align*}
 By the appendix, this equals
 \begin{align*}
-	q^{\frac{m}{2}} \tau\left(\chi^{-1} \circ \FieldNorm{m}{1}, \fieldCharacter_m\right)^2 \tau\left(\chi^{2} \circ \FieldNorm{m}{1}, \fieldCharacter_m\right) \left(\sum_{t \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(t\right)\right) \theta' \left(t\right) \fieldCharacter_{2m}\left(t\right)\right).
+	q^{\frac{m}{2}} \tau\left(\chi^{-1} \circ \aFieldNorm_{\finiteFieldExtension{m} \slash \finiteField}, \fieldCharacter_m\right)^2 \tau\left(\chi^{2} \circ \aFieldNorm_{\finiteFieldExtension{m} \slash \finiteField}, \fieldCharacter_m\right) \left(\sum_{t \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(t\right)\right) \theta' \left(t\right) \fieldCharacter_{2m}\left(t\right)\right).
 \end{align*}
 
 To summarize, we have
 $$\sum_{\substack{x \in \NormOneGroup{2m}\\
-		x \ne 1}} \theta \left(-x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x - 1\right)\right) = q^{\frac{m}{2}} \tau\left(\chi^{-1}, \fieldCharacter\right)^{2m} \tau\left(\chi, \fieldCharacter\right)^{2m} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right),$$
-	where $\theta'\left(t\right) = \theta\left(t^{1-q^m}\right)$.
+		x \ne 1}} \theta \left(-x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(x - 1\right)\right) = q^{\frac{m}{2}} \tau\left(\chi^{-1}, \fieldCharacter\right)^{2m} \tau\left(\chi, \fieldCharacter\right)^{2m} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right),$$
+where $\theta'\left(t\right) = \theta\left(t^{1-q^m}\right)$.
 Since $\tau\left(\chi^{-1}, \fieldCharacter\right) = \chi\left(-1\right) \conjugate{\tau\left(\chi, \fieldCharacter\right)}$ and since $\chi \ne 1$, this implies the identity
 $$\sum_{\substack{x \in \NormOneGroup{2m}\\
-		x \ne 1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x - 1\right)\right) = \theta\left(-1\right) q^{\frac{m}{2}} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right).$$
+		x \ne 1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(x - 1\right)\right) = \theta\left(-1\right) q^{\frac{m}{2}} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right).$$
+
+\subsubsection{Elliptic torus computation: the case $\quadraticExtension \ne \finiteField$}
+In this section, we compute the above exponential sum for the case $\quadraticExtension = \finiteFieldExtension{2}$. Let $\chi \colon \multiplicativegroup{\finiteFieldExtension{2}} \to \multiplicativegroup{\cComplex}$. We wish to compute the following sum.
+$$\sum_{\substack{x \in \NormOneGroup{2m}\\
+		x \ne 1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{2}}\left(x - 1\right)\right).$$
+By the appendix, this equals
+$$\theta\left(-1\right) q^{\frac{m}{2}} \GaussSumCharacter{\theta'}{\minusInvolution{\chi}}{\fieldCharacter_{2m}} \tau\left(\chi \restriction_{\multiplicativegroup{\finiteField}} \circ \FieldNorm{m}{1}, \fieldCharacter_m\right),$$
+which equals
+$$\theta\left(-1\right) q^{\frac{m}{2}} \tau\left(\chi \restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^m \GaussSumCharacter{\theta'}{\minusInvolution{\chi}}{\fieldCharacter_{2m}}.$$
 
 \subsubsection{Computation for Deligne--Lusztig characters}
 Combining the results of the previous sections with \Cref{prop:reduction-of-gauss-sum-to-torus}, we arrive at the following result.
@@ -627,7 +641,7 @@ for large enough $n$, where $\aFieldNorm_{\algebraicGroup{T}(\finiteFieldExtensi
  $GO(2n)$ & $(\multiplicativegroup{\finiteField})^{n+1}$ & 1 & 1 &? &  $(\multiplicativegroup{\finiteField})^{n+1}$ \\
  $SO(2n+1)$ & $(\multiplicativegroup{\finiteField})^{n}$ & 1 & 1 &$Sp(2n)$ &  $(\multiplicativegroup{\finiteField})^{n}$ \\
  $GO(2n+1)$ & $(\multiplicativegroup{\finiteField})^{n+1}$ &1 & 1 &? &  $(\multiplicativegroup{\finiteField})^{n+1}$ \\ 
-  $U(n)$ & $(\NormOneGroup{\finiteFieldExtension{2}})^{n}$ & -1 & 1 & $U(n)$ &  $(\NormOneGroup{\finiteFieldExtension{2}})^{n}$ 
+  $U(n)$ & $(\NormOneGroup{2})^{n}$ & -1 & 1 & $U(n)$ &  $(\NormOneGroup{2})^{n}$ 
 \end{tabular}
 \end{center}
 
@@ -718,7 +732,7 @@ The idea behind the proof of \Cref{thm:indep_geo_conj} is that the formula from 
   $U(n)$  & $U(n) \to \GL(2n)$  
 \end{tabular}
 \end{center}
-Note that in the $SO$ and $GSO$ case, the map $\rho$ sends the split torus of $G^*$ into the split torus of $\GL(2n)$ and the induced map of cocharacters sends $x \mapsto (x,-x)$. In the $Sp,GSp$ cases the map is similar: the induced map of cocharacters sends $x \mapsto (x,1,-x)$. In the unitary case, the torus whose $\finiteField$ points are $(\NormOneGroup{\finiteFieldExtension{2}})^n \subset G^*(\finiteField)$ includes into the torus in $\GL(2n)$ whose $\finiteField$ points are $(\finiteFieldExtension{2}^\times)^n$ and the induced map of cocharacters is $(x_1,x_2, \hdots, x_n) \mapsto (x_1,-x_1,x_2,-x_2, \hdots ,x_n,-x_n)$. 
+Note that in the $SO$ and $GSO$ case, the map $\rho$ sends the split torus of $G^*$ into the split torus of $\GL(2n)$ and the induced map of cocharacters sends $x \mapsto (x,-x)$. In the $Sp,GSp$ cases the map is similar: the induced map of cocharacters sends $x \mapsto (x,1,-x)$. In the unitary case, the torus whose $\finiteField$ points are $(\NormOneGroup{2})^n \subset G^*(\finiteField)$ includes into the torus in $\GL(2n)$ whose $\finiteField$ points are $(\finiteFieldExtension{2}^\times)^n$ and the induced map of cocharacters is $(x_1,x_2, \hdots, x_n) \mapsto (x_1,-x_1,x_2,-x_2, \hdots ,x_n,-x_n)$. 
 
 
 In particular to analyze $g_{T,\rho}(\theta,\psi,\chi)$ for these $\rho$, we need to understand what torus theta pair of $\GL$ corresponds to $\phi((s))$ under a map $\phi(x) = (x,-x)$:
@@ -731,7 +745,7 @@ In particular to analyze $g_{T,\rho}(\theta,\psi,\chi)$ for these $\rho$, we nee
         \item When $\Frobenius$ acts by trivially on both, $x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\finiteFieldExtension{n},\alpha})$
         \item When $\Frobenius$ acts by $-1$ on the domain and by $\begin{pmatrix}
             0 & 1 \\
-            1 & 0\end{pmatrix}$ on the codomain, $x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{\finiteFieldExtension{2n}},\theta})$ where $\theta'(t) = \theta(t^{1-q^n})$
+            1 & 0\end{pmatrix}$ on the codomain, $x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$ where $\theta'(t) = \theta(t^{1-q^n})$
     \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -747,7 +761,7 @@ Thus the result follows from the computations:
 		&= \left(\alpha\times\alpha^{-1}\right)\left(\FieldNorm{mn}{n}((y_1,y_2)(\zeta_{mn}))\right)
 	\end{align*}
 	\item \begin{align*}
-		\exp(\langle\phi(x_{\NormOneGroup{\finiteFieldExtension{2n}},\theta}),(y_1,y_2)\rangle) &= \exp(\langle x_{\NormOneGroup{\finiteFieldExtension{2n}},\theta},\phi^*(y_1,y_2)\rangle) \\
+		\exp(\langle\phi(x_{\NormOneGroup{2n},\theta}),(y_1,y_2)\rangle) &= \exp(\langle x_{\NormOneGroup{2n},\theta},\phi^*(y_1,y_2)\rangle) \\
 		&= \theta\left(\frac{\FieldNorm{2mn}{2n}(y_1(\zeta_{2mn})}{\FieldNorm{2mn}{2n}\left(y_1(\zeta_{2mn})^{q^n}\right)}\right) \theta\left(\frac{\FieldNorm{2mn}{2n}(y_2(\zeta_{2mn})}{\FieldNorm{2mn}{2n}\left(y_2(\zeta_{2mn})^{q^n}\right)}\right)^{-1} \\
 		&= \theta'\left(\FieldNorm{2mn}{2n}((y_1,y_2)(\zeta_{mn}))\right)
 	\end{align*}
@@ -760,7 +774,7 @@ Thus the result follows from the computations:
 \begin{proof}[Proof of \Cref{thm:indep_geo_conj}] 
 By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}, it is enough to show that $g_{T}(\chi,\theta,\psi)$ and $\omega_{\pi}(-1) = \theta(-1)$ only depend of the geometric conjugacy of $(T,\theta)$. The latter only depends on geometric conjugacy by \Cref{prop:central_char}.
 
-Suppose $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$. We compute $g_{T,\rho}(\theta,\psi,\chi)$ using the the split torus $\algebraicGroup{T}^*$ in $G^*$ including into the split torus $\algebraicGroup{T}'$ in $\GL$ in the non unitary case and in the unitary case we use the tori $\algebraicGroup{T}^*$ whose $\finiteField$ points are $(\NormOneGroup{\finiteFieldExtension{2}})^n \subset G^*(\finiteField)$ includes into the torus $\algebraicGroup{T}'$ in $\GL(2n)$ whose $\finiteField$ points are $(\finiteFieldExtension{2}^\times)^n$. We then define $\tilde{T}$ as the $\finiteField$-rational torus corresponding to the Frobenius stable Weyl group orbit of $\rho(w)$ inside $W(\algebraicGroup{T}')$ where $(w)$ inside $W(\algebraicGroup{T}^*)$ is the Frobenius stable Weyl group orbit associated to $T$. \Cref{lem:cochar_computation} above implies that
+Suppose $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$. We compute $g_{T,\rho}(\theta,\psi,\chi)$ using the the split torus $\algebraicGroup{T}^*$ in $G^*$ including into the split torus $\algebraicGroup{T}'$ in $\GL$ in the non unitary case and in the unitary case we use the tori $\algebraicGroup{T}^*$ whose $\finiteField$ points are $(\NormOneGroup{2})^n \subset G^*(\finiteField)$ includes into the torus $\algebraicGroup{T}'$ in $\GL(2n)$ whose $\finiteField$ points are $(\finiteFieldExtension{2}^\times)^n$. We then define $\tilde{T}$ as the $\finiteField$-rational torus corresponding to the Frobenius stable Weyl group orbit of $\rho(w)$ inside $W(\algebraicGroup{T}')$ where $(w)$ inside $W(\algebraicGroup{T}^*)$ is the Frobenius stable Weyl group orbit associated to $T$. \Cref{lem:cochar_computation} above implies that
 \[
 g_{T,\rho}(\theta,\psi,\chi)= g_{T}(\theta,\psi,\chi) \cdot \begin{cases}
         1  & G \neq Sp, GSp\\
@@ -929,9 +943,12 @@ $$\sum_{\substack{\xi_1,\dots,\xi_k \in \multiplicativegroup{\finiteFieldExtensi
 \prod_{j=1}^k \xi_j^{1-q^m} = \left(-1\right)^k t^{-1}}} \left(\prod_{j=1}^k \chi_j^{-1}\left(\FieldNorm{2m}{1}\left(\xi_j \right)\right)\right) \fieldCharacter_{2m}\left(\sum_{j=1}^k \xi_j\right).$$
 
 \appendix
-\section{Evaluation of an exponential sum}
+\section{Evaluation of norm one exponential sums}
 
-In this appendix, we evaluate the following exponential sum. Let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be a non-trivial character. We compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{2}}\\
+In this appendix, we evaluate several exponential sums.
+
+\subsection{The case $\quadraticExtension = \finiteField$}
+Let $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be a non-trivial character. We compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{2}}\\
 	\trace_{\finiteFieldExtension{2} \slash \finiteField}\left(x\right) \ne 0}} \chi\left(\FieldNorm{2}{1}\left(\frac{x}{\trace_{\finiteFieldExtension{2} \slash \finiteField} x}\right) \right).$$
 As usual, we rewrite this sum as
 $$\frac{1}{q} \sum_{z \in \finiteField} \sum_{y \in \multiplicativegroup{\finiteField}} \sum_{x \in \multiplicativegroup{\finiteFieldExtension{2}}} \chi\left(\FieldNorm{2}{1}\left(xy\right)\right) \fieldCharacter\left(z\left(y \trace_{\finiteFieldExtension{2} \slash \finiteField} x - 1\right)\right).$$
@@ -939,6 +956,24 @@ It is clear that if $z = 0$, then the sum over $x$ will vanish. Hence, we may re
 $$\frac{1}{q} \sum_{y \in \multiplicativegroup{\finiteField}} \sum_{x \in \multiplicativegroup{\finiteFieldExtension{2}}} \chi\left(\FieldNorm{2}{1}\left(xy\right)\right) \fieldCharacter\left(y \trace_{\finiteFieldExtension{2} \slash \finiteField} x\right) \sum_{z \in \multiplicativegroup{\finiteField}} \chi^{-2}\left(z\right)\fieldCharacter\left(z\right).$$
 Replacing $x$ with $y^{-1}x$, and using the Hasse--Davenport relation, we arrive at the sum
 $$q^{\frac{1}{2}} \left(q-1\right) \tau\left(\chi, \fieldCharacter\right)^2 \tau\left(\chi^{-2}, \fieldCharacter\right).$$
+
+\subsection{The case $\quadraticExtension \ne \finiteField$}
+Let $\chi \colon \multiplicativegroup{\finiteFieldExtension{2}} \to \multiplicativegroup{\cComplex}$ be a non-trivial character and let $\theta \colon \NormOneGroup{2} \to \multiplicativegroup{\cComplex}$ be a character. Our goal is to compute $$\sum_{1 \ne x \in \NormOneGroup{2}} \theta\left(x\right) \chi\left(x-1\right).$$
+Using the Hilbert 90 map this is equivalent to
+$$\frac{1}{q-1} \sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{2}}\\
+x \notin \multiplicativegroup{\finiteField}}} \theta\left(\frac{x}{x^q}\right) \chi\left(\frac{x}{x^q}-1\right).$$
+Let $0 \ne \delta \in \multiplicativegroup{\finiteFieldExtension{2}}$ be a trace-zero element. Replacing $x$ with $\delta x$, we arrive at the sum
+$$\frac{\theta\left(-1\right) \chi\left(-1\right)}{q-1} \sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{2}}\\
+		x \notin \delta^{-1} \multiplicativegroup{\finiteField}}} \theta'\left(x\right) \minusInvolution{\chi}\left(x\right) \chi\left(\trace_{\finiteFieldExtension{2} \slash \finiteField} x\right),$$
+	where $\theta' \colon \multiplicativegroup{\finiteFieldExtension{2}} \to \multiplicativegroup{\cComplex}$ is given by $\theta'\left(x\right) = \theta\left(\frac{x}{x^q}\right)$ and $\minusInvolution{\chi}\left(x\right) = \chi^{-1}\left(x^{q}\right)$.
+	
+	As usual, we may rewrite the last sum as
+	$$\frac{\theta\left(-1\right) \chi\left(-1\right)}{q\left(q-1\right)} \sum_{x \in \multiplicativegroup{\finiteFieldExtension{2}}}\sum_{z \in \finiteField} \sum_{y \in \multiplicativegroup{\finiteField}}  \theta'\left(x\right) \minusInvolution{\chi}\left(x\right) \chi\left(y\right) \fieldCharacter_{\finiteField}\left(z\left(y - \trace_{\finiteFieldExtension{2} \slash \finiteField} x\right)\right).$$
+	Since $\chi \ne 1$, the inner sum vanishes when $z = 0$, and therefore we can reduce the sum over $z$ to $z \in \multiplicativegroup{\finiteField}$. Changing variables $x \mapsto -z^{-1} x$ and $y \mapsto z^{-1} y$, and using the fact that $z^q = z$, we arrive at the sum
+	$$\frac{\theta\left(-1\right)}{q} \sum_{x \in \multiplicativegroup{\finiteFieldExtension{2}}}\theta'\left(x\right)  \minusInvolution{\chi}\left(x\right) \fieldCharacter_{\finiteField}\left(\trace_{\finiteFieldExtension{2} \slash \finiteField} x\right) \sum_{y \in \multiplicativegroup{\finiteField}}   \chi\left(y\right) \fieldCharacter_\finiteField\left(y\right),$$
+	which equals
+	$$q^{\frac{1}{2}} \theta\left(-1\right) \GaussSumCharacter{\theta'}{\minusInvolution{\chi}}{\fieldCharacter_2} \tau\left(\chi \restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right).$$
+
 \bibliographystyle{abbrv}
 \bibliography{references}
 \end{document}
