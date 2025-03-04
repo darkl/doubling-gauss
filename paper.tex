@@ -458,7 +458,7 @@ In order to make the computations more tolerable, it is beneficial to work with 
 Let $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be a character.
 
 We define a normalization factor as follows $$c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) = \begin{dcases}
-	\tau\left(\chi^2, \fieldCharacter\right)^{\left\lfloor\frac{\dim_{\finiteField} \hermitianSpace}{2}\right\rfloor} & \quadraticExtension = \finiteField\\
+	\tau\left(\chi^2, \fieldCharacter\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2}} & \quadraticExtension = \finiteField\\
 	\tau\left(\chi\restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^{\dim_{\quadraticExtension} \hermitianSpace} & \quadraticExtension \ne \finiteField
 \end{dcases}.$$
 Notice that if $\quadraticExtension \ne \finiteField$ then by the Hasse--Davenport relation $\tau\left(\chi\restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^{2} = \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)$.
@@ -518,7 +518,7 @@ $$q^{-k} \sum_{z \in \multiplicativegroup{\finiteFieldExtension{k}}} \sum_{x \in
 Replacing $x$ with $-z^{-1} x$ and $y$ with $z^{-1} y$, this becomes
 $$q^{-k} \alpha\left(-1\right) \sum_{z \in \multiplicativegroup{\finiteFieldExtension{k}}} \alpha^{-1}\left(z\right) \chi^{-1}\left(\FieldNorm{k}{1}\left(z\right)\right) \fieldCharacter_k\left(z\right) \sum_{x \in  \multiplicativegroup{\finiteFieldExtension{k}}} \alpha\left(x\right) \fieldCharacter_k\left(x\right) \sum_{y \in \multiplicativegroup{\finiteFieldExtension{k}}} \chi\left(\FieldNorm{k}{1}\left(y\right)\right) \fieldCharacter_k\left(y\right).$$
 Hence, we have the identity
-$$\sum_{x \in \multiplicativegroup{\finiteFieldExtension{k}}} \alpha\left(x\right) \chi\left(\FieldNorm{k}{1}\left(x-1\right)\right) = -q^{\frac{k}{2}} \alpha\left(-1\right) \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_k} \tau\left(\alpha, \fieldCharacter_k\right) \tau\left(\chi_{\GL_k}, \fieldCharacter_k\right).$$
+$$\sum_{x \in \multiplicativegroup{\finiteFieldExtension{k}}} \alpha\left(x\right) \chi\left(\FieldNorm{k}{1}\left(x-1\right)\right) = -q^{\frac{k}{2}} \alpha\left(-1\right) \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_k} \tau\left(\alpha, \fieldCharacter_k\right) \tau\left(\chi \circ \FieldNorm{k}{1}, \fieldCharacter_k\right).$$
 
 \subsubsection{Split torus computation II}
 We use the results from the previous section to compute the doubling method Jacobi sum for a torus of the form $\multiplicativegroup{\finiteFieldExtension{k}}$. Let $\alpha \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be characters such that $\involutionPlusOne{\chi} \ne 1$. Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
@@ -537,13 +537,13 @@ $$-\left(q^{\frac{m}{2}} \GaussSumCharacter{\beta^{-1}}{\chi^{-1}}{\fieldCharact
 \subsubsection{Elliptic torus computation}
 In the next two sections we compute the doubling method Jacobi sum for a torus of the form $\NormOneGroup{2m}$.
 
-Let $\theta \colon \NormOneGroup{2m} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be non-trivial characters, such that $\chi^2 \ne 1$. It follows that $\theta\left(x^{1-q^m}\right) \ne \chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x\right)$ for some $x \in \multiplicativegroup{\finiteFieldExtension{2m}}$. Our goal is to compute $$\sum_{\substack{x \in \NormOneGroup{2m}\\
+Let $\theta \colon \NormOneGroup{2m} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be non-trivial characters, such that $\involutionPlusOne{\chi} \ne 1$. Our goal is to compute $$\sum_{\substack{x \in \NormOneGroup{2m}\\
 		x \ne 1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x - 1\right)\right).$$
 
 We separate two cases: the case $\quadraticExtension = \finiteField$ and the case $\quadraticExtension \ne \finiteField$.
 
 \subsubsection{Elliptic torus computation: the case $\quadraticExtension = \finiteField$}
-In this section, we compute the above exponential sum for the case $\quadraticExtension = \finiteField$.
+In this section, we compute the above exponential sum for the case $\quadraticExtension = \finiteField$. Since $\chi^2 \ne 1$, it follows that $\theta\left(x^{1-q^m}\right) \ne \chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \quadraticExtension}\left(x\right)$ for some $x \in \multiplicativegroup{\finiteFieldExtension{2m}}$.
 
 As usual, we rewrite the sum as follows
 $$q^{-2m} \sum_{z \in \finiteFieldExtension{2m}} \sum_{y \in \multiplicativegroup{\finiteFieldExtension{2m}}} \sum_{x \in \NormOneGroup{2m}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(y\right)\right) \fieldCharacter_{2m}\left(z\left(y-x+1\right)\right).$$
@@ -595,11 +595,10 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 	\end{align*}
 \end{theorem}
 \begin{proof}
-	This follows from the results mentioned above and from the formula $$R_T\left(1\right) = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \frac{\grpIndex{G}{T}}{\sizeof{G}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{G}_p^2 \cdot q^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor},$$
-	the facts \begin{equation*}
-		\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^r \text{\,\,\,\,\,\, and \,\,\,\,\,\,}  \varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor},
+	This follows from the results mentioned above and from the formula $$R_T\left(1\right) = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \frac{\grpIndex{G}{T}}{\sizeof{G}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{G}_p^2 \cdot q^{\frac{\dim_{\finiteField} \hermitianSpace}{2}},$$
+	and the facts \begin{equation*}
+		\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^r \text{\,\,\,\,\,\, and \,\,\,\,\,\,}  \varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2}}.
 	\end{equation*}
-	and finally from $$\GaussSumScalar{\chi^2}{\fieldCharacter} = -\tau\left(\chi^2, \fieldCharacter\right).$$
 \end{proof}
 \begin{remark}
 	Suppose that $\pi$ is any irreducible representation of $G$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$. Then the central character of $\pi$ satisfies
@@ -914,12 +913,12 @@ Our theorem is equivalent to the following statement.
 	which implies the result.
 	
 	Next, suppose that $L = G$ and that $\pi = \sigma$ is an irreducible cuspidal representation. Let us write $$R_{T, \theta} = \sum_{\Pi} c_\Pi \trace \Pi,$$
-	where $\Pi$ goes over all the irreducible representations of $G$ and $c_{\Pi} \in \zIntegers$. For every $\Pi$ with $c_{\Pi} \ne 0$ and $\Pi \ne \pi$, we have that $\Pi$ lies in a Harish--Chandra series with $L \ne G$ as above, and therefore $$\dblVirtualJacobiSumScalar{\trace \Pi}{\chi} = \dim \Pi \cdot \centralCharacter{\Pi}\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
-	By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}, we have $$\dblVirtualJacobiSumScalar{R_{T,\theta}}{\fieldCharacter} = R_{T,\theta}\left(1\right) \cdot \theta\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
+	where $\Pi$ goes over all the irreducible representations of $G$ and $c_{\Pi} \in \zIntegers$. For every $\Pi$ with $c_{\Pi} \ne 0$ and $\Pi \ne \pi$, we have that $\Pi$ lies in a Harish--Chandra series with $L \ne G$ as above, and therefore $$\dblVirtualJacobiSumScalar{\trace \Pi}{\chi} = \dim \Pi \cdot \centralCharacter{\Pi}\left(-1\right) \cdot c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
+	By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}, we have $$\dblVirtualJacobiSumScalar{R_{T,\theta}}{\fieldCharacter} = R_{T,\theta}\left(1\right) \cdot \theta\left(-1\right) \cdot c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
 	Since $\centralCharacter{\Pi}\left(-1\right) = \theta\left(-1\right)$ for every $\Pi$ with $c_{\Pi} \ne 0$,
 	$$c_{\pi} \cdot \dblVirtualJacobiSumScalar{\trace \pi}{\fieldCharacter} = \left(R_{T,\theta}\left(1\right) - \sum_{\substack{\Pi \ne \pi\\
-	c_{\Pi} \ne 0}} c_{\Pi} \dim \Pi\right) \cdot \theta\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
-	Since $$R_{T,\theta}\left(1\right) = \sum_{\Pi} c_{\Pi} \trace \Pi,$$ it follows that $$\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dim \pi \cdot \centralCharacter{\pi}\left(-1\right) \cdot \GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor} \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
+	c_{\Pi} \ne 0}} c_{\Pi} \dim \Pi\right) \cdot \theta\left(-1\right) \cdot c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
+	Since $$R_{T,\theta}\left(1\right) = \sum_{\Pi} c_{\Pi} \trace \Pi,$$ it follows that $$\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dim \pi \cdot \centralCharacter{\pi}\left(-1\right) \cdot c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
 	Since $\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dim \pi \cdot \dblJacobiSumScalar{\pi}{\chi}$, the result follows.
 \end{proof}
 
