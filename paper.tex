@@ -97,6 +97,8 @@
 \newcommand{\transpose}[1]{\, {}^{t}#1}
 \newcommand{\inverseTranspose}[1]{#1^{\iota}}
 \newcommand{\involution}[1]{#1^{c}}
+\newcommand{\minusInvolution}[1]{#1^{-c}}
+\newcommand{\involutionPlusOne}[1]{#1^{1+c}}
 \newcommand{\IdentityMatrix}[1]{I_{#1}}
 \newcommand{\diag}{\mathrm{diag}}
 \newcommand{\antidiag}{\operatorname{\mathrm{antidiag}}}
@@ -396,9 +398,13 @@ Let $\xIsotropic$ and $\yIsotropic$ be isotropic spaces of $\hermitianSpace$ of 
 where $\hermitianSpace' \subset \hermitianSpace$ is a non-degenerate subspace, orthogonal to $\xIsotropic$ and $\yIsotropic$. Let $P$ be the parabolic subgroup of $H$, consisting of all elements stabilizing the flag $$0 \subset \xIsotropic \subset \xIsotropic \oplus \hermitianSpace' \subset \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic = \hermitianSpace.$$
 Let $G' = \IsometryGroup\left(\hermitianSpace'\right)$. Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipotent radical of $P$. Then $L$ is isomorphic to $H' \times \GL_k\left(\quadraticExtension\right)$, where $H' \in \left\{G',\GroupExtension{G'}\right\}$ is of the same type as $H$. 
 
+Given a multiplicative character $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$, let $\involutionPlusOne{\chi} \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be the character given by
+$$\involutionPlusOne{\chi}\left(x\right) = \chi\left(x \cdot \involution{x}\right).$$ Similarly, let $\minusInvolution{\chi} \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be the character given by
+$$\minusInvolution{\chi}\left(x\right) = \chi^{-1}\left(\involution{x}\right).$$
+
 \begin{theorem}\label{thm:multiplicativity-in-terms-of-gauss-sums}
-	Let $\pi'$ be an irreducible representation of $H'$ and let $\tau$ be an irreducible representation of $\GL_k\left(\quadraticExtension\right)$. Then for any irreducible representation $\pi$ of $H$ which appears as a subrepresentation the parabolic induction $\rho = \Ind{P}{H}{\tau \overline{\otimes} \pi'}$ and any $\chi$ such that $\chi^2 \ne 1$, we have
-	$$\dblGaussSumScalar{\pi}{\chi} = \centralCharacter{\tau}\left(-1\right) \GaussSumScalar{\chi^2}{\fieldCharacter}^k \GaussSumScalar{\tau \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter} \dblGaussSumScalar{\pi'}{\chi}.$$
+	Let $\pi'$ be an irreducible representation of $H'$ and let $\tau$ be an irreducible representation of $\GL_k\left(\quadraticExtension\right)$. Then for any irreducible representation $\pi$ of $H$ which appears as a subrepresentation the parabolic induction $\rho = \Ind{P}{H}{\tau \overline{\otimes} \pi'}$ and any $\chi$ such that $\involutionPlusOne{\chi} \ne 1$, we have
+	$$\dblGaussSumScalar{\pi}{\chi} = \centralCharacter{\tau}\left(-1\right) \GaussSumScalar{\involutionPlusOne{\chi}}{\fieldCharacter}^k \GaussSumScalar{\tau \times \minusInvolution{\chi}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter} \dblGaussSumScalar{\pi'}{\chi}.$$
 \end{theorem}
 \begin{proof}
 	Let $v_{\pi'} \in \pi'$ and $v_{\tau} \in \tau$. Consider $f \in \rho$ defined as follows. The function $f \in \rho$ is the unique element supported on $P$, such that $f\left(\idmap_{\hermitianSpace}\right) = v_{\tau} \otimes v_{\pi'}$. The projection $f$ to any non-zero invariant subspace of $\rho$ is non-zero. We compute $\dblGaussSum{\rho}{\chi} f$.
@@ -429,16 +435,16 @@ Let $G' = \IsometryGroup\left(\hermitianSpace'\right)$. Write $P = L \ltimes N$,
 		\frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{\substack{p \in P \cap G\\
 				\detQuadratic\left(p - \idmap_{\hermitianSpace}\right) \ne 0}} \chi\left(\detQuadratic\left(p - \idmap_{\hermitianSpace}\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_{\tau} \otimes v_{\pi'}.
 	\end{equation}
-	Decomposing the sum \eqref{eq:recursive-doubling-gauss-sum} as a sum over $L$ and $N$, and using the fact that if $p \in P \cap G$ has Levi part with image $\left(a, g'\right) \in \GL_k\left(\quadraticExtension\right) \times G'$ then $$\detQuadratic\left(p - \idmap_{\hermitianSpace}\right) = \left(-1\right)^k \detQuadratic\left(a\right)^{-1}\detQuadratic\left(a - I_k\right)^2 \detQuadratic\left( g' - \idmap_{\hermitianSpace'}\right),$$
+	Decomposing the sum \eqref{eq:recursive-doubling-gauss-sum} as a sum over $L$ and $N$, and using the fact that if $p \in P \cap G$ has Levi part with image $\left(a, g'\right) \in \GL_k\left(\quadraticExtension\right) \times G'$ then $$\detQuadratic\left(p - \idmap_{\hermitianSpace}\right) = \left(-1\right)^k \detQuadratic\left(\involution{a}\right)^{-1}\detQuadratic\left(a - \IdentityMatrix{k}\right) \det\left(\involution{\left(a - \IdentityMatrix{k}\right)}\right) \detQuadratic\left( g' - \idmap_{\hermitianSpace'}\right),$$
 	and using the fact that $\sizeof{\lieAlgebra} = \sizeof{\lieAlgebra'} \sizeof{\squareMatrix_k\left(\finiteField\right)} \sizeof{N}^2$, where $\lieAlgebra'$ is the Lie algebra of $G'$,
 	we get that \eqref{eq:recursive-doubling-gauss-sum} equals
 	\begin{equation}
-		\chi\left(-1\right)^k q^{-\frac{k^2}{2}} \sum_{a \in \GL_k\left(\quadraticExtension\right)} \Phi_{\chi^2}\left(a\right) \chi^{-1}\left(\detQuadratic a\right) \tau\left(a\right) v_{\tau} \otimes \frac{1}{\sqrt{\sizeof{\lieAlgebra'}}} \sum_{g' \in G'} \Phi_{\chi}\left(g'\right) \pi'\left(g'\right) v_{\pi'},
+		\chi\left(-1\right)^k q^{-\frac{k^2}{2}} \sum_{a \in \GL_k\left(\quadraticExtension\right)} \Phi_{\involutionPlusOne{\chi}}\left(a\right) \minusInvolution{\chi}\left(\detQuadratic a\right) \tau\left(a\right) v_{\tau} \otimes \frac{1}{\sqrt{\sizeof{\lieAlgebra'}}} \sum_{g' \in G'} \Phi_{\chi}\left(g'\right) \pi'\left(g'\right) v_{\pi'},
 	\end{equation}
 	which in turn is
 	\begin{align*}
-		&\chi\left(-1\right)^k \dblGaussSum{\tau \otimes \chi_{\GL_k}^{-1}}{\chi^2} v_{\tau} \otimes \dblGaussSum{\pi'}{\chi} v_{\pi'}\\
-		=& \chi\left(-1\right)^k\dblGaussSumScalar{\tau \otimes \chi_{\GL_k}^{-1}}{\chi^2} \dblGaussSumScalar{\pi'}{\chi} v_{\tau} \otimes v_{\pi'}.
+		&\chi\left(-1\right)^k \dblGaussSum{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} v_{\tau} \otimes \dblGaussSum{\pi'}{\chi} v_{\pi'}\\
+		=& \chi\left(-1\right)^k\dblGaussSumScalar{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} \dblGaussSumScalar{\pi'}{\chi} v_{\tau} \otimes v_{\pi'}.
 	\end{align*}
 	The result now follows.
 \end{proof}
@@ -446,8 +452,8 @@ Let $G' = \IsometryGroup\left(\hermitianSpace'\right)$. Write $P = L \ltimes N$,
 \subsubsection{Gamma factors}
 In order to make the computations more tolerable, it is beneficial to work with fully multiplicative functions. We introduce the doubling method gamma factors.
 
-Let $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be a character. For an irreducible representation  $\tau$ of $\GL_k\left(\quadraticExtension\right)$, define $$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \GaussSumScalar{\tau \times \chi^{-1}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter}.$$
-For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \centralCharacter{\pi}\left(-1\right) \frac{\dblGaussSumScalar{\pi}{\chi}}{\GaussSumScalar{\chi^2}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor}}.$$
+Let $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be a character. For an irreducible representation  $\tau$ of $\GL_k\left(\quadraticExtension\right)$, define $$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \GaussSumScalar{\tau \times \minusInvolution{\chi}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter}.$$
+For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \centralCharacter{\pi}\left(-1\right) \frac{\dblGaussSumScalar{\pi}{\chi}}{\GaussSumScalar{\involutionPlusOne{\chi}}{\fieldCharacter}^{\left\lfloor\frac{\dim_{\quadraticExtension} \hermitianSpace}{2}\right\rfloor}}.$$
 Using this notation and using the multiplicativity property of Kondo's Gauss sum and \Cref{thm:multiplicativity-in-terms-of-gauss-sums}, we have the following multiplicativity property.
 
 \begin{theorem}\label{thm:multiplicativity-in-terms-of-gamma-factors}
