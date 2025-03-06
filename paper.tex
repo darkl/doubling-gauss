@@ -479,9 +479,10 @@ Using this notation and using the multiplicativity property of Kondo's Gauss sum
 \end{theorem}
 
 \begin{remark}
-	The ``correct'' gamma factor (expected by Langlands functoriality) is given by $$\dblLanglandsGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \begin{dcases}
-				-\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} \tau\left(\chi^{-1}, \fieldCharacter\right) & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = -1 \\
-				\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} & \text{otherwise}
+	The ``correct'' gamma factor (expected by Langlands functoriality) is given by $$\dblLanglandsGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} \cdot \begin{dcases}
+				\left(-1\right)^n & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = 1\\
+				\left(-1\right)^{n+1} \tau\left(\chi^{-1}, \fieldCharacter\right) & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = -1 \\
+				1 & \text{otherwise.}
 	\end{dcases}.$$
 	However, we will not need this version for our purposes.
 \end{remark}
@@ -494,19 +495,19 @@ In this section, we focus on the computing the analogous character sum correspon
 
 \calvin{I kinda prefer the normalization where we divide by $|G|$. I guess both for little and upper $G$. That way it is the honest product of characters in the representation ring.}
 
-Let us realize $G$ as the fixed points of the Frobenius map $\Frobenius$ acting on a connected reductive algebraic group $\algebraicGroup{G}$.
+Let us realize $H$ as the fixed points of the Frobenius map $\Frobenius$ acting on a connected reductive algebraic group $\algebraicGroup{H}$.
 
-Given a class function $F \colon G \to \cComplex$ (i.e., a function that is invariant under conjugation by elements of $G$), let us define $$\dblVirtualJacobiSumScalar{F}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} F\left(g\right) \Phi_{\chi}\left(g\right).$$
+Given a class function $F \colon H \to \cComplex$ (i.e., a function that is invariant under conjugation by elements of $G$), let us define $$\dblVirtualJacobiSumScalar{F}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} F\left(g\right) \Phi_{\chi}\left(g\right).$$
 
-It is clear that if $\pi$ is an irreducible representation of $G$ then $$\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \dim \pi.$$
-Notice that the assignment $g \mapsto \Phi_{\chi}\left(g\right)$ only depends on the semisimple part of $g \in G$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result.
+It is clear that if $\pi$ is an irreducible representation of $H$ then $$\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \dim \pi.$$
+Notice that the assignment $g \mapsto \Phi_{\chi}\left(g\right)$ only depends on the semisimple part of $g \in H$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result.
 \begin{proposition}\label{prop:reduction-of-gauss-sum-to-torus}
-	For any $\Frobenius$-stable maximal torus $\algebraicGroup{T}$ of $\algebraicGroup{G}$, and any character $\theta \colon T \to \multiplicativegroup{\cComplex}$, where $T = \algebraicGroup{T}^{\Frobenius}$, we have
-	$$ \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{G}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
+	For any $\Frobenius$-stable maximal torus $\algebraicGroup{T}$ of $\algebraicGroup{H}$, and any character $\theta \colon T \to \multiplicativegroup{\cComplex}$, where $T = \algebraicGroup{T}^{\Frobenius}$, we have
+	$$ \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{H}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
 \end{proposition}
-In the special case that $\theta$ is in general position, the virtual character $\varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} R_{T, \theta}$ equals $\trace \pi$ for some irreducible representation $\pi$ of $G$ and we have that for this $\pi$,
-$$\dblJacobiSumScalar{\pi}{\chi} = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \frac{\sizeof{G}_p}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
-Here $\varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{G}}$ and $\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{T}}$, and $\sizeof{G}_p$ is the size of the $p$-Sylow group of $G$, where $p$ is the characteristic of $\finiteField$. 
+In the special case that $\theta$ is in general position, the virtual character $\varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}} R_{T, \theta}$ equals $\trace \pi$ for some irreducible representation $\pi$ of $H$ and we have that for this $\pi$,
+$$\dblJacobiSumScalar{\pi}{\chi} = \varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}} \frac{\sizeof{H}_p}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \Phi_{\chi}\left(t\right).$$
+Here $\varepsilon_{\algebraicGroup{H}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{H}}$ and $\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{T}}$, and $\sizeof{H}_p$ is the size of the $p$-Sylow group of $H$, where $p$ is the characteristic of $\finiteField$. 
 
 \subsubsection{Gauss sum notations}
 If $\alpha \colon \multiplicativegroup{\finiteFieldExtension{n}} \to \multiplicativegroup{\cComplex}$ is a character, denote the \emph{Gauss sum} $$\tau\left(\alpha, \fieldCharacter_n\right) = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha\left(x\right) \fieldCharacter_n\left(x\right),$$
@@ -602,28 +603,30 @@ $$\theta\left(-1\right) q^{\frac{m}{2}} \tau\left(\chi \restriction_{\multiplica
 Combining the results of the previous sections with \Cref{prop:reduction-of-gauss-sum-to-torus}, we arrive at the following result.
 
 \begin{theorem}\label{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}
-	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s$, where $\alpha_j \colon \multiplicativegroup{\quadraticFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote \begin{align*}
+	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$ is a maximal torus of $H$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s$, where $\alpha_j \colon \multiplicativegroup{\quadraticFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote \begin{align*}
 		g_T\left(\chi, \theta, \fieldCharacter\right)
-		= & \left(-1\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2}} \prod_{i=1}^s \GaussSumCharacter{\left(\theta'_i\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2m_i}} \\
-		& \times \prod_{j=1}^r \GaussSumCharacter{\involution{\alpha_j}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}}.
+		= & \prod_{i=1}^s \GaussSumCharacter{\left(\theta'_i\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2m_i}} \cdot \prod_{j=1}^r \GaussSumCharacter{\involution{\alpha_j}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}}.
 	\end{align*} Then
 	\begin{align*}
-		 \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) g_T\left(\chi, \theta, \fieldCharacter\right) \prod_{i=1}^s \theta_i\left(-1\right) \cdot \prod_{j=1}^r \alpha_j\left(-1\right).
+		 \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \varepsilon_{\algebraicGroup{H}} R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) g_T\left(\chi, \theta, \fieldCharacter\right) \prod_{i=1}^s \theta_i\left(-1\right) \cdot \prod_{j=1}^r \alpha_j\left(-1\right).
 	\end{align*}
 \end{theorem}
 \begin{proof}
-	This follows from the results mentioned above and from the formula $$R_T\left(1\right) = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}} \frac{\grpIndex{G}{T}}{\sizeof{G}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{G}_p^2 \cdot q^{\frac{\dim_{\finiteField} \hermitianSpace}{2}},$$
-	and the facts \begin{equation*}
-		\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^r \text{\,\,\,\,\,\, and \,\,\,\,\,\,}  \varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2}}.
+	This follows from the results mentioned above and from the formula $$R_T\left(1\right) = \varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}} \frac{\grpIndex{H}{T}}{\sizeof{H}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{H}_p^2 \cdot q^{\frac{\dim_{\finiteField} \hermitianSpace}{2}},$$
+	and the fact \begin{equation*}
+		\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^r.
 	\end{equation*}
 \end{proof}
 \begin{remark}
-	Suppose that $\pi$ is any irreducible representation of $G$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$. Then the central character of $\pi$ satisfies
+	We have $$\varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2}}.$$ If $\finiteField = \quadraticExtension$ then we also have $$\varepsilon_{\algebraicGroup{\GroupExtension{G}}} = \left(-1\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2} + 1}.$$
+\end{remark}
+\begin{remark}
+	Suppose that $\pi$ is any irreducible representation of $H$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$. Then the central character of $\pi$ satisfies
 	\begin{align*}
 		\centralCharacter{\pi}\left(-1\right) = \theta\left(-1\right) =& \prod_{j=1}^r \alpha_j\left(-1\right) \cdot \prod_{i=1}^s \theta_i\left(-1\right).
 	\end{align*}
 	Thus \begin{align*}
-		\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \centralCharacter{\pi}\left(-1\right) g_T\left(\theta, \fieldCharacter\right).
+		\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \centralCharacter{\pi}\left(-1\right) g_T\left(\chi, \theta, \fieldCharacter\right).
 	\end{align*}
 \end{remark}
 
@@ -925,14 +928,14 @@ $$\frac{1}{q-1} \sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension
 x \notin \multiplicativegroup{\finiteField}}} \theta\left(\frac{x}{x^q}\right) \chi\left(1-\frac{x}{x^q}\right).$$
 Let $0 \ne \delta \in \multiplicativegroup{\finiteFieldExtension{2}}$ be a trace-zero element. Replacing $x$ with $\delta x$, we arrive at the sum
 $$\frac{\theta\left(-1\right) \chi\left(-1\right)}{q-1} \sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{2}}\\
-		x \notin \delta^{-1} \multiplicativegroup{\finiteField}}} \theta'\left(x\right) \minusInvolution{\chi}\left(x\right) \chi\left(\trace_{\finiteFieldExtension{2} \slash \finiteField} x\right),$$
-	where $\theta' \colon \multiplicativegroup{\finiteFieldExtension{2}} \to \multiplicativegroup{\cComplex}$ is given by $\theta'\left(x\right) = \theta\left(\frac{x}{x^q}\right)$ and $\minusInvolution{\chi}\left(x\right) = \chi^{-1}\left(x^{q}\right)$.
+		x \notin \delta^{-1} \multiplicativegroup{\finiteField}}} \theta'\left(x\right) \chi^{-q}\left(x\right) \chi\left(\trace_{\finiteFieldExtension{2} \slash \finiteField} x\right),$$
+	where $\theta' \colon \multiplicativegroup{\finiteFieldExtension{2}} \to \multiplicativegroup{\cComplex}$ is given by $\theta'\left(x\right) = \theta\left(\frac{x}{x^q}\right)$.
 	
 	As usual, we may rewrite the last sum as
-	$$\frac{\theta\left(-1\right) \chi\left(-1\right)}{q\left(q-1\right)} \sum_{x \in \multiplicativegroup{\finiteFieldExtension{2}}}\sum_{z \in \finiteField} \sum_{y \in \multiplicativegroup{\finiteField}}  \theta'\left(x\right) \minusInvolution{\chi}\left(x\right) \chi\left(y\right) \fieldCharacter\left(z\left(y - \trace_{\finiteFieldExtension{2} \slash \finiteField} x\right)\right).$$
+	$$\frac{\theta\left(-1\right) \chi\left(-1\right)}{q\left(q-1\right)} \sum_{x \in \multiplicativegroup{\finiteFieldExtension{2}}}\sum_{z \in \finiteField} \sum_{y \in \multiplicativegroup{\finiteField}}  \theta'\left(x\right) \chi^{-q}\left(x\right) \chi\left(y\right) \fieldCharacter\left(z\left(y - \trace_{\finiteFieldExtension{2} \slash \finiteField} x\right)\right).$$
 	Since $\chi \ne 1$, the inner sum vanishes when $z = 0$, and therefore we can reduce the sum over $z$ to $z \in \multiplicativegroup{\finiteField}$. Changing variables $x \mapsto -z^{-1} x$ and $y \mapsto z^{-1} y$, and using the fact that $z^q = z$, we arrive at the sum
-	$$\frac{\theta\left(-1\right)}{q} \sum_{x \in \multiplicativegroup{\finiteFieldExtension{2}}}\theta'\left(x\right)  \minusInvolution{\chi}\left(x\right) \fieldCharacter\left(\trace_{\finiteFieldExtension{2} \slash \finiteField} x\right) \sum_{y \in \multiplicativegroup{\finiteField}}   \chi\left(y\right) \fieldCharacter\left(y\right),$$
-	which equals
+	$$\frac{\theta\left(-1\right)}{q} \sum_{x \in \multiplicativegroup{\finiteFieldExtension{2}}}\theta'\left(x\right)  \chi^{-q}\left(x\right) \fieldCharacter\left(\trace_{\finiteFieldExtension{2} \slash \finiteField} x\right) \sum_{y \in \multiplicativegroup{\finiteField}}   \chi\left(y\right) \fieldCharacter\left(y\right),$$
+	which by changing variables $x \mapsto x^q$ equals
 	$$q^{\frac{1}{2}} \theta\left(-1\right) \GaussSumCharacter{\left(\theta'\right)^{-1}}{\chi^{-1}}{\fieldCharacter_2} \tau\left(\chi \restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right).$$
 
 \bibliographystyle{abbrv}
