@@ -338,16 +338,16 @@ The last equality implies the following result.
 
 Let $\quadraticExtension \slash \finiteField$ be a field extension of degree $1$ or $2$ contained in $\algebraicClosure{\finiteField}$. For any $k \ge 1$, let $\quadraticFieldExtension{k} \slash \quadraticExtension$ be the unique field extension of degree $k$ contained in $\algebraicClosure{\finiteField}$. Let $x \mapsto \involution{x}$ be the generator of $\Galois\left(\quadraticExtension \slash \finiteField\right)$.
 
-Let $\hermitianSpace$ be a vector space of dimension $n$ over $\quadraticExtension$, equipped with a non-degenerate sesquilinear form $\innerproduct{\cdot}{\cdot} \colon \hermitianSpace \times \hermitianSpace \to \quadraticExtension$ which is $\epsilon$-symmetric for $\epsilon \in \left\{\pm 1\right\}$. By this we mean that:
+Let $\hermitianSpace$ be a vector space of dimension $n$ over $\quadraticExtension$, equipped with a non-degenerate sesquilinear form $\innerproduct{\cdot}{\cdot} \colon \hermitianSpace \times \hermitianSpace \to \quadraticExtension$ which is $\epsilon_{\hermitianSpace}$-symmetric for $\epsilon_{\hermitianSpace} \in \left\{\pm 1\right\}$. By this we mean that:
 \begin{enumerate}
 	\item For every $x_1,x_2,y \in \hermitianSpace$, $$\innerproduct{x_1 + x_2}{y} = \innerproduct{x_1}{y} + \innerproduct{x_2}{y}.$$
 	\item For every $x,y \in \hermitianSpace$ and $t \in \quadraticExtension$, $$\innerproduct{tx}{y} = t\innerproduct{x}{y}.$$
-	\item ($\epsilon$-symmetric) For every $x,y \in \hermitianSpace$, $$\innerproduct{x}{y} = \epsilon \involution{\innerproduct{y}{x}}.$$
+	\item ($\epsilon_{\hermitianSpace}$-symmetric) For every $x,y \in \hermitianSpace$, $$\innerproduct{x}{y} = \epsilon_{\hermitianSpace} \involution{\innerproduct{y}{x}}.$$
 	\item (non-degenerate) For every $0 \ne x \in \hermitianSpace$ there exists $y \in \hermitianSpace$ such that $$\innerproduct{x}{y} \ne 0.$$
 \end{enumerate}
 Let $\IsometryGroup \left(\hermitianSpace\right)$ be the isometry group of $\hermitianSpace$, consisting of all the elements of $\GL_{\quadraticExtension}\left(\hermitianSpace\right)$ that satisfy $\innerproduct{gx}{gy} = \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. We denote by $G$ the identity component of $\IsometryGroup\left(\hermitianSpace\right)$. If $\quadraticExtension = \finiteField$, let $\GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ be the similitude group version of $\IsometryGroup\left(\hermitianSpace\right)$, consisting of the elements $g \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)$ with the property that there exists a constant $\similitudeCharacter\left(g\right) \in \multiplicativegroup{\quadraticExtension}$ such that for every $\innerproduct{gx}{gy} = \similitudeCharacter\left(g\right) \innerproduct{x}{y}$ for every $x,y \in \hermitianSpace$. Let $\GroupExtension{G}$ be the identity component of $\GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$. If $\quadraticExtension \ne \finiteField$, let $\GroupExtension{G} = G$.
 
-We will assume that $\dim_{\finiteField} \hermitianSpace$ is even. This is automatic in all cases, expect for when $\quadraticExtension = \finiteField$ and $\epsilon = 1$. The group $\GroupExtension{G}$ has connected center and contains $G$.
+We will assume that $\dim_{\finiteField} \hermitianSpace$ is even. This is automatic in all cases, expect for when $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = 1$. The group $\GroupExtension{G}$ has connected center and contains $G$.
 
 Let us summarize all possible cases for $G$ and $\GroupExtension{G}$. Let $$w_n = \begin{pmatrix}
 	& & & 1\\
@@ -356,14 +356,14 @@ Let us summarize all possible cases for $G$ and $\GroupExtension{G}$. Let $$w_n 
 	1
 \end{pmatrix} \in \GL_n\left(\finiteField\right)$$ be the longest Weyl element.
 \begin{enumerate}
-	\item (Even special orthogonal groups): $\quadraticExtension = \finiteField$ and $\epsilon = 1$. Denote $\dim_{\finiteField} \hermitianSpace = 2n$. In this case, we have that $G$ consists of all elements $g \in \IsometryGroup\left(\hermitianSpace\right)$ with $\det \hermitianSpace = 1$, and that $\GroupExtension{G}$ consists of all elements $g \in \GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ such that $\det g = \similitudeCharacter\left(g\right)^n$. There are two cases here.
+	\item (Even special orthogonal groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = 1$. Denote $\dim_{\finiteField} \hermitianSpace = 2n$. In this case, we have that $G$ consists of all elements $g \in \IsometryGroup\left(\hermitianSpace\right)$ with $\det \hermitianSpace = 1$, and that $\GroupExtension{G}$ consists of all elements $g \in \GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ such that $\det g = \similitudeCharacter\left(g\right)^n$. There are two cases here.
 	\begin{enumerate}
 		\item Split case: in this case, we can write $\hermitianSpace = \xIsotropic \oplus \yIsotropic$ where $\xIsotropic$ and $\yIsotropic$ are totally isotropic (that is, for every $x \in \xIsotropic$, $\innerproduct{x}{x} = 0$ and similarly for $\yIsotropic$) and these spaces are in duality with respect to $\innerproduct{\cdot}{\cdot}$, i.e., the map $\yIsotropic \to \Hom_{\finiteField}\left(\xIsotropic, \finiteField\right)$ given by $y \mapsto \left(x \mapsto \innerproduct{x}{y}\right)$ is an isomorphism. In this case, we have that $G$ is isomorphic to the subgroup $\SO_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$ consisting of elements $g$ satisfying $$g \cdot w_{2n} \cdot \transpose{g} = w_{2n}$$ and $\det g = 1$.
 		The group $\tilde{G}$ is isomorphic to the subgroup $\GSO_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$, consisting of elements $g$ such that $$g \cdot w_{2n} \cdot \transpose{g} = \similitudeCharacter\left(g\right) w_{2n},$$
 		and such that $\det g = \similitudeCharacter\left(g\right)^n$, where $\similitudeCharacter\left(g\right)$ is a non-zero scalar.
 		\item Non-split case:
 	\end{enumerate}
-	\item (Symplectic groups): $\quadraticExtension = \finiteField$ and $\epsilon = -1$. In this case, $\dim_{\finiteField} \hermitianSpace = 2n$ for some positive integer $n$ and $G$ is isomorphic to subgroup $\Sp_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$ consisting of all elements $g$ satisfying $$g \cdot \begin{pmatrix}
+	\item (Symplectic groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = -1$. In this case, $\dim_{\finiteField} \hermitianSpace = 2n$ for some positive integer $n$ and $G$ is isomorphic to subgroup $\Sp_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$ consisting of all elements $g$ satisfying $$g \cdot \begin{pmatrix}
 		& w_n\\
 		-w_n
 	\end{pmatrix} \cdot \transpose{g} = \begin{pmatrix}
@@ -480,7 +480,7 @@ Using this notation and using the multiplicativity property of Kondo's Gauss sum
 
 \begin{remark}
 	The ``correct'' gamma factor (expected by Langlands functoriality) is given by $$\dblLanglandsGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \begin{dcases}
-				\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} \tau\left(\chi^{-1}, \fieldCharacter\right) & \quadraticExtension = \finiteField \text{ and } \epsilon = -1 \\
+				-\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} \tau\left(\chi^{-1}, \fieldCharacter\right) & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = -1 \\
 				\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} & \text{otherwise}
 	\end{dcases}.$$
 	However, we will not need this version for our purposes.
@@ -602,7 +602,11 @@ $$\theta\left(-1\right) q^{\frac{m}{2}} \tau\left(\chi \restriction_{\multiplica
 Combining the results of the previous sections with \Cref{prop:reduction-of-gauss-sum-to-torus}, we arrive at the following result.
 
 \begin{theorem}\label{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}
-	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s$, where $\alpha_j \colon \multiplicativegroup{\quadraticFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote $$g_T\left(\chi, \theta, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\left(\theta'_i\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2m_i}} \cdot  \prod_{j=1}^r \GaussSumCharacter{\involution{\alpha_j}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}}.$$ Then
+	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$ is a maximal torus of $G$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s$, where $\alpha_j \colon \multiplicativegroup{\quadraticFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote \begin{align*}
+		g_T\left(\chi, \theta, \fieldCharacter\right)
+		= & \left(-1\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2}} \prod_{i=1}^s \GaussSumCharacter{\left(\theta'_i\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2m_i}} \\
+		& \times \prod_{j=1}^r \GaussSumCharacter{\involution{\alpha_j}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}}.
+	\end{align*} Then
 	\begin{align*}
 		 \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) g_T\left(\chi, \theta, \fieldCharacter\right) \prod_{i=1}^s \theta_i\left(-1\right) \cdot \prod_{j=1}^r \alpha_j\left(-1\right).
 	\end{align*}
@@ -834,85 +838,20 @@ The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-s
 	Let $T \subset G$ be a maximal torus and let $\theta \colon T \to \multiplicativegroup{\cComplex}$ be a character. Write $$R_{T,\theta} = \sum_{\Pi} c_{\Pi} \trace \Pi,$$
 	where $\Pi$ goes over all the irreducible representations of $G$ and $c_{\Pi} \in \zIntegers$. Suppose that $\pi$ is an irreducible representation such that $c_{\pi} \ne 0$. Then $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_T\left(\theta, \fieldCharacter\right).$$
 \end{theorem}
-In order to prove this theorem, we will use the theory of Lusztig series.
-
-\subsubsection{Tori isomorphism}\label{subsec:tori-isomorphism}
-
-For any finite abelian group $G$, let $\widehat{G}$ be the character group of $G$, consisting of characters $\theta \colon G \to \multiplicativegroup{\cComplex}$.
-
-Let $\left(\ToriDualToriIsomorphism_k\right)_{k=1}^{\infty}$ be a family of isomorphisms $\ToriDualToriIsomorphism_k \colon \charactergroup{k} \to \multiplicativegroup{\finiteFieldExtension{k}}$ such that if $k' \mid k$ then $\ToriDualToriIsomorphism_k^{-1}\left(\xi_{k'}\right) = \ToriDualToriIsomorphism_{k'}^{-1}\left(\xi_{k'}\right) \circ \FieldNorm{k}{k'}$ for any $\xi_{k'} \in \multiplicativegroup{\finiteFieldExtension{k'}}$.
-
-Using the Hilbert 90 isomorphism $\finiteFieldExtension{2m} \slash \finiteFieldExtension{m} \to \finiteFieldExtension{2m}^{1}$ given by $$x \mapsto \frac{x}{x^{q^m}} = x^{1 - q^m},$$ we see that characters of $\NormOneGroup{2m}$ are in bijection with characters of $\multiplicativegroup{\finiteFieldExtension{2m}}$ such that their restriction to $\multiplicativegroup{\finiteFieldExtension{m}}$ is trivial. Using the surjective norm map $\multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\finiteFieldExtension{m}}$, such characters are precisely characters $\theta \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex}$ such that $\theta \circ \FieldNorm{2m}{m} = \theta^{1 + q^m} = 1$. By realizing the character group $\widehat{\NormOneGroup{2m}}$ as the subgroup of $\charactergroup{2m}$ given by $$\left\{ \theta \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex} \mid \theta^{1+q^m} = 1\right\},$$
-we have that $$\ToriDualToriIsomorphism_{2m}\left(\widehat{\NormOneGroup{2m}}\right) = \left\{\xi \in \multiplicativegroup{\finiteFieldExtension{2m}} \mid \xi^{1+q^m} = 1\right\} = \NormOneGroup{2m}.$$
-Let us denote the restriction of $\ToriDualToriIsomorphism_{2m}$ to $\widehat{\NormOneGroup{2m}}$ by $\ToriDualToriIsomorphism_{2m}^1 \colon \widehat{\NormOneGroup{2m}} \to \NormOneGroup{2m}$.
-
-The family $\left(\ToriDualToriIsomorphism_k\right)_{k=1}^{\infty}$ allows us to define $\ToriDualToriIsomorphism_T \colon \widehat{T} \to T$ for any maximal torus $T$ of $G$. Recall that for a maximal torus $T$ of $G$ there exists an isomorphism of groups $$e_T \colon T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1,$$
-satisfying that if the image of $t \in T$ in $\GL\left(\hermitianSpace\right)$ has an $\finiteField$-characteristic polynomial $\characteristicPolynomial_{t}\left(X\right)$ and $$e_T\left(t\right) = \left(t_1,\dots,t_r,u_1,\dots,u_s\right)$$ then $$\characteristicPolynomial_{t}\left(X\right) = \prod_{j=1}^r \characteristicPolynomial_{t_j, \finiteFieldExtension{k_j}}\left(X\right) \characteristicPolynomial_{t_j^{-1}, \finiteFieldExtension{k_j}}\left(X\right) \cdot \prod_{i=1}^s \characteristicPolynomial_{u_i, \finiteFieldExtension{2 m_i}}\left(X\right),$$
-where for $\xi \in \multiplicativegroup{\finiteFieldExtension{k}}$, $\characteristicPolynomial_{\xi, \finiteFieldExtension{k}}\left(X\right)$ is the $\finiteField$-characteristic polynomial of the multiplication by $\xi$ map $\finiteFieldExtension{k} \to \finiteFieldExtension{k}$.
-
-The isomorphism $e_T$ induces an isomorphism for the character group $$e_{\widehat{T}} \colon \widehat{T} \to \prod_{j=1}^r \charactergroup{k_j} \times \prod_{i=1}^s \widehat{\finiteFieldExtension{2m_i}^1},$$
-given by
-$$e_{\widehat{T}}\left(\theta\right) = \theta \circ e_T^{-1}.$$
-Using the isomorphisms $\ToriDualToriIsomorphism_{k_j} \colon \charactergroup{k_j} \to \multiplicativegroup{\finiteFieldExtension{k_j}}$ and $\ToriDualToriIsomorphism_{2m_i} \colon \widehat{\finiteFieldExtension{2m_i}^1} \to \finiteFieldExtension{2m_i}^1$ and using $e_T$ and $e_{\widehat{T}}$, we obtain an isomorphism $\ToriDualToriIsomorphism_{T} \colon \widehat{T} \to T$. Note that this construction depends on the family $\left(\ToriDualToriIsomorphism_k\right)_{k=1}^{\infty}$ and on the isomorphism $e_T$.
-
-%I just sent you an email about a similar idea which I think makes the writeup a little easier and you don't need the isomorphism between T and Tdual. I have to prepare for a seminar talk tomoro but later this week or early next we can talk
-
-%% Okay cool! good luck with your talk
-
-\subsubsection{Gauss sums attached to semisimple elements}\label{subsec:gauss-sums-attached-to-semi-simple}
-
-Let $T$ be as in the previous section. Let $t \in T$ and suppose that $\ToriDualToriIsomorphism_{T}^{-1}\left(t\right) = \theta$ is given by $$\theta = \left(\alpha_1,\dots,\alpha_r,\theta_1,\dots,\theta_s\right) \circ e_T,$$ where $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$.
-We define $$g_T\left(t, \fieldCharacter\right) = g_T\left(\theta, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\theta'_i}{\chi^{-1}}{\fieldCharacter_{2m_i}} \cdot  \prod_{j=1}^r \GaussSumCharacter{\alpha_j}{\chi^{-1}}{\fieldCharacter_{k_j}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{k_j}}.$$
-We claim that this definition only depends on $t$ and not on the maximal torus $T$ containing it.
-
-To see this, suppose that $\deg \alpha_1 = d_1$, $\dots$, $\deg \alpha_k = d_k$, $\deg \theta'_1 = d'_1$, $\dots$, $\deg \theta'_s = d'_s$ and that $k_1 = b_1 d_1$, $\dots$, $k_r = b_r d_r$, $2m_1 = b'_1 d'_1$, $\dots$, $2m_s = b'_s d'_s$. Then for every $j$,
-$\alpha_j = \beta_j \circ \FieldNorm{b_j d_j}{d_j}$ for some regular character $\beta_j \colon \multiplicativegroup{\finiteFieldExtension{d_j}} \to \multiplicativegroup{\cComplex}$, and similarly for every $i$, $\theta'_i = \vartheta_i \circ \FieldNorm{b'_i d'_i}{d'_i}$ for some regular character $\vartheta_i \colon \multiplicativegroup{\finiteFieldExtension{d'_i}} \to \multiplicativegroup{\cComplex}$. By the Hasse--Davenport relation we have \begin{equation}\label{eq:hasse-davenport-for-semisimple-elements}
-	g_T\left(t, \fieldCharacter\right) = \prod_{i=1}^s \GaussSumCharacter{\vartheta_i}{\chi^{-1}}{\fieldCharacter_{d'_i}}^{b'_i} \cdot  \prod_{j=1}^r \GaussSumCharacter{\beta_j}{\chi^{-1}}{\fieldCharacter_{d_j}}^{b_j} \GaussSumCharacter{\beta_j^{-1}}{\chi^{-1}}{\fieldCharacter_{d_j}}^{b_j}.
-\end{equation}
-On the other hand, let $$e_T\left(t\right) = \left(t_1,\dots,t_r,u_1,\dots,u_s\right),$$
-where $t_j \in \multiplicativegroup{\finiteFieldExtension{k_j}}$ and $u_i \in \finiteFieldExtension{2m_i}^1$ for every $i$ and $j$. Then we have that $t_j \in \multiplicativegroup{\finiteFieldExtension{d_j}}$ and $u_i \in \multiplicativegroup{\finiteFieldExtension{d'_i}}$ for every $i$ and $j$ (and these elements do not belong to smaller field extensions). Thus
-\begin{equation}\label{eq:characteristic-polynomial-equality-for-semisimple-elements}
-	\characteristicPolynomial_{t}\left(X\right) = \prod_{i=1}^s \characteristicPolynomial_{u_i, \finiteFieldExtension{d'_i}}\left(X\right)^{b'_i} \cdot \prod_{j=1}^r \characteristicPolynomial_{t_j, \finiteFieldExtension{d_j}}\left(X\right)^{b_j}\characteristicPolynomial_{t_j^{-1}, \finiteFieldExtension{d_j}}\left(X\right)^{b_j}.
-\end{equation}
-The equalities \eqref{eq:hasse-davenport-for-semisimple-elements} and \eqref{eq:characteristic-polynomial-equality-for-semisimple-elements} imply that may define $g_T\left(t,\fieldCharacter\right)$ using the $\finiteField$-characteristic polynomial of $t$ (viewed as an element of $\GL\left(\hermitianSpace\right)$) by defining a fully multiplicative function $\tau_{\chi, \fieldCharacter} \colon \finiteField\left[X\right]_{\mathrm{monic}} \to \cComplex$, sending $1$ to $1$ and any monic irreducible polynomial $p\left(X\right)$ of degree $d \ge 1$ to $\GaussSumCharacter{\ToriDualToriIsomorphism_{d}^{-1}\left(\xi\right)}{\chi^{-1}}{\fieldCharacter_d}$, where $\xi \in \multiplicativegroup{\finiteFieldExtension{d}}$ is any root of the polynomial $P\left(X\right)$. This map is well defined because Gauss sums are constant on Frobenius orbits of characters.
-
-If $s \in \GL_n\left(\finiteField\right)$ is semisimple, we denote $$\tau_{\GL_n\left(\finiteField\right), \chi, \fieldCharacter}\left(s\right) = \tau_{\chi, \fieldCharacter}\left(\characteristicPolynomial_s\left(X\right)\right).$$
-
-Since the $\finiteField$-characteristic polynomial of $t$ does not depend on the maximal torus $T$ containing $t$, we conclude that the map $t \mapsto g_T\left(t, \fieldCharacter\right)$ does not depend on $t$ and we denote for any semisimple element $s \in G$, $$\tau_{G, \chi, \fieldCharacter}\left(s, \fieldCharacter\right) = g_T\left(s, \fieldCharacter\right) = \tau_{\chi, \fieldCharacter}\left(\characteristicPolynomial_{s}\left(X\right)\right),$$
-where $T$ is any maximal torus containing $s$ and $\characteristicPolynomial_{s}$ is the $\finiteField$-characteristic polynomial of $s$, viewed as an element of $\GL\left(\hermitianSpace\right)$.
 
 \subsubsection{Proof of the main result}
 
-\begin{comment}
-\calvin{here is the geometric idea:}
-\begin{lemma}
-    Let $\mathcal{F} := \mathcal{L}(\theta) \otimes tr^{*}\mathcal{L}(\psi)$. Then
-    \[
-        dim H_c^i(T,\mathcal{F}) = \begin{cases}
-        0    & i \neq dim(T) \\
-        1    & i = dim(T)
-        \end{cases}
-    \]
-\end{lemma}
-\calvin{Might exist in literature somewhere otherwise is a little bit of a pain. It should be analogous to the fact that the Guass sum on a field of size $p^d$ is of magnitude $\sqrt{p^d}$.}
-Combining this with Grothendieck-Lefschetz we get
-\begin{corollary}
-	$g_T(\theta,\psi)^k = g_T(\theta \circ Nm_{k:1},tr_{k:1} \circ \psi)$.
-\end{corollary}
-\calvin{there might be a simple non-geometric way to do this corollary not sure.}
-\calvin{The corollary plus the definition of geometric conjugacy imply $g_T(\theta,\psi) = \mu_kg_{T'}(\theta',\psi)$ for some $k$-th root of unity $\mu_k$. Not sure how to finish from here.}
-\end{comment}
-Let $\ToriDualToriIsomorphism_T \colon \widehat{T} \to T$ be as in the previous sections. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that $\ToriDualToriIsomorphism_T\left(\theta\right) = s$. The \emph{Lusztig series} $\LusztigSeries{G}{s}$ consists of (equivalence classes of) the irreducible representations $\pi$ of $R_{T, \theta}$ with $c_{\pi} \ne 0$ as in the theorem.
+\elad{Merge with Calvin's stuff}
+The \emph{Lusztig series} $\LusztigSeries{G}{s}$ consists of (equivalence classes of) the irreducible representations $\pi$ of $R_{T, \theta}$ with $c_{\pi} \ne 0$ as in the theorem.
 
 Let $L \subset G$ be a Levi subgroup of $G$, and suppose that $L \cong \prod_{j=1}^\ell \GL_{t_j}\left(\finiteField\right) \times G'$ where $G' = \IsometryGroup\left(\hermitianSpace'\right)$ where $\hermitianSpace'$ is a non-degenerate hermitian subspace and $\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic$, where $\xIsotropic$ and $\yIsotropic$ are totally isotropic subspace in duality. Suppose that $s \in L$, and denote by $s_i$ the projection of $s$ to $\GL_{t_i}\left(\finiteField\right)$ for $1 \le i \le \ell$ and by $s_0$ the projection of $s$ to $G'$. We denote
 $$\LusztigSeries{L}{s} = \left(\bigotimes_{j=1}^{\ell} \LusztigSeries{\GL_{t_j}\left(\finiteField\right)}{s_j}\right) \otimes \LusztigSeries{G'}{s_0}.$$
-It is clear that $$\tau_{G, \chi, \fieldCharacter}\left(s\right) = \tau_{G', \chi, \fieldCharacter}\left(s_0\right) \cdot \prod_{j=1}^r \tau_{\GL_{t_j}\left(\finiteField\right), \chi, \fieldCharacter}\left(s_j\right) \tau_{\GL_{t_j}\left(\finiteField\right), \chi, \fieldCharacter}\left(s_j^{-1}\right).$$
 
 We will need the following two facts:
 \begin{enumerate}
 	\item For the groups $\GroupExtension{G}$ as the ones we consider in this paper, the Lusztig series $\LusztigSeries{\GroupExtension{G}}{s}$ contains at most one irreducible cuspidal representation.
-	\item The restriction of $R_{\GroupExtension{T},\GroupExtension{G}} \left(\GroupExtension{\theta}\right)$ to $G$ is $R_{T, G} \left(\tilde{\theta} \restriction_T\right)$ \cite[Page 140]{DigneMichel2020}. TODO: Write more.
 	\item The Lusztig series $\LusztigSeries{\GroupExtension{G}}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(P,\sigma\right)$ where $P$ is a parabolic subgroup of $\GroupExtension{G}$ with Levi part $L$ and $\sigma \in \LusztigSeries{L}{s}$ is an irreducible cuspidal representation.
+	\item \elad{TODO} The correspondence between the Lusztig series $\LusztigSeries{\GroupExtension{G}}{\tilde{s}}$ and $\LusztigSeries{G}{s}$, where $\tilde{s} = i^{\ast}\left(s\right)$ (\cite[Proof of Theorem 1]{Li2023}, \cite[Proof of Theorem 3.2]{Li2019}, \cite[Proof of Lemma 4.8]{SchaefferFryTaylorVinroot2025}).	
 \end{enumerate}
 Our theorem is equivalent to the following statement.
 \begin{proposition}\label{prop:gamma-factor-is-constant-on-lusztig-series}
