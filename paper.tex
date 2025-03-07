@@ -111,8 +111,6 @@
 \newcommand{\GSp}{\mathrm{GSp}}
 \newcommand{\UnitaryGroup}{\mathrm{U}}
 \newcommand{\UnipotentSubgroup}{U}
-\newcommand{\UnipotentRadicalForWss}[2]{N_{\left(#2^{#1}\right)}}
-\newcommand{\UnipotentRadicalForWssRecursion}[2]{\mathcal{Y}_{c,k}}
 \newcommand{\UnipotentRadical}{N}
 \newcommand{\ParabolicSubgroup}{P}
 \newcommand{\GroupExtension}[1]{\widetilde{#1}}
@@ -120,16 +118,12 @@
 % Finite field macros
 \newcommand{\FieldNorm}[2]{\mathrm{N}_{#1:#2}}
 \newcommand{\aFieldNorm}{\mathrm{N}}
-\newcommand{\FieldTrace}{\mathrm{Tr}}
 \newcommand{\finiteField}{\mathbb{F}}
 \newcommand{\quadraticExtension}{\mathbb{E}}
 \newcommand{\finiteFieldExtension}[1]{\finiteField_{#1}}
 \newcommand{\quadraticFieldExtension}[1]{\quadraticExtension_{#1}}
-\newcommand{\FieldExtension}[2]{{#1} \slash {#2}}
 \newcommand{\NormOneGroup}[1]{\finiteFieldExtension{#1}^{\aFieldNorm = 1}}
 \newcommand{\algebraicClosure}[1]{\overline{#1}}
-\newcommand{\charactergroup}[1]{\widehat{\multiplicativegroup{\finiteFieldExtension{#1}}}}
-\newcommand{\limitcharactergroup}{\Gamma}
 \newcommand{\Galois}{\operatorname{Gal}}
 \newcommand{\Frobenius}{\operatorname{Fr}}
 \newcommand{\restrictionOfScalars}[3]{\operatorname{Res}_{#1 \slash #2}{#3}}
@@ -137,40 +131,6 @@
 \newcommand{\affineLine}{\mathbb{A}^1}
 \newcommand{\squareMatrix}{\operatorname{Mat}}
 \newcommand{\Mat}[2]{\operatorname{Mat}_{#1 \times #2}}
-\newcommand{\frobeniusDegree}{\operatorname{deg}}
-\newcommand{\Steinberg}{\operatorname{St}}
-\newcommand{\ProjectionOperator}{\operatorname{pr}}
-\newcommand{\SymmetricGroup}{\mathfrak{S}}
-\newcommand{\whittakerVector}[1]{v_{#1, \fieldCharacter}}
-\newcommand{\gwhittakerVector}[2]{v_{#1, #2}}
-\newcommand{\WhittakerProjection}{\ProjectionOperator_{\mathrm{Wh}}}
-\newcommand{\ParabolicForSpeh}[2]{P_{\left({#1}^{#2}\right)}}
-\newcommand{\UnipotentForSpeh}[2]{N_{\left({#1}^{#2}\right)}}
-\newcommand{\PoincarePolynomial}[2]{P_{#2}}
-
-%Partition macros
-\newcommand{\localField}{F}
-\newcommand{\ringOfIntegers}{\mathfrak{o}}
-\newcommand{\residueField}{\mathfrak{f}}
-\newcommand{\maximalIdeal}{\mathfrak{p}}
-\newcommand{\depthZeroRepresentation}{\mathcal{T}}
-\newcommand{\differential}{\mathrm{d}}
-\newcommand{\mdifferential}{\differential^{\times}}
-\newcommand{\quotientMap}{\nu}
-\newcommand{\Lift}{\mathcal{L}}
-\newcommand{\uniformizer}{\varpi}
-\newcommand{\VolumeOf}{\operatorname{Vol}}
-
-\newcommand{\Erdelyi}{Erd{\'e}lyi}
-\newcommand{\Toth}{T{\'o}th}
-
-\newcommand{\parabolicSection}{\Phi^{\left(z_1, \dots, z_c\right)}}
-\newcommand{\intertwiningOperator}{M^{\left(z_1, \dots, z_c\right)}}
-\newcommand{\holomorphicRepresentation}{\depthZeroRepresentation^{\left(z_1, \dots, z_c\right)}}
-\newcommand{\WhittakerFunctional}[1]{\ell_{#1, \fieldCharacter}}
-\newcommand{\gWhittakerFunctional}[2]{\ell_{#1, #2}}
-\newcommand{\gSpehWhittakerFunctional}[3]{\ell_{\SpehRepresentation{#1}{#3}, \fieldCharacter_{\UnipotentRadicalForWss{#2}{#3}}}}
-\newcommand{\gShortSpehWhittakerFunctional}[3]{\ell_{\SpehRepresentation{#1}{#3}}}
 \newcommand{\GaussSum}[2]{\mathcal{G}\left(#1, #2\right)}
 \newcommand{\dblJacobiSum}[2]{\mathcal{J}^{\mathrm{dbl}}\left(#1, #2\right)}
 \newcommand{\GaussSumScalar}[2]{\mathrm{G}\left(#1, #2\right)}
@@ -179,22 +139,13 @@
 \newcommand{\dblGammaFactor}[3]{\Gamma^{\mathrm{dbl}}\left(#1 \times #2, #3\right)}
 \newcommand{\dblGammaFactorSpace}[4]{\Gamma^{\mathrm{dbl}}_{#1}\left(#2 \times #3, #4\right)}
 \newcommand{\dblLanglandsGammaFactorSpace}[4]{\gamma^{\mathrm{dbl}}_{#1}\left(#2 \times #3, #4\right)}
-\newcommand{\GKGaussSum}[3]{\mathcal{G}\left(#1 \times #2, #3\right)}
-\newcommand{\GKGaussSumScalar}[3]{\mathrm{G}\left(#1 \times #2, #3\right)}
-\newcommand{\fieldCharacterkc}[2]{\fieldCharacter_{\left({#2}^{#1}\right)}}
-\newcommand{\ExoticKloosterman}{\mathrm{Kl}}
 \newcommand{\GaussSumCharacter}[3]{\tau\left(#1 \times #2, #3\right)}
-\newcommand{\IrrCusp}{\Irr_{\mathrm{cusp}}}
-\newcommand{\convolutionWithCompactSupport}{\boldsymbol{\mathrm{R}}}
 \newcommand{\ladicnumbers}{\algebraicClosure{\mathbb{Q}_{\ell}}}
-\newcommand{\artinScrier}{\operatorname{AS}}
-\newcommand{\KloostermanSumClassFunction}{\mathcal{K}}
 \newcommand{\IsometryGroup}{\mathrm{Isom}}
 \newcommand{\lieAlgebra}{\mathfrak{g}}
 \newcommand{\DeligneLusztigInduction}[2]{\mathrm{R}_{#1}^{#2}}
 \newcommand{\algebraicGroup}[1]{\boldsymbol{\mathrm{#1}}}
 \newcommand{\LusztigSeries}[2]{\mathcal{E}\left(#1, (#2)\right)}
-\newcommand{\ToriDualToriIsomorphism}{\kappa}
 \newcommand{\characteristicPolynomial}{\operatorname{CharPoly}}
 \newcommand{\DualFrobeniusFixedPoints}[2][\Frobenius^{\ast}]{\algebraicGroup{#2}^{\ast #1}}
 \newcommand{\FrobeniusFixedPoints}[2][\Frobenius]{\algebraicGroup{#2}^{#1}}
