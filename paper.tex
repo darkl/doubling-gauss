@@ -196,6 +196,10 @@
 \newcommand{\LusztigSeries}[2]{\mathcal{E}\left(#1, (#2)\right)}
 \newcommand{\ToriDualToriIsomorphism}{\kappa}
 \newcommand{\characteristicPolynomial}{\operatorname{CharPoly}}
+\newcommand{\DualFrobeniusFixedPoints}[2][\Frobenius^{\ast}]{\algebraicGroup{#2}^{\ast #1}}
+\newcommand{\FrobeniusFixedPoints}[2][\Frobenius]{\algebraicGroup{#2}^{#1}}
+
+
 
 \newcommand{\calvin}[1]{\textcolor{orange}{\sffamily ((CALVIN: #1))}}
 \newcommand{\elad}[1]{\textcolor{blue}{\sffamily ((ELAD: #1))}}
@@ -359,7 +363,7 @@ Let us summarize all possible cases for $G$ and $\GroupExtension{G}$. Let $$w_n 
 	\item (Even special orthogonal groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = 1$. Denote $\dim_{\finiteField} \hermitianSpace = 2n$. In this case, we have that $G$ consists of all elements $g \in \IsometryGroup\left(\hermitianSpace\right)$ with $\det \hermitianSpace = 1$, and that $\GroupExtension{G}$ consists of all elements $g \in \GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ such that $\det g = \similitudeCharacter\left(g\right)^n$. There are two cases here.
 	\begin{enumerate}
 		\item Split case: in this case, we can write $\hermitianSpace = \xIsotropic \oplus \yIsotropic$ where $\xIsotropic$ and $\yIsotropic$ are totally isotropic (that is, for every $x \in \xIsotropic$, $\innerproduct{x}{x} = 0$ and similarly for $\yIsotropic$) and these spaces are in duality with respect to $\innerproduct{\cdot}{\cdot}$, i.e., the map $\yIsotropic \to \Hom_{\finiteField}\left(\xIsotropic, \finiteField\right)$ given by $y \mapsto \left(x \mapsto \innerproduct{x}{y}\right)$ is an isomorphism. In this case, we have that $G$ is isomorphic to the subgroup $\SO_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$ consisting of elements $g$ satisfying $$g \cdot w_{2n} \cdot \transpose{g} = w_{2n}$$ and $\det g = 1$.
-		The group $\tilde{G}$ is isomorphic to the subgroup $\GSO_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$, consisting of elements $g$ such that $$g \cdot w_{2n} \cdot \transpose{g} = \similitudeCharacter\left(g\right) w_{2n},$$
+		The group $\GroupExtension{G}$ is isomorphic to the subgroup $\GSO_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$, consisting of elements $g$ such that $$g \cdot w_{2n} \cdot \transpose{g} = \similitudeCharacter\left(g\right) w_{2n},$$
 		and such that $\det g = \similitudeCharacter\left(g\right)^n$, where $\similitudeCharacter\left(g\right)$ is a non-zero scalar.
 		\item Non-split case:
 	\end{enumerate}
@@ -837,7 +841,7 @@ Since the sum above is a Gauss sum for $\GL$ it is equal to the Gauss sum attatc
 
 The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and results of Lusztig to determine $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ for any irreducible representation $\pi$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$.
 
-\begin{theorem}
+\begin{theorem}\label{thm:doubling-method-gamma-factor-for-deligne-lusztig}
 	Let $T \subset H$ be a maximal torus and let $\theta \colon T \to \multiplicativegroup{\cComplex}$ be a character. Write $$R_{T,\theta} = \sum_{\Pi} c_{\Pi} \trace \Pi,$$
 	where $\Pi$ goes over all the irreducible representations of $H$ and $c_{\Pi} \in \zIntegers$. Suppose that $\pi$ is an irreducible representation such that $c_{\pi} \ne 0$. Then $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_T\left(\theta, \fieldCharacter\right).$$
 \end{theorem}
@@ -850,15 +854,31 @@ The \emph{Lusztig series} $\LusztigSeries{G}{s}$ consists of (equivalence classe
 Let $L \subset G$ be a Levi subgroup of $G$, and suppose that $L \cong \prod_{j=1}^\ell \GL_{t_j}\left(\finiteField\right) \times G'$ where $G' = \IsometryGroup\left(\hermitianSpace'\right)$ where $\hermitianSpace'$ is a non-degenerate hermitian subspace and $\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic$, where $\xIsotropic$ and $\yIsotropic$ are totally isotropic subspace in duality. Suppose that $s \in L$, and denote by $s_i$ the projection of $s$ to $\GL_{t_i}\left(\finiteField\right)$ for $1 \le i \le \ell$ and by $s_0$ the projection of $s$ to $G'$. We denote
 $$\LusztigSeries{L}{s} = \left(\bigotimes_{j=1}^{\ell} \LusztigSeries{\GL_{t_j}\left(\finiteField\right)}{s_j}\right) \otimes \LusztigSeries{G'}{s_0}.$$
 
-We will need the following two facts:
-\begin{enumerate}
-	\item For the groups $\GroupExtension{G}$ as the ones we consider in this paper, the Lusztig series $\LusztigSeries{\GroupExtension{G}}{s}$ contains at most one irreducible cuspidal representation.
-	\item The Lusztig series $\LusztigSeries{\GroupExtension{G}}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(P,\sigma\right)$ where $P$ is a parabolic subgroup of $\GroupExtension{G}$ with Levi part $L$ and $\sigma \in \LusztigSeries{L}{s}$ is an irreducible cuspidal representation.
-	\item \elad{TODO} The correspondence between the Lusztig series $\LusztigSeries{\GroupExtension{G}}{\tilde{s}}$ and $\LusztigSeries{G}{s}$, where $\tilde{s} = i^{\ast}\left(s\right)$ (\cite[Proof of Theorem 1]{Li2023}, \cite[Proof of Theorem 3.2]{Li2019}, \cite[Proof of Lemma 4.8]{SchaefferFryTaylorVinroot2025}).	
-\end{enumerate}
-Our theorem is equivalent to the following statement.
+We collect some facts that will be used for proving \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig}.
+
+The following proposition allows us to make use of the multiplicativity property (\Cref{thm:multiplicativity-in-terms-of-gamma-factors}) for non-cuspidal elements in a given Lusztig series.
+\begin{proposition}[{\cite[Proof of Corollary 3.3.21]{GeckMalle2020}}]
+	For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(\FrobeniusFixedPoints{\algebraicGroup{P}},\sigma\right)$ where $\algebraicGroup{P}$ is a parabolic subgroup of $\algebraicGroup{\GroupExtension{G}}$ with Levi part $\algebraicGroup{L}$ with $s \in \DualFrobeniusFixedPoints{L}$ and $\sigma \in \LusztigSeries{\FrobeniusFixedPoints{L}}{s}$ is an irreducible cuspidal representation.
+\end{proposition}
+
+The following Proposition shows that is suffices to prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for the group $\GroupExtension{G}$.
+\begin{proposition}[{\cite[Proposition 11.7]{Bonnafe2006}}]
+	Let $\tilde{s}$ be a semisimple element of $\DualFrobeniusFixedPoints{\GroupExtension{G}}$ and let $s = i^{\ast}\left(\tilde{s}\right)$. Then
+	\begin{enumerate}
+		\item If $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ and if $\pi$ is an irreducible subrepresentation of the restriction of $\tilde{\pi}$ to $\FrobeniusFixedPoints{G}$, then $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$.
+		\item Let $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$. Then there exists $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ such that $\pi$ is an irreducible subrepresentation of the restriction of $\tilde{\pi}$ to $\FrobeniusFixedPoints{G}$.
+	\end{enumerate}
+\end{proposition}
+
+Finally, the following proposition shows that the multiplicativity property takes care of all but at most one element in a given Lusztig series.
+\begin{proposition}[{\cite[Page 172]{Lusztig1977}}]
+	For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ contains at most one cuspidal element.
+\end{proposition}
+
+\Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} is now equivalent to the following statement.
 \begin{proposition}\label{prop:gamma-factor-is-constant-on-lusztig-series}
-	Keep the notations as above. Suppose that $P$ is a parabolic subgroup of $G$ with Levi part $L$. Then for any irreducible cuspidal $\sigma \in \LusztigSeries{L}{s}$ and for any irreducible subrepresentation $\pi \subset \Ind{P}{G}{\sigma}$, $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
+	Keep the notations as above. Suppose that $\algebraicGroup{P}$ is a parabolic subgroup of $\algebraicGroup{\GroupExtension{G}}$ with Levi part $\algebraicGroup{L}$ with $s \in \DualFrobeniusFixedPoints{L}$. Then for any irreducible cuspidal $\sigma \in \LusztigSeries{\FrobeniusFixedPoints{L}}{s}$ and for any irreducible subrepresentation $\pi \subset \Ind{\FrobeniusFixedPoints{P}}{\FrobeniusFixedPoints{\GroupExtension{G}}}{\sigma}$, $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \tau_{\GroupExtension{G}, \chi, \fieldCharacter}\left(s\right).$$
+	\elad{Many things are not defined anymore. Need to define $\tau_{\GroupExtension{G}, \chi, \fieldCharacter}\left(s\right)$, etc.}
 \end{proposition}
 \begin{proof}
 	The proof is by induction on $\dim_{\quadraticExtension} \hermitianSpace$.
