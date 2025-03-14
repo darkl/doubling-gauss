@@ -201,6 +201,7 @@
 	\item The proof of \Cref{prop:gamma-factor-is-constant-on-lusztig-series} should be modified. We should first use $\GroupExtension{G}$. For this group we have the ``at most one cuspidal'' property. Then we should use \cite[Page 140]{DigneMichel2020} $$R_{\GroupExtension{T}}^{\GroupExtension{G}}\left(\tilde{\theta}\right) \restriction_{G} = R_{T}^G \left(\tilde{\theta}\restriction_{T}\right),$$
 	where we need to explain the notation.
 	\item \Cref{subsec:tori-isomorphism} and \Cref{subsec:gauss-sums-attached-to-semi-simple} should be removed and replaced with Calvin's arguments.
+    \item We might be able to include $SO_{odd}$ with $\Phi(g)$ the symmetric function in the eigenvalues of $g$ given by $\sum_{i=1}^{dim(V)} \chi(\Pi_{j \neq i}(\lambda_j-1))$.
 \end{enumerate}
 
 \section{Notation}
@@ -311,12 +312,12 @@ Let us summarize all possible cases for $G$ and $\GroupExtension{G}$. Let $$w_n 
 	1
 \end{pmatrix} \in \GL_n\left(\finiteField\right)$$ be the longest Weyl element.
 \begin{enumerate}
-	\item (Even special orthogonal groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = 1$. Denote $\dim_{\finiteField} \hermitianSpace = 2n$. In this case, we have that $G$ consists of all elements $g \in \IsometryGroup\left(\hermitianSpace\right)$ with $\det \hermitianSpace = 1$, and that $\GroupExtension{G}$ consists of all elements $g \in \GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ such that $\det g = \similitudeCharacter\left(g\right)^n$. There are two cases here.
+	\item (Even special orthogonal groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = 1$. Denote $\dim_{\finiteField} \hermitianSpace = 2n$. In this case, we have that $G$ consists of all elements $g \in \IsometryGroup\left(\hermitianSpace\right)$ with $\det \hermitianSpace = 1$, and that $\GroupExtension{G}$ consists of all elements $g \in \GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ such that $\det g = \similitudeCharacter\left(g\right)^n$ \calvin{not sure I get what this $\Tilde{G}$ is. I thought it would just be $\widetilde{Isom(V)}$-or maybe its identity component. As it reads it sounds like you are supposed to fix sim and then define $\tilde{G}$.}. There are two cases here.
 	\begin{enumerate}
 		\item Split case: in this case, we can write $\hermitianSpace = \xIsotropic \oplus \yIsotropic$ where $\xIsotropic$ and $\yIsotropic$ are totally isotropic (that is, for every $x \in \xIsotropic$, $\innerproduct{x}{x} = 0$ and similarly for $\yIsotropic$) and these spaces are in duality with respect to $\innerproduct{\cdot}{\cdot}$, i.e., the map $\yIsotropic \to \Hom_{\finiteField}\left(\xIsotropic, \finiteField\right)$ given by $y \mapsto \left(x \mapsto \innerproduct{x}{y}\right)$ is an isomorphism. In this case, we have that $G$ is isomorphic to the subgroup $\SO_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$ consisting of elements $g$ satisfying $$g \cdot w_{2n} \cdot \transpose{g} = w_{2n}$$ and $\det g = 1$.
 		The group $\GroupExtension{G}$ is isomorphic to the subgroup $\GSO_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$, consisting of elements $g$ such that $$g \cdot w_{2n} \cdot \transpose{g} = \similitudeCharacter\left(g\right) w_{2n},$$
 		and such that $\det g = \similitudeCharacter\left(g\right)^n$, where $\similitudeCharacter\left(g\right)$ is a non-zero scalar.
-		\item Non-split case:
+		\item Non-split case: \calvin{do we want to do even characteristic? Not sure what the classification of quadratic forms over even char are} for odd characteristic there is one non-split case when $V = X \oplus \mathbb{E} \oplus Y$ where $\mathbb{E}$ is the unique degree two extension of $\mathbb{F}$ with quadratic form $Nm_{\mathbb{E}:\mathbb{F}}$ \calvin{find someone to cite}
 	\end{enumerate}
 	\item (Symplectic groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = -1$. In this case, $\dim_{\finiteField} \hermitianSpace = 2n$ for some positive integer $n$ and $G$ is isomorphic to subgroup $\Sp_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$ consisting of all elements $g$ satisfying $$g \cdot \begin{pmatrix}
 		& w_n\\
@@ -629,11 +630,13 @@ for large enough $n$, where $\aFieldNorm_{\algebraicGroup{T}(\finiteFieldExtensi
 \end{tabular}
 \end{center}
 
+\calvin{non split form of $SO(even)$, is the dual group itself?. The torus I think is $(\mathbb{F}_2)^{Nm=1} \times (\mathbb{F}^\times)^{dim -1}$. The Frobenius action on the characters is $(-1,1,1,1\hdots 1)$ and on $W$ its trivial}
+
 \subsubsection{Invariance under geometric conjugacy}
 \calvin{todo:type in some motivation for class functions whose product doesn't depend on geometric conjugacy, gamma functions whatever}.
 
 \begin{definition}
-	A \emph{stable function} on $\algebraicGroup{G}(\finiteField)$ is a class function $f$ such that $\sum_{g \in G} f(g)\pi(g)$ is a scalar which only depends on the Lusztig packet for $\pi$. \calvin{FUNCTORIAL TRANSFER FOR REDUCTIVE GROUPS AND CENTRAL
+	A \emph{stable function} on $\algebraicGroup{G}(\finiteField)$ is a class function $f$ such that $\sum_{g \in G} f(g)(g)$ is a scalar which only depends on the Lusztig packet for $\pi$. \calvin{FUNCTORIAL TRANSFER FOR REDUCTIVE GROUPS AND CENTRAL
 COMPLEXES has this definition}
 \end{definition}
 
@@ -652,12 +655,18 @@ Proof of claim 2: Geometric conjugacy is equivalent to for large enough $n$, the
 \end{proof}
 
 
-The main result of this subsection is 
+The main result of this paper is 
 \begin{theorem}
-\label{thm:indep_geo_conj}
-	$\Phi_{\chi}(g)$ is a stable function.
+\label{thm:Phi_stable}
+	$\Phi_{\chi}(g)$ is a stable function. In other words $\dblVirtualJacobiSumScalar{\pi}{\chi}$ only depends on the Lusztig packet of $\pi$.
 	%Equivalently	$\frac{\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi}}{R_{T,\theta}(1)}$ only depends on the geometric conjugacy class of $(T,\theta)$.
 \end{theorem}
+
+In this section we prove a slightly weaker result:
+\begin{lemma}
+\label{lem:indep_geo_conj}
+    $\frac{\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi}}{R_{T,\theta}(1)}$ only depends on the geometric conjugacy class of $(T,\theta)$.
+\end{lemma}
 
 In the $\GL_n$ case this follows from \Cref{thm:gln-doubling-gauss-sum-in-terms-of-kondo} along with \calvin{Hasse-Davenport? Something else?}.
 
@@ -703,7 +712,7 @@ Suppose that $(T,\theta)$ and $(T',\theta')$ are geometrically conjugate torus c
 Both are equal to $g_{(\rho(s_{T,\theta}))}(\psi,\chi) = g_{(\rho(s_{T',\theta'}))}(\psi,\chi)$.
 \end{proof}
 
-The idea behind the proof of \Cref{thm:indep_geo_conj} is that the formula from \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} relates $\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi}/R_{T,\theta}(1)$ to $g_{T,\rho}(\theta,\psi,\chi)$ for the appropriate $\rho$ in the table below. 
+The idea behind the proof of \Cref{lem:indep_geo_conj} is that the formula from \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} relates $\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi}/R_{T,\theta}(1)$ to $g_{T,\rho}(\theta,\psi,\chi)$ for the appropriate $\rho$ in the table below. 
 \begin{center}
 \begin{tabular}{ c c}
  Group & Dual group representations $\rho$ \\ 
@@ -720,7 +729,7 @@ Note that in the $SO$ and $GSO$ case, the map $\rho$ sends the split torus of $G
 
 
 In particular to analyze $g_{T,\rho}(\theta,\psi,\chi)$ for these $\rho$, we need to understand what torus theta pair of $\GL$ corresponds to $\phi((s))$ under a map $\phi(x) = (x,-x)$:
-%The following computation in the proof of theorem \ref{thm:indep_geo_conj}.
+%The following computation in the proof of theorem \ref{lem:indep_geo_conj}.
 
 \begin{lemma}
 \label{lem:cochar_computation}
@@ -755,7 +764,7 @@ Thus the result follows from the computations:
 
 
 
-\begin{proof}[Proof of \Cref{thm:indep_geo_conj}] 
+\begin{proof}[Proof of \Cref{lem:indep_geo_conj}] 
 By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}, it is enough to show that $g_{T}(\chi,\theta,\psi)$ and $\omega_{\pi}(-1) = \theta(-1)$ only depend of the geometric conjugacy of $(T,\theta)$. The latter only depends on geometric conjugacy by \Cref{prop:central_char}.
 
 Suppose $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$. We compute $g_{T,\rho}(\theta,\psi,\chi)$ using the the split torus $\algebraicGroup{T}^*$ in $G^*$ including into the split torus $\algebraicGroup{T}'$ in $\GL$ in the non unitary case and in the unitary case we use the tori $\algebraicGroup{T}^*$ whose $\finiteField$ points are $(\NormOneGroup{2})^n \subset G^*(\finiteField)$ includes into the torus $\algebraicGroup{T}'$ in $\GL(2n)$ whose $\finiteField$ points are $(\finiteFieldExtension{2}^\times)^n$. We then define $\tilde{T}$ as the $\finiteField$-rational torus corresponding to the Frobenius stable Weyl group orbit of $\rho(w)$ inside $W(\algebraicGroup{T}')$ where $(w)$ inside $W(\algebraicGroup{T}^*)$ is the Frobenius stable Weyl group orbit associated to $T$. \Cref{lem:cochar_computation} above implies that
@@ -797,7 +806,47 @@ The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-s
 	where $\Pi$ goes over all the irreducible representations of $H$ and $c_{\Pi} \in \zIntegers$. Suppose that $\pi$ is an irreducible representation such that $c_{\pi} \ne 0$. Then $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_T\left(\theta, \fieldCharacter\right).$$
 \end{theorem}
 
-\subsubsection{Proof of the main result}
+\calvin{start alternate writeup of section 3.4/3.4.1:}
+\subsection{Computation for Lusztig Series}
+The goal of this section is to prove \Cref{thm:Phi_stable} in particular that if $c_{\pi}$ is nonzero in the virtual representation $R_T(\theta) = \sum c_{\pi} \pi$ then
+\begin{theorem}
+\label{thm:doubling-method-gamma-factor-for-deligne-lusztig}
+$$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_T\left(\theta, \fieldCharacter\right)$$
+\end{theorem}
+\calvin{add in $\chi$} the right hand side of which we showed in \Cref{lem:indep_geo_conj} only depends on the geometric conjugacy class of $(T,\theta)$ hence on the Lusztig series $\LusztigSeries{G}{s}$ which contains $\pi$.
+\subsubsection{Proof of \Cref{thm:Phi_stable}}
+Our proof will be via induction on $\dim_{\quadraticExtension} \hermitianSpace$. First we will use \Cref{thm:multiplicativity-in-terms-of-gamma-factors}  and MULTIPLICAATIVITY-OF-GTTHETA to prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for any non cuspidal $\pi$ assuming \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for all Levi factors. \\
+
+\begin{proof}
+\calvin{should be short proof. Might not even need to put--just need to say both are multiplicative}
+\end{proof}
+
+
+By \Cref{lem:indep_geo_conj}, we know that for $R_T(\theta) = \sum c_{\pi} \pi$, 
+$$\sum c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = (\sum c_{\pi})g_T\left(\theta, \fieldCharacter\right)$$
+is independent of geometric conjugacy class of $(T,\theta)$. Since we know the relevant equality for non cupsidal $\pi$, we get that
+$$ \sum_{\pi \textnormal{ cuspidal}} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \left(\sum_{\pi \textnormal{ cuspidal}} c_{\pi}\right)g_T\left(\theta, \fieldCharacter\right)$$.
+
+To finish we will show that all cuspidal $\pi$ in a Lusztig packet $\LusztigSeries{G}{s}$ have the same $\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter}$ factor. This will follow from
+
+\begin{proposition}[{\cite[Page 172]{Lusztig1977}}]
+	Let $\GroupExtension{G}$ have connected center. For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ contains at most one cuspidal element.
+\end{proposition}
+
+While our groups $G$ may not have connected center, the function $\Phi(g)$ extends by zero to a class function on $\tilde{G}$ (see section 3.2) which does have connected center. Hence if a representation $\pi$ of $\tilde{G}$ deposes intorepresentations $\pi_1 \oplus \pi_2 \hdots \oplus \pi_r$ of $G$, $\dblGammaFactorSpace{\hermitianSpace}{\pi_1}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace}{\pi_2}{\chi}{\fieldCharacter} =\hdots =\dblGammaFactorSpace{\hermitianSpace}{\pi_r}{\chi}{\fieldCharacter}$.
+
+\begin{proposition}[{\cite[Proposition 11.7]{Bonnafe2006}}]
+	Let $\tilde{s}$ be a semisimple element of $\DualFrobeniusFixedPoints{\GroupExtension{G}}$ and let $s = i^{\ast}\left(\tilde{s}\right)$. Then
+	\begin{enumerate}
+		\item If $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ and if $\pi$ is an irreducible subrepresentation of the restriction of $\tilde{\pi}$ to $\FrobeniusFixedPoints{G}$, then $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$.
+		\item Let $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$. Then there exists $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ such that $\pi$ is an irreducible subrepresentation of the restriction of $\tilde{\pi}$ to $\FrobeniusFixedPoints{G}$.
+	\end{enumerate}
+\end{proposition}
+\calvin{maybe say that cuspidal breaks into cuspidal pieces}
+So all the cuspidal $\pi$ in a Lusztig packet $\LusztigSeries{G}{s}$ are irreducible pieces in the restriction from $\GroupExtension{G}$ to $G$ of a single cuspidal representation $\tilde{\pi}$ of $\GroupExtension{G}$.
+
+\calvin{end alternate writeup}
+\subsubsection{Proof of the main result \calvin{\Cref{thm:Phi_stable}}}
 
 \elad{Merge with Calvin's stuff}
 The \emph{Lusztig series} $\LusztigSeries{G}{s}$ consists of (equivalence classes of) the irreducible representations $\pi$ of $R_{T, \theta}$ with $c_{\pi} \ne 0$ as in the theorem.
