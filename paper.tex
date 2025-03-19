@@ -186,10 +186,10 @@
 \begin{enumerate}
 	\item (Minor) \sout{Change terminology of Gauss sums $\dblJacobiSumScalar{\pi}{\chi}$ to Jacobi sums and the notation to $J^{\mathrm{dbl}}\left(\pi, \chi\right)$ as they are similar to the Jacobi sums}
 	$$J\left(\alpha, \beta\right) = \sum_{\substack{x,y \in \multiplicativegroup{\finiteField}\\
-	x+y = 1}} \alpha\left(x\right) \beta\left(y\right),$$
+			x+y = 1}} \alpha\left(x\right) \beta\left(y\right),$$
 	compare with $$\dblJacobiSumScalar{\pi}{\chi} = \sum_{\substack{g \in G\\
 			h \in \GL\left(\hermitianSpace\right)\\
-	g + h = \idmap_{\hermitianSpace}}} \pi\left(g\right) \chi\left(\det\left(-h\right)\right).$$
+			g + h = \idmap_{\hermitianSpace}}} \pi\left(g\right) \chi\left(\det\left(-h\right)\right).$$
 	\sout{Consider replacing $\chi\left(\det\left(g - \idmap_{\hermitianSpace}\right)\right)$ with $\chi\left(\det\left(\idmap_{\hermitianSpace} - g\right)\right)$ for aesthetics (probably not worth it).}
 	\item Maybe define the algebraic group versions $\algebraicGroup{G}$ and $\GroupExtension{\algebraicGroup{G}}$ in Section 3.2. For instance for $\algebraicGroup{\Sp}_{2n}$ we can define
 	$$\algebraicGroup{\tilde{G}} = \left\{ \left(g,\lambda\right) \in \algebraicGroup{\GL}\left(\hermitianSpace\right) \times \multiplcativeScheme \mid \involution{\transpose{g}} J g = \lambda J,\ \right\}$$ for suitable $J$ and then define the torus $\algebraicGroup{S}$ that appears in \cite[Page 140]{DigneMichel2020} as $$\algebraicGroup{S} = \left\{\left(\begin{pmatrix}
@@ -201,9 +201,9 @@
 	\item The proof of \Cref{prop:gamma-factor-is-constant-on-lusztig-series} should be modified. We should first use $\GroupExtension{G}$. For this group we have the ``at most one cuspidal'' property. Then we should use \cite[Page 140]{DigneMichel2020} $$R_{\GroupExtension{T}}^{\GroupExtension{G}}\left(\tilde{\theta}\right) \restriction_{G} = R_{T}^G \left(\tilde{\theta}\restriction_{T}\right),$$
 	where we need to explain the notation.
 	\item \Cref{subsec:tori-isomorphism} and \Cref{subsec:gauss-sums-attached-to-semi-simple} should be removed and replaced with Calvin's arguments.
-    \item Find what the root data + F action for the non-split quadratic form is. Find the dual gorup and add the appropriate representation to \Cref{lem:indep_geo_conj}
-    \item We might be able to include $SO_{odd}$ with $\Phi(g)$ the symmetric function in the eigenvalues of $g$ given by $\sum_{i=1}^{dim(V)} \chi(\Pi_{j \neq i}(\lambda_j-1))$.
-    
+	\item Find what the root data + F action for the non-split quadratic form is. Find the dual gorup and add the appropriate representation to \Cref{lem:indep_geo_conj}
+	\item We might be able to include $SO_{odd}$ with $\Phi(g)$ the symmetric function in the eigenvalues of $g$ given by $\sum_{i=1}^{dim(V)} \chi(\Pi_{j \neq i}(\lambda_j-1))$.
+	
 \end{enumerate}
 
 \section{Notation}
@@ -451,8 +451,6 @@ The goal of the next two sections is to compute $\dblJacobiSumScalar{\pi}{\chi}$
 
 In this section, we focus on the computing the analogous character sum corresponding to $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ for the virtual character $R_{T,\theta}$.
 
-\calvin{I kinda prefer the normalization where we divide by $|G|$. I guess both for little and upper $G$. That way it is the honest product of characters in the representation ring.}
-
 Let us realize $H$ as the fixed points of the Frobenius map $\Frobenius$ acting on a connected reductive algebraic group $\algebraicGroup{H}$.
 
 Given a class function $F \colon H \to \cComplex$ (i.e., a function that is invariant under conjugation by elements of $G$), let us define $$\dblVirtualJacobiSumScalar{F}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} F\left(g\right) \Phi_{\chi}\left(g\right).$$
@@ -589,7 +587,6 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 \end{remark}
 
 \subsubsection{Geometric Conjugacy and Lusztig Series}
-(Following Chapter 13 of \cite{DigneMichel2020})
 Let $\algebraicGroup{G}$ be a reductive group over $\finiteField$ and fix a torus $\algebraicGroup{T}$ defined over $\finiteField$. The \emph{dual group over $\finiteField$} of $\algebraicGroup{G}$ with respect to the torus $\algebraicGroup{T}$ corresponds to the group $\algebraicGroup{G}^*$ with a dual torus $\algebraicGroup{T}^*$ and root datum
 \[
     (X^*(\algebraicGroup{T}^*),\Phi_{\algebraicGroup{T}^*},X_*(\algebraicGroup{T}^*),\Phi_{\algebraicGroup{T}^*}^\vee) \cong (X_*(\algebraicGroup{T}),\Phi_{\algebraicGroup{T}}^\vee,X^*(\algebraicGroup{T}),\Phi_{\algebraicGroup{T}})
@@ -609,14 +606,14 @@ Hence for a torus character pair $(T,\theta)$ for $G$, we may conjugate $\algebr
 \[
     \exp(\langle x_{T,\theta},y\rangle) = \theta(\aFieldNorm_{\algebraicGroup{T}(\finiteFieldExtension{n}):\algebraicGroup{T}(\finiteField)}(y(\zeta_n)))
 \]
-for large enough $n$, where $\aFieldNorm_{\algebraicGroup{T}(\finiteFieldExtension{n}):\algebraicGroup{T}(\finiteField)}(t) = t\cdot \Frobenius(t)\cdot \Frobenius^2(t)\cdot  \hdots \cdot \Frobenius^{n-1}(t)$ is the torus norm map. This $x_{T,\theta}$ is well defined up to the Weyl group, and in fact there is a correspondence between $(T,\theta)$ pairs and $\Frobenius$-stable Weyl group orbits in $X^*(\algebraicGroup{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ \cite[Corollary 13.9]{DigneMichel2020}.  By composing with \eqref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
+for large enough $n$, where $\aFieldNorm_{\algebraicGroup{T}(\finiteFieldExtension{n}):\algebraicGroup{T}(\finiteField)}(t) = t\cdot \Frobenius(t)\cdot \Frobenius^2(t)\cdot  \hdots \cdot \Frobenius^{n-1}(t)$ is the torus norm map. This $x_{T,\theta}$ is well defined up to the Weyl group, and in fact, by \cite[Corollary 13.9]{DigneMichel2020} there is a correspondence between $(T,\theta)$ pairs and $\Frobenius$-stable Weyl group orbits in $X^*(\algebraicGroup{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$.  By composing with \eqref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
 
 \begin{definition}
     Denote the Frobenius semisimple conjugacy class associated to a torus character pair $(T,\theta)$ by $(s_{T,\theta})$. Similarly denote the Frobenius stable Weyl group element of $X^*(\algebraicGroup{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ corresponding to $(T,\theta)$ by $(x_{T,\theta}).$
 
-    The pairs $(T',\theta'),(T,\theta)$ are said to be \emph{geometrically conjugate} is the geometric conjugacy classes $(s_{T,\theta}), (s_{T,\theta'})$ are equal.
+    The pairs $(T',\theta'),(T,\theta)$ are said to be \emph{geometrically conjugate} is the geometric conjugacy classes $(s_{T,\theta})$ and $(s_{T,\theta'})$ are equal.
     
-    The \emph{Lusztig series} $\LusztigSeries{G}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \algebraicGroup{G}^*$ consists of (equivalence classes of) the irreducible representations $\pi$ which appear with non-zero multiplicity in $R_{T, \theta}$ for some $(T,\theta)$ such that $(s_{T,\theta}) = (s)$.
+    The \emph{Lusztig series} $\LusztigSeries{G}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \algebraicGroup{G}^*$ consists of the (equivalence classes of the) irreducible representations $\pi$ which appear with non-zero multiplicity in $R_{T, \theta}$ for some $(T,\theta)$ such that $(s_{T,\theta}) = (s)$.
 \end{definition}
 
 \begin{center}
