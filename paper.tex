@@ -864,6 +864,7 @@ where the doubling factor is defined by
 \[
 \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} := \omega_{\pi}(-1)\frac{\sum_{g \in \GroupExtension{G}}\pi(g)\Phi_{\chi}(g)}{\sqrt{|g|}c_V(\chi,\pi)}
 \]
+\elad{Note that on page 6 we already defined $\dblJacobiSum{\pi}{\chi}$ by only summing on the $G$ points. Same for $\dblJacobiSumScalar{F}{\chi}$ on page 9.}
 \end{theorem}
 Any irreducible representation $\pi$ of $G$ which is the a component of an irreducible representation $\tilde{\pi}$ of $\GroupExtension{G}$ restricted to $\pi$,
 \[
@@ -889,20 +890,16 @@ Our proof will be via induction on $\dim_{\quadraticExtension} \hermitianSpace$.
 
 
 By \Cref{lem:indep_geo_conj}, we know that for $R_T(\theta) = \sum c_{\pi} \pi$, 
-$$\sum c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = (\sum c_{\pi})g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$
-is independent of geometric conjugacy class of $(T \cap G,\theta|_{T \cap G})$ he. Since we know the relevant equality for non cupsidal $\pi$, we get that
+$$\sum c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = (\sum c_{\pi})g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$.
+Since we know the relevant equality for non cupsidal $\pi$, we get that
 $$ \sum_{\pi \textnormal{ cuspidal}} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \left(\sum_{\pi \textnormal{ cuspidal}} c_{\pi}\right)g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$.
 
-But in fact there is only one cuspidal $\pi$, hence the above equation determines 
+But it is well known that there is only one cuspidal $\pi$:
 \begin{proposition}[{\cite[Page 172]{Lusztig1977}}]
 	Let $\GroupExtension{G}$ have connected center. For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ contains at most one cuspidal element.
 \end{proposition}
 
-While our groups $G$ may not have connected center, the function $\Phi(g)$ extends by zero to a class function on $\tilde{G}$ (see section 3.2) which does have connected center. Hence if a representation $\pi$ of $\tilde{G}$ deposes intorepresentations $\pi_1 \oplus \pi_2 \hdots \oplus \pi_r$ of $G$, $\dblGammaFactorSpace{\hermitianSpace}{\pi_1}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace}{\pi_2}{\chi}{\fieldCharacter} =\hdots =\dblGammaFactorSpace{\hermitianSpace}{\pi_r}{\chi}{\fieldCharacter}$.
-
-
-\calvin{maybe say that cuspidal breaks into cuspidal pieces}
-So all the cuspidal $\pi$ in a Lusztig packet $\LusztigSeries{G}{s}$ are irreducible pieces in the restriction from $\GroupExtension{G}$ to $G$ of a single cuspidal representation $\tilde{\pi}$ of $\GroupExtension{G}$.
+So the proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig-extensions} is complete.
 
 \calvin{end alternate writeup 2}
 
