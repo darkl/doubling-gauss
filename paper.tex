@@ -619,17 +619,15 @@ for $\zeta_n$ being a $q^n-1$ root of unity corresponding to $1/(q^n-1) \in (\ma
 
 Hence for a torus character pair $(T,\theta)$ for $G$, we may conjugate $\algebraicGroup{T}$ to a fixed torus $\algebraicGroup{T}'$ and associate to $\theta$ a twisted Frobenius (twisted by an element of $W$ in the twisted Weyl group conjugacy class corresponding to $T$) stable element $x_{T,\theta}$ of $X^*(\algebraicGroup{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ via the equality
 \[
-    \exp(\langle x_{T,\theta},y\rangle) = \theta(\aFieldNorm_{\algebraicGroup{T}(\finiteFieldExtension{n}):\algebraicGroup{T}(\finiteField)}(y(\zeta_n)))
+    \exp(\langle x_{T,\theta},y\rangle) = \theta(\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(y(\zeta_n)))
 \]
-for large enough $n$, where $\aFieldNorm_{\algebraicGroup{T}(\finiteFieldExtension{n}):\algebraicGroup{T}(\finiteField)}(t) = t\cdot \Frobenius(t)\cdot \Frobenius^2(t)\cdot  \hdots \cdot \Frobenius^{n-1}(t)$ is the torus norm map. This $x_{T,\theta}$ is well defined up to the Weyl group, and in fact, by \cite[Corollary 13.9]{DigneMichel2020} there is a correspondence between $(T,\theta)$ pairs and $\Frobenius$-stable Weyl group orbits in $X^*(\algebraicGroup{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$.  By composing with \eqref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
+for large enough $n$, where $\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(t) = t\cdot \Frobenius(t)\cdot \Frobenius^2(t)\cdot  \hdots \cdot \Frobenius^{n-1}(t)$ is the torus norm map. This $x_{T,\theta}$ is well defined up to the Weyl group, and in fact, by \cite[Corollary 13.9]{DigneMichel2020} there is a correspondence between $(T,\theta)$ pairs and $\Frobenius$-stable Weyl group orbits in $X^*(\algebraicGroup{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$.  By composing with \eqref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
 
-\begin{definition}
     Denote the Frobenius semisimple conjugacy class associated to a torus character pair $(T,\theta)$ by $(s_{T,\theta})$. Similarly denote the Frobenius stable Weyl group element of $X^*(\algebraicGroup{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ corresponding to $(T,\theta)$ by $(x_{T,\theta}).$
 
-    The pairs $(T',\theta'),(T,\theta)$ are said to be \emph{geometrically conjugate} is the geometric conjugacy classes $(s_{T,\theta})$ and $(s_{T,\theta'})$ are equal.
-    
-    The \emph{Lusztig series} $\LusztigSeries{G}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \algebraicGroup{G}^*$ consists of the (equivalence classes of the) irreducible representations $\pi$ which appear with non-zero multiplicity in $R_{T, \theta}$ for some $(T,\theta)$ such that $(s_{T,\theta}) = (s)$.
-\end{definition}
+We say that the pairs $(T,\theta)$ and $(T',\theta')$ are \emph{geometrically conjugate} if the geometric conjugacy classes $(s_{T,\theta})$ and $(s_{T',\theta'})$ are equal. This is equivalent to the following: there exists $n \ge 1$ and $h \in {\algebraicGroup{G}}^{\Frobenius^n}$ such that $h \algebraicGroup{T}^{\Frobenius^n} h^{-1} = \left(\algebraicGroup{T}'\right)^{\Frobenius^n}$ and such that $$\theta\left(\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}\left(t\right)\right) = \theta'\left(\aFieldNorm_{\left(\algebraicGroup{T}'\right)^{\Frobenius^n}:\left(\algebraicGroup{T}'\right)^{\Frobenius}}\left(h t h^{-1}\right)\right),$$ for any $t \in \algebraicGroup{T}^{\Frobenius^n}$.
+
+The \emph{geometric Lusztig series} $\LusztigSeries{G}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \algebraicGroup{G}^*$ consists of all (equivalence classes of) irreducible representations $\pi$ which appear with non-zero multiplicity in $R_{T, \theta}$ for some $(T,\theta)$ such that $(s_{T,\theta}) = (s)$.
 
 \begin{center}
 \begin{tabular}{ c c c c c c}
@@ -649,38 +647,38 @@ for large enough $n$, where $\aFieldNorm_{\algebraicGroup{T}(\finiteFieldExtensi
 \subsubsection{Invariance under geometric conjugacy}
 \calvin{todo:type in some motivation for class functions whose product doesn't depend on geometric conjugacy, gamma functions whatever}.
 
-\begin{definition}
-	A \emph{stable function} on $\algebraicGroup{G}(\finiteField)$ is a class function $f$ such that $\sum_{g \in G} f(g)\pi(g)$ is a scalar which only depends on the Lusztig packet for $\pi$. \calvin{FUNCTORIAL TRANSFER FOR REDUCTIVE GROUPS AND CENTRAL
-COMPLEXES has this definition}
-\end{definition}
+Let $f \colon \algebraicGroup{G}\left(\finiteField\right) \to \cComplex$ be a class function. Then by Schur's lemma for any irreducible representation $\pi$, there exists $\gamma_{f} \in \cComplex$ such that $$\sum_{g \in G} f(g)\pi(g) = \gamma_{f}\left(\pi\right) \cdot \idmap_{\pi}.$$
 
-A basic example of a class function which doesn't depend of geometric conjugacy 
-\begin{proposition}[FIND SOMEWHERE TO CITE or put in appendix]
+\begin{definition}
+	We say that  $f \colon \algebraicGroup{G}\left(\finiteField\right) \to \cComplex$ is a \emph{stable function} on $\algebraicGroup{G}(\finiteField)$ if it satisfies the following property: if $\pi$ and $\pi'$ are irreducible representations of $\algebraicGroup{G}(\finiteField)$ such that lie in the same geometric Lusztig series, then $$\gamma_{f}\left(\pi\right) = \gamma_{f}\left(\pi'\right).$$
+(See also \cite[Section 4]{LaumonLetellier2023} and \cite[Section 4.1]{ChenBhattacharya2024})
+	\end{definition}
+
+
+Here is a basic example of a stable class function.
+\begin{proposition}
 \label{prop:central_char}
-    Any function $f$ supported on the center $\algebraicGroup{Z}(\mathbb{F})$ of $\algebraicGroup{G}(\finiteField)$ is a stable function. 
+    If $f \colon \algebraicGroup{G}\left(\finiteField\right) \to \cComplex$ is supported on the center $\algebraicGroup{Z}(\mathbb{F})$ of $\algebraicGroup{G}(\finiteField)$, then $f$ is a stable function.
 \end{proposition}
 \begin{proof}
-\calvin{can probably put this proof in an appendix}
-Note it is enough to prove the statement for $f = 1_z$ an indicator function of an element $z \in \algebraicGroup{Z}(\mathbb{F})$. The he proof follows from the two claims:\\
-Claim 1: $z$ acts by the scalar $\theta(z)$ in the virtual representation $R_{T,\theta}$.\\
-Claim 2: If $(T,\theta),(T',\theta')$ are geometrically conjugate then $\theta|_{\algebraicGroup{Z}(\mathbb{F})} = \theta'_{\algebraicGroup{Z}(\mathbb{F})}$.\\
-Proof of claim 1: The representation $R_T^G(\theta)$ is equal to $M \otimes_{\mathbb{C}[T]} \theta$ where $M$ is the virtual module corresponding to the Euler characteristic of cohomology on $X$ which as a variety is a subvariety of $\algebraicGroup{G}$ with the $G \times T$ action via $(g,\ell).x = gx\ell$. The center $\algebraicGroup{Z}$ then commutes across $X$ so the action of $(z,1)$ equals the action of $(1,z)$. The result is on the $\theta$ component of $M$, $z$ acts by $\theta(z)$.\\
-Proof of claim 2: Geometric conjugacy is equivalent to for large enough $n$, there exists $g \in \algebraicGroup{G}(\mathbb{F}_n)$ \elad{Here you mean $\algebraicGroup{G}\left(\finiteFieldExtension{n}\right)$?}\calvin{oops yes} such that $g\algebraicGroup{T}g^{-1} = \algebraicGroup{T}'$ and $g(\theta \circ Nm) g^{-1} = (\theta' \circ Nm)$. So when restricted to the center, $\theta \circ Nm = \theta' \circ Nm$. Since $Nm$ is surjective onto the $\mathbb{F}$-points, $\theta|_{\algebraicGroup{Z}(\mathbb{F})} = \theta'|_{\algebraicGroup{Z}(\mathbb{F})}$.
+By \cite[Lemma 2.2]{Malle2007}, if $\pi$ and $\pi'$ lie in the same geometric Lusztig series, then they have the same central character. The result now immediately follows.
 \end{proof}
 
 
 The main result of this paper is 
 \begin{theorem}
 \label{thm:Phi_stable}
-	$\Phi_{\chi}(g)$ is a stable function. In other words $\dblVirtualJacobiSumScalar{\pi}{\chi}$ only depends on the Lusztig packet of $\pi$.
-	%Equivalently	$\frac{\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi}}{R_{T,\theta}(1)}$ only depends on the geometric conjugacy class of $(T,\theta)$.
+	The assignment $H \to \cComplex$ given by $$h \mapsto \begin{dcases}
+		\chi\left(\detQuadratic\left(\idmap_{\hermitianSpace} - h\right)\right) & h \in G \text{ and } \detQuadratic\left(\idmap_{\hermitianSpace} - h\right) \ne 0,\\
+		0 & \text{otherwise.}
+	\end{dcases}$$ is a stable function. Equivalently, the assignment $$\pi \mapsto \dblJacobiSumScalar{\pi}{\chi}$$ is constant on geometric Lusztig series.
 \end{theorem}
 In the $\GL_n$ case this follows from \Cref{thm:gln-doubling-gauss-sum-in-terms-of-kondo} along with \calvin{Hasse-Davenport? Something else?}.
 In this section we prove a slightly weaker result:
 
 \begin{lemma}
 \label{lem:indep_geo_conj}
-    $\frac{\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi}}{R_{T,\theta}(1)}$ only depends on the geometric conjugacy class of $(T,\theta)$.
+    If $(T,\theta)$ and $(T', \theta)$ are geometrically conjugate, then $$\frac{\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi}}{R_{T,\theta}(1)} = \frac{\dblVirtualJacobiSumScalar{R_{T', \theta'}}{\chi}}{R_{T,\theta}(1)}.$$
 \end{lemma}
 
 
@@ -810,7 +808,7 @@ Since the sum above is a Gauss sum for $\GL$ it is equal to the Gauss sum attatc
 \end{comment}
 \end{proof}
 
-\subsection{Computation for Lusztig series}
+\subsection{Computation for geometric Lusztig series}
 
 The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and results of Lusztig to determine $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ for any irreducible representation $\pi$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$.
 
