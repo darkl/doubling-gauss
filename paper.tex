@@ -149,6 +149,8 @@
 \newcommand{\characteristicPolynomial}{\operatorname{CharPoly}}
 \newcommand{\DualFrobeniusFixedPoints}[2][\Frobenius^{\ast}]{\algebraicGroup{#2}^{\ast #1}}
 \newcommand{\FrobeniusFixedPoints}[2][\Frobenius]{\algebraicGroup{#2}^{#1}}
+\newcommand{\CharacterLattice}[1]{X^{\ast}\left(#1\right)}
+\newcommand{\CocharacterLattice}[1]{X_{\ast}\left(#1\right)}
 
 
 
@@ -604,26 +606,26 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 \subsubsection{Geometric Conjugacy and Lusztig Series}
 Let $\algebraicGroup{G}$ be a reductive group over $\finiteField$ and fix a torus $\algebraicGroup{T}$ defined over $\finiteField$. The \emph{dual group over $\finiteField$} of $\algebraicGroup{G}$ with respect to the torus $\algebraicGroup{T}$ corresponds to the group $\algebraicGroup{G}^*$ with a dual torus $\algebraicGroup{T}^*$ and root datum
 \[
-    (X^*(\algebraicGroup{T}^*),\Phi_{\algebraicGroup{T}^*},X_*(\algebraicGroup{T}^*),\Phi_{\algebraicGroup{T}^*}^\vee) \cong (X_*(\algebraicGroup{T}),\Phi_{\algebraicGroup{T}}^\vee,X^*(\algebraicGroup{T}),\Phi_{\algebraicGroup{T}})
+    (\CharacterLattice{\algebraicGroup{T}^*},\Phi_{\algebraicGroup{T}^*},\CocharacterLattice{\algebraicGroup{T}^*},\Phi_{\algebraicGroup{T}^*}^\vee) \cong (\CocharacterLattice{\algebraicGroup{T}},\Phi_{\algebraicGroup{T}}^\vee,\CharacterLattice{\algebraicGroup{T}},\Phi_{\algebraicGroup{T}})
 \]
-such that the isomorphism respects the Frobenius action on $X^*$ and $X_*$.
+such that the isomorphism respects the Frobenius actions on $\CharacterLattice{\cdot}$ and $\CocharacterLattice{\cdot}$.
 
 Fix an isomorphism $\multiplicativegroup{\algebraicClosure{\finiteField}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}$ and an embedding $\exp:(\mathbb{Q}/\mathbb{Z})_{p'} \to \overline{\mathbb{Q}_\ell}^\times$. 
-We get an isomorphism
+By \cite[Proposition 13.7 (ii)]{DigneMichel2020}, we have an exact sequence
 \begin{equation}
 \label{eq:DL}
-\xymatrix{0 \ar[r] & X_*(\algebraicGroup{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \ar[r]^{\Frobenius-\idmap} & X_*(\algebraicGroup{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \ar[r] & \algebraicGroup{T}(\algebraicClosure{\finiteField}) \ar[r] & 0}
+\xymatrix{0 \ar[r] & \CocharacterLattice{\algebraicGroup{T}}_{(\mathbb{Q}/\mathbb{Z})_{p'}} \ar[r]^{\Frobenius-\idmap} & \CocharacterLattice{\algebraicGroup{T}}_{(\mathbb{Q}/\mathbb{Z})_{p'}} \ar[r] & \algebraicGroup{T}(\algebraicClosure{\finiteField}) \ar[r] & 0}
 \end{equation}
 with the last map being $y \mapsto \aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(y(\zeta_n))$
 for $\zeta_n$ being a $q^n-1$ root of unity corresponding to $1/(q^n-1) \in (\mathbb{Q}/\mathbb{Z})_{p'}$ and sufficiently large $n$ (large enough so that $\algebraicGroup{T}\left(\finiteFieldExtension{n}\right)$ is split). Here, $$\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(t) = t\cdot \Frobenius(t)\cdot \Frobenius^2(t)\cdot  \hdots \cdot \Frobenius^{n-1}(t)$$ is the torus norm map.
 
-Hence for a torus character pair $(T,\theta)$ for $G$, we may conjugate $\algebraicGroup{T}$ to a fixed torus $\algebraicGroup{T}'$ and associate to $\theta$ a twisted Frobenius (twisted by an element of $W$ in the twisted Weyl group conjugacy class corresponding to $T$) stable element $x_{T,\theta}$ of $X^*(\algebraicGroup{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ via the equality
+Hence for a torus character pair $(T,\theta)$ for $G$, we may conjugate $\algebraicGroup{T}$ to a fixed torus $\algebraicGroup{T}'$ and associate to $\theta$ a twisted Frobenius (twisted by an element of $W$ in the twisted Weyl group conjugacy class corresponding to $T$) stable element $x_{T,\theta}$ of $\CharacterLattice{\algebraicGroup{T}'}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ via the equality
 \[
     \exp(\langle x_{T,\theta},y\rangle) = \theta(\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(y(\zeta_n)))
 \]
-for large enough $n$. This $x_{T,\theta}$ is well defined up to the Weyl group, and in fact, by \cite[Corollary 13.9]{DigneMichel2020} there is a correspondence between $(T,\theta)$ pairs and $\Frobenius$-stable Weyl group orbits in $X^*(\algebraicGroup{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$.  By composing with \eqref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
+for large enough $n$. This $x_{T,\theta}$ is well defined up to the Weyl group, and in fact, by \cite[Corollary 13.9]{DigneMichel2020} there is a correspondence between $(T,\theta)$ pairs and $\Frobenius$-stable Weyl group orbits in $\CharacterLattice{\algebraicGroup{T}'}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$.  By composing with \eqref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
 
-    Denote the Frobenius semisimple conjugacy class associated to a torus character pair $(T,\theta)$ by $(s_{T,\theta})$. Similarly denote the Frobenius stable Weyl group element of $X^*(\algebraicGroup{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ corresponding to $(T,\theta)$ by $(x_{T,\theta}).$
+    Denote the Frobenius semisimple conjugacy class associated to a torus character pair $(T,\theta)$ by $(s_{T,\theta})$. Similarly, denote the Frobenius stable Weyl group element of $\CharacterLattice{\algebraicGroup{T}}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ corresponding to $(T,\theta)$ by $(x_{T,\theta}).$
 
 We say that the pairs $(T,\theta)$ and $(T',\theta')$ are \emph{geometrically conjugate} if the geometric conjugacy classes $(s_{T,\theta})$ and $(s_{T',\theta'})$ are equal. This is equivalent to the following: there exists $n \ge 1$ and $h \in {\algebraicGroup{G}}^{\Frobenius^n}$ such that $h \algebraicGroup{T}^{\Frobenius^n} h^{-1} = \left(\algebraicGroup{T}'\right)^{\Frobenius^n}$ and such that $$\theta\left(\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}\left(t\right)\right) = \theta'\left(\aFieldNorm_{\left(\algebraicGroup{T}'\right)^{\Frobenius^n}:\left(\algebraicGroup{T}'\right)^{\Frobenius}}\left(h t h^{-1}\right)\right),$$ for any $t \in \algebraicGroup{T}^{\Frobenius^n}$.
 
