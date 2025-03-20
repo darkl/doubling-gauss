@@ -614,14 +614,14 @@ We get an isomorphism
 \label{eq:DL}
 \xymatrix{0 \ar[r] & X_*(\algebraicGroup{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \ar[r]^{\Frobenius-\idmap} & X_*(\algebraicGroup{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}} \ar[r] & \algebraicGroup{T}(\algebraicClosure{\finiteField}) \ar[r] & 0}
 \end{equation}
-with the last map being $y \mapsto \aFieldNorm_{\algebraicGroup{T}(\finiteFieldExtension{n}):\algebraicGroup{T}(\finiteField)}(y(\zeta_n))$
-for $\zeta_n$ being a $q^n-1$ root of unity corresponding to $1/(q^n-1) \in (\mathbb{Q}/\mathbb{Z})_{p'}$ and sufficiently large $n$ (large enough so that $\algebraicGroup{T}\left(\finiteFieldExtension{n}\right)$ is split).
+with the last map being $y \mapsto \aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(y(\zeta_n))$
+for $\zeta_n$ being a $q^n-1$ root of unity corresponding to $1/(q^n-1) \in (\mathbb{Q}/\mathbb{Z})_{p'}$ and sufficiently large $n$ (large enough so that $\algebraicGroup{T}\left(\finiteFieldExtension{n}\right)$ is split). Here, $$\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(t) = t\cdot \Frobenius(t)\cdot \Frobenius^2(t)\cdot  \hdots \cdot \Frobenius^{n-1}(t)$$ is the torus norm map.
 
 Hence for a torus character pair $(T,\theta)$ for $G$, we may conjugate $\algebraicGroup{T}$ to a fixed torus $\algebraicGroup{T}'$ and associate to $\theta$ a twisted Frobenius (twisted by an element of $W$ in the twisted Weyl group conjugacy class corresponding to $T$) stable element $x_{T,\theta}$ of $X^*(\algebraicGroup{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ via the equality
 \[
     \exp(\langle x_{T,\theta},y\rangle) = \theta(\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(y(\zeta_n)))
 \]
-for large enough $n$, where $\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(t) = t\cdot \Frobenius(t)\cdot \Frobenius^2(t)\cdot  \hdots \cdot \Frobenius^{n-1}(t)$ is the torus norm map. This $x_{T,\theta}$ is well defined up to the Weyl group, and in fact, by \cite[Corollary 13.9]{DigneMichel2020} there is a correspondence between $(T,\theta)$ pairs and $\Frobenius$-stable Weyl group orbits in $X^*(\algebraicGroup{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$.  By composing with \eqref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
+for large enough $n$. This $x_{T,\theta}$ is well defined up to the Weyl group, and in fact, by \cite[Corollary 13.9]{DigneMichel2020} there is a correspondence between $(T,\theta)$ pairs and $\Frobenius$-stable Weyl group orbits in $X^*(\algebraicGroup{T}')_{(\mathbb{Q}/\mathbb{Z})_{p'}}$.  By composing with \eqref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
 
     Denote the Frobenius semisimple conjugacy class associated to a torus character pair $(T,\theta)$ by $(s_{T,\theta})$. Similarly denote the Frobenius stable Weyl group element of $X^*(\algebraicGroup{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ corresponding to $(T,\theta)$ by $(x_{T,\theta}).$
 
