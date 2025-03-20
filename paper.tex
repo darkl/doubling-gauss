@@ -161,7 +161,7 @@
 	pdfsubject={Number theory, Representation theory},
 	pdfkeywords={Kloosterman sums, Exponential sums}}
 
-\title{On exponential sums arising from the classical doubling method}
+\title[Doubling method exponential sums]{On exponential sums arising from the classical doubling method}
 
 \author{Calvin Yost-Wolff}
 \address{Department of Mathematics, University of Michigan, 3084 East Hall, 530 Church Street, Ann Arbor, MI 48109-1043 USA}
@@ -604,7 +604,7 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 \end{remark}
 
 \subsubsection{Geometric Conjugacy and Lusztig Series}
-Let $\algebraicGroup{G}$ be a reductive group over $\finiteField$ and fix a torus $\algebraicGroup{T}$ defined over $\finiteField$. The \emph{dual group over $\finiteField$} of $\algebraicGroup{G}$ with respect to the torus $\algebraicGroup{T}$ corresponds to the group $\algebraicGroup{G}^*$ with a dual torus $\algebraicGroup{T}^*$ and root datum
+Let $\algebraicGroup{G}$ be a reductive group over $\finiteField$ and fix a maximal torus $\algebraicGroup{T}$ defined over $\finiteField$. The \emph{dual group over $\finiteField$} of $\algebraicGroup{G}$ with respect to the torus $\algebraicGroup{T}$ corresponds to the group $\algebraicGroup{G}^*$ with a dual torus $\algebraicGroup{T}^*$ and root datum
 \[
     (\CharacterLattice{\algebraicGroup{T}^*},\Phi_{\algebraicGroup{T}^*},\CocharacterLattice{\algebraicGroup{T}^*},\Phi_{\algebraicGroup{T}^*}^\vee) \cong (\CocharacterLattice{\algebraicGroup{T}},\Phi_{\algebraicGroup{T}}^\vee,\CharacterLattice{\algebraicGroup{T}},\Phi_{\algebraicGroup{T}})
 \]
@@ -619,17 +619,17 @@ By \cite[Proposition 13.7 (ii)]{DigneMichel2020}, we have an exact sequence
 with the last map being $y \mapsto \aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(y(\zeta_n))$
 for $\zeta_n$ being a $q^n-1$ root of unity corresponding to $1/(q^n-1) \in (\mathbb{Q}/\mathbb{Z})_{p'}$ and sufficiently large $n$ (large enough so that $\algebraicGroup{T}\left(\finiteFieldExtension{n}\right)$ is split). Here, $$\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(t) = t\cdot \Frobenius(t)\cdot \Frobenius^2(t)\cdot  \hdots \cdot \Frobenius^{n-1}(t)$$ is the torus norm map.
 
-Hence for a torus character pair $(T,\theta)$ for $G$, we may conjugate $\algebraicGroup{T}$ to a fixed torus $\algebraicGroup{T}'$ and associate to $\theta$ a twisted Frobenius (twisted by an element of $W$ in the twisted Weyl group conjugacy class corresponding to $T$) stable element $x_{T,\theta}$ of $\CharacterLattice{\algebraicGroup{T}'}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ via the equality
+We say that $(\algebraicGroup{T},\theta)$ is a \emph{torus character pair} for $\algebraicGroup{G}^{\Frobenius}$ if $\algebraicGroup{T} \subset \algebraicGroup{G}$ is a maximal torus and $\theta \colon \algebraicGroup{T}^{\Frobenius} \to \multiplicativegroup{\cComplex}$ is a character. By the discussion above, given a torus character pair  $(\algebraicGroup{T},\theta)$ for $\algebraicGroup{G}^{\Frobenius}$, we may conjugate $\algebraicGroup{T}$ to a fixed torus $\algebraicGroup{T}'$ and associate to $\theta$ a twisted Frobenius (twisted by an element of $W\left(\algebraicGroup{T}\right)$ in the twisted Weyl group conjugacy class corresponding to $\algebraicGroup{T}$) stable element $x_{T,\theta}$ of $\CharacterLattice{\algebraicGroup{T}'}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ via the equality
 \[
     \exp(\langle x_{T,\theta},y\rangle) = \theta(\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(y(\zeta_n)))
 \]
-for large enough $n$. This $x_{T,\theta}$ is well defined up to the Weyl group, and in fact, by \cite[Corollary 13.9]{DigneMichel2020} there is a correspondence between $(T,\theta)$ pairs and $\Frobenius$-stable Weyl group orbits in $\CharacterLattice{\algebraicGroup{T}'}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$.  By composing with \eqref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $G^*$.
+for large enough $n$. This $x_{T,\theta}$ is well defined up to the Weyl group, and in fact, by \cite[Corollary 13.9]{DigneMichel2020} there is a correspondence between $(T,\theta)$ pairs and $\Frobenius$-stable Weyl group orbits in $\CharacterLattice{\algebraicGroup{T}'}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$.  By composing with \eqref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $\algebraicGroup{G}^*$.
 
-    Denote the Frobenius semisimple conjugacy class associated to a torus character pair $(T,\theta)$ by $(s_{T,\theta})$. Similarly, denote the Frobenius stable Weyl group element of $\CharacterLattice{\algebraicGroup{T}}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ corresponding to $(T,\theta)$ by $(x_{T,\theta}).$
+    Denote the Frobenius semisimple conjugacy class associated to a torus character pair $(\algebraicGroup{T},\theta)$ by $(s_{\algebraicGroup{T},\theta})$. Similarly, denote the Frobenius stable Weyl group element of $\CharacterLattice{\algebraicGroup{T}}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ corresponding to $(\algebraicGroup{T},\theta)$ by $(x_{\algebraicGroup{T},\theta}).$
 
-We say that the pairs $(T,\theta)$ and $(T',\theta')$ are \emph{geometrically conjugate} if the geometric conjugacy classes $(s_{T,\theta})$ and $(s_{T',\theta'})$ are equal. This is equivalent to the following: there exists $n \ge 1$ and $h \in {\algebraicGroup{G}}^{\Frobenius^n}$ such that $h \algebraicGroup{T}^{\Frobenius^n} h^{-1} = \left(\algebraicGroup{T}'\right)^{\Frobenius^n}$ and such that $$\theta\left(\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}\left(t\right)\right) = \theta'\left(\aFieldNorm_{\left(\algebraicGroup{T}'\right)^{\Frobenius^n}:\left(\algebraicGroup{T}'\right)^{\Frobenius}}\left(h t h^{-1}\right)\right),$$ for any $t \in \algebraicGroup{T}^{\Frobenius^n}$.
+We say that the torus character pairs $(\algebraicGroup{T},\theta)$ and $(\algebraicGroup{T}',\theta')$ for $\algebraicGroup{G}$ are \emph{geometrically conjugate} if the geometric conjugacy classes $(s_{\algebraicGroup{T},\theta})$ and $(s_{\algebraicGroup{T}',\theta'})$ are equal. This is equivalent to the following: there exists $n \ge 1$ and $h \in {\algebraicGroup{G}}^{\Frobenius^n}$ such that $h \algebraicGroup{T}^{\Frobenius^n} h^{-1} = \left(\algebraicGroup{T}'\right)^{\Frobenius^n}$ and such that $$\theta\left(\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}\left(t\right)\right) = \theta'\left(\aFieldNorm_{\left(\algebraicGroup{T}'\right)^{\Frobenius^n}:\left(\algebraicGroup{T}'\right)^{\Frobenius}}\left(h t h^{-1}\right)\right),$$ for any $t \in \algebraicGroup{T}^{\Frobenius^n}$.
 
-The \emph{geometric Lusztig series} $\LusztigSeries{G}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \algebraicGroup{G}^*$ consists of all (equivalence classes of) irreducible representations $\pi$ which appear with non-zero multiplicity in $R_{T, \theta}$ for some $(T,\theta)$ such that $(s_{T,\theta}) = (s)$.
+The \emph{geometric Lusztig series} $\LusztigSeries{\algebraicGroup{G}^{\Frobenius}}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \algebraicGroup{G}^*$ consists of all (equivalence classes of) irreducible representations $\pi$ which appear with non-zero multiplicity in $R_{T, \theta}$ for some $(T,\theta)$ such that $(s_{T,\theta}) = (s)$.
 
 \begin{center}
 \begin{tabular}{ c c c c c c}
@@ -649,10 +649,10 @@ The \emph{geometric Lusztig series} $\LusztigSeries{G}{s}$ associated to a Frobe
 \subsubsection{Invariance under geometric conjugacy}
 \calvin{todo:type in some motivation for class functions whose product doesn't depend on geometric conjugacy, gamma functions whatever}.
 
-Let $f \colon \algebraicGroup{G}\left(\finiteField\right) \to \cComplex$ be a class function. Then by Schur's lemma for any irreducible representation $\pi$, there exists $\gamma_{f} \in \cComplex$ such that $$\sum_{g \in G} f(g)\pi(g) = \gamma_{f}\left(\pi\right) \cdot \idmap_{\pi}.$$
+Let $f \colon \algebraicGroup{G}^{\Frobenius} \to \cComplex$ be a class function. Then by Schur's lemma for any irreducible representation $\pi$, there exists $\gamma_{f}\left(\pi\right) \in \cComplex$ such that $$\sum_{g \in G} f(g)\pi(g) = \gamma_{f}\left(\pi\right) \cdot \idmap_{\pi}.$$
 
 \begin{definition}
-	We say that  $f \colon \algebraicGroup{G}\left(\finiteField\right) \to \cComplex$ is a \emph{stable function} on $\algebraicGroup{G}(\finiteField)$ if it satisfies the following property: if $\pi$ and $\pi'$ are irreducible representations of $\algebraicGroup{G}(\finiteField)$ such that lie in the same geometric Lusztig series, then $$\gamma_{f}\left(\pi\right) = \gamma_{f}\left(\pi'\right).$$
+	We say that  $f \colon \algebraicGroup{G}^{\Frobenius} \to \cComplex$ is a \emph{stable function} on $\algebraicGroup{G}^{\Frobenius}$ if it satisfies the following property: if $\pi$ and $\pi'$ are irreducible representations of $\algebraicGroup{G}^{\Frobenius}$ such that lie in the same geometric Lusztig series, then $$\gamma_{f}\left(\pi\right) = \gamma_{f}\left(\pi'\right).$$
 (See also \cite[Section 4]{LaumonLetellier2023} and \cite[Section 4.1]{ChenBhattacharya2024})
 	\end{definition}
 
@@ -660,7 +660,7 @@ Let $f \colon \algebraicGroup{G}\left(\finiteField\right) \to \cComplex$ be a cl
 Here is a basic example of a stable class function.
 \begin{proposition}
 \label{prop:central_char}
-    If $f \colon \algebraicGroup{G}\left(\finiteField\right) \to \cComplex$ is supported on the center $\algebraicGroup{Z}(\mathbb{F})$ of $\algebraicGroup{G}(\finiteField)$, then $f$ is a stable function.
+    If $f \colon \algebraicGroup{G}^{\Frobenius} \to \cComplex$ is supported on the center $\algebraicGroup{Z}^{\Frobenius}$ of $\algebraicGroup{G}^{\Frobenius}$, then $f$ is a stable function.
 \end{proposition}
 \begin{proof}
 By \cite[Lemma 2.2]{Malle2007}, if $\pi$ and $\pi'$ lie in the same geometric Lusztig series, then they have the same central character. The result now immediately follows.
@@ -680,14 +680,14 @@ In this section we prove a slightly weaker result:
 
 \begin{lemma}
 \label{lem:indep_geo_conj}
-    If $(T,\theta)$ and $(T', \theta)$ are geometrically conjugate, then $$\frac{\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi}}{R_{T,\theta}(1)} = \frac{\dblVirtualJacobiSumScalar{R_{T', \theta'}}{\chi}}{R_{T',\theta'}(1)}.$$
+    If $(\algebraicGroup{T},\theta)$ and $(\algebraicGroup{T}', \theta)$ are geometrically conjugate, then $$\frac{\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi}}{R_{T,\theta}(1)} = \frac{\dblVirtualJacobiSumScalar{R_{T', \theta'}}{\chi}}{R_{T',\theta'}(1)}.$$
 \end{lemma}
 
 
-For a torus character pair $(T,\theta)$ with associated Frobenius conjugacy classes $w \in W(\algebraicGroup{T})$ and $(s) \subset G^*$ and an embedding $\rho:G^* \to \GL_n$.  Fix a Frobenius stable maximal torus $\algebraicGroup{T}^* \subset G^*$ and a Frobenius stable maximal torus $\algebraicGroup{T} \subset \GL_n$ which contains $\rho(\algebraicGroup{T}^*)$. Let $\tilde{T}$ be the torus of $\GL_n$ corresponding to the Frobenius conjugacy class of $\rho(w) \in W(\algebraicGroup{T})$ and $\tilde{\theta}$ such that $(\rho(s)) = (s_{\tilde{T},\tilde{\theta}})$. Define
+For a torus character pair $(\algebraicGroup{T},\theta)$ with associated Frobenius conjugacy classes $w \in W(\algebraicGroup{T})$ and $(s) \subset \algebraicGroup{G}^*$ and an embedding $\rho:\algebraicGroup{G}^* \to \algebraicGroup{\GL}_n$.  Fix a Frobenius stable maximal torus $\algebraicGroup{T}^* \subset \algebraicGroup{G}^*$ and a Frobenius stable maximal torus $\algebraicGroup{T} \subset \algebraicGroup{\GL}_n$ which contains $\rho(\algebraicGroup{T}^*)$. Let $\tilde{\algebraicGroup{T}}$ be the torus of $\algebraicGroup{\GL}_n$ corresponding to the Frobenius conjugacy class of $\rho(w) \in W(\algebraicGroup{T})$ and $\tilde{\theta}$ such that $(\rho(s)) = (s_{\tilde{\algebraicGroup{T}},\tilde{\theta}})$. Define
 \[
-    g_{T,\rho}(\theta,\psi,\chi) := \varepsilon_{\algebraicGroup{
-    \tilde{T}}}\sum_{t\in \tilde{T}} \tilde{\theta}(t)\chi(\det(t))\psi(\trace(t)).
+    g_{\algebraicGroup{T},\rho}(\theta,\psi,\chi) := \varepsilon_{\algebraicGroup{
+    \tilde{\algebraicGroup{T}}}}\sum_{t\in \tilde{\algebraicGroup{T}}^{\Frobenius}} \tilde{\theta}(t)\chi(\det(t))\psi(\trace(t)).
 \]
 The following lemma shows that this is well defined.
 
@@ -719,7 +719,7 @@ The following lemma shows that this is well defined.
 
 \begin{corollary}
 \label{cor:geoconj}
-Suppose that $(T,\theta)$ and $(T',\theta')$ are geometrically conjugate torus character pairs in $G$. Then $g_{T,\rho}(\theta,\psi,\chi) = g_{T',\rho}(\theta',\psi,\chi)$.
+Suppose that $(\algebraicGroup{T},\theta)$ and $(\algebraicGroup{T}',\theta')$ are geometrically conjugate torus character pairs in $G$. Then $g_{\algebraicGroup{T},\rho}(\theta,\psi,\chi) = g_{\algebraicGroup{T}',\rho}(\theta',\psi,\chi)$.
 \end{corollary}
 \begin{proof}
 Both are equal to $g_{(\rho(s_{T,\theta}))}(\psi,\chi) = g_{(\rho(s_{T',\theta'}))}(\psi,\chi)$.
