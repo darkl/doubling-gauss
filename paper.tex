@@ -184,25 +184,10 @@
 \maketitle
 
 \subsection{TODO list}
-\calvin{I mentioned this to Charlotte and will meet with her sometime after Arizona to discuss specifically the DL stuff to make sure that it ok. So we could try to have a draft }
 \begin{enumerate}
-	\item (Minor) \sout{Change terminology of Gauss sums $\dblJacobiSumScalar{\pi}{\chi}$ to Jacobi sums and the notation to $J^{\mathrm{dbl}}\left(\pi, \chi\right)$ as they are similar to the Jacobi sums}
-	$$J\left(\alpha, \beta\right) = \sum_{\substack{x,y \in \multiplicativegroup{\finiteField}\\
-			x+y = 1}} \alpha\left(x\right) \beta\left(y\right),$$
-	compare with $$\dblJacobiSumScalar{\pi}{\chi} = \sum_{\substack{g \in G\\
-			h \in \GL\left(\hermitianSpace\right)\\
-			g + h = \idmap_{\hermitianSpace}}} \pi\left(g\right) \chi\left(\det\left(-h\right)\right).$$
-	\sout{Consider replacing $\chi\left(\det\left(g - \idmap_{\hermitianSpace}\right)\right)$ with $\chi\left(\det\left(\idmap_{\hermitianSpace} - g\right)\right)$ for aesthetics (probably not worth it).}
-	\item Maybe define the algebraic group versions $\algebraicGroup{G}$ and $\GroupExtension{\algebraicGroup{G}}$ in Section 3.2. For instance for $\algebraicGroup{\Sp}_{2n}$ we can define
-	$$\algebraicGroup{\tilde{G}} = \left\{ \left(g,\lambda\right) \in \algebraicGroup{\GL}\left(\hermitianSpace\right) \times \multiplcativeScheme \mid \involution{\transpose{g}} J g = \lambda J,\ \right\}$$ for suitable $J$ and then define the torus $\algebraicGroup{S}$ that appears in \cite[Page 140]{DigneMichel2020} as $$\algebraicGroup{S} = \left\{\left(\begin{pmatrix}
-		t \IdentityMatrix{n}\\
-		& \IdentityMatrix{n}
-	\end{pmatrix}, t\right) \mid t \in \multiplcativeScheme \right\} \subset \GroupExtension{\algebraicGroup{G}}.$$
-	Actually it appears to me that we are not in the same situation as in \cite[Page 140]{DigneMichel2020}.
 	\item In the computations of $\dblGammaFactor{\pi}{\chi}{\fieldCharacter}$ in terms of Deligne--Lusztig we should say that when we take a torus of $\GroupExtension{G}$ and intersect it with $G$ we get a torus of $G$ and hence it suffices to compute whatever we are computing.
 	\item The proof of \Cref{prop:gamma-factor-is-constant-on-lusztig-series} should be modified. We should first use $\GroupExtension{G}$. For this group we have the ``at most one cuspidal'' property. Then we should use \cite[Page 140]{DigneMichel2020} $$R_{\GroupExtension{T}}^{\GroupExtension{G}}\left(\tilde{\theta}\right) \restriction_{G} = R_{T}^G \left(\tilde{\theta}\restriction_{T}\right),$$
 	where we need to explain the notation.
-	\item \Cref{subsec:tori-isomorphism} and \Cref{subsec:gauss-sums-attached-to-semi-simple} should be removed and replaced with Calvin's arguments.
 	\item Find what the root data + F action for the non-split quadratic form is. Find the dual gorup and add the appropriate representation to \Cref{lem:indep_geo_conj}
 	\item We might be able to include $SO_{odd}$ with $\Phi(g)$ the symmetric function in the eigenvalues of $g$ given by $\sum_{i=1}^{dim(V)} \chi(\Pi_{j \neq i}(\lambda_j-1))$.
 	
@@ -318,8 +303,8 @@ Let us summarize all possible cases for $G$ and $\GroupExtension{G}$. Let $$w_n 
 \begin{enumerate}
 	\item (Special even orthogonal groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = 1$. Denote $\dim_{\finiteField} \hermitianSpace = 2n$. It follows by definition that every element $g \in \IsometryGroup\left(\hermitianSpace\right)$ satisfies $\left(\det g\right)^2 = 1$. Similarly, every element $g \in \widetilde{\IsometryGroup\left(\hermitianSpace\right)}$ satisfies $\left(\det g\right)^2 = \similitudeCharacter\left(g\right)^{2n}$. In this case, we obtain the connected components of the identity by adding a restriction on the determinant: We have that $G$ consists of all elements $g \in \IsometryGroup\left(\hermitianSpace\right)$ with $\det \hermitianSpace = 1$, and that $\GroupExtension{G}$ consists of all elements $g \in \GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ such that $\det g = \similitudeCharacter\left(g\right)^n$. There are two cases here.
 	\begin{enumerate}
-		\item Split case: in this case, we can write $\hermitianSpace = \xIsotropic \oplus \yIsotropic$ where $\xIsotropic$ and $\yIsotropic$ are totally isotropic (that is, for every $x \in \xIsotropic$, $\innerproduct{x}{x} = 0$ and similarly for $\yIsotropic$) and these spaces are in duality with respect to $\innerproduct{\cdot}{\cdot}$, i.e., the map $\yIsotropic \to \Hom_{\finiteField}\left(\xIsotropic, \finiteField\right)$ given by $y \mapsto \left(x \mapsto \innerproduct{x}{y}\right)$ is an isomorphism. In this case, we have that $G$ is isomorphic to $\SO^{+}_{2n}\left(\finiteField\right) \subset  \GL_{2n}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\SO}^{+}_{2n} = \left\{g \in \algebraicGroup{\GL}_{2n} \mid g \cdot w_{2n} \cdot \transpose{g} = w_{2n},\,\, \det g = 1\right\}.$$
-		The group $\GroupExtension{G}$ is isomorphic to the subgroup $\GSO^{+}_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$, consisting of elements $g$ such that defined as the projection to the first coordinate of the $\finiteField$-points of $$\algebraicGroup{\GSO}^{+}_{2n} = \left\{\left(g, \lambda\right) \in \algebraicGroup{\GL}_{2n} \times \multiplcativeScheme \mid g \cdot w_{2n} \cdot \transpose{g} = \lambda w_{2n},\,\, \det g = \lambda^n\right\}.$$
+		\item Split case: in this case, we can write $\hermitianSpace = \xIsotropic \oplus \yIsotropic$ where $\xIsotropic$ and $\yIsotropic$ are totally isotropic (that is, for every $x \in \xIsotropic$, $\innerproduct{x}{x} = 0$ and similarly for $\yIsotropic$) and these spaces are in duality with respect to $\innerproduct{\cdot}{\cdot}$, i.e., the map $\yIsotropic \to \Hom_{\finiteField}\left(\xIsotropic, \finiteField\right)$ given by $y \mapsto \left(x \mapsto \innerproduct{x}{y}\right)$ is an isomorphism. In this case, we have that $G$ is isomorphic to $\SO^{+}_{2n}\left(\finiteField\right) \subset  \GL_{2n}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\SO}^{+}_{2n} = \left\{g \in \algebraicGroup{\GL}_{2n} \mid \transpose{g} w_{2n} g  = w_{2n},\,\, \det g = 1\right\}.$$
+		The group $\GroupExtension{G}$ is isomorphic to the subgroup $\GSO^{+}_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$, consisting of elements $g$ such that defined as the projection to the first coordinate of the $\finiteField$-points of $$\algebraicGroup{\GSO}^{+}_{2n} = \left\{\left(g, \lambda\right) \in \algebraicGroup{\GL}_{2n} \times \multiplcativeScheme \mid \transpose{g} w_{2n} g = \lambda w_{2n},\,\, \det g = \lambda^n\right\}.$$
 		\item Non-split case: In this case, there exists a decomposition $$\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic,$$
 		where $\xIsotropic$ and $\yIsotropic$ are totally isotropic spaces in duality and $\hermitianSpace'$ is an antisotropic space (that is, for any $0 \ne v' \in \hermitianSpace'$, we have $\innerproduct{v'}{v'} \ne 0$) of dimension 2. Let $d$ be an element of $\multiplicativegroup{\finiteField}$ that is not a square. Denote $$B_{n,d} = \begin{pmatrix}
 			\IdentityMatrix{n-1}\\
@@ -327,23 +312,23 @@ Let us summarize all possible cases for $G$ and $\GroupExtension{G}$. Let $$w_n 
 			& -d & &\\
 			& & & \IdentityMatrix{n-1}
 		\end{pmatrix} \cdot w_{2n}.$$
-		In this case, we have that $G$ is isomorphic to $\SO^{-}_{2n}\left(\finiteField\right) \subset  \GL_{2n}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\SO}^{-}_{2n} = \left\{g \in \algebraicGroup{\GL}_{2n} \mid g \cdot B_{n,d} \cdot \transpose{g} = B_{n,d},\,\, \det g = 1\right\}.$$
-		The group $\GroupExtension{G}$ is isomorphic to the subgroup $\GSO^{-}_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$, consisting of elements $g$ such that defined as the projection to the first coordinate of the $\finiteField$-points of $$\algebraicGroup{\GSO}^{-}_{2n} = \left\{\left(g, \lambda\right) \in \algebraicGroup{\GL}_{2n} \times \multiplcativeScheme \mid g \cdot B_{n,d} \cdot \transpose{g} = \lambda B_{n,d},\,\, \det g = \lambda^n\right\}.$$
+		In this case, we have that $G$ is isomorphic to $\SO^{-}_{2n}\left(\finiteField\right) \subset  \GL_{2n}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\SO}^{-}_{2n} = \left\{g \in \algebraicGroup{\GL}_{2n} \mid \transpose{g} B_{n,d} g = B_{n,d},\,\, \det g = 1\right\}.$$
+		The group $\GroupExtension{G}$ is isomorphic to the subgroup $\GSO^{-}_{2n}\left(\finiteField\right)$ of $\GL_{2n}\left(\finiteField\right)$, consisting of elements $g$ such that defined as the projection to the first coordinate of the $\finiteField$-points of $$\algebraicGroup{\GSO}^{-}_{2n} = \left\{\left(g, \lambda\right) \in \algebraicGroup{\GL}_{2n} \times \multiplcativeScheme \mid \transpose{g} B_{n,d} g = \lambda B_{n,d},\,\, \det g = \lambda^n\right\}.$$
 	\end{enumerate}
-	\item (Symplectic groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = -1$. In this case, $\dim_{\finiteField} \hermitianSpace = 2n$ for some positive integer $n$ and $G$ is isomorphic to the group $\Sp_{2n}\left(\finiteField\right) \subset  \GL_{2n}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\Sp}_{2n} = \left\{g \in \algebraicGroup{\GL}_{2n} \mid g \cdot \begin{pmatrix}
+	\item (Symplectic groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = -1$. In this case, $\dim_{\finiteField} \hermitianSpace = 2n$ for some positive integer $n$ and $G$ is isomorphic to the group $\Sp_{2n}\left(\finiteField\right) \subset  \GL_{2n}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\Sp}_{2n} = \left\{g \in \algebraicGroup{\GL}_{2n} \mid \transpose{g} \begin{pmatrix}
 		& w_n\\
 		-w_n
-	\end{pmatrix} \cdot \transpose{g} = \begin{pmatrix}
+	\end{pmatrix} g = \begin{pmatrix}
 		& w_n\\
 		-w_n
-	\end{pmatrix}\right\}.$$ The group $\GroupExtension{G}$ is isomorphic to the group $\GSp_{2n}\left(\finiteField\right) \subset \GL_{2n}\left(\finiteField\right)$, defined as the projection to the first coordinate of the $\finiteField$-points of $$\algebraicGroup{\GSp}_{2n} = \left\{\left(g, \lambda\right) \in \algebraicGroup{\GL}_{2n} \times \multiplcativeScheme \mid g \cdot \begin{pmatrix}
+	\end{pmatrix}\right\}.$$ The group $\GroupExtension{G}$ is isomorphic to the group $\GSp_{2n}\left(\finiteField\right) \subset \GL_{2n}\left(\finiteField\right)$, defined as the projection to the first coordinate of the $\finiteField$-points of $$\algebraicGroup{\GSp}_{2n} = \left\{\left(g, \lambda\right) \in \algebraicGroup{\GL}_{2n} \times \multiplcativeScheme \mid \transpose{g} \begin{pmatrix}
 	& w_n\\
 	-w_n
-	\end{pmatrix} \cdot \transpose{g} = \lambda \begin{pmatrix}
+	\end{pmatrix} g = \lambda \begin{pmatrix}
 	& w_n\\
 	-w_n
 	\end{pmatrix}\right\}.$$
-	\item (Unitary groups): $\quadraticExtension \ne \finiteField$. Denote $\dim_{\quadraticExtension} \hermitianSpace = n$. In this case, the group $G = \GroupExtension{G}$ is isomorphic to the group $\UnitaryGroup_n\left(\finiteField\right) \subset\GL_{n}\left(\quadraticExtension\right)$ defined as the $\finiteField$-points of $$\algebraicGroup{\UnitaryGroup}_n = \left\{ g \in \restrictionOfScalars{\quadraticExtension}{\finiteField}{\algebraicGroup{\GL}_n} \mid g \cdot w_n \cdot \involution{\left(\transpose{g}\right)} = w_n \right\}.$$
+	\item (Unitary groups): $\quadraticExtension \ne \finiteField$. Denote $\dim_{\quadraticExtension} \hermitianSpace = n$. In this case, the group $G = \GroupExtension{G}$ is isomorphic to the group $\UnitaryGroup_n\left(\finiteField\right) \subset\GL_{n}\left(\quadraticExtension\right)$ defined as the $\finiteField$-points of $$\algebraicGroup{\UnitaryGroup}_n = \left\{ g \in \restrictionOfScalars{\quadraticExtension}{\finiteField}{\algebraicGroup{\GL}_n} \mid \involution{\left(\transpose{g}\right)} w_n g = w_n \right\}.$$
 \end{enumerate}
 
 Let $\lieAlgebra$ be the Lie algebra of $G$, consisting of all elements $A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)$ satisfying $\innerproduct{Ax}{y} + \involution{\innerproduct{x}{AY}} = 0$ for every $x, y \in \hermitianSpace$.
