@@ -612,7 +612,7 @@ for large enough $n$, where $\aFieldNorm_{\algebraicGroup{T}(\finiteFieldExtensi
 \begin{definition}
     Denote the Frobenius semisimple conjugacy class associated to a torus character pair $(T,\theta)$ by $(s_{T,\theta})$. Similarly denote the Frobenius stable Weyl group element of $X^*(\algebraicGroup{T})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ corresponding to $(T,\theta)$ by $(x_{T,\theta}).$
 
-    The pairs $(T',\theta'),(T,\theta)$ are said to be \emph{geometrically conjugate} is the geometric conjugacy classes $(s_{T,\theta})$ and $(s_{T,\theta'})$ are equal.
+    The pairs $(T',\theta'),(T,\theta)$ are said to be \emph{geometrically conjugate} if the geometric conjugacy classes $(s_{T,\theta})$ and $(s_{T,\theta'})$ are equal.
     
     The \emph{Lusztig series} $\LusztigSeries{G}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \algebraicGroup{G}^*$ consists of the (equivalence classes of the) irreducible representations $\pi$ which appear with non-zero multiplicity in $R_{T, \theta}$ for some $(T,\theta)$ such that $(s_{T,\theta}) = (s)$.
 \end{definition}
@@ -682,33 +682,34 @@ The idea behind the proof of \Cref{lem:indep_geo_conj} is that the formula from 
  $\GSp_{2n}$  & $\GSpin_{2n+1} \to \GL_{2n+1}$ \\
  $\GSO^{\pm}_{2n}$ & $\GSpin_{2n}^{\pm} \to \GL_{2n}$ \\
  $\SO_{2n+1}$ &$\Sp_{2n} \to \GL_{2n}$ \\
- $\UnitaryGroup_n$  & $\UnitaryGroup_n \to \GL_{2n}$  
+ $\UnitaryGroup_n$  & $\UnitaryGroup_n \to \GL_{n}$  
 \end{tabular}
 \end{center}
 Note that in the $SO$ and $GSO$ case, the map $\rho$ sends the split torus of $G^*$ into the split torus of $\GL(2n)$ and the induced map of cocharacters sends $x \mapsto (x,-x)$. In the $Sp,GSp$ cases the map is similar: the induced map of cocharacters sends $x \mapsto (x,1,-x)$. In the unitary case, the torus whose $\finiteField$ points are $(\NormOneGroup{2})^n \subset G^*(\finiteField)$ includes into the torus in $\GL(2n)$ whose $\finiteField$ points are $(\finiteFieldExtension{2}^\times)^n$ and the induced map of cocharacters is $(x_1,x_2, \hdots, x_n) \mapsto (x_1,-x_1,x_2,-x_2, \hdots ,x_n,-x_n)$. 
 
 
-In particular to analyze $g_{T,\rho}(\theta,\psi,\chi)$ for these $\rho$, we need to understand what torus theta pair of $\GL$ corresponds to $\phi((s))$ under a map $\phi(x) = (x,-x)$:
+In particular to analyze $g_{T,\rho}(\theta,\psi,\chi)$ for these $\rho$, we need to understand what torus-character pair of $\GL$ corresponds to $\phi((s))$ under a map $\phi(x) = (x,-x)$:
 %The following computation in the proof of theorem \ref{lem:indep_geo_conj}.
 
 \begin{lemma}
 \label{lem:cochar_computation}
-    Define $\phi:(\mathbb{Q}/\mathbb{Z})_{p'}^n \to (\mathbb{Q}/\mathbb{Z})_{p'}^{2n} = X_*(\GL_{2n})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ by $\phi(x) = (x,-x)$. We will consider two different Frobeinus actions on these characters:
+    Define $\phi:(\mathbb{Q}/\mathbb{Z})_{p'}^n \to (\mathbb{Q}/\mathbb{Z})_{p'}^{2n} = X_*(\tilde{\algebraicGroup{T}}_{\GL_{2n}})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ by $\phi(x) = (x,-x)$. 
     \begin{enumerate}
-        \item When $\Frobenius$ acts by trivially on both, $x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\finiteFieldExtension{n},\alpha})$
-        \item When $\Frobenius$ acts by $-1$ on the domain and by $\begin{pmatrix}
+        \item Suppose that $\Frobenius$ acts by trivially on both the domain and the range. Then $$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\finiteFieldExtension{n},\alpha}).$$
+        \item Suppose that $\Frobenius$ acts by $-1$ on the domain and by $\begin{pmatrix}
             0 & 1 \\
-            1 & 0\end{pmatrix}$ on the codomain, $x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$ where $\theta'(t) = \theta(t^{1-q^n})$
+            1 & 0\end{pmatrix}$ on the codomain. Then $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ for $\theta'(t) = \theta(t^{1-q^n})$.
     \end{enumerate}
 \end{lemma}
 \begin{proof}
-Recall that $x_{T,\theta}$ is defined by for sufficiently large $m$ with $\zeta_m = 1/(q^m-1)$ under the fixed identification $\multiplicativegroup{\algebraicClosure{\finiteField}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}$
-\[
-    \exp(\langle x_{T,\theta},y\rangle) = \theta(y(N_{T(\finiteField_m):T(\finiteField)}(y(\zeta_m))).
+Recall that $x_{T,\theta}$ is defined by for sufficiently large $m$ with $\zeta_m = 1/(q^m-1)$ under the prescribed identification $\multiplicativegroup{\algebraicClosure{\finiteField}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}$ by the formula.\[
+    \exp(\langle x_{T,\theta},y\rangle) = \theta(y(\aFieldNorm_{\algebraicGroup{T}(\finiteField_m):\algebraicGroup{T}(\finiteField)}(y(\zeta_m))),
 \]
-Thus the result follows from the computations:
+for all $y \in X_{\ast}\left(\algebraicGroup{T}\right)$.
+
+Thus the result follows from the following computations.
 \begin{enumerate}
-	\item \begin{align*}
+	\item Let $\left(y_1, y_2\right) \in X_{\ast}\left(\GL_n\right) \times X_{\ast}\left(\GL_n\right)$. Then  \begin{align*}
 		\exp(\langle\phi(x_{\finiteFieldExtension{n},\alpha}),(y_1,y_2)\rangle) &= \exp(\langle x_{\finiteFieldExtension{n},\alpha},\phi^*(y_1,y_2)\rangle) \\
 		&= \alpha\left(\FieldNorm{mn}{n}(y_1(\zeta_{mn})\right) \alpha\left(\FieldNorm{mn}{n}(y_2(\zeta_{mn})\right)^{-1} \\
 		&= \left(\alpha\times\alpha^{-1}\right)\left(\FieldNorm{mn}{n}((y_1,y_2)(\zeta_{mn}))\right)
