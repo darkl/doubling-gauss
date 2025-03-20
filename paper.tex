@@ -504,6 +504,14 @@ which equals
 Notice that if $k = md$ and $\alpha = \beta \circ \FieldNorm{k}{m}$ where $\beta \colon \multiplicativegroup{\finiteFieldExtension{m}} \to \multiplicativegroup{\cComplex}$ is a character, then \eqref{eq:identity-for-multiplicative-group-of-f-k-gauss-sum} equals
 $$-\left(q^{\frac{m}{2}} \GaussSumCharacter{\beta^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{m}}} \GaussSumCharacter{\involution{\beta}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{m}}} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^m\right)^{d}.$$
 
+\begin{remark}
+	Changing variables $x \mapsto \to x$, we have that \begin{align*}
+		& \sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
+				x \ne -1}} \alpha \left(x\right) \chi\left(\FieldNorm{k}{1}\left(1 + x\right)\right) \chi\left(\FieldNorm{k}{1}\left(1 + \minusInvolution{x}\right)\right) \\
+			=& -q^{\frac{k}{2}} \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\involution{\alpha}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^k.
+	\end{align*}
+\end{remark}
+
 \subsubsection{Elliptic torus computation}
 In the next two sections we compute the doubling method Jacobi sum for a torus of the form $\NormOneGroup{2m}$.
 
@@ -539,12 +547,19 @@ By the appendix, this equals
 \end{align*}
 
 To summarize, we have
-$$\sum_{\substack{x \in \NormOneGroup{2m}\\
-		x \ne 1}} \theta \left(-x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(1 - x\right)\right) = q^{\frac{m}{2}} \tau\left(\chi^{-1}, \fieldCharacter\right)^{2m} \tau\left(\chi, \fieldCharacter\right)^{2m} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right),$$
+\begin{align*}
+	& \sum_{\substack{x \in \NormOneGroup{2m}\\
+			x \ne 1}} \theta \left(-x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(1 - x\right)\right) \\
+		=& q^{\frac{m}{2}} \tau\left(\chi^{-1}, \fieldCharacter\right)^{2m} \tau\left(\chi, \fieldCharacter\right)^{2m} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right),
+\end{align*}
 where $\theta'\left(t\right) = \theta\left(t^{1-q^m}\right)$.
 Since $\tau\left(\chi^{-1}, \fieldCharacter\right) = \chi\left(-1\right) \conjugate{\tau\left(\chi, \fieldCharacter\right)}$ and since $\chi \ne 1$, this implies the identity
 $$\sum_{\substack{x \in \NormOneGroup{2m}\\
 		x \ne 1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(1 - x\right)\right) = \theta\left(-1\right) q^{\frac{m}{2}} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right).$$
+\begin{remark}
+	Changing variables $x \mapsto -x$, we have the identity $$\sum_{\substack{x \in \NormOneGroup{2m}\\
+			x \ne 1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(1 + x\right)\right) = q^{\frac{m}{2}} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right).$$
+\end{remark}
 
 \subsubsection{Elliptic torus computation: the case $\quadraticExtension \ne \finiteField$}
 In this section, we compute the above exponential sum for the case $\quadraticExtension = \finiteFieldExtension{2}$. Let $\chi \colon \multiplicativegroup{\finiteFieldExtension{2}} \to \multiplicativegroup{\cComplex}$. We wish to compute the following sum.
