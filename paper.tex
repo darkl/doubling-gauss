@@ -595,9 +595,13 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 \end{remark}
 
 \subsubsection{Geometric Conjugacy and Lusztig Series}
-Let $\algebraicGroup{G}$ be a reductive group over $\finiteField$ and fix a maximal torus $\algebraicGroup{T}$ defined over $\finiteField$. The \emph{dual group over $\finiteField$} of $\algebraicGroup{G}$ with respect to the torus $\algebraicGroup{T}$ corresponds to the group $\algebraicGroup{G}^*$ with a dual torus $\algebraicGroup{T}^*$ and root datum
+Let $\ell$ be a prime number not equal to the characteristic of $\finiteField$. Fix an isomorphism $\ladicnumbers \cong \cComplex$.
+
+Let $\algebraicGroup{G}$ be a reductive group over $\finiteField$ and fix a maximal $\Frobenius$-stable torus $\algebraicGroup{T} \subset \algebraicGroup{G}$ defined over $\finiteField$. We denote by $$\CharacterLattice{\algebraicGroup{T}} = \Hom_{\finiteField}\left(\algebraicGroup{T}, \multiplcativeScheme\right)$$ the \emph{character lattice} of $\algebraicGroup{T}$ and by $$\CocharacterLattice{\algebraicGroup{T}} = \Hom_{\finiteField}\left(\multiplcativeScheme, \algebraicGroup{T}\right)$$ the \emph{cocharacter lattice} of $\algebraicGroup{T}$, where we regard $\algebraicGroup{T}$ and $\multiplcativeScheme$ as algebraic groups over $\finiteField$. Recall that $\CharacterLattice{\algebraicGroup{T}}$ and $\CocharacterLattice{\algebraicGroup{T}}$ are free $\zIntegers$-modules of the same finite rank. The assignment $\CharacterLattice{\algebraicGroup{T}} \times \CocharacterLattice{\algebraicGroup{T}} \to \Hom_{\finiteField}\left(\multiplcativeScheme, \multiplcativeScheme\right)$ given by composition $\left(x,y\right) \mapsto x\left(y\left(z\right)\right)$ for any $z \in \multiplcativeScheme$ defines a pairing $\innerproduct{\cdot}{\cdot} \colon \CharacterLattice{\algebraicGroup{T}} \times \CocharacterLattice{\algebraicGroup{T}} \to \zIntegers$ by the rule $$x\left(y\left(z\right)\right) = z^{\innerproduct{x}{y}}.$$
+
+The \emph{dual group over $\finiteField$} of $\algebraicGroup{G}$ with respect to the torus $\algebraicGroup{T}$ corresponds to the group $\algebraicGroup{G}^*$ with a dual torus $\algebraicGroup{T}^*$ and root datum
 \[
-    (\CharacterLattice{\algebraicGroup{T}^*},\Phi_{\algebraicGroup{T}^*},\CocharacterLattice{\algebraicGroup{T}^*},\Phi_{\algebraicGroup{T}^*}^\vee) \cong (\CocharacterLattice{\algebraicGroup{T}},\Phi_{\algebraicGroup{T}}^\vee,\CharacterLattice{\algebraicGroup{T}},\Phi_{\algebraicGroup{T}})
+(\CharacterLattice{\algebraicGroup{T}^*},\Phi_{\algebraicGroup{T}^*},\CocharacterLattice{\algebraicGroup{T}^*},\Phi_{\algebraicGroup{T}^*}^\vee) \cong (\CocharacterLattice{\algebraicGroup{T}},\Phi_{\algebraicGroup{T}}^\vee,\CharacterLattice{\algebraicGroup{T}},\Phi_{\algebraicGroup{T}})
 \]
 such that the isomorphism respects the Frobenius actions on $\CharacterLattice{\cdot}$ and $\CocharacterLattice{\cdot}$.
 
