@@ -301,7 +301,7 @@ Let us summarize all possible cases for $G$ and $\GroupExtension{G}$. Let $$w_n 
 	1
 \end{pmatrix} \in \GL_n\left(\finiteField\right)$$ be the longest Weyl element.
 \begin{enumerate}
-	\item (Special even orthogonal groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = 1$. Denote $\dim_{\finiteField} \hermitianSpace = 2n$. It follows by definition that every element $g \in \IsometryGroup\left(\hermitianSpace\right)$ satisfies $\left(\det g\right)^2 = 1$. Similarly, every element $g \in \widetilde{\IsometryGroup\left(\hermitianSpace\right)}$ satisfies $\left(\det g\right)^2 = \similitudeCharacter\left(g\right)^{2n}$. In this case, we obtain the connected components of the identity by adding a restriction on the determinant: We have that $G$ consists of all elements $g \in \IsometryGroup\left(\hermitianSpace\right)$ with $\det \hermitianSpace = 1$, and that $\GroupExtension{G}$ consists of all elements $g \in \GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ such that $\det g = \similitudeCharacter\left(g\right)^n$. There are two cases here.
+	\item (Special even orthogonal groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = 1$. Denote $\dim_{\finiteField} \hermitianSpace = 2n$. It follows by definition that every element $g \in \IsometryGroup\left(\hermitianSpace\right)$ satisfies $\left(\det g\right)^2 = 1$. Similarly, every element $g \in \widetilde{\IsometryGroup\left(\hermitianSpace\right)}$ satisfies $\left(\det g\right)^2 = \similitudeCharacter\left(g\right)^{2n}$. In this case, we obtain the connected components of the identity by adding a restriction on the determinant: We have that $G$ consists of all elements $g \in \IsometryGroup\left(\hermitianSpace\right)$ with $\det g = 1$, and that $\GroupExtension{G}$ consists of all elements $g \in \GroupExtension{\IsometryGroup\left(\hermitianSpace\right)}$ such that $\det g = \similitudeCharacter\left(g\right)^n$. There are two cases here.
 	\begin{enumerate}
 		\item Split case: in this case, we can write $\hermitianSpace = \xIsotropic \oplus \yIsotropic$ where $\xIsotropic$ and $\yIsotropic$ are totally isotropic (that is, for every $x \in \xIsotropic$, $\innerproduct{x}{x} = 0$ and similarly for $\yIsotropic$) and these spaces are in duality with respect to $\innerproduct{\cdot}{\cdot}$, i.e., the map $\yIsotropic \to \Hom_{\finiteField}\left(\xIsotropic, \finiteField\right)$ given by $y \mapsto \left(x \mapsto \innerproduct{x}{y}\right)$ is an isomorphism. In this case, we have that $G$ is isomorphic to $\SO^{+}_{2n}\left(\finiteField\right) \subset  \GL_{2n}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\SO}^{+}_{2n} = \left\{g \in \algebraicGroup{\GL}_{2n} \mid \transpose{g} w_{2n} g  = w_{2n},\,\, \det g = 1\right\}.$$
 		The group $\GroupExtension{G}$ is isomorphic to the group $\GSO^{+}_{2n}\left(\finiteField\right) \subset \GL_{2n}\left(\finiteField\right)$, defined as the projection to the first coordinate of the $\finiteField$-points of $$\algebraicGroup{\GSO}^{+}_{2n} = \left\{\left(g, \lambda\right) \in \algebraicGroup{\GL}_{2n} \times \multiplcativeScheme \mid \transpose{g} w_{2n} g = \lambda w_{2n},\,\, \det g = \lambda^n\right\}.$$
@@ -625,7 +625,7 @@ for large enough $n$. This $x_{\algebraicGroup{T},\theta}$ is well defined up to
 We say that the torus character pairs $(\algebraicGroup{T},\theta)$ and $(\algebraicGroup{T}',\theta')$ for $\algebraicGroup{G}$ are \emph{geometrically conjugate} if the geometric conjugacy classes $(s_{\algebraicGroup{T},\theta})$ and $(s_{\algebraicGroup{T}',\theta'})$ are equal. This is equivalent to the following: there exists $n \ge 1$ and $h \in {\algebraicGroup{G}}^{\Frobenius^n}$ such that $h \algebraicGroup{T}^{\Frobenius^n} h^{-1} = \left(\algebraicGroup{T}'\right)^{\Frobenius^n}$ and such that $$\theta\left(\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}\left(t\right)\right) = \theta'\left(\aFieldNorm_{\left(\algebraicGroup{T}'\right)^{\Frobenius^n}:\left(\algebraicGroup{T}'\right)^{\Frobenius}}\left(h t h^{-1}\right)\right),$$ for any $t \in \algebraicGroup{T}^{\Frobenius^n}$.
 
 \begin{example}
-	Take $\algebraicGroup{T}'_2 = \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ and $$\algebraicGroup{T}_2 = \left\{x \in \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme} \mid x \involution{x} = 1 \right\}.$$
+	Take $\algebraicGroup{G}' = \algebraicGroup{\GL}_2$. Let $\algebraicGroup{T}'_2 = \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ and $$\algebraicGroup{T}_2 = \left\{x \in \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme} \mid x \involution{x} = 1 \right\}.$$
 	Then $\left(\algebraicGroup{T}'_2\right)^{\Frobenius} = \multiplicativegroup{\finiteFieldExtension{2}}$ and $\algebraicGroup{T}_2^{\Frobenius} = \NormOneGroup{2}$. Let $\theta \colon \NormOneGroup{2} \to \multiplicativegroup{\ladicnumbers}$ be a character, and let $\theta' \colon \multiplicativegroup{\finiteFieldExtension{2}} \to \multiplicativegroup{\ladicnumbers}$ be the character given bv $$\theta'\left(x\right) = \theta\left(x^{1-q}\right).$$
 	We claim that the torus character pairs $\left(\algebraicGroup{T}_2 \times \algebraicGroup{T}_2, \theta \times \theta\right)$ and $\left(\algebraicGroup{T}'_2, \theta'\right)$ are geometrically conjugate. Indeed, if $m \ge 2$ is even, then $\left(\algebraicGroup{T}'_2\right)^{\Frobenius^{m}} = \multiplicativegroup{\finiteFieldExtension{m}} \times \multiplicativegroup{\finiteFieldExtension{m}}$ and $\algebraicGroup{T}_2^{\Frobenius^m} = \multiplicativegroup{\finiteFieldExtension{m}}$. The norm map $\left(\algebraicGroup{T}'_2\right)^{\Frobenius^{m}} \to \left(\algebraicGroup{T}'_2\right)^{\Frobenius}$ is given by $\multiplicativegroup{\finiteFieldExtension{m}} \times \multiplicativegroup{\finiteFieldExtension{m}} \ni \left(x,y\right) \mapsto \FieldNorm{m}{2}\left(x\right) \FieldNorm{m}{2}\left(y\right)$, while the norm map $\algebraicGroup{T}_2^{\Frobenius^{m}} \to \algebraicGroup{T}_2^{\Frobenius}$ is given by $\multiplicativegroup{\finiteFieldExtension{m}} \ni x \mapsto \FieldNorm{m}{2}\left(x\right)^{1-q}$. We thus have
 	$$\left(\theta \times \theta\right) \circ \aFieldNorm_{ \left(\algebraicGroup{T}_2 \times \algebraicGroup{T}_2\right)^{\Frobenius^m} : \left(\algebraicGroup{T}_2 \times \algebraicGroup{T}_2\right)^{\Frobenius} } = \theta' \circ \aFieldNorm_{\left(\algebraicGroup{T}'_2\right)^{\Frobenius^m} \colon \left(\algebraicGroup{T}'_2\right)^{\Frobenius}}.$$
@@ -634,19 +634,19 @@ We say that the torus character pairs $(\algebraicGroup{T},\theta)$ and $(\algeb
 The \emph{geometric Lusztig series} $\LusztigSeries{\algebraicGroup{G}^{\Frobenius}}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \algebraicGroup{G}^*$ consists of all (equivalence classes of) irreducible representations $\pi$ which appear with non-zero multiplicity in $R_{\algebraicGroup{T}, \theta}$ for some $(T,\theta)$ such that $(s_{\algebraicGroup{T},\theta}) = (s)$.
 
 \begin{center}
-\begin{tabular}{ c c c c c c}
- Group & Fixed Torus & Frobenius on $X(T)$ & Frobenius on $W$ &Dual Group & Dual Torus \\ 
- $Sp(2n)$ & $(\multiplicativegroup{\finiteField})^n$ & 1 & 1 &$SO(2n+1)$ & $(\multiplicativegroup{\finiteField})^n$\\  
- $GSp(2n)$ & $(\multiplicativegroup{\finiteField})^{n+1}$ & 1 & 1 &$GSpin(2n+1)$ &  $(\multiplicativegroup{\finiteField})^{n+1}$ \\
- $SO(2n)$ & $(\multiplicativegroup{\finiteField})^{n}$ & 1 & 1 &$SO(2n)$ &  $(\multiplicativegroup{\finiteField})^{n}$ \\
- $GO(2n)$ & $(\multiplicativegroup{\finiteField})^{n+1}$ & 1 & 1 &? &  $(\multiplicativegroup{\finiteField})^{n+1}$ \\
- $SO(2n+1)$ & $(\multiplicativegroup{\finiteField})^{n}$ & 1 & 1 &$Sp(2n)$ &  $(\multiplicativegroup{\finiteField})^{n}$ \\
- $GO(2n+1)$ & $(\multiplicativegroup{\finiteField})^{n+1}$ &1 & 1 &? &  $(\multiplicativegroup{\finiteField})^{n+1}$ \\ 
-  $U(n)$ & $(\NormOneGroup{2})^{n}$ & -1 & 1 & $U(n)$ &  $(\NormOneGroup{2})^{n}$ 
+	\begin{tabular}{ c c c c c c}
+		$\algebraicGroup{G}$ & $\algebraicGroup{T} \subset \algebraicGroup{G}$ & $\Frobenius$ action on $\CharacterLattice{\algebraicGroup{T}}$ & $\algebraicGroup{G}^{\ast}$ & $\algebraicGroup{T}^{\ast} \subset \algebraicGroup{G}^{\ast}$  \\
+		$\algebraicGroup{\UnitaryGroup}_n$ & $(\algebraicGroup{\UnitaryGroup}_1)^{n}$ & $\left(-1\right)^{\times n}$ & $\algebraicGroup{\UnitaryGroup}_n$ &  $(\algebraicGroup{\UnitaryGroup}_1)^{n}$ \\		 
+		$\algebraicGroup{\SO}_{2n+1}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\Sp_{2n}}$ &  $\multiplcativeScheme^n$ \\	
+		$\algebraicGroup{\Sp}_{2n}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\SO}_{2n+1}$ & $\multiplcativeScheme^n$\\  			 
+		$\algebraicGroup{\SO}^{+}_{2n}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\SO}^{+}_{2n}$ &  $\multiplcativeScheme^n$ \\
+		$\algebraicGroup{\SO}^{-}_{2n}$ & $\multiplcativeScheme^{n-1} \times \algebraicGroup{\UnitaryGroup}_1$ & $\left(1\right)^{\times {\left(n-1\right)}} \times \left(-1\right)$ &$\algebraicGroup{\SO}^{-}_{2n}$ &  $\multiplcativeScheme^{n-1} \times \algebraicGroup{\UnitaryGroup}_1$ \\
+		 $\algebraicGroup{\GSp}_{2n}$ & $\multiplcativeScheme \times \multiplcativeScheme^{n}$ & 1 &$\algebraicGroup{GSpin}_{2n+1}$ &  $\multiplcativeScheme \times \multiplcativeScheme^{n}$ \\
+		 $\algebraicGroup{\GSO}^{+}_{2n}$ & $\multiplcativeScheme \times \multiplcativeScheme^{n}$ & 1 & $\algebraicGroup{GSpin}_{2n}^{+}$ &  $\multiplcativeScheme \times \multiplcativeScheme^{n}$ \\
+		 $\algebraicGroup{\GSO}^{-}_{2n}$ & $\multiplcativeScheme^{n-1} \times \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ & $\left(1\right)^{\times {\left(n-1\right)}} \times \sigma^{\ast}$ & $\algebraicGroup{GSpin}_{2n}^{-}$ &  $\multiplcativeScheme^{n-1} \times \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$		 
 \end{tabular}
 \end{center}
-
-\calvin{non split form of $SO(even)$, is the dual group itself?. The torus I think is $(\mathbb{F}_2)^{Nm=1} \times (\mathbb{F}^\times)^{dim -1}$. The Frobenius action on the characters is $(-1,1,1,1\hdots 1)$ and on $W$ its trivial}
+For all the pairs $\algebraicGroup{T} \subset \algebraicGroup{G}$ in this list, the Frobenius root $\Frobenius$ of $\algebraicGroup{G}$ acts trivially on the Weyl group $W\left(\algebraicGroup{T}\right)$. In the last row, $\sigma \colon \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme} \to \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ is the automorphism $a + b\sqrt{d} \mapsto a - b\sqrt{d}$ where $d \in \multiplicativegroup{\finiteField}$ is a non-square.
 
 \subsubsection{Invariance under geometric conjugacy}
 \calvin{todo:type in some motivation for class functions whose product doesn't depend on geometric conjugacy, gamma functions whatever}.
@@ -789,6 +789,7 @@ g_{T,\rho}(\theta,\psi,\chi)= g_{T}(\theta,\psi,\chi) \cdot \begin{cases}
         \tau(1,\psi_1) & G = Sp \textnormal{ or } GSp
     \end{cases}.
 \]
+\calvin{check if we need a $\chi$ in the $\tau$ factor}
 \Cref{cor:geoconj} then implies that $g_T(\theta,\psi,\chi)$ only depends on the geometric conjugacy class of $(T,\theta)$.   
 \begin{comment}
 We will have to treat the unitary group case seperatedly. First for the non-unitary group case:\\
@@ -820,7 +821,7 @@ The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-s
 	Let $T \subset H$ be a maximal torus and let $\theta \colon T \to \multiplicativegroup{\cComplex}$ be a character. Write $$R_{T,\theta} = \sum_{\Pi} c_{\Pi} \trace \Pi,$$
 	where $\Pi$ goes over all the irreducible representations of $H$ and $c_{\Pi} \in \zIntegers$. Suppose that $\pi$ is an irreducible representation such that $c_{\pi} \ne 0$. Then $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_T\left(\theta, \fieldCharacter\right).$$
 \end{theorem}
-
+\begin{comment}
 \calvin{start alternate writeup of section 3.4/3.4.1:}
 \subsection{Computation for Lusztig Series}
 The goal of this section is to prove \Cref{thm:Phi_stable} in particular:
@@ -861,31 +862,22 @@ While our groups $G$ may not have connected center, the function $\Phi(g)$ exten
 So all the cuspidal $\pi$ in a Lusztig packet $\LusztigSeries{G}{s}$ are irreducible pieces in the restriction from $\GroupExtension{G}$ to $G$ of a single cuspidal representation $\tilde{\pi}$ of $\GroupExtension{G}$.
 
 \calvin{end alternate writeup}
+\end{comment}
 \calvin{start alternate writeup 2 of section 3.4/3.4.1}
 \subsection{Computation for Lusztig Series}
 The goal of this section is to prove \Cref{thm:Phi_stable} in particular:
 \begin{theorem}
-\label{thm:doubling-method-gamma-factor-for-deligne-lusztig} If $c_{\pi}$ is nonzero in the virtual representation $R_T(\theta) = \sum c_{\pi} \pi$ then
-$$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_T\left(\theta, \fieldCharacter\right)$$
+\label{thm:doubling-method-gamma-factor-for-deligne-lusztig} For either $G=G$ or its group extension $\GroupExtension{G}$. If $c_{\pi}$ is nonzero in the virtual representation $R_T(\theta) = \sum c_{\pi} \pi$ then
+$$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$
 \end{theorem}
 \calvin{add in $\chi$} the right hand side of which we showed in \Cref{lem:indep_geo_conj} only depends on the geometric conjugacy class of $(T,\theta)$ hence on the Lusztig series $\LusztigSeries{G}{s}$ which contains $\pi$.
 \subsubsection{Proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig}, \Cref{thm:Phi_stable}}
-We instead prove a version of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for the extension $\GroupExtension{G}$ (see section 3.2) of $G$:
-\begin{theorem}
-\label{thm:doubling-method-gamma-factor-for-deligne-lusztig-extensions} Extend $\Phi_{\chi}$ by zero to $\GroupExtension{G}$. If $c_{\pi}$ is nonzero in the virtual representation $R_{T}(\theta) = \sum c_{\pi} \pi$ of $\GroupExtension{G}$ then
-$$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$
-where the doubling factor is defined by
-\[
-\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} := \omega_{\pi}(-1)\frac{\sum_{g \in \GroupExtension{G}}\pi(g)\Phi_{\chi}(g)}{\sqrt{|g|}c_V(\chi,\pi)}
-\]
-\elad{Note that on page 6 we already defined $\dblJacobiSum{\pi}{\chi}$ by only summing on the $G$ points. Same for $\dblJacobiSumScalar{F}{\chi}$ on page 9.}
-\end{theorem}
-Any irreducible representation $\pi$ of $G$ which is the a component of an irreducible representation $\tilde{\pi}$ of $\GroupExtension{G}$ restricted to $\pi$,
+We first reduce \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} to the case $G$ has connected center. For any irreducible representation $\pi$ of $G$ which is the a component of an irreducible representation $\tilde{\pi}$ of $\GroupExtension{G}$ restricted to $\pi$,
 \[
     \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace}{\tilde{\pi}}{\chi}{\fieldCharacter}.
 \]
 
-The following proposition implies that if $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$ then there exists $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{G}}{\tilde{s}}$ for $\tilde{s}$ only dependeing on $s$. Thus \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} follows from \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig-extensions}. 
+The following proposition implies that if $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$ then there exists $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{G}}{\tilde{s}}$ for $\tilde{s}$ only depending on $s$. Thus \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for $G$ follows from \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for $\GroupExtension{G}$ (see section 3.2). 
 
 \begin{proposition}[{\cite[Proposition 11.7]{Bonnafe2006}}]
 	Let $\tilde{s}$ be a semisimple element of $\DualFrobeniusFixedPoints{\GroupExtension{G}}$ and let $s = i^{\ast}\left(\tilde{s}\right)$. Then
@@ -895,8 +887,9 @@ The following proposition implies that if $\pi \in \LusztigSeries{\FrobeniusFixe
 	\end{enumerate}
 \end{proposition}
 
+We now prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for the extension $\GroupExtension{G}$.
 
-Our proof will be via induction on $\dim_{\quadraticExtension} \hermitianSpace$. First we will use \Cref{thm:multiplicativity-in-terms-of-gamma-factors}  and MULTIPLICAATIVITY-OF-GTTHETA to prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig-extensions} for any non cuspidal $\pi$ assuming \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig-extensions} for all Levi factors. \\
+Our proof will be via induction on $\dim_{\quadraticExtension} \hermitianSpace$. First we will use \Cref{thm:multiplicativity-in-terms-of-gamma-factors}  and MULTIPLICAATIVITY-OF-GTTHETA to prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for any non cuspidal $\pi$ assuming \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for all Levi factors. \\
 
 \begin{proof}
 \calvin{should be short proof. Might not even need to put--just need to say both are multiplicative}
@@ -908,12 +901,12 @@ $$\sum c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter}
 Since we know the relevant equality for non cupsidal $\pi$, we get that
 $$ \sum_{\pi \textnormal{ cuspidal}} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \left(\sum_{\pi \textnormal{ cuspidal}} c_{\pi}\right)g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$.
 
-But it is well known that there is only one cuspidal $\pi$:
+But it is well known that there is only one cuspidal $\pi$ appearing in our sum:
 \begin{proposition}[{\cite[Page 172]{Lusztig1977}}]
 	Let $\GroupExtension{G}$ have connected center. For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ contains at most one cuspidal element.
 \end{proposition}
 
-So the proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig-extensions} is complete.
+So the proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} is complete.
 
 \calvin{end alternate writeup 2}
 
