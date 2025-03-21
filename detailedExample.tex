@@ -1,0 +1,203 @@
+\documentclass[12pt, reqno]{amsart}
+\usepackage[normalem]{ulem}
+
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{enumerate}
+\tolerance=500
+\setlength{\emergencystretch}{3em}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{xcolor}
+\definecolor{cite}{rgb}{0.30,0.60,1.00}
+\definecolor{url}{rgb}{0.00,0.00,0.80}
+\definecolor{link}{rgb}{0.40,0.10,0.20}
+\usepackage[pdfusetitle,colorlinks,linkcolor=link,urlcolor=url,citecolor=cite,pagebackref,breaklinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{mathdots}
+\usepackage{tikz-cd}
+\usepackage{comment}
+\usepackage{xypic}
+\usepackage{mathtools}
+
+% new environment
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+
+%% frequently used symbols
+% Common math notions
+\newcommand{\zIntegers}{\mathbb{Z}}
+\newcommand{\rReal}{\mathbb{R}}
+\newcommand{\cComplex}{\mathbb{C}}
+\newcommand{\multiplicativegroup}[1]{#1^{\times}}
+\newcommand{\RealPart}{\mathrm{Re}}
+\newcommand{\detQuadratic}{{\det}_{\quadraticExtension}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\EndomorphismRing}{\operatorname{End}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Supp}{\mathrm{supp}}
+\newcommand{\Stab}{\mathrm{stab}}
+\newcommand{\idmap}{\mathrm{id}}
+\newcommand{\conjugate}[1]{\overline{#1}}
+\newcommand{\indicatorFunction}[1]{\delta_{#1}}
+\newcommand{\isomorphic}{\cong}
+\newcommand{\lengthof}{\mathfrak{n}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\sizeof}[1]{\left|#1\right|}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\hermitianSpace}{\mathrm{V}}
+\newcommand{\xIsotropic}{\mathrm{X}}
+\newcommand{\yIsotropic}{\mathrm{Y}}
+\newcommand{\similitudeCharacter}{\operatorname{sim}}
+
+% Inner product
+\newcommand{\innerproduct}[2]{\left\langle #1,#2\right\rangle}
+\newcommand{\Norm}[1]{\left\Vert #1\right\Vert }
+\newcommand{\standardForm}[2]{\left\langle #1,#2\right\rangle}
+
+% Representation theory
+\newcommand{\fieldCharacter}{\psi}
+\newcommand{\centralCharacter}[1]{\omega_{#1}}
+\newcommand{\Ind}[3]{\mathrm{Ind}_{#1}^{#2}\left(#3\right)}
+\newcommand{\ind}[3]{\mathrm{ind}_{#1}^{#2}\left(#3\right)}
+\newcommand{\Whittaker}{\mathcal{W}}
+\newcommand{\Contragradient}[1]{#1^{\vee}}
+\newcommand{\underlyingVectorSpace}[1]{V_{#1}}
+\newcommand{\representationDeclaration}[1]{#1}
+\newcommand{\besselFunction}{\mathcal{J}}
+\newcommand{\besselFunctionOfFiniteFieldRepresentation}{\besselFunction_{\finiteFieldRepresentation, \fieldCharacter}}
+\newcommand{\SpehRepresentation}[2]{\Delta\left(#1, #2\right)}
+
+\newcommand{\gbesselSpehFunction}[2]{\mathcal{BS}_{#1, #2}}
+\newcommand{\besselSpehFunction}[2]{\mathcal{BS}_{\SpehRepresentation{#1}{#2}, \fieldCharacter}}
+\newcommand{\fourierTransform}[2]{\mathcal{F}_{#1}#2}
+\newcommand{\GKGammaFactor}[3]{\gamma^{\mathrm{GK}}\left(#1 \times #2, #3\right)}
+\newcommand{\LocalGKGammaFactor}[4]{\gamma^{\mathrm{GK}}\left(#1, #2 \times #3, #4\right)}
+
+\newcommand{\GKPreGammaFactor}[3]{\Gamma^{\mathrm{GK}}\left(#1 \times #2, #3\right)}
+\newcommand{\gGJPreGammaFactor}[3]{\Gamma\left(#1 \times #2, #3\right)}
+\newcommand{\GJPreGammaFactor}[2]{\Gamma\left(#1, #2\right)}
+\newcommand{\Irr}{\mathrm{Irr}}
+
+% Group theory macros
+\newcommand{\rquot}[2]{{#1}\slash{#2}}
+\newcommand{\lquot}[2]{{#1}\backslash{#2}}
+\newcommand{\grpIndex}[2]{\left[#1:#2\right]}
+
+% Matrices macros
+\newcommand{\transpose}[1]{\, {}^{t}#1}
+\newcommand{\inverseTranspose}[1]{#1^{\iota}}
+\newcommand{\involution}[1]{#1^{c}}
+\newcommand{\minusInvolution}[1]{#1^{-c}}
+\newcommand{\involutionPlusOne}[1]{#1^{1+c}}
+\newcommand{\IdentityMatrix}[1]{I_{#1}}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\antidiag}{\operatorname{\mathrm{antidiag}}}
+\newcommand{\trace}{\operatorname{tr}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\GSO}{\mathrm{GSO}}
+\newcommand{\Sp}{\mathrm{Sp}}
+\newcommand{\GSp}{\mathrm{GSp}}
+\newcommand{\UnitaryGroup}{\mathrm{U}}
+\newcommand{\UnipotentSubgroup}{U}
+\newcommand{\UnipotentRadical}{N}
+\newcommand{\ParabolicSubgroup}{P}
+\newcommand{\GroupExtension}[1]{\widetilde{#1}}
+
+% Finite field macros
+\newcommand{\FieldNorm}[2]{\mathrm{N}_{#1:#2}}
+\newcommand{\aFieldNorm}{\mathrm{N}}
+\newcommand{\finiteField}{\mathbb{F}}
+\newcommand{\quadraticExtension}{\mathbb{E}}
+\newcommand{\finiteFieldExtension}[1]{\finiteField_{#1}}
+\newcommand{\quadraticFieldExtension}[1]{\quadraticExtension_{#1}}
+\newcommand{\NormOneGroup}[1]{\finiteFieldExtension{#1}^{\aFieldNorm = 1}}
+\newcommand{\algebraicClosure}[1]{\overline{#1}}
+\newcommand{\Galois}{\operatorname{Gal}}
+\newcommand{\Frobenius}{\operatorname{Fr}}
+\newcommand{\restrictionOfScalars}[3]{\operatorname{Res}_{#1 \slash #2}{#3}}
+\newcommand{\multiplcativeScheme}{\algebraicGroup{G}_m}
+\newcommand{\affineLine}{\mathbb{A}^1}
+\newcommand{\squareMatrix}{\operatorname{Mat}}
+\newcommand{\Mat}[2]{\operatorname{Mat}_{#1 \times #2}}
+\newcommand{\GaussSum}[2]{\mathcal{G}\left(#1, #2\right)}
+\newcommand{\dblJacobiSum}[2]{\mathcal{J}^{\mathrm{dbl}}\left(#1, #2\right)}
+\newcommand{\GaussSumScalar}[2]{\mathrm{G}\left(#1, #2\right)}
+\newcommand{\dblJacobiSumScalar}[2]{\mathrm{J}^{\mathrm{dbl}}\left(#1, #2\right)}
+\newcommand{\dblVirtualJacobiSumScalar}[2]{\mathrm{j}^{\mathrm{dbl}}\left(#1, #2\right)}
+\newcommand{\dblGammaFactor}[3]{\Gamma^{\mathrm{dbl}}\left(#1 \times #2, #3\right)}
+\newcommand{\dblGammaFactorSpace}[4]{\Gamma^{\mathrm{dbl}}_{#1}\left(#2 \times #3, #4\right)}
+\newcommand{\dblLanglandsGammaFactorSpace}[4]{\gamma^{\mathrm{dbl}}_{#1}\left(#2 \times #3, #4\right)}
+\newcommand{\GaussSumCharacter}[3]{\tau\left(#1 \times #2, #3\right)}
+\newcommand{\ladicnumbers}{\algebraicClosure{\mathbb{Q}_{\ell}}}
+\newcommand{\IsometryGroup}{\mathrm{Isom}}
+\newcommand{\lieAlgebra}{\mathfrak{g}}
+\newcommand{\DeligneLusztigInduction}[2]{\mathrm{R}_{#1}^{#2}}
+\newcommand{\algebraicGroup}[1]{\boldsymbol{\mathrm{#1}}}
+\newcommand{\LusztigSeries}[2]{\mathcal{E}\left(#1, (#2)\right)}
+\newcommand{\characteristicPolynomial}{\operatorname{CharPoly}}
+\newcommand{\DualFrobeniusFixedPoints}[2][\Frobenius^{\ast}]{\algebraicGroup{#2}^{\ast #1}}
+\newcommand{\FrobeniusFixedPoints}[2][\Frobenius]{\algebraicGroup{#2}^{#1}}
+\newcommand{\CharacterLattice}[1]{X^{\ast}\left(#1\right)}
+\newcommand{\CocharacterLattice}[1]{X_{\ast}\left(#1\right)}
+
+
+
+\newcommand{\calvin}[1]{\textcolor{orange}{\sffamily ((CALVIN: #1))}}
+\newcommand{\elad}[1]{\textcolor{blue}{\sffamily ((ELAD: #1))}}
+
+\hypersetup{pdfauthor={Calvin Yost-Wolff, Elad Zelingher},
+	pdfsubject={Number theory, Representation theory},
+	pdfkeywords={Kloosterman sums, Exponential sums}}
+
+\title[Doubling method exponential sums]{On exponential sums arising from the classical doubling method}
+
+\author{Calvin Yost-Wolff}
+\address{Department of Mathematics, University of Michigan, 3084 East Hall, 530 Church Street, Ann Arbor, MI 48109-1043 USA}
+\email{calvinyw@umich.edu}
+
+\author{Elad Zelingher}
+\address{Department of Mathematics, University of Michigan, 1844 East Hall, 530 Church Street, Ann Arbor, MI 48109-1043 USA}
+\email{eladz@umich.edu}
+
+\subjclass[2010]{20C33, 11L05, 11T24}
+
+% 11L05    Gauss and Kloosterman sums; generalizations
+% 11T24    Other character sums and Gauss sums
+% 20C33    Representations of finite groups of Lie type
+
+\begin{document}
+
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+\begin{example}
+	Take $\algebraicGroup{T}'_2 = \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ and $$\algebraicGroup{T}_2 = \left\{x \in \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme} \mid x \involution{x} = 1 \right\}.$$
+	We can make this explicit. Choose $d \in \multiplicativegroup{\finiteField}$ that is not a square. Then $$\algebraicGroup{T}'_2 = \left\{a + b\sqrt{d} \mid \left(a,b,n\right) \in \affineLine \times \affineLine \times \multiplcativeScheme , \,\, a^2-db^2 = n \right\},$$
+	and 
+	$$\algebraicGroup{T}_2 = \left\{a + b\sqrt{d} \mid \left(a,b\right) \in \affineLine \times \affineLine, \,\, a^2-db^2 = 1 \right\}.$$
+	The arithmetic Frobenius action is given by raising $a$ and $b$ and $n$ (in the case of $\algebraicGroup{T}'_2$) to the $q$-th power. The rational Frobenius action is given by replacing $b$ with $-b$.
+	
+	Then $\left(\algebraicGroup{T}'_2\right)^{\Frobenius} = \multiplicativegroup{\finiteFieldExtension{2}}$ and $\algebraicGroup{T}_2^{\Frobenius} = \NormOneGroup{2}$. Let $\theta \colon \NormOneGroup{2} \to \multiplicativegroup{\ladicnumbers}$ be a character, and let $\theta' \colon \multiplicativegroup{\finiteFieldExtension{2}} \to \multiplicativegroup{\ladicnumbers}$ be the character given bv $$\theta'\left(x\right) = \theta\left(x^{1-q}\right).$$
+	We claim that the torus character pairs $\left(\algebraicGroup{T}_2 \times \algebraicGroup{T}_2, \theta \times \theta\right)$ and $\left(\algebraicGroup{T}'_2, \theta'\right)$ are geometrically conjugate. Indeed, if $m \ge 2$ is even, then $\left(\algebraicGroup{T}'_2\right)^{\Frobenius^{m}} = \multiplicativegroup{\finiteFieldExtension{m}} \times \multiplicativegroup{\finiteFieldExtension{m}}$ by the map $$a + b\sqrt{d} \mapsto \left(a + b\sqrt{d}, a - b \sqrt{d}\right),$$ and $\algebraicGroup{T}_2^{\Frobenius^m} = \multiplicativegroup{\finiteFieldExtension{m}}$ by the map $$a + b\sqrt{d} \mapsto a + b\sqrt{d}.$$ The norm map $\left(\algebraicGroup{T}'_2\right)^{\Frobenius^{m}} \to \left(\algebraicGroup{T}'_2\right)^{\Frobenius}$ is given by $$\multiplicativegroup{\finiteFieldExtension{m}} \times \multiplicativegroup{\finiteFieldExtension{m}} \ni \left(x,y\right) \mapsto \FieldNorm{m}{2}\left(x\right) \FieldNorm{m}{2}\left(y\right)^q,$$ while the norm map $\algebraicGroup{T}_2^{\Frobenius^{m}} \to \algebraicGroup{T}_2^{\Frobenius}$ is given by $$\multiplicativegroup{\finiteFieldExtension{m}} \ni x \mapsto \FieldNorm{m}{2}\left(x\right)^{1-q}.$$ Indeed, using the composition $\algebraicGroup{T}_2^{\Frobenius^{m}} \to \algebraicGroup{T}_2^{\Frobenius^{2}} \to \algebraicGroup{T}_2^{\Frobenius}$, it suffices to compute this for $m=2$, in which case we have that the norm map $\algebraicGroup{T}_2^{\Frobenius^{2}} \to \algebraicGroup{T}_2^{\Frobenius}$ is given by $\left(a + b\sqrt{d}\right) \mapsto \left(a + b\sqrt{d}\right)\left(a^q + b^q\sqrt{d}\right)$, and we have that $$a^q + b^q \sqrt{d} = \left(a-b\sqrt{d}\right)^q = \left(a+b\sqrt{d}\right)^{-q}.$$
+	Similarly, for $\left(\algebraicGroup{T}'_2\right)^{\Frobenius^2} \to \left(\algebraicGroup{T}'_2\right)^{\Frobenius}$, the norm map is given by $$a + b\sqrt{d} \mapsto \left(a + b\sqrt{d}\right)\left(a^q + b^q \sqrt{d}\right) = \left(a+b\sqrt{d}\right)\left(a-b\sqrt{d}\right)^q.$$
+	
+	We thus have
+	$$\left(\theta \times \theta\right) \circ \aFieldNorm_{ \left(\algebraicGroup{T}_2 \times \algebraicGroup{T}_2\right)^{\Frobenius^m} : \left(\algebraicGroup{T}_2 \times \algebraicGroup{T}_2\right)^{\Frobenius} } = \theta' \circ \aFieldNorm_{\left(\algebraicGroup{T}'_2\right)^{\Frobenius^m} \colon \left(\algebraicGroup{T}'_2\right)^{\Frobenius}}.$$
+\end{example}
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}
