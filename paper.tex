@@ -596,8 +596,9 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 		= & \prod_{i=1}^s \GaussSumCharacter{\left(\theta'_i\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2m_i}} \cdot \prod_{j=1}^r \GaussSumCharacter{\involution{\alpha_j}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}}.
 	\end{align*} Then
 	\begin{align*}
-		 \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \varepsilon_{\algebraicGroup{H}} R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) g_T\left(\chi, \theta, \fieldCharacter\right) \prod_{i=1}^s \theta_i\left(-1\right) \cdot \prod_{j=1}^r \alpha_j\left(-1\right).
+		 \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \varepsilon_{\algebraicGroup{H}} R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) g_T\left(\chi, \theta, \fieldCharacter\right) \prod_{i=1}^s \theta_i\left(\pm 1\right) \cdot \prod_{j=1}^r \alpha_j\left(\pm 1\right).
 	\end{align*}
+	\elad{Modify this so it is also true in the odd special orthogonal group case: it is zero for $-$ and there are factors $\theta\left(2\right)$ for $+$}
 \end{theorem}
 \begin{proof}
 	This follows from the results mentioned above and from the formula $$R_T\left(1\right) = \varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}} \frac{\grpIndex{H}{T}}{\sizeof{H}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{H}_p^2 \cdot q^{\frac{\dim_{\finiteField} \hermitianSpace}{2}},$$
