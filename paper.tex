@@ -609,7 +609,7 @@ Fix an isomorphism $\multiplicativegroup{\algebraicClosure{\finiteField}} \cong 
 By \cite[Proposition 13.7 (ii)]{DigneMichel2020}, we have an exact sequence
 \begin{equation}
 \label{eq:DL}
-\xymatrix{0 \ar[r] & \CocharacterLattice{\algebraicGroup{T}}_{(\mathbb{Q}/\mathbb{Z})_{p'}} \ar[r]^{\Frobenius-\idmap} & \CocharacterLattice{\algebraicGroup{T}}_{(\mathbb{Q}/\mathbb{Z})_{p'}} \ar[r] & \algebraicGroup{T}(\algebraicClosure{\finiteField}) \ar[r] & 0}
+\xymatrix{0 \ar[r] & \CocharacterLattice{\algebraicGroup{T}}_{(\mathbb{Q}/\mathbb{Z})_{p'}} \ar[r]^{\Frobenius-\idmap} & \CocharacterLattice{\algebraicGroup{T}}_{(\mathbb{Q}/\mathbb{Z})_{p'}} \ar[r] & \algebraicGroup{T} \ar[r] & 0}
 \end{equation}
 with the last map being $y \mapsto \aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(y(\zeta_n))$
 for $\zeta_n$ being a $q^n-1$ root of unity corresponding to $1/(q^n-1) \in (\mathbb{Q}/\mathbb{Z})_{p'}$ and sufficiently large $n$ (large enough so that $\algebraicGroup{T}\left(\finiteFieldExtension{n}\right)$ is split). Here, $$\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(t) = t\cdot \Frobenius(t)\cdot \Frobenius^2(t)\cdot  \hdots \cdot \Frobenius^{n-1}(t)$$ is the torus norm map.
@@ -618,7 +618,7 @@ We say that $(\algebraicGroup{T},\theta)$ is a \emph{torus character pair} for $
 \[
     \exp(\innerproduct{x_{\algebraicGroup{T},\theta}}{y}) = \theta(\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(y(\zeta_n)))
 \]
-for large enough $n$. This $x_{\algebraicGroup{T},\theta}$ is well defined up to the Weyl group, and in fact, by \cite[Corollary 13.9]{DigneMichel2020} there is a correspondence between torus character pairs $(\algebraicGroup{T},\theta)$ and $\Frobenius$-stable Weyl group orbits in $\CharacterLattice{\algebraicGroup{T}'}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$.  Using the given the identification $\CharacterLattice{\algebraicGroup{T}} = \CocharacterLattice{\algebraicGroup{T}^{\ast}}$ and composing with \eqref{eq:DL}, we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $\algebraicGroup{G}^*$.
+for large enough $n$. This $x_{\algebraicGroup{T},\theta}$ is well defined up to the Weyl group, and in fact, by \cite[Corollary 13.9]{DigneMichel2020} there is a correspondence between torus character pairs $(\algebraicGroup{T},\theta)$ and $\Frobenius$-stable Weyl group orbits in $\CharacterLattice{\algebraicGroup{T}'}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$.  Using the given the identification $\CharacterLattice{\algebraicGroup{T}} = \CocharacterLattice{\algebraicGroup{T}^{\ast}}$ and composing with \eqref{eq:DL} (with $\algebraicGroup{T}$ replaced with $\algebraicGroup{T}^{\ast}$), we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $\algebraicGroup{G}^*$.
 
     Denote the Frobenius semisimple conjugacy class associated to a torus character pair $(\algebraicGroup{T},\theta)$ by $(s_{\algebraicGroup{T},\theta})$. Similarly, denote the $\Frobenius$-stable Weyl group orbit in $\CharacterLattice{\algebraicGroup{T}}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ corresponding to $(\algebraicGroup{T},\theta)$ by $(x_{\algebraicGroup{T},\theta}).$
 
