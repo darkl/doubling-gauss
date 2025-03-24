@@ -291,9 +291,9 @@ Let $$w_n = \begin{pmatrix}
 		\xIsotropic \oplus \finiteField v \oplus \yIsotropic & \dim_{\finiteField}\hermitianSpace = 2n + 1
 		\end{dcases}$$ where $\xIsotropic$ and $\yIsotropic$ are totally isotropic (that is, for every $x \in \xIsotropic$, $\innerproduct{x}{x} = 0$ and similarly for $\yIsotropic$) and these spaces are in duality with respect to $\innerproduct{\cdot}{\cdot}$, i.e., the map $\yIsotropic \to \Hom_{\finiteField}\left(\xIsotropic, \finiteField\right)$ given by $y \mapsto \left(x \mapsto \innerproduct{x}{y}\right)$ is an isomorphism. In the odd dimensional case, $v \in \hermitianSpace$ is an element orthogonal to $\xIsotropic$ and $\yIsotropic$ that satisfies $\innerproduct{v}{v} \ne 0$.
 		
-		In either case, denote $d = \dim_{\finiteField} \hermitianSpace$. We have that $G$ is isomorphic to $\SO^{+}_{d}\left(\finiteField\right) \subset  \GL_{d}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\SO}^{+}_{d} = \left\{g \in \algebraicGroup{\GL}_{d} \mid \transpose{g} w_{d} g  = w_{d},\,\, \det g = 1\right\}.$$
+		In either case, denote $N = \dim_{\finiteField} \hermitianSpace$. We have that $G$ is isomorphic to $\SO^{+}_{N}\left(\finiteField\right) \subset  \GL_{N}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\SO}^{+}_{N} = \left\{g \in \algebraicGroup{\GL}_{N} \mid \transpose{g} w_{N} g  = w_{N},\,\, \det g = 1\right\}.$$
 		
-		In the odd-dimensional case $d = 2n+1$, we are always in this situation, and we simply denote $\SO_{2n+1}\left(\finiteField\right) = \SO_{2n+1}^{+}\left(\finiteField\right)$ and $\algebraicGroup{\SO}_{2n+1} = \algebraicGroup{\SO}_{2n+1}^{+}$.
+		In the odd-dimensional case $N = 2n+1$, we are always in this situation, and we simply denote $\SO_{2n+1}\left(\finiteField\right) = \SO_{2n+1}^{+}\left(\finiteField\right)$ and $\algebraicGroup{\SO}_{2n+1} = \algebraicGroup{\SO}_{2n+1}^{+}$.
 		\item Non-split case: In this case, $\dim_{\finiteField} \hermitianSpace = 2n$ and there exists a decomposition $$\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic,$$
 		where $\xIsotropic$ and $\yIsotropic$ are totally isotropic spaces in duality and $\hermitianSpace'$ is an antisotropic space (that is, for any $0 \ne v' \in \hermitianSpace'$, we have $\innerproduct{v'}{v'} \ne 0$) of dimension 2. Let $d$ be an element of $\multiplicativegroup{\finiteField}$ that is not a square. Denote $$B_{n,d} = \begin{pmatrix}
 			\IdentityMatrix{n-1}\\
@@ -341,12 +341,76 @@ We write a more explicit description of $\tilde{G}$ and $\tilde{\algebraicGroup{
 \end{enumerate}
 
 \subsubsection{Rational Tori}
-A \emph{rational torus} $\algebraicGroup{T} \subseteq \algebraicGroup{G}$ over $\mathbb{F}$ is a torus defined over $\mathbb{F}$. 
-Over a finite field, $\algebraicGroup{G}(\mathbb{F})$ conjugacy classes of maximal rank rational tori \calvin{check if we need connected or something} are parameterized by  Frobenius order twisted conjugacy classes in the Weyl group. In particular if you fix a rational torus $\algebraicGroup{T}_0$ with rank $=\mathrm{rk} \algebraicGroup{G}$ and an element $g \in \algebraicGroup{G}(\algebraicClosure{\mathbb{F}})$ such that $g^{-1}\Frobenius(g) \in N(\algebraicGroup{T}_0)$ then the torus $g\algebraicGroup{T}_0g^{-1}$ is rational, and it's $\algebraicGroup{G}(\mathbb{F})$-conjugacy class is determined  by the Frobeinus-twisted conjugacy class of the image of $g^{-1}\Frobenius(g)$ in $W(\algebraicGroup{T}_0)(\algebraicClosure{\mathbb{F}})$ \cite[Section 3.3]{Carter1985}.%since $\Frobenius(g\algebraicGroup{T}_0g^{-1}) = g\algebraicGroup{T}_0g^{-1}$
+A \emph{rational torus} $\algebraicGroup{T} \subset \algebraicGroup{G}$ over $\finiteField$ is a torus defined over $\finiteField$. 
+Over a finite field, $\algebraicGroup{G}(\finiteField)$ conjugacy classes of maximal rank rational tori \calvin{check if we need connected or something} are parameterized by  Frobenius order twisted conjugacy classes in the Weyl group. In particular if you fix a rational torus $\algebraicGroup{T}_0$ with rank $=\mathrm{rk} \algebraicGroup{G}$ and an element $g \in \algebraicGroup{G}(\algebraicClosure{\finiteField})$ such that $g^{-1}\Frobenius(g) \in N(\algebraicGroup{T}_0)$ then the torus $g\algebraicGroup{T}_0g^{-1}$ is rational, and it's $\algebraicGroup{G}(\finiteField)$-conjugacy class is determined  by the Frobeinus-twisted conjugacy class of the image of $g^{-1}\Frobenius(g)$ in $W(\algebraicGroup{T}_0)(\algebraicClosure{\finiteField})$ \cite[Section 3.3]{Carter1985}.
+
+%since $\Frobenius(g\algebraicGroup{T}_0g^{-1}) = g\algebraicGroup{T}_0g^{-1}$
 %could really demonstrate this by stating Land map is surjective + that all maximal tori are conjugate over an algebraiclly closed field
+
+Let $\algebraicGroup{A}_n \subset \algebraicGroup{\GL}_n$ be the diagonal torus. We denote for an element $g \in \algebraicGroup{\GL}_n$, $g^{\ast} = w_n \transpose{g}^{-1} w_n$, where $w_n$ is the long Weyl element (see \Cref{subsec:isometry-groups}). Using $\algebraicGroup{A}_n$ we define standard (mostly split) tori in our groups as follows.
+\begin{center}
+\begin{tabular}{|c|c|}
+	\hline 
+		$\algebraicGroup{G}$ & $\algebraicGroup{T}^{\mathrm{std}}_{\algebraicGroup{G}}$ \tabularnewline
+		\hline 
+		\hline 
+		$\algebraicGroup{\UnitaryGroup}_{2n}$ & $\left\{ \begin{pmatrix}
+			a\\
+			& \involution{\left(a^{\ast}\right)}
+		\end{pmatrix}  \mid a \in \algebraicGroup{A}_n \right\}$ \tabularnewline
+		\hline 
+		$\algebraicGroup{\UnitaryGroup}_{2n+1}$ & $\left\{ \begin{pmatrix}
+	a \\
+	& t\\
+	& & \involution{\left(a^{\ast}\right)}
+\end{pmatrix}  \mid a \in \algebraicGroup{A}_n,\,\, t \in \algebraicGroup{U}_1 \right\}$ \tabularnewline
+\hline 
+	$\algebraicGroup{\SO}_{2n+1}$ & $\left\{ \begin{pmatrix}
+		a\\
+		& 1\\
+		& & a^{\ast}
+	\end{pmatrix} \mid a \in \algebraicGroup{A}_n \right\}$ \tabularnewline
+	\hline 
+	$\algebraicGroup{\Sp}_{2n}$ or $\algebraicGroup{\SO}^{+}_{2n}$ & $\left\{ \begin{pmatrix}
+		a\\
+		& a^{\ast}
+	\end{pmatrix} \mid a \in \algebraicGroup{A}_n \right\}$ \tabularnewline
+	\hline 
+	$\algebraicGroup{\SO}_{2n}^{-}$ & $\left\{ \begin{pmatrix}
+		a\\
+		& h\\
+		& & a^{\ast}
+	\end{pmatrix} \mid a \in \algebraicGroup{A}_{n-1}\,\, h \in \algebraicGroup{\SO}_2^{-} \right\}$ \tabularnewline
+	\hline		
+	\end{tabular}
+\end{center}
+Here $\algebraicGroup{T}^{\mathrm{std}}_{\algebraicGroup{G}}$, is split for all rows except for the the last row. We also write down the standard tori for the relevant corresponding similitude groups.
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline 
+		$\algebraicGroup{G}$ & $\algebraicGroup{T}^{\mathrm{std}}_{\algebraicGroup{G}}$ \tabularnewline
+		\hline 
+		\hline 
+		$\algebraicGroup{\GSp}_{2n}$ or $\algebraicGroup{\GSO}^{+}_{2n}$ & $\left\{\left(\lambda, \begin{pmatrix}
+			\lambda a\\
+			& a^{\ast}
+		\end{pmatrix}\right) \mid a \in \algebraicGroup{A}_n,\,\, \lambda \in \multiplcativeScheme \right\}$ \tabularnewline
+		\hline 
+		$\algebraicGroup{\GSO}_{2n}^{-}$ & $\left\{ \left(\algebraicGroup{\aFieldNorm}_{\finiteFieldExtension{2} \slash \finiteField}\left(h\right), \begin{pmatrix}
+			\algebraicGroup{\aFieldNorm}_{\finiteFieldExtension{2} \slash \finiteField}\left(h\right) a\\
+			& h\\
+			& & a^{\ast}
+		\end{pmatrix}\right) \mid a \in \algebraicGroup{A}_{n-1}\,\, h \in \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme} \right\}$ \tabularnewline
+		\hline		
+	\end{tabular}
+\end{center}
+Here we realize $\restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ as $$\restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme} = \left\{ \left(\lambda, \begin{pmatrix}
+	a & b\\
+	db & a
+\end{pmatrix}\right) \mid a^2 - db^2 = \lambda \in \multiplcativeScheme \right\},$$
+where $d$ is as in \Cref{subsec:isometry-groups}.
+
 Applying this theory to our groups $\algebraicGroup{G}$
-
-
 \begin{enumerate}
 	\item (Special orthogonal groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = 1$. It follows by definition that every element $g \in \IsometryGroup\left(\hermitianSpace\right)$ satisfies $\left(\det g\right)^2 = 1$.  In this case, we obtain the connected components of the identity by adding a restriction on the determinant: We have that $G$ consists of all elements $g \in \IsometryGroup\left(\hermitianSpace\right)$ with $\det g = 1$. There are two cases here.
 	\begin{enumerate}
