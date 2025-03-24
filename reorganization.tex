@@ -341,8 +341,32 @@ We write a more explicit description of $\tilde{G}$ and $\tilde{\algebraicGroup{
 \end{enumerate}
 
 \subsubsection{Rational Tori}
-A \emph{rational torus} $\algebraicGroup{T} \subset \algebraicGroup{G}$ over $\finiteField$ is a torus defined over $\finiteField$. 
-Over a finite field, $\algebraicGroup{G}(\finiteField)$ conjugacy classes of maximal rank rational tori \calvin{check if we need connected or something} are parameterized by  Frobenius order twisted conjugacy classes in the Weyl group. In particular if you fix a rational torus $\algebraicGroup{T}_0$ with rank $=\mathrm{rk} \algebraicGroup{G}$ and an element $g \in \algebraicGroup{G}(\algebraicClosure{\finiteField})$ such that $g^{-1}\Frobenius(g) \in N(\algebraicGroup{T}_0)$ then the torus $g\algebraicGroup{T}_0g^{-1}$ is rational, and it's $\algebraicGroup{G}(\finiteField)$-conjugacy class is determined  by the Frobeinus-twisted conjugacy class of the image of $g^{-1}\Frobenius(g)$ in $W(\algebraicGroup{T}_0)(\algebraicClosure{\finiteField})$ \cite[Section 3.3]{Carter1985}.
+A \emph{rational torus} $\algebraicGroup{T} \subseteq \algebraicGroup{G}$ over $\mathbb{F}$ is a torus defined over $\mathbb{F}$. 
+Over a finite field, $\algebraicGroup{G}(\mathbb{F})$ conjugacy classes of maximal rank rational tori \calvin{check if we need connected or something} are parameterized by  Frobenius order twisted conjugacy classes in the Weyl group. In particular if you fix a rational torus $\algebraicGroup{T}_0$ with rank $=\mathrm{rk}(\algebraicGroup{G}$ and an element $g \in \algebraicGroup{G}(\algebraicClosure{\mathbb{F}})$ such that $g^{-1}\Frobenius(g) \in N(\algebraicGroup{T}_0)$ then the torus $g\algebraicGroup{T}_0g^{-1}$ is rational, and it's $\algebraicGroup{G}(\mathbb{F})$-conjugacy class is determined  by the Frobeinus-twisted conjugacy class of the image of $g^{-1}\Frobenius(g)$ in $W(\algebraicGroup{T}_0)(\algebraicClosure{\mathbb{F}})$ [cite Roger Carter Finite Groups of Lie Type section 3.3].%since $\Frobenius(g\algebraicGroup{T}_0g^{-1}) = g\algebraicGroup{T}_0g^{-1}$
+%could really demonstrate this by stating Land map is surjective + that all maximal tori are conjugate over an algebraiclly closed field
+Applying this theory to our groups $\algebraicGroup{G}$, for each group we find a nice rational torus $\algebraicGroup{T}$ and write out the Frobenius order action on the Weyl group and the 
+
+\begin{enumerate}
+	\item(Special orthogonal groups) 
+	In each case let $\algebraicGroup{T}$ be the diagonal torus. Then $W(\algebraicGroup{T} )$ has representatives the type B or D permutation matrices which are fixed by the Frobenius order.
+	\begin{enumerate}[(a)]
+		\item (Split odd case $\algebraicGroup{SO}_{2n+1}$) $\algebraicGroup{T} = \algebraicGroup{G}_m^{n}$. In type B the Weyl group conjugacy classes are given by $(\lambda^+,\lambda^-)$ where $\lambda^+$ is the partition formed from and $\lambda^-$ is the partition formed from. Given a representation $w$ of the conjugacy class we get:
+		$$^w\algebraicGroup{T} = \Pi_{\lambda^+_i} \mathrm{Res}_{\mathbb{F}_{\lambda^+_i}:\mathbb{F}}\algebraicGroup{G}_m \times \Pi_{\lambda^-_i} \mathrm{Res}_{\mathbb{F}_{\lambda^-_i}:\mathbb{F}}\algebraicGroup{U}(1)$$
+		\item (Split even case $\algebraicGroup{SO}_{2n}^+$) $\algebraicGroup{T} = \algebraicGroup{G}_m^{n}$.  Given $w \in W(\algebraicGroup{T})$ the rational structure of $^w\algebraicGroup{T}$ is determined by the conjugacy class of $w$ in the Type B Weyl group (a $\mathbb{Z}/2\mathbb{Z}$ extension of $W(\algebraicGroup{T})$. If $w$ is conjugate in the extension to $(\lambda^+,\lambda^-)$ where $\lambda^+$ is the partition formed from and $\lambda^-$ is the partition formed from:
+		$$^w\algebraicGroup{T} = \Pi_{\lambda^+_i} \mathrm{Res}_{\mathbb{F}_{\lambda^+_i}:\mathbb{F}}\algebraicGroup{G}_m \times \Pi_{\lambda^-_i} \mathrm{Res}_{\mathbb{F}_{\lambda^-_i}:\mathbb{F}}\algebraicGroup{U}(1)$$
+			\item (Non-split even case $\algebraicGroup{SO}_{2n}^-$) Set $\algebraicGroup{T} = \algebraicGroup{G}_m^{n-1} \times \algebraicGroup{U}(1)$ the diagonal torus. Given $w \in W(\algebraicGroup{T})$ the rational structure of $^w\algebraicGroup{T}$ is determined by the conjugacy class of $w$ in the Type B Weyl group (a $\mathbb{Z}/2\mathbb{Z}$ extension of $W(\algebraicGroup{T})$. If $w \circ (-1,1)$ is conjugate in the extension to $(\lambda^+,\lambda^-)$ where $\lambda^+$ is the partition formed from and $\lambda^-$ is the partition formed from:
+		$$^w\algebraicGroup{T} = \Pi_{\lambda^+_i} \mathrm{Res}_{\mathbb{F}_{\lambda^+_i}:\mathbb{F}}\algebraicGroup{G}_m \times \Pi_{\lambda^-_i} \mathrm{Res}_{\mathbb{F}_{\lambda^-_i}:\mathbb{F}}\algebraicGroup{U}(1)$$
+	\end{enumerate}
+	\item (Symplectic groups) In type B the Weyl group conjugacy classes are given by $(\lambda^+,\lambda^-)$ where $\lambda^+$ is the partition formed from and $\lambda^-$ is the partition formed from. Given a representation $w$ of the conjugacy class we get:
+		$$^w\algebraicGroup{T} = \Pi_{\lambda^+_i} \mathrm{Res}_{\mathbb{F}_{\lambda^+_i}:\mathbb{F}}\algebraicGroup{G}_m \times \Pi_{\lambda^-_i} \mathrm{Res}_{\mathbb{F}_{\lambda^-_i}:\mathbb{F}}\algebraicGroup{U}(1)$$
+	\item (Unitary groups) We let our torus be the diagonal torus for the unitary group with hermitian form $I_n$. Then $\algebraicGroup{T}=U(1)^n$ and the Frobenius action on the Weyl group is trivial. Note since all hermitian forms are equivalent over a finite field, $\algebraicGroup{T}$ is a torus in the group $\algebraicGroup{U}_n$ from the previous section.  In type A the Weyl group conjugacy classes are given by $(\lambda)$, and
+	$$^w\algebraicGroup{T} = \Pi_{\lambda_i} \begin{cases}
+	\mathrm{Res}_{\mathbb{F}_{\lambda^+_i}:\mathbb{F}} \algebraicGroup{G}_m& \lambda_i \textnormal{ is even} \\
+	\mathrm{Res}_{\mathbb{F}_{\lambda^+_i}:\mathbb{F}}\algebraicGroup{U}(1) & \lambda_i \textnormal{ is odd}
+	\end{cases}$$
+	\item (Even special orthogonal similitude groups)
+	\item (Symplectic similitude groups)
+\end{enumerate}
 
 %since $\Frobenius(g\algebraicGroup{T}_0g^{-1}) = g\algebraicGroup{T}_0g^{-1}$
 %could really demonstrate this by stating Land map is surjective + that all maximal tori are conjugate over an algebraiclly closed field
@@ -384,6 +408,7 @@ Let $\algebraicGroup{A}_n \subset \algebraicGroup{\GL}_n$ be the diagonal torus.
 	\hline		
 	\end{tabular}
 \end{center}
+Here $\algebraicGroup{T}^{\mathrm{std}}_{\algebraicGroup{G}}$ is split for all rows except for the the last row.
 Here $\algebraicGroup{T}^{\mathrm{std}}_{\algebraicGroup{G}}$, is split for all rows except for the the last row. We also write down the standard tori for the relevant corresponding similitude groups.
 \begin{center}
 	\begin{tabular}{|c|c|}
@@ -409,37 +434,6 @@ Here we realize $\restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\
 	db & a
 \end{pmatrix}\right) \mid a^2 - db^2 = \lambda \in \multiplcativeScheme \right\},$$
 where $d$ is as in \Cref{subsec:isometry-groups}.
-
-Applying this theory to our groups $\algebraicGroup{G}$
-\begin{enumerate}
-	\item (Special orthogonal groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = 1$. It follows by definition that every element $g \in \IsometryGroup\left(\hermitianSpace\right)$ satisfies $\left(\det g\right)^2 = 1$.  In this case, we obtain the connected components of the identity by adding a restriction on the determinant: We have that $G$ consists of all elements $g \in \IsometryGroup\left(\hermitianSpace\right)$ with $\det g = 1$. There are two cases here.
-	\begin{enumerate}
-		\item Split case: in this case, we can write $$\hermitianSpace = \begin{dcases}
-		\xIsotropic \oplus \yIsotropic & \dim_{\finiteField} \hermitianSpace = 2n\\
-		\xIsotropic \oplus \finiteField v \oplus \yIsotropic & \dim_{\finiteField}\hermitianSpace = 2n + 1
-		\end{dcases}$$ where $\xIsotropic$ and $\yIsotropic$ are totally isotropic (that is, for every $x \in \xIsotropic$, $\innerproduct{x}{x} = 0$ and similarly for $\yIsotropic$) and these spaces are in duality with respect to $\innerproduct{\cdot}{\cdot}$, i.e., the map $\yIsotropic \to \Hom_{\finiteField}\left(\xIsotropic, \finiteField\right)$ given by $y \mapsto \left(x \mapsto \innerproduct{x}{y}\right)$ is an isomorphism. In the odd dimensional case, $v \in \hermitianSpace$ is an element orthogonal to $\xIsotropic$ and $\yIsotropic$ that satisfies $\innerproduct{v}{v} \ne 0$.
-		
-		In either case, denote $d = \dim_{\finiteField} \hermitianSpace$. We have that $G$ is isomorphic to $\SO^{+}_{d}\left(\finiteField\right) \subset  \GL_{d}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\SO}^{+}_{d} = \left\{g \in \algebraicGroup{\GL}_{d} \mid \transpose{g} w_{d} g  = w_{d},\,\, \det g = 1\right\}.$$
-		
-		In the odd-dimensional case $d = 2n+1$, we are always in this situation, and we simply denote $\SO_{2n+1}\left(\finiteField\right) = \SO_{2n+1}^{+}\left(\finiteField\right)$ and $\algebraicGroup{\SO}_{2n+1} = \algebraicGroup{\SO}_{2n+1}^{+}$.
-		\item Non-split case: In this case, $\dim_{\finiteField} \hermitianSpace = 2n$ and there exists a decomposition $$\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic,$$
-		where $\xIsotropic$ and $\yIsotropic$ are totally isotropic spaces in duality and $\hermitianSpace'$ is an antisotropic space (that is, for any $0 \ne v' \in \hermitianSpace'$, we have $\innerproduct{v'}{v'} \ne 0$) of dimension 2. Let $d$ be an element of $\multiplicativegroup{\finiteField}$ that is not a square. Denote $$B_{n,d} = \begin{pmatrix}
-			\IdentityMatrix{n-1}\\
-			& & 1 &\\
-			& -d & &\\
-			& & & \IdentityMatrix{n-1}
-		\end{pmatrix} \cdot w_{2n}.$$
-		In this case, we have that $G$ is isomorphic to $\SO^{-}_{2n}\left(\finiteField\right) \subset  \GL_{2n}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\SO}^{-}_{2n} = \left\{g \in \algebraicGroup{\GL}_{2n} \mid \transpose{g} B_{n,d} g = B_{n,d},\,\, \det g = 1\right\}.$$
-	\end{enumerate}
-	\item (Symplectic groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = -1$. In this case, $\dim_{\finiteField} \hermitianSpace = 2n$ for some positive integer $n$ and $G$ is isomorphic to the group $\Sp_{2n}\left(\finiteField\right) \subset  \GL_{2n}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\Sp}_{2n} = \left\{g \in \algebraicGroup{\GL}_{2n} \mid \transpose{g} \begin{pmatrix}
-		& w_n\\
-		-w_n
-	\end{pmatrix} g = \begin{pmatrix}
-		& w_n\\
-		-w_n
-	\end{pmatrix}\right\}.$$
-	\item (Unitary groups): $\quadraticExtension \ne \finiteField$. Denote $\dim_{\quadraticExtension} \hermitianSpace = n$. In this case, the group $G = \GroupExtension{G}$ is isomorphic to the group $\UnitaryGroup_n\left(\finiteField\right) \subset\GL_{n}\left(\quadraticExtension\right)$ defined as the $\finiteField$-points of $$\algebraicGroup{\UnitaryGroup}_n = \left\{ g \in \restrictionOfScalars{\quadraticExtension}{\finiteField}{\algebraicGroup{\GL}_n} \mid \involution{\left(\transpose{g}\right)} w_n g = w_n \right\}.$$
-\end{enumerate}
 
 \elad{Under construction}
 If $m \ge 1$, we denote 
