@@ -341,8 +341,10 @@ We write a more explicit description of $\tilde{G}$ and $\tilde{\algebraicGroup{
 \end{enumerate}
 
 \subsubsection{Rational Tori}
-A \emph{rational torus} $\algebraicGroup{T} \subseteq \algebraicGroup{G}$ over $\mathbb{F}$ is a torus defined over $\mathbb{F}$. 
-Over a finite field, $\algebraicGroup{G}(\mathbb{F})$ conjugacy classes of maximal rank rational tori \calvin{check if we need connected or something} are parameterized by  Frobenius order twisted conjugacy classes in the Weyl group. In particular if you fix a rational torus $\algebraicGroup{T}_0$ with rank $=\mathrm{rk}(\algebraicGroup{G}$ and an element $g \in \algebraicGroup{G}(\algebraicClosure{\mathbb{F}})$ such that $g^{-1}\Frobenius(g) \in N(\algebraicGroup{T}_0)$ then the torus $g\algebraicGroup{T}_0g^{-1}$ is rational, and it's $\algebraicGroup{G}(\mathbb{F})$-conjugacy class is determined  by the Frobeinus-twisted conjugacy class of the image of $g^{-1}\Frobenius(g)$ in $W(\algebraicGroup{T}_0)(\algebraicClosure{\mathbb{F}})$ [cite Roger Carter Finite Groups of Lie Type section 3.3].%since $\Frobenius(g\algebraicGroup{T}_0g^{-1}) = g\algebraicGroup{T}_0g^{-1}$
+A \emph{rational torus} $\algebraicGroup{T} \subseteq \algebraicGroup{G}$ over $\finiteField$ is a torus defined over $\finiteField$. 
+Over a finite field, $\algebraicGroup{G}(\finiteField)$ conjugacy classes of maximal rank rational tori \calvin{check if we need connected or something} are parameterized by  Frobenius order twisted conjugacy classes in the Weyl group. In particular if you fix a rational torus $\algebraicGroup{T}_0$ with rank $=\mathrm{rk} \algebraicGroup{G}$ and an element $g \in \algebraicGroup{G}(\algebraicClosure{\finiteField})$ such that $g^{-1}\Frobenius(g) \in N(\algebraicGroup{T}_0)$ then the torus $g\algebraicGroup{T}_0g^{-1}$ is rational, and it's $\algebraicGroup{G}(\finiteField)$-conjugacy class is determined  by the Frobeinus-twisted conjugacy class of the image of $g^{-1}\Frobenius(g)$ in $W(\algebraicGroup{T}_0)(\algebraicClosure{\mathbb{F}})$, see \cite[Section 3.3]{Carter1985}.
+
+%since $\Frobenius(g\algebraicGroup{T}_0g^{-1}) = g\algebraicGroup{T}_0g^{-1}$
 %could really demonstrate this by stating Land map is surjective + that all maximal tori are conjugate over an algebraiclly closed field
 Applying this theory to our groups $\algebraicGroup{G}$, for each group we find a nice rational torus $\algebraicGroup{T}$ and write out the Frobenius order action on the Weyl group and the 
 
@@ -351,19 +353,19 @@ Applying this theory to our groups $\algebraicGroup{G}$, for each group we find 
 	In each case let $\algebraicGroup{T}$ be the diagonal torus. Then $W(\algebraicGroup{T} )$ has representatives the type B or D permutation matrices which are fixed by the Frobenius order.
 	\begin{enumerate}[(a)]
 		\item (Split odd case $\algebraicGroup{SO}_{2n+1}$) $\algebraicGroup{T} = \algebraicGroup{G}_m^{n}$. In type B the Weyl group conjugacy classes are given by $(\lambda^+,\lambda^-)$ where $\lambda^+$ is the partition formed from and $\lambda^-$ is the partition formed from. Given a representation $w$ of the conjugacy class we get:
-		$$^w\algebraicGroup{T} = \Pi_{\lambda^+_i} \mathrm{Res}_{\mathbb{F}_{\lambda^+_i}:\mathbb{F}}\algebraicGroup{G}_m \times \Pi_{\lambda^-_i} \mathrm{Res}_{\mathbb{F}_{\lambda^-_i}:\mathbb{F}}\algebraicGroup{U}(1)$$
+		$$^w\algebraicGroup{T} = \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^-_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1} $$
 		\item (Split even case $\algebraicGroup{SO}_{2n}^+$) $\algebraicGroup{T} = \algebraicGroup{G}_m^{n}$.  Given $w \in W(\algebraicGroup{T})$ the rational structure of $^w\algebraicGroup{T}$ is determined by the conjugacy class of $w$ in the Type B Weyl group (a $\mathbb{Z}/2\mathbb{Z}$ extension of $W(\algebraicGroup{T})$. If $w$ is conjugate in the extension to $(\lambda^+,\lambda^-)$ where $\lambda^+$ is the partition formed from and $\lambda^-$ is the partition formed from:
-		$$^w\algebraicGroup{T} = \Pi_{\lambda^+_i} \mathrm{Res}_{\mathbb{F}_{\lambda^+_i}:\mathbb{F}}\algebraicGroup{G}_m \times \Pi_{\lambda^-_i} \mathrm{Res}_{\mathbb{F}_{\lambda^-_i}:\mathbb{F}}\algebraicGroup{U}(1)$$
+		$$^w\algebraicGroup{T} = \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^-_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1} $$
 			\item (Non-split even case $\algebraicGroup{SO}_{2n}^-$) Set $\algebraicGroup{T} = \algebraicGroup{G}_m^{n-1} \times \algebraicGroup{U}(1)$ the diagonal torus. Given $w \in W(\algebraicGroup{T})$ the rational structure of $^w\algebraicGroup{T}$ is determined by the conjugacy class of $w$ in the Type B Weyl group (a $\mathbb{Z}/2\mathbb{Z}$ extension of $W(\algebraicGroup{T})$. If $w \circ (-1,1)$ is conjugate in the extension to $(\lambda^+,\lambda^-)$ where $\lambda^+$ is the partition formed from and $\lambda^-$ is the partition formed from:
-		$$^w\algebraicGroup{T} = \Pi_{\lambda^+_i} \mathrm{Res}_{\mathbb{F}_{\lambda^+_i}:\mathbb{F}}\algebraicGroup{G}_m \times \Pi_{\lambda^-_i} \mathrm{Res}_{\mathbb{F}_{\lambda^-_i}:\mathbb{F}}\algebraicGroup{U}(1)$$
+		$$^w\algebraicGroup{T} = \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^-_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1} $$
 	\end{enumerate}
 	\item (Symplectic groups) In type B the Weyl group conjugacy classes are given by $(\lambda^+,\lambda^-)$ where $\lambda^+$ is the partition formed from and $\lambda^-$ is the partition formed from. Given a representation $w$ of the conjugacy class we get:
-		$$^w\algebraicGroup{T} = \Pi_{\lambda^+_i} \mathrm{Res}_{\mathbb{F}_{\lambda^+_i}:\mathbb{F}}\algebraicGroup{G}_m \times \Pi_{\lambda^-_i} \mathrm{Res}_{\mathbb{F}_{\lambda^-_i}:\mathbb{F}}\algebraicGroup{U}(1)$$
-	\item (Unitary groups) We let our torus be the diagonal torus for the unitary group with hermitian form $I_n$. Then $\algebraicGroup{T}=U(1)^n$ and the Frobenius action on the Weyl group is trivial. Note since all hermitian forms are equivalent over a finite field, $\algebraicGroup{T}$ is a torus in the group $\algebraicGroup{U}_n$ from the previous section.  In type A the Weyl group conjugacy classes are given by $(\lambda)$, and
-	$$^w\algebraicGroup{T} = \Pi_{\lambda_i} \begin{cases}
-	\mathrm{Res}_{\mathbb{F}_{\lambda^+_i}:\mathbb{F}} \algebraicGroup{G}_m& \lambda_i \textnormal{ is even} \\
-	\mathrm{Res}_{\mathbb{F}_{\lambda^+_i}:\mathbb{F}}\algebraicGroup{U}(1) & \lambda_i \textnormal{ is odd}
-	\end{cases}$$
+		$$^w\algebraicGroup{T} = \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^-_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1} $$
+	\item (Unitary groups) We let our torus be the diagonal torus for the unitary group with hermitian form $I_n$. Then $\algebraicGroup{T}=\algebraicGroup{\UnitaryGroup}_1^n$ and the Frobenius action on the Weyl group is trivial. Note since all hermitian forms are equivalent over a finite field, $\algebraicGroup{T}$ is a torus in the group $\algebraicGroup{U}_n$ from the previous section.  In type A the Weyl group conjugacy classes are given by $(\lambda)$, and
+	$$^w\algebraicGroup{T} = \prod_{i} \begin{dcases}
+	\restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} & \lambda_i \textnormal{ is even} \\
+	\restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}  & \lambda_i \textnormal{ is odd}
+	\end{dcases}$$
 	\item (Even special orthogonal similitude groups)
 	\item (Symplectic similitude groups)
 \end{enumerate}
