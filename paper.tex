@@ -145,6 +145,8 @@
 \newcommand{\posDblJacobiSumScalar}[2]{\mathrm{J}_{+}^{\mathrm{dbl}}\left(#1, #2\right)}
 \newcommand{\negDblJacobiSumScalar}[2]{\mathrm{J}_{-}^{\mathrm{dbl}}\left(#1, #2\right)}
 \newcommand{\dblVirtualJacobiSumScalar}[2]{\mathrm{j}_{\pm}^{\mathrm{dbl}}\left(#1, #2\right)}
+\newcommand{\dblPosVirtualJacobiSumScalar}[2]{\mathrm{j}_{+}^{\mathrm{dbl}}\left(#1, #2\right)}
+\newcommand{\dblNegVirtualJacobiSumScalar}[2]{\mathrm{j}_{-}^{\mathrm{dbl}}\left(#1, #2\right)}
 \newcommand{\posDblVirtualJacobiSumScalar}[2]{\mathrm{j}_{+}^{\mathrm{dbl}}\left(#1, #2\right)}
 \newcommand{\dblGammaFactor}[3]{\Gamma^{\mathrm{dbl}}\left(#1 \times #2, #3\right)}
 \newcommand{\dblGammaFactorSpace}[4]{\Gamma^{\mathrm{dbl}}_{#1}\left(#2 \times #3, #4\right)}
@@ -428,13 +430,14 @@ In order to make the computations more tolerable, it is beneficial to work with 
 Let $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be a character.
 
 We define a normalization factor as follows $$c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) = \begin{dcases}
-	\tau\left(\chi^2, \fieldCharacter\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2}} & \quadraticExtension = \finiteField\\
-	\tau\left(\chi\restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^{\dim_{\quadraticExtension} \hermitianSpace} & \quadraticExtension \ne \finiteField
-\end{dcases}.$$
+	\tau\left(\chi^2, \fieldCharacter\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is even,}\\
+	\chi\left(2\right) \tau\left(\chi^2, \fieldCharacter\right)^{\frac{\dim_{\finiteField} \hermitianSpace - 1}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is odd,}	\\
+	\tau\left(\chi\restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^{\dim_{\quadraticExtension} \hermitianSpace} & \quadraticExtension \ne \finiteField.
+\end{dcases}$$
 Notice that if $\quadraticExtension \ne \finiteField$ then by the Hasse--Davenport relation $\tau\left(\chi\restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^{2} = \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)$.
 
 For an irreducible representation  $\tau$ of $\GL_k\left(\quadraticExtension\right)$, define $$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \GaussSumScalar{\tau \times \minusInvolution{\chi}}{\fieldCharacter} \GaussSumScalar{\Contragradient{\tau} \times \chi^{-1}}{\fieldCharacter}.$$
-For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \centralCharacter{\pi}\left(-1\right) \frac{\dblJacobiSumScalar{\pi}{\chi}}{c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)}.$$
+For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \frac{\posDblJacobiSumScalar{\pi}{\chi}}{c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)}.$$
 Using this notation and using the multiplicativity property of Kondo's Gauss sum and \Cref{thm:multiplicativity-in-terms-of-gauss-sums}, we have the following multiplicativity property.
 
 \begin{theorem}\label{thm:multiplicativity-in-terms-of-gamma-factors}
@@ -452,7 +455,7 @@ Using this notation and using the multiplicativity property of Kondo's Gauss sum
 				\left(-1\right)^{n+1} \tau\left(\chi^{-1}, \fieldCharacter\right) & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = -1 \\
 				1 & \text{otherwise.}
 	\end{dcases}.$$
-	However, we will not need this version for our purposes.
+	However, we will not need this version for our purposes. \elad{Check odd orthogonal case. Probably needs a sign modification (the formula needs to be $\left(-1\right)^{\text{dual group dimension}} \times \text{product of Gauss sums}$). $\varepsilon_{\algebraicGroup{G}}$ contributes half of the dimension so that's why we add another half here.}
 \end{remark}
 
 \subsection{Computation of character sums attached to Deligne--Lusztig data}
@@ -466,7 +469,7 @@ Let us realize $H$ as the fixed points of the Frobenius map $\Frobenius$ acting 
 Given a class function $F \colon H \to \cComplex$ (i.e., a function that is invariant under conjugation by elements of $G$), let us define $$\dblVirtualJacobiSumScalar{F}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} F\left(g\right) \genJacobiKernel{\chi}\left(g\right).$$
 
 It is clear that if $\pi$ is an irreducible representation of $H$ then $$\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \dim \pi.$$
-Notice that the assignment $g \mapsto \Phi_{\chi}\left(g\right)$ only depends on the semisimple part of $g \in H$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result.
+Notice that the assignments $g \mapsto \posJacobiKernel{\chi}\left(g\right)$ and $g \mapsto \negJacobiKernel{\chi}\left(g\right)$ only depends on the semisimple part of $g \in H$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result.
 \begin{proposition}\label{prop:reduction-of-gauss-sum-to-torus}
 	For any $\Frobenius$-stable maximal torus $\algebraicGroup{T}$ of $\algebraicGroup{H}$, and any character $\theta \colon T \to \multiplicativegroup{\cComplex}$, where $T = \algebraicGroup{T}^{\Frobenius}$, we have
 	$$ \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{H}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \genJacobiKernel{\chi}\left(t\right).$$
@@ -509,17 +512,15 @@ By the previous section, this equals
 	-q^{\frac{k}{2}} \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\alpha}{\minusInvolution{\chi}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^k,
 \end{equation*}
 which equals
-\begin{equation}\label{eq:identity-for-multiplicative-group-of-f-k-gauss-sum}
+\begin{equation*}
 	-q^{\frac{k}{2}} \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\involution{\alpha}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^k,
-\end{equation}
-
-Changing variables $x \mapsto \pm x$, we obtain the following.
-
-\begin{theorem}We have the following identity:
+\end{equation*}
+Thus we obtained the following.
+\begin{theorem}We have the identity
 \begin{align*}
 	& \sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
-			x \ne \mp 1}} \alpha \left(x\right) \chi\left(\FieldNorm{k}{1}\left(1 \pm x\right)\right) \chi\left(\FieldNorm{k}{1}\left(1 \pm \minusInvolution{x}\right)\right) \\
-	=& -\alpha\left(\pm 1\right) q^{\frac{k}{2}} \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\involution{\alpha}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^k.
+			x \ne -1}} \alpha \left(x\right) \chi\left(\FieldNorm{k}{1}\left(1 + x\right)\right) \chi\left(\FieldNorm{k}{1}\left(1 + \minusInvolution{x}\right)\right) \\
+	=& -q^{\frac{k}{2}} \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\involution{\alpha}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^k.
 \end{align*}
 \end{theorem}
 
@@ -564,12 +565,9 @@ To summarize, we have
 		=& q^{\frac{m}{2}} \tau\left(\chi^{-1}, \fieldCharacter\right)^{2m} \tau\left(\chi, \fieldCharacter\right)^{2m} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right),
 \end{align*}
 where $\theta'\left(t\right) = \theta\left(t^{1-q^m}\right)$.
-Since $\tau\left(\chi^{-1}, \fieldCharacter\right) = \chi\left(-1\right) \conjugate{\tau\left(\chi, \fieldCharacter\right)}$ and since $\chi \ne 1$, this implies the identity
-$$\sum_{\substack{x \in \NormOneGroup{2m}\\
-		x \ne -1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(1 + x\right)\right) = q^{\frac{m}{2}} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right).$$
-Changing variables $x \mapsto \pm x$, we obtain the following. \begin{theorem}
+Since $\tau\left(\chi^{-1}, \fieldCharacter\right) = \chi\left(-1\right) \conjugate{\tau\left(\chi, \fieldCharacter\right)}$ and since $\chi \ne 1$, this implies the following. \begin{theorem}
 	We have the identity $$\sum_{\substack{x \in \NormOneGroup{2m}\\
-			x \ne \mp 1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(1 \pm x\right)\right) = \theta\left(\pm 1\right) q^{\frac{m}{2}} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right).$$
+			x \ne -1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(1 + x\right)\right) = q^{\frac{m}{2}} \tau\left(\chi^{2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi^{-1}, \fieldCharacter_{2m}\right).$$
 \end{theorem}
 
 \subsubsection{Elliptic torus computation: the case $\quadraticExtension \ne \finiteField$}
@@ -581,10 +579,10 @@ $$q^{\frac{m}{2}} \GaussSumCharacter{\left(\theta'\right)^{-1}}{\chi^{-1}}{\fiel
 which equals
 $$q^{\frac{m}{2}} \tau\left(\chi \restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^m \GaussSumCharacter{\left(\theta'\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2m}}.$$
 
-Changing variables $x \mapsto \pm x$, we obtain the following.
+Thus, we obtained the following.
 \begin{theorem}
 	We have the following identity $$\sum_{\substack{x \in \NormOneGroup{2m}\\
-			x \ne -1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{2}}\left(1 + x\right)\right) = \theta\left(\pm 1\right) q^{\frac{m}{2}} \tau\left(\chi \restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^m \GaussSumCharacter{\left(\theta'\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2m}}$$
+			x \ne -1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{2}}\left(1 + x\right)\right) = q^{\frac{m}{2}} \tau\left(\chi \restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^m \GaussSumCharacter{\left(\theta'\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2m}}$$
 \end{theorem}
 
 \subsubsection{Computation for Deligne--Lusztig characters}
@@ -596,18 +594,41 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 		= & \prod_{i=1}^s \GaussSumCharacter{\left(\theta'_i\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2m_i}} \cdot \prod_{j=1}^r \GaussSumCharacter{\involution{\alpha_j}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}} \GaussSumCharacter{\alpha_j^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k_j}}}.
 	\end{align*} Then
 	\begin{align*}
-		 \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \varepsilon_{\algebraicGroup{H}} R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) g_T\left(\chi, \theta, \fieldCharacter\right) \prod_{i=1}^s \theta_i\left(\pm 1\right) \cdot \prod_{j=1}^r \alpha_j\left(\pm 1\right).
+		 \dblPosVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \varepsilon_{\algebraicGroup{H}} R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) g_T\left(\chi, \theta, \fieldCharacter\right),
 	\end{align*}
-	\elad{Modify this so it is also true in the odd special orthogonal group case: it is zero for $-$ and there are factors $\theta\left(2\right)$ for $+$}
+	and \begin{align*}
+		\dblNegVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \begin{dcases}
+			0 & \dim_{\finiteField} \hermitianSpace \text{ is odd.}\\
+			\dblPosVirtualJacobiSumScalar{R_{T, \theta}}{\chi} \cdot \prod_{i=1}^s \theta_i\left(-1\right) \cdot \prod_{j=1}^r \alpha_j\left(-1\right) & \text{ otherwise.}
+		\end{dcases}
+	\end{align*}
 \end{theorem}
 \begin{proof}
-	This follows from the results mentioned above and from the formula $$R_T\left(1\right) = \varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}} \frac{\grpIndex{H}{T}}{\sizeof{H}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{H}_p^2 \cdot q^{\frac{\dim_{\finiteField} \hermitianSpace}{2}},$$
+	Notice that if $\dim_{\finiteField} \hermitianSpace$ is odd then $\negJacobiKernel{\chi}\left(t\right) = 0$ for any $t \in T$, as $\idmap_{\hermitianSpace} - t$ always has determinant zero.
+	
+	We have that if $t$ corresponds to $\left(a_1,\dots,a_r,t_1,\dots,t_s\right) \in \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \NormOneGroup{2m_i}$ such that $\idmap_{\hermitianSpace} + t$ is invertible then \begin{align*}
+		\posJacobiKernel{\chi}\left(t\right) =& \prod_{i=1}^s \chi\left(\FieldNorm{2m_i}{1}\left(1 + t_i\right)\right) \cdot \prod_{j=1}^r \chi\left(\aFieldNorm_{\quadraticFieldExtension{k_j} / \quadraticExtension}\left(1 + a_j\right)\right) \chi\left(\aFieldNorm_{\quadraticFieldExtension{k_j} / \quadraticExtension}\left(1 + \minusInvolution{a_j}\right)\right) \\
+		& \times  \begin{dcases}
+			\chi\left(2\right) & \dim_{\finiteField} \hermitianSpace \text{ is odd},\\
+			1 & \text{otherwise}
+		\end{dcases}.
+	\end{align*}
+	If $t$ corresponds to $\left(a_1,\dots,a_r,t_1,\dots,t_s\right) \in \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \NormOneGroup{2m_i}$ such that $\idmap_{\hermitianSpace} - t$ is invertible then \begin{align*}
+		\negJacobiKernel{\chi}\left(t\right) =& \begin{dcases}
+			0 & \dim_{\finiteField} \hermitianSpace \text{ is odd},\\
+			\posJacobiKernel{\chi}\left(-t\right) & \text{otherwise.}
+		\end{dcases}
+	\end{align*}
+	
+
+	
+	Hence our theorem follows from the results mentioned above and from the formula $$R_T\left(1\right) = \varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}} \frac{\grpIndex{H}{T}}{\sizeof{H}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{H}_p^2 \cdot q^{\frac{\dim_{\finiteField} \hermitianSpace}{2}},$$
 	and the fact \begin{equation*}
 		\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^r.
 	\end{equation*}
 \end{proof}
 \begin{remark}
-	We have $$\varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2}}.$$ If $\finiteField = \quadraticExtension$ then we also have $$\varepsilon_{\algebraicGroup{\GroupExtension{G}}} = \left(-1\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2} + 1}.$$
+	We have $$\varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\left\lfloor \frac{\dim_{\finiteField} \hermitianSpace}{2}\right\rfloor}.$$ If $\finiteField = \quadraticExtension$ and $\dim_{\finiteField} \hermitianSpace$ is even then we also have $$\varepsilon_{\algebraicGroup{\GroupExtension{G}}} = \left(-1\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2} + 1}.$$
 \end{remark}
 \begin{remark}
 	Suppose that $\pi$ is any irreducible representation of $H$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$. Then the central character of $\pi$ satisfies
@@ -615,7 +636,7 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 		\centralCharacter{\pi}\left(-1\right) = \theta\left(-1\right) =& \prod_{j=1}^r \alpha_j\left(-1\right) \cdot \prod_{i=1}^s \theta_i\left(-1\right).
 	\end{align*}
 	Thus \begin{align*}
-		\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \centralCharacter{\pi}\left(-1\right) g_T\left(\chi, \theta, \fieldCharacter\right).
+		\dblNegVirtualJacobiSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \centralCharacter{\pi}\left(-1\right) g_T\left(\chi, \theta, \fieldCharacter\right).
 	\end{align*}
 \end{remark}
 
@@ -697,10 +718,10 @@ By \cite[Lemma 2.2]{Malle2007}, if $\pi$ and $\pi'$ lie in the same geometric Lu
 The main result of this paper is 
 \begin{theorem}
 \label{thm:Phi_stable}
-	The assignment $H \to \cComplex$ given by $$h \mapsto \begin{dcases}
-		\chi\left(\detQuadratic\left(\idmap_{\hermitianSpace} - h\right)\right) & h \in G \text{ and } \detQuadratic\left(\idmap_{\hermitianSpace} - h\right) \ne 0,\\
+	The assignments $H \to \cComplex$ given by $$h \mapsto \begin{dcases}
+		\chi\left(\detQuadratic\left(\idmap_{\hermitianSpace} \pm h\right)\right) & h \in G \text{ and } \detQuadratic\left(\idmap_{\hermitianSpace} \pm h\right) \ne 0,\\
 		0 & \text{otherwise.}
-	\end{dcases}$$ is a stable function. Equivalently, the assignment $$\pi \mapsto \dblJacobiSumScalar{\pi}{\chi}$$ is constant on geometric Lusztig series.
+	\end{dcases}$$ are stable functions. Equivalently, the assignments $$\pi \mapsto \dblJacobiSumScalar{\pi}{\chi}$$ are constant on geometric Lusztig series.
 \end{theorem}
 In the $\GL_n$ case this follows from \Cref{thm:gln-doubling-gauss-sum-in-terms-of-kondo} along with \calvin{Hasse-Davenport? Something else?}.
 In this section we prove a slightly weaker result:
