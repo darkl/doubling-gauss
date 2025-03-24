@@ -205,25 +205,24 @@ Let $\finiteField$ be a finite field with $q$ elements, where $2 \nmid q$, and l
 
 \subsection{Gauss sums}
 
-\subsubsection{Gauss sum notations}
-If $\alpha \colon \multiplicativegroup{\finiteFieldExtension{n}} \to \multiplicativegroup{\cComplex}$ is a character, denote the \emph{Gauss sum} $$\tau\left(\alpha, \fieldCharacter_n\right) = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha\left(x\right) \fieldCharacter_n\left(x\right),$$
-where $\fieldCharacter_n \colon \finiteFieldExtension{n} \to \multiplicativegroup{\cComplex}$ is given by $\fieldCharacter_n = \fieldCharacter \circ \trace_{\finiteFieldExtension{n} \slash \finiteField}$. If $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ is a character and if $\alpha$ is as above, denote the \emph{twisted Gauss sum}
-$$\tau\left(\alpha \times \chi, \fieldCharacter_n\right) = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha\left(x\right) \chi\left( \FieldNorm{n}{1}\left(x\right)\right) \fieldCharacter_n\left(x\right).$$
-
-\subsubsection{Kondo Gauss sums}
-
 Let $\tau$ be an irreducible representation of $\GL_n\left(\finiteField\right)$. 
 For a character $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$, denote the \emph{twisted Gauss sum}
 $$\GaussSum{\tau \times \chi}{\fieldCharacter} = q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \tau\left(g\right) \chi\left(\det g\right) \fieldCharacter\left(\trace g\right).$$
 This element lies in $\Hom_{\GL_n\left(\finiteField\right)}\left(\tau, \tau\right)$ and therefore by Schur's lemma there exists a complex number $\GaussSumScalar{\tau \times \chi}{\fieldCharacter} \in \cComplex$ such that
 $$\GaussSum{\tau \times \chi}{\fieldCharacter} = \GaussSumScalar{\tau \times \chi}{\fieldCharacter} \cdot \idmap_\tau.$$ The computation of this scalar is known due to Kondo \cite{Kondo1963}.
 
-\begin{theorem}
+In order to state Kondo's result, we need to introduce some Gauss sum notation which will be used throughout the paper.
+
+If $\alpha \colon \multiplicativegroup{\finiteFieldExtension{n}} \to \multiplicativegroup{\cComplex}$ is a character, denote the \emph{Gauss sum} $$\tau\left(\alpha, \fieldCharacter_n\right) = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha\left(x\right) \fieldCharacter_n\left(x\right),$$where $\fieldCharacter_n \colon \finiteFieldExtension{n} \to \multiplicativegroup{\cComplex}$ is given by $\fieldCharacter_n = \fieldCharacter \circ \trace_{\finiteFieldExtension{n} \slash \finiteField}$. If $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ is a character and if $\alpha$ is as above, denote the \emph{twisted Gauss sum}
+$$\tau\left(\alpha \times \chi, \fieldCharacter_n\right) = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha\left(x\right) \chi\left( \FieldNorm{n}{1}\left(x\right)\right) \fieldCharacter_n\left(x\right).$$
+
+We are now ready to state Kondo's result.
+\begin{theorem}[Kondo {\cite{Kondo1963}}]
 	Suppose that $\tau$ is an irreducible representation of $\GL_n\left(\finiteField\right)$ with cuspidal support $\left\{\tau_1,\dots, \tau_r\right\}$, where $n_1 + \dots + n_r = n$, and where for every $j$, $\tau_j$ is an irreducible cuspidal representation of $\GL_{n_j}\left(\finiteField\right)$ corresponding to the Frobenius orbit of a regular character $\theta_j \colon \multiplicativegroup{\finiteFieldExtension{n_j}} \to \multiplicativegroup{\cComplex}$. Then
 	$$\GaussSumScalar{\tau \times \chi}{\fieldCharacter} = \left(-1\right)^n \cdot \prod_{j=1}^r \GaussSumCharacter{\theta_j}{\chi}{\fieldCharacter_{n_j}}.$$
 \end{theorem}
 
-We will need the following lemma that allows us to determine that a degenerate Kondo Gauss sum vanishes.
+We will need the following lemma that allows us to determine whether a degenerate Kondo Gauss sum vanishes.
 \begin{lemma}\label{lem:sum-vanishes-for-singular-matrices}
 	For any singular matrix $X \in \squareMatrix_n\left(\finiteField\right)$ and any $1 \ne \chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$, the sum
 	$$\sum_{h \in \GL_n\left(\finiteField\right)} \chi\left(\det h\right) \fieldCharacter\left(\trace\left(Xh\right)\right)$$
