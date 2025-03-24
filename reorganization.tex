@@ -341,11 +341,48 @@ We write a more explicit description of $\tilde{G}$ and $\tilde{\algebraicGroup{
 	\end{pmatrix}\right\}.$$
 \end{enumerate}
 
-\subsubsection{Tori}
+\subsubsection{Rational Tori}
+A \emph{rational torus} $\algebraicGroup{T} \subseteq \algebraicGroup{G}$ over $\mathbb{F}$ is a torus defined over $\mathbb{F}$. 
+Over a finite field, $\algebraicGroup{G}(\mathbb{F})$ conjugacy classes of maximal rank rational tori \calvin{check if we need connected or something} are parameterized by  Frobenius order twisted conjugacy classes in the Weyl group. In particular if you fix a rational torus $\algebraicGroup{T}_0$ with rank $=\mathrm{rk}(\algebraicGroup{G}$ and an element $g \in \algebraicGroup{G}(\algebraicClosure{\mathbb{F}})$ such that $g^{-1}\Frobenius(g) \in N(\algebraicGroup{T}_0)$ then the torus $g\algebraicGroup{T}_0g^{-1}$ is rational, and it's $\algebraicGroup{G}(\mathbb{F})$-conjugacy class is determined  by the Frobeinus-twisted conjugacy class of the image of $g^{-1}\Frobenius(g)$ in $W(\algebraicGroup{T}_0)(\algebraicClosure{\mathbb{F}})$ [cite Roger Carter Finite Groups of Lie Type section 3.3].%since $\Frobenius(g\algebraicGroup{T}_0g^{-1}) = g\algebraicGroup{T}_0g^{-1}$
+%could really demonstrate this by stating Land map is surjective + that all maximal tori are conjugate over an algebraiclly closed field
+Applying this theory to our groups $\algebraicGroup{G}$
+
+
+\begin{enumerate}
+	\item (Special orthogonal groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = 1$. It follows by definition that every element $g \in \IsometryGroup\left(\hermitianSpace\right)$ satisfies $\left(\det g\right)^2 = 1$.  In this case, we obtain the connected components of the identity by adding a restriction on the determinant: We have that $G$ consists of all elements $g \in \IsometryGroup\left(\hermitianSpace\right)$ with $\det g = 1$. There are two cases here.
+	\begin{enumerate}
+		\item Split case: in this case, we can write $$\hermitianSpace = \begin{dcases}
+		\xIsotropic \oplus \yIsotropic & \dim_{\finiteField} \hermitianSpace = 2n\\
+		\xIsotropic \oplus \finiteField v \oplus \yIsotropic & \dim_{\finiteField}\hermitianSpace = 2n + 1
+		\end{dcases}$$ where $\xIsotropic$ and $\yIsotropic$ are totally isotropic (that is, for every $x \in \xIsotropic$, $\innerproduct{x}{x} = 0$ and similarly for $\yIsotropic$) and these spaces are in duality with respect to $\innerproduct{\cdot}{\cdot}$, i.e., the map $\yIsotropic \to \Hom_{\finiteField}\left(\xIsotropic, \finiteField\right)$ given by $y \mapsto \left(x \mapsto \innerproduct{x}{y}\right)$ is an isomorphism. In the odd dimensional case, $v \in \hermitianSpace$ is an element orthogonal to $\xIsotropic$ and $\yIsotropic$ that satisfies $\innerproduct{v}{v} \ne 0$.
+		
+		In either case, denote $d = \dim_{\finiteField} \hermitianSpace$. We have that $G$ is isomorphic to $\SO^{+}_{d}\left(\finiteField\right) \subset  \GL_{d}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\SO}^{+}_{d} = \left\{g \in \algebraicGroup{\GL}_{d} \mid \transpose{g} w_{d} g  = w_{d},\,\, \det g = 1\right\}.$$
+		
+		In the odd-dimensional case $d = 2n+1$, we are always in this situation, and we simply denote $\SO_{2n+1}\left(\finiteField\right) = \SO_{2n+1}^{+}\left(\finiteField\right)$ and $\algebraicGroup{\SO}_{2n+1} = \algebraicGroup{\SO}_{2n+1}^{+}$.
+		\item Non-split case: In this case, $\dim_{\finiteField} \hermitianSpace = 2n$ and there exists a decomposition $$\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic,$$
+		where $\xIsotropic$ and $\yIsotropic$ are totally isotropic spaces in duality and $\hermitianSpace'$ is an antisotropic space (that is, for any $0 \ne v' \in \hermitianSpace'$, we have $\innerproduct{v'}{v'} \ne 0$) of dimension 2. Let $d$ be an element of $\multiplicativegroup{\finiteField}$ that is not a square. Denote $$B_{n,d} = \begin{pmatrix}
+			\IdentityMatrix{n-1}\\
+			& & 1 &\\
+			& -d & &\\
+			& & & \IdentityMatrix{n-1}
+		\end{pmatrix} \cdot w_{2n}.$$
+		In this case, we have that $G$ is isomorphic to $\SO^{-}_{2n}\left(\finiteField\right) \subset  \GL_{2n}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\SO}^{-}_{2n} = \left\{g \in \algebraicGroup{\GL}_{2n} \mid \transpose{g} B_{n,d} g = B_{n,d},\,\, \det g = 1\right\}.$$
+	\end{enumerate}
+	\item (Symplectic groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = -1$. In this case, $\dim_{\finiteField} \hermitianSpace = 2n$ for some positive integer $n$ and $G$ is isomorphic to the group $\Sp_{2n}\left(\finiteField\right) \subset  \GL_{2n}\left(\finiteField\right)$, defined as the $\finiteField$-points of $$\algebraicGroup{\Sp}_{2n} = \left\{g \in \algebraicGroup{\GL}_{2n} \mid \transpose{g} \begin{pmatrix}
+		& w_n\\
+		-w_n
+	\end{pmatrix} g = \begin{pmatrix}
+		& w_n\\
+		-w_n
+	\end{pmatrix}\right\}.$$
+	\item (Unitary groups): $\quadraticExtension \ne \finiteField$. Denote $\dim_{\quadraticExtension} \hermitianSpace = n$. In this case, the group $G = \GroupExtension{G}$ is isomorphic to the group $\UnitaryGroup_n\left(\finiteField\right) \subset\GL_{n}\left(\quadraticExtension\right)$ defined as the $\finiteField$-points of $$\algebraicGroup{\UnitaryGroup}_n = \left\{ g \in \restrictionOfScalars{\quadraticExtension}{\finiteField}{\algebraicGroup{\GL}_n} \mid \involution{\left(\transpose{g}\right)} w_n g = w_n \right\}.$$
+\end{enumerate}
 
 \elad{Under construction}
 If $m \ge 1$, we denote 
-$$\NormOneGroup{2m} = \left\{ x \in \multiplicativegroup{\finiteFieldExtension{2m}} \mid \FieldNorm{2m}{m}\left(x\right)= 1\right\}.$$
+$$\NormOneGroup{2m} := \left\{ x \in \multiplicativegroup{\finiteFieldExtension{2m}} \mid \FieldNorm{2m}{m}\left(x\right)= 1\right\} = \left(\mathrm{Res}_{\mathbb{F}_{m}:\mathbb{F}} \algebraicGroup{U}(1)\right)(\mathbb{F}).$$
+
+
 
 \subsection{Deligne--Lusztig theory}
 \elad{Write a 101-intro to Deligne--Lusztig but not too detailed}
@@ -842,17 +879,9 @@ In particular to analyze $g_{T,\rho}(\theta,\psi,\chi)$ for these $\rho$, we nee
 
 \begin{lemma}
 \label{lem:cochar_computation}
-    Define $\phi:(\mathbb{Q}/\mathbb{Z})_{p'}^n \to (\mathbb{Q}/\mathbb{Z})_{p'}^{2n} = X_*(\GL_{2n})_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ by $\phi(x) = (x,-x)$. We will consider two different Frobeinus actions on these characters:
-    \begin{enumerate}
-        \item When $\Frobenius$ acts by trivially on both, $x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\finiteFieldExtension{n},\alpha})$
-        \item When $\Frobenius$ acts by $-1$ on the domain and by $\begin{pmatrix}
-            0 & 1 \\
-            1 & 0\end{pmatrix}$ on the codomain, $x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$ where $\theta'(t) = \theta(t^{1-q^n})$
-    \end{enumerate}
-    \calvin{new cases:}
     Let $\phi:X_*(\algebraicGroup{T}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^n \to X_*(\tilde{\algebraicGroup{T}}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^{2n}$ send $x$ to $(x,-x)$. Then we have the following cases corresponding to conjugacy classes in the Weyl group
     \begin{enumerate}
-        \item[B,C,D Case 1)] $w$ is conjugate to an $n$-cycle: \calvin{Add in note about the two type B cases} In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $w$ on the preimage and the cycle $(w,w)$ on the image, and $$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\finiteFieldExtension{n},\alpha})$$
+        \item[B,C,D Case 1)] $w$ is conjugate to an $n$-cycle: \calvin{Add in note about the two type B cases. Maybe really should just talk about $\Frobenius$ action} In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $w$ on the preimage and the cycle $(w,w)$ on the image, and $$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\finiteFieldExtension{n},\alpha})$$
         \item[B,C,D Case 2)] $w$ is conjugate to an $n$-cycle with one negative:
  In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $w$ on the preimage and by a $2n$ cycle on the image, and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n})$
     \item[$G=\algebraicGroup{U}$ Case 1)] $w$ is conjugate to $(1,2 \hdots n)$ an even cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the product of two $n$ cycles $\begin{pmatrix} w & 0 \\
