@@ -199,7 +199,6 @@
 	\item The proof of \Cref{prop:gamma-factor-is-constant-on-lusztig-series} should be modified. We should first use $\GroupExtension{G}$. For this group we have the ``at most one cuspidal'' property. Then we should use \cite[Page 140]{DigneMichel2020} $$R_{\GroupExtension{T}}^{\GroupExtension{G}}\left(\tilde{\theta}\right) \restriction_{G} = R_{T}^G \left(\tilde{\theta}\restriction_{T}\right),$$
 	where we need to explain the notation.
 	\item Find what the root data + F action for the non-split quadratic form is. Find the dual gorup and add the appropriate representation to \Cref{lem:indep_geo_conj}
-	\item We might be able to include $SO_{odd}$ with $\Phi(g)$ the symmetric function in the eigenvalues of $g$ given by $\sum_{i=1}^{dim(V)} \chi(\Pi_{j \neq i}(\lambda_j-1))$.
 	
 \end{enumerate}
 
@@ -346,6 +345,7 @@ Let us summarize all possible cases for $G$ and $\GroupExtension{G}$. Let $$w_n 
 	\end{pmatrix}\right\}.$$
 	\item (Unitary groups): $\quadraticExtension \ne \finiteField$. Denote $\dim_{\quadraticExtension} \hermitianSpace = n$. In this case, the group $G = \GroupExtension{G}$ is isomorphic to the group $\UnitaryGroup_n\left(\finiteField\right) \subset\GL_{n}\left(\quadraticExtension\right)$ defined as the $\finiteField$-points of $$\algebraicGroup{\UnitaryGroup}_n = \left\{ g \in \restrictionOfScalars{\quadraticExtension}{\finiteField}{\algebraicGroup{\GL}_n} \mid \involution{\left(\transpose{g}\right)} w_n g = w_n \right\}.$$
 \end{enumerate}
+
 
 Let $\lieAlgebra$ be the Lie algebra of $G$, consisting of all elements $A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)$ satisfying $\innerproduct{Ax}{y} + \involution{\innerproduct{x}{AY}} = 0$ for every $x, y \in \hermitianSpace$.
 
@@ -781,12 +781,19 @@ In particular to analyze $g_{T,\rho}(\theta,\psi,\chi)$ for these $\rho$, we nee
             1 & 0\end{pmatrix}$ on the codomain, $x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$ where $\theta'(t) = \theta(t^{1-q^n})$
     \end{enumerate}
     \calvin{new cases:}
+    Let $\phi:X_*(\algebraicGroup{T}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^n \to X_*(\tilde{\algebraicGroup{T}}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^{2n}$ send $x$ to $(x,-x)$. Then we have the following cases corresponding to conjugacy classes in the Weyl group
     \begin{enumerate}
-        \item When $\Frobenius$ acts by an $n$-cycle $(12 \hdots n)$ on the preimage and the cycle $(12 \hdots n),(n+1,n+2 \hdots 2n)$ on the image, $x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\finiteFieldExtension{n},\alpha})$
-        \item When $\Frobenius$ acts by $-1$ on the domain and by $\begin{pmatrix}
-            0 & 1 \\
-            1 & 0\end{pmatrix}$ on the codomain, $x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$ where $\theta'(t) = \theta(t^{1-q^n})$
-        \item When 
+        \item[B,C,D Case 1)] $w$ is conjugate to an $n$-cycle: \calvin{Add in note about the two type B cases} In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $w$ on the preimage and the cycle $(w,w)$ on the image, and $$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\finiteFieldExtension{n},\alpha})$$
+        \item[B,C,D Case 2)] $w$ is conjugate to an $n$-cycle with one negative:
+ In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $w$ on the preimage and by a $2n$ cycle on the image, and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n})$
+    \item[$G=\algebraicGroup{U}$ Case 1)] $w$ is conjugate to $(1,2 \hdots n)$ an even cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the product of two $n$ cycles $\begin{pmatrix} w & 0 \\
+        0 & w
+        \end{pmatrix} \cdot \begin{pmatrix} 0 & I\\I & 0
+        \end{pmatrix}$  on the image, and 
+        \item[$G=\algebraicGroup{U}$ Case 2)] $w$ is conjugate to $(1,2 \hdots n)$ an odd cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the $2n$ cycle $\begin{pmatrix} w & 0 \\
+        0 & w
+        \end{pmatrix} \cdot \begin{pmatrix} 0 & I\\I & 0
+        \end{pmatrix}$ on the image , and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n})$
     \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -900,11 +907,11 @@ So all the cuspidal $\pi$ in a Lusztig packet $\LusztigSeries{G}{s}$ are irreduc
 \subsection{Computation for Lusztig Series}
 The goal of this section is to prove \Cref{thm:Phi_stable} in particular:
 \begin{theorem}
-\label{thm:doubling-method-gamma-factor-for-deligne-lusztig} For either $G=G$ or its group extension $\GroupExtension{G}$. If $c_{\pi}$ is nonzero in the virtual representation $R_T(\theta) = \sum c_{\pi} \pi$ then
+\label{thm:doubling-method-gamma-factor-for-deligne-lusztig} For either $G=G$ or its extension $\GroupExtension{G}$. If $c_{\pi}$ is nonzero in the virtual representation $R_T(\theta) = \sum c_{\pi} \pi$ then
 $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$
 \end{theorem}
-\calvin{add in $\chi$} the right hand side of which we showed in \Cref{lem:indep_geo_conj} only depends on the geometric conjugacy class of $(T,\theta)$ hence on the Lusztig series $\LusztigSeries{G}{s}$ which contains $\pi$.
-\subsubsection{Proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig}, \Cref{thm:Phi_stable}}
+\calvin{add in $\chi$} the right hand side of which we showed in \Cref{lem:indep_geo_conj} only depends on the geometric conjugacy class of $(T,\theta)$ hence on the Lusztig series $\LusztigSeries{G}{s}$ which contains $\pi$, implying \Cref{thm:Phi_stable}.
+\subsubsection{Proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig}}
 We first reduce \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} to the case $G$ has connected center. For any irreducible representation $\pi$ of $G$ which is the a component of an irreducible representation $\tilde{\pi}$ of $\GroupExtension{G}$ restricted to $\pi$,
 \[
     \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace}{\tilde{\pi}}{\chi}{\fieldCharacter}.
@@ -928,15 +935,14 @@ Our proof will be via induction on $\dim_{\quadraticExtension} \hermitianSpace$.
 \calvin{should be short proof. Might not even need to put--just need to say both are multiplicative}
 \end{proof}
 
-
+Combining this with our inductive hypothesis implies \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for non cupsidal $\pi$.
 By \Cref{lem:indep_geo_conj}, we know that for $R_T(\theta) = \sum c_{\pi} \pi$, 
-$$\sum c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = (\sum c_{\pi})g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$.
-Since we know the relevant equality for non cupsidal $\pi$, we get that
+$$\sum c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = (\sum c_{\pi})g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$. Subtracting our the equality for non-cupsidal $\pi$ we are left with:
 $$ \sum_{\pi \textnormal{ cuspidal}} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \left(\sum_{\pi \textnormal{ cuspidal}} c_{\pi}\right)g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$.
 
 But it is well known that there is only one cuspidal $\pi$ appearing in our sum:
 \begin{proposition}[{\cite[Page 172]{Lusztig1977}}]
-	Let $\GroupExtension{G}$ have connected center. For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ contains at most one cuspidal element.
+	Let $\GroupExtension{G}$ be a classical group with connected center. For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ contains at most one cuspidal element.
 \end{proposition}
 
 So the proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} is complete.
