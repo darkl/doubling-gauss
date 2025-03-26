@@ -318,7 +318,7 @@ Let $\lieAlgebra$ be the Lie algebra of $G$, consisting of all elements $A \in \
 \subsubsection{The group $\tilde{G}$ and similitude groups}\label{subsec:similitute-groups}
 In this section, we will introduce a group $\tilde{\algebraicGroup{G}}$ containing $\algebraicGroup{G}$ that has connected center. This will be important for later, as the Deligne--Lusztig theory  is easier  for $\tilde{\algebraicGroup{G}}$.
 
-If special odd orthogonal group case (that is, $\epsilon_{\hermitianSpace} = 1$, $\quadraticExtension = \finiteField$ and $\dim_{\finiteField} \hermitianSpace$ is odd) and in the unitary case (that is, $\quadraticExtension \ne \finiteField$), we have that $\algebraicGroup{G}$ has connected center and we denote $\tilde{\algebraicGroup{G}} = \algebraicGroup{G}$.
+In the special odd orthogonal group case (that is, $\epsilon_{\hermitianSpace} = 1$, $\quadraticExtension = \finiteField$ and $\dim_{\finiteField} \hermitianSpace$ is odd) and in the unitary case (that is, $\quadraticExtension \ne \finiteField$), we have that $\algebraicGroup{G}$ has connected center and we denote $\tilde{\algebraicGroup{G}} = \algebraicGroup{G}$.
 
 Let us assume that $\quadraticExtension = \finiteField$ and that $\dim_{\finiteField} \hermitianSpace$ is even. In this case, $\algebraicGroup{G}$ does not have a connected center. We extend $\algebraicGroup{G}$ to a group $\tilde{\algebraicGroup{G}}$ with connected center by considering the similitude group corresponding to $\hermitianSpace$.
 
@@ -519,7 +519,7 @@ Denote the Frobenius semisimple conjugacy class associated to a torus character 
 We say that the torus character pairs $(\algebraicGroup{T},\theta)$ and $(\algebraicGroup{T}',\theta')$ for $\algebraicGroup{G}$ are \emph{geometrically conjugate} if the geometric conjugacy classes $(s_{\algebraicGroup{T},\theta})$ and $(s_{\algebraicGroup{T}',\theta'})$ are equal. This is equivalent to the following: there exists $n \ge 1$ and $h \in {\algebraicGroup{G}}^{\Frobenius^n}$ such that $h \algebraicGroup{T}^{\Frobenius^n} h^{-1} = \left(\algebraicGroup{T}'\right)^{\Frobenius^n}$ and such that $$\theta\left(\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}\left(t\right)\right) = \theta'\left(\aFieldNorm_{\left(\algebraicGroup{T}'\right)^{\Frobenius^n}:\left(\algebraicGroup{T}'\right)^{\Frobenius}}\left(h t h^{-1}\right)\right),$$ for any $t \in \algebraicGroup{T}^{\Frobenius^n}$.
 
 \begin{example}
-	\elad{Correct example or remove it}
+	\elad{Correct example or remove it}\calvin{They are geo conjugate in $\algebraicGroup{Sp}_4$}
 	Take $\algebraicGroup{G}' = \algebraicGroup{\GL}_2$. Let $\algebraicGroup{T}'_2 = \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ and $$\algebraicGroup{T}_2 = \left\{x \in \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme} \mid x \involution{x} = 1 \right\}.$$
 	Then $\left(\algebraicGroup{T}'_2\right)^{\Frobenius} = \multiplicativegroup{\finiteFieldExtension{2}}$ and $\algebraicGroup{T}_2^{\Frobenius} = \NormOneGroup{2}$. Let $\theta \colon \NormOneGroup{2} \to \multiplicativegroup{\ladicnumbers}$ be a character, and let $\theta' \colon \multiplicativegroup{\finiteFieldExtension{2}} \to \multiplicativegroup{\ladicnumbers}$ be the character given bv $$\theta'\left(x\right) = \theta\left(x^{1-q}\right).$$
 	We claim that the torus character pairs $\left(\algebraicGroup{T}_2 \times \algebraicGroup{T}_2, \theta \times \theta\right)$ and $\left(\algebraicGroup{T}'_2, \theta'\right)$ are geometrically conjugate. Indeed, if $m \ge 2$ is even, then $\left(\algebraicGroup{T}'_2\right)^{\Frobenius^{m}} = \multiplicativegroup{\finiteFieldExtension{m}} \times \multiplicativegroup{\finiteFieldExtension{m}}$ and $\algebraicGroup{T}_2^{\Frobenius^m} = \multiplicativegroup{\finiteFieldExtension{m}}$. The norm map $\left(\algebraicGroup{T}'_2\right)^{\Frobenius^{m}} \to \left(\algebraicGroup{T}'_2\right)^{\Frobenius}$ is given by $\multiplicativegroup{\finiteFieldExtension{m}} \times \multiplicativegroup{\finiteFieldExtension{m}} \ni \left(x,y\right) \mapsto \FieldNorm{m}{2}\left(x\right) \FieldNorm{m}{2}\left(y\right)$, while the norm map $\algebraicGroup{T}_2^{\Frobenius^{m}} \to \algebraicGroup{T}_2^{\Frobenius}$ is given by $\multiplicativegroup{\finiteFieldExtension{m}} \ni x \mapsto \FieldNorm{m}{2}\left(x\right)^{1-q}$. We thus have
@@ -1016,11 +1016,28 @@ In particular to analyze $g_{T,\rho}(\theta,\psi,\chi)$ for these $\rho$, we nee
 \begin{proof}
 Recall that $x_{T,\theta}$ is defined by for sufficiently large $m$ with $\zeta_m = 1/(q^m-1)$ under the fixed identification $\multiplicativegroup{\algebraicClosure{\finiteField}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}$
 \[
-    \exp(\langle x_{T,\theta},y\rangle) = \theta(y(N_{T(\finiteField_m):T(\finiteField)}(y(\zeta_m))).
+    \exp(\langle x_{T,\theta},y\rangle) = \theta((N_{T(\finiteField_m):T(\finiteField)}(y(\zeta_m))).
 \]
+\calvin{can cut this next part but for the sake of completeness in early drafts lets keep it:}
+For different tori with Frob action we get
+\begin{enumerate}
+    \item ($n$-cycle) $\algebraicGroup{T}(\finiteField) \cong \finiteField_n^\times$ with $$\FieldNorm{\algebraicGroup{T}(\finiteField_{mn})}{\algebraicGroup{T}(\finiteField)}(y_1,y_2 \hdots y_n)(\zeta_{mn}) = (\zeta_n)^{y_1+qy_2+q^2y_3 \hdots +q^{n-1}y_n}$$
+    \item ($n$-cycle with one negative) $\algebraicGroup{T}(\finiteField) \cong \{x \in \finiteField_{2n}^\times: \FieldNorm{2n}{n}(x) = 1\}$ with $$\FieldNorm{\algebraicGroup{T}(\finiteField_{2mn})}{\algebraicGroup{T}(\finiteField)}(y_1,y_2 \hdots y_n)(\zeta_{2mn}) = (\beta_n)^{y_1+qy_2+q^2y_3 \hdots +q^{n-1}y_n}$$
+    where $\beta_n = \zeta_{2n}^{1-q^n}$.
+    \item ($(-1) \cdot n$-cycle, $n$ even) $\algebraicGroup{T}(\finiteField) \cong \finiteField_n^\times$ with $$\FieldNorm{\algebraicGroup{T}(\finiteField_{mn})}{\algebraicGroup{T}(\finiteField)}(y_1,y_2 \hdots y_n)(\zeta_{mn}) = (\zeta_n)^{y_1-qy_2+q^2y_3-q^3y_4 \hdots -q^{n-1}y_n}$$
+    \item ($(-1) \cdot n$-cycle, $n$ odd) $\algebraicGroup{T}(\finiteField) \cong \{x \in \finiteField_{2n}^\times: \FieldNorm{2n}{n}(x) = 1\}$ with $$\FieldNorm{\algebraicGroup{T}(\finiteField_{2mn})}{\algebraicGroup{T}(\finiteField)}(y_1,y_2 \hdots y_n)(\zeta_{2mn}) = (\beta_n)^{y_1-qy_2+q^2y_3-q^3y_4 \hdots +q^{n-1}y_n}$$
+    where $\beta_n = \zeta_{2n}^{1-q^n}$.
+\end{enumerate}
+\calvin{end cut part}
+Now the results follow from checking that
+\[
+    (\theta_1 \times \theta_1^{-1}) \circ \FieldNorm{\algebraicGroup{T}_1(\finiteField_r)}{\algebraicGroup{T}_1(\finiteField)} (\vec{y})(\zeta_r) = \theta_2\circ \FieldNorm{\algebraicGroup{T}_2(\finiteField_r)}{\algebraicGroup{T}_2(\finiteField)}(\vec{y})(\zeta_r)
+\]
+for $r$ divisible as above.
+\begin{comment}
 Thus the result follows from the computations:
 \begin{enumerate}
-	\item \begin{align*}
+	\item[B,C,D Case 1] \begin{align*}
 		\exp(\langle\phi(x_{\finiteFieldExtension{n},\alpha}),(y_1,y_2)\rangle) &= \exp(\langle x_{\finiteFieldExtension{n},\alpha},\phi^*(y_1,y_2)\rangle) \\
 		&= \alpha\left(\FieldNorm{mn}{n}(y_1(\zeta_{mn})\right) \alpha\left(\FieldNorm{mn}{n}(y_2(\zeta_{mn})\right)^{-1} \\
 		&= \left(\alpha\times\alpha^{-1}\right)\left(\FieldNorm{mn}{n}((y_1,y_2)(\zeta_{mn}))\right)
@@ -1031,6 +1048,7 @@ Thus the result follows from the computations:
 		&= \theta'\left(\FieldNorm{2mn}{2n}((y_1,y_2)(\zeta_{mn}))\right)
 	\end{align*}
 \end{enumerate}
+\end{comment}
 \end{proof}
 
 
