@@ -340,6 +340,7 @@ We write a more explicit description of $\tilde{G}$ and $\tilde{\algebraicGroup{
 	\end{pmatrix}\right\}.$$
 \end{enumerate}
 
+
 \subsubsection{Rational Tori}
 A \emph{rational torus} $\algebraicGroup{T} \subset \algebraicGroup{G}$ over $\finiteField$ is a torus defined over $\finiteField$. 
 Over a finite field, $\algebraicGroup{G}(\finiteField)$ conjugacy classes of maximal rank rational tori \calvin{check if we need connected or something} are parameterized by  Frobenius order twisted conjugacy classes in the Weyl group. In particular if you fix a rational torus $\algebraicGroup{T}_0$ with rank $=\mathrm{rk} \algebraicGroup{G}$ and an element $g \in \algebraicGroup{G}(\algebraicClosure{\finiteField})$ such that $g^{-1}\Frobenius(g) \in N(\algebraicGroup{T}_0)$ then the torus $g\algebraicGroup{T}_0g^{-1}$ is rational, and it's $\algebraicGroup{G}(\finiteField)$-conjugacy class is determined  by the Frobeinus-twisted conjugacy class of the image of $g^{-1}\Frobenius(g)$ in $W(\algebraicGroup{T}_0)(\algebraicClosure{\mathbb{F}})$, see \cite[Section 3.3]{Carter1985}.
@@ -485,8 +486,21 @@ $$\NormOneGroup{2m} := \left\{ x \in \multiplicativegroup{\finiteFieldExtension{
 
 \subsection{Deligne--Lusztig theory}
 \elad{Write a 101-intro to Deligne--Lusztig but not too detailed}
+For each maximal rational torus $\algebraicGroup{T}$ in $\algebraicGroup{G}$, Deligne and Lusztig contructed a geometric space with commuting actions of $\algebraicGroup{T}(\finiteField)$ and $\algebraicGroup{G}$.
+The $\ell$-adic \'etale Euler characteristic of this space is a $\algebraicGroup{T}(\finiteField) \times \algebraicGroup{G}(\finiteField)$ virtual representation, and taking the $\algebraicGroup{T}(\finiteField)$ $\theta$-invariants gives a $\algebraicGroup{G}(\finiteField)$ virtual representation $R_T^G(\theta)$.
+The $R_T^G(\theta)$ only depends on the $\algebraicGroup{G}(\finiteField)$-conjugacy class of $(\algebraicGroup{T},\theta)$ and
+the collection of virtual representations $\{R_T^G(\theta)\}$ contain every irreducible $\algebraicGroup{G}(\finiteField)$-representation as a sub-virtual representation.
 
-
+\begin{proposition}[cite Digne Michel Cor 12.7]
+Treating $R_T^G(\theta)$ as a class function of $\algebraicGroup{G}(\finiteField)$ via the character of $R_T^G(\theta)$, for any class function $f$ on $\algebraicGroup{G}(\finiteField)$ which satisfies $f(g) = f(s)$ when $g=su$ is the Jordan decompositoin of $g$, we have
+\[
+	\langle R_T^G(\theta),f \rangle_{\algebraicGroup{G}(\finiteField)} = \langle \theta, f|_{\algebraicGroup{T}(\finiteField)}\rangle_{\algebraicGroup{T}(\finiteField)}
+\]
+in other words:
+\[
+	\frac{1}{|\algebraicGroup{G}(\finiteField)|}\sum_{g \in \algebraicGroup{G}(\finiteField)}\left(R_T^G(\theta)\right)(g)f(g) = \frac{1}{|\algebraicGroup{T}(\finiteField)|}\sum_{t \in  \algebraicGroup{T}(\finiteField)} \theta(t)f(t)
+\]
+\end{proposition}
 
 \subsubsection{Geometric Conjugacy and Lusztig Series}
 Let $\ell$ be a prime number not equal to the characteristic of $\finiteField$. Fix an isomorphism $\ladicnumbers \cong \cComplex$.
@@ -526,7 +540,7 @@ We say that the torus character pairs $(\algebraicGroup{T},\theta)$ and $(\algeb
 	$$\left(\theta \times \theta\right) \circ \aFieldNorm_{ \left(\algebraicGroup{T}_2 \times \algebraicGroup{T}_2\right)^{\Frobenius^m} : \left(\algebraicGroup{T}_2 \times \algebraicGroup{T}_2\right)^{\Frobenius} } = \theta' \circ \aFieldNorm_{\left(\algebraicGroup{T}'_2\right)^{\Frobenius^m} \colon \left(\algebraicGroup{T}'_2\right)^{\Frobenius}}.$$
 \end{example}
 
-The \emph{geometric Lusztig series} $\LusztigSeries{\algebraicGroup{G}^{\Frobenius}}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \algebraicGroup{G}^*$ consists of all (equivalence classes of) irreducible representations $\pi$ which appear with non-zero multiplicity in $R_{\algebraicGroup{T}, \theta}$ for some $(T,\theta)$ such that $(s_{\algebraicGroup{T},\theta}) = (s)$.
+The virtual representations $R_T^G(\theta)$ and $R_{T'}^G(\theta')$ share an irreducible representation only if $(T,\theta),(T',\theta')$ are geometrically conjugate. This yields a natural partitioning of the irreducible representations of $\algebraicGroup{G}(\finiteField)$: the \emph{geometric Lusztig series} $\LusztigSeries{\algebraicGroup{G}^{\Frobenius}}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \algebraicGroup{G}^*$ consists of all (equivalence classes of) irreducible representations $\pi$ which appear with non-zero multiplicity in $R_{\algebraicGroup{T}, \theta}$ for some $(T,\theta)$ such that $(s_{\algebraicGroup{T},\theta}) = (s)$.
 
 \begin{center}
 	\begin{tabular}{|c|c|c|c|c|c|} \hline
