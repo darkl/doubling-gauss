@@ -934,6 +934,15 @@ Here is a basic example of a stable class function.
 \begin{proof}
 By \cite[Lemma 2.2]{Malle2007}, if $\pi$ and $\pi'$ lie in the same geometric Lusztig series, then they have the same central character. The result now immediately follows.
 \end{proof}
+%adding in the commented out sketched proof just in case:
+\begin{comment}
+\begin{proof}
+The Deligne Lusztig variety is a subset of the group, for any $z \in \algebraicGroup{Z}(\finiteField)$ we can move the action of $z \in algebraicGroup{G}(\finiteField)$ to the action of $z \in \algebraicGroup{T}(\finiteField)$
+Thus it suffices to show that $\theta|_{\algebraicGroup{Z}(\finiteField))} = \theta'|_{\algebraicGroup{Z}(\finiteField)}$
+But this follows from geometric conjugacy: for large enough $n$, $\theta \circ \fieldNorm{n}{1}|_{\algebraicGroup{Z}(\finiteField))} = \theta'\circ \fieldNorm{n}{1}|_{\algebraicGroup{Z}(\finiteField)}$
+and the Norm map is surjective.
+\end{proof}
+\end{comment}
 
 
 The main result of this paper is 
