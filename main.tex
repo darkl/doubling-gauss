@@ -60,6 +60,8 @@
 \newcommand{\yIsotropic}{\mathrm{Y}}
 \newcommand{\similitudeCharacter}{\operatorname{sim}}
 \newcommand{\etale}{\'etale }
+\newcommand{\Erdelyi}{Erd{\'e}lyi}
+\newcommand{\Toth}{T{\'o}th}
 
 % Inner product
 \newcommand{\innerproduct}[2]{\left\langle #1,#2\right\rangle}
@@ -200,6 +202,46 @@
 \tableofcontents
 
 \section{Introduction}
+
+Gauss sums are prominent objects in number theory...
+
+Let $\finiteField$ be a finite field with $q$ elements and let $\fieldCharacter \colon \finiteField \to \multiplicativegroup{\cComplex}$ be a non-trivial character. Given a character $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ the normalized Gauss sum corresponding to the data $\left(\chi, \fieldCharacter\right)$ is defined by the formula
+$$\tau\left(\chi, \fieldCharacter\right) = -\frac{1}{\sqrt{q}}\sum_{x \in \multiplicativegroup{\finiteField}} \chi\left(x\right) \fieldCharacter\left(x\right).$$
+
+In the 1960s, Kondo \cite{Kondo1963} introduced an interesting exponential sum, which can be thought of as a higher dimensional version of the Gauss sum defined above. Let $\pi$ be an irreducible representation of $\GL_n\left(\finiteField\right)$. Then the sum $$\GaussSum{\pi}{\fieldCharacter} = q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \fieldCharacter\left(\trace g\right) \pi\left(g\right)$$
+defines an operator in $\Hom_{\GL_n\left(\finiteField\right)}\left(\pi, \pi\right)$. Since $\pi$ is irreducible, by Schur's lemma there exists a scalar $\GaussSumScalar{\pi}{\fieldCharacter} \in \cComplex$ such that $$\GaussSum{\pi}{\fieldCharacter} = \GaussSumScalar{\pi}{\fieldCharacter} \cdot \idmap_{\pi}.$$
+
+In \cite{Kondo1963}, Kondo explicitly computed $\GaussSumScalar{\pi}{\fieldCharacter}$. His result shows that $\GaussSumScalar{\pi}{\fieldCharacter}$ can be expressed as a product of Gauss sums as above associated to the multiplicative characters that correspond to $\pi$ in the Deligne--Lusztig parameterization.
+
+In \cite{Zelingher2024}, the second author utilized Kondo's result to explicitly express twisted matrix Kloosterman sums in terms of Hall--Littlewood polynomials evaluated at the eigenvalues of the Frobenius action on the corresponding twisted Kloosterman sheaf. As a result, he resolved a conjecture of \Erdelyi{}--\Toth{} \cite{ErdelyiToth2024}.
+
+It is natural to ask whether the results of Kondo in \cite{Kondo1963} and the results of the second author in \cite{Zelingher2024} mentioned above have generalizations to other groups besides $\GL_n\left(\finiteField\right)$. An attempt to generalize Kondo's result was given by Saito--Shinoda in \cite{SaitoShinoda2000}. Given a classical group $G$, embedded naturally as a subgroup of a general linear group, and an irreducible representation $\pi$ of $G$, they considered the analogous Gauss sum
+$$\sum_{g \in G} \pi\left(g\right) \fieldCharacter\left(\trace g\right).$$
+
+As before, by Schur's lemma, this sum is scalar multiple of $\idmap_{\pi}$. However, the computations of Saito--Shinoda show that this scalar is not well behaved, even for the case $\Sp_{4}\left(\finiteField\right)$. The main issue with this naive Gauss sum is that it is \emph{not constant on Lusztig series}.
+
+An alternative approach for defining an analog of Kondo's Gauss sum comes from the theory of automorphic representations. Not long after Kondo's result was published, Godement and Jacquet \cite{GodementJacquet1972} defined a theory for standard $L$-functions for $\GL_n$. Nowadays it is known that the finite field analog of the Godemenet--Jacquet gamma factor corresponding to an irreducible representation $\pi$ of $\GL_n\left(\finiteField\right)$ coincides with Kondo's Gauss sum of $\pi$, see \cite[Section 2]{Macdonald80}.
+
+Since Godement--Jacquet developed their theory for the standard $L$-functions, many other constructions for $L$-functions attached to different representations have appeared in the literature. Unlike the construction of Godement--Jacquet, most of these constructions require the representations in question to satisfy certain genericity conditions. In the 1980s, Piatetski-Shapiro and Rallis \cite{PiatetskiShapiroRallis1986, GelbartPiatetskiShapiroRallis1987} discovered a new construction of (twisted) standard $L$-functions for classical groups. Their construction, known as ``the doubling method'', does not require the representations in question to satisfy any genericity condition, and it is similar to the construction of Godement--Jacquet in some sense. In fact, it is closely related to the construction of Godement--Jacquet, which shows up as certain inner integrals when considering parabolically induced representations of the classical group.
+
+Thus, a promising way to obtain a well behaved exponential sum for classical groups is to consider the finite field analog of the ``doubling method'' construction of Piatetski-Shapiro--Rallis and analyzing the formula for the gamma factor that this theory yields. This was done for $\Sp_{2n}\left(\finiteField\right)$ by Jun Chang \cite{Chang1997} in her doctoral thesis. In the upcoming work of Girsch and the second author \cite{GirschZelingher2025}, the finite field theory analog of the doubling method is developed for all classical groups.
+
+The computations of \cite{Chang1997} and \cite{GirschZelingher2025} show that, generically speaking, the finite field doubling method gamma factor for classical groups is given by exponential sums that resemble Jacobi sums. Let $G \subset \GL\left(\hermitianSpace\right)$ be a classical group, corresponding to the space $\left(\hermitianSpace, \innerproduct{\cdot}{\cdot}\right)$, and let $\lieAlgebra \subset \EndomorphismRing\left(\hermitianSpace\right)$ be the Lie algebra of $G$. Given an irreducible representation $\pi$ of $G$ and a character $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ such that $\chi^2 \ne 1$, the exponential sums arising from the finite field doubling method gamma factor of $\pi$ are given by the formula
+$$\dblJacobiSum{\pi}{\chi} = \frac{1}{\sizeof{\lieAlgebra}^{1 \slash 2}} \sum_{\substack{g \in G\\
+\det\left(g \pm \idmap_{\hermitianSpace}\right) \ne 0}} \pi\left(g\right) \chi\left(\det\left(\idmap_{\hermitianSpace} \pm g\right)\right).$$
+
+Notice that $$\negDblJacobiSum{\pi}{\chi} = \frac{1}{\sizeof{\lieAlgebra}^{1/2}}\sum_{\substack{g \in G, h \in \GL\left(\hermitianSpace\right)\\
+g + h = \idmap_{\hermitianSpace}}} \pi\left(g\right) \chi\left(\detQuadratic\left(h\right)\right),$$
+which resembles a classical Jacobi sum attached to characters $\chi_1, \chi_2 \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$:
+$$\sum_{\substack{x_1,x_2 \in \multiplicativegroup{\finiteField}\\
+		x_1 + x_2 = 1}} \chi_1\left(x\right) \chi_2\left(x_2\right).$$
+
+As before, we have that $\posDblJacobiSum{\pi}{\chi}$ and $\negDblJacobiSum{\pi}{\chi}$ lie in $\Hom_G\left(\pi, \pi\right)$. Since $\pi$ is irreducible, by Schur's lemma there exists scalars $\dblJacobiSumScalar{\pi}{\chi} \in \multiplicativegroup{\cComplex}$ such that $$\dblJacobiSum{\pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \idmap_{\pi}.$$
+
+In this paper, we study the doubling method Jacobi sums $\dblJacobiSum{\pi}{\chi}$. We compute the scalars $\dblJacobiSumScalar{\pi}{\chi}$ in terms of the Deligne--Lusztig data corresponding to $\pi$ and show that, up to some well understood factors, it matches the Kondo Gauss sum of the conjectural functorial transfer of $\pi$ to a general linear group. This is done by combining a couple of ingredients. The first ingredient is a lemma of Saito--Shinoda \cite{SaitoShinoda2000} that allows us to explicitly compute the analogous character sums for Deligne--Lusztig virtual representations $R_{T, \theta}$.  The second ingredient, which is a key ingredient for this computation, is that these Jacobi sums are well behaved, in the sense that they are constant on Lusztig series. To show this, we utilize a multiplicativity property of these Jacobi sums from \cite{GirschZelingher2025} and combine it with a careful analysis of the Deligne--Lusztig data corresponding to $\pi$ after functorial transfer. 
+
+
+\elad{Write about the Braverman--Kazhdan proposal that generalizes Godement--Jacquet to all groups and all representations, but is not explicit.}
 
 \section{Preliminaries}
 Let $\finiteField$ be a finite field with $q$ elements, where $2 \nmid q$, and let $\fieldCharacter \colon \finiteField \to \multiplicativegroup{\cComplex}$ be a non-trivial character. Fix an algebraic closure $\algebraicClosure{\finiteField}$ of $\finiteField$. For any $k \ge 1$, let $\finiteFieldExtension{k} \slash \finiteField$ be the unique field extension of degree $k$ contained in $\algebraicClosure{\finiteField}$. If $k' \mid k$, let $\FieldNorm{k}{k'} \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\finiteFieldExtension{k'}}$ be the norm map.
