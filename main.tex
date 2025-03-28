@@ -51,7 +51,7 @@
 \newcommand{\conjugate}[1]{\overline{#1}}
 \newcommand{\indicatorFunction}[1]{\delta_{#1}}
 \newcommand{\isomorphic}{\cong}
-\newcommand{\lengthof}{\mathfrak{n}}
+\newcommand{\lengthof}{\ell}
 \newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\sizeof}[1]{\left|#1\right|}
 \newcommand{\lcm}{\operatorname{lcm}}
@@ -164,7 +164,7 @@
 \newcommand{\FrobeniusFixedPoints}[2][\Frobenius]{\algebraicGroup{#2}^{#1}}
 \newcommand{\CharacterLattice}[1]{X^{\ast}\left(#1\right)}
 \newcommand{\CocharacterLattice}[1]{X_{\ast}\left(#1\right)}
-
+\newcommand{\SymmetricGroup}{\mathfrak{S}}
 
 
 \newcommand{\calvin}[1]{\textcolor{orange}{\sffamily ((CALVIN: #1))}}
@@ -217,6 +217,7 @@ If $\alpha \colon \multiplicativegroup{\finiteFieldExtension{n}} \to \multiplica
 $$\tau\left(\alpha \times \chi, \fieldCharacter_n\right) = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha\left(x\right) \chi\left( \FieldNorm{n}{1}\left(x\right)\right) \fieldCharacter_n\left(x\right).$$
 
 We are now ready to state Kondo's result.
+%test
 \begin{theorem}[Kondo {\cite{Kondo1963}}]
 	Suppose that $\tau$ is an irreducible representation of $\GL_n\left(\finiteField\right)$ with cuspidal support $\left\{\tau_1,\dots, \tau_r\right\}$, where $n_1 + \dots + n_r = n$, and where for every $j$, $\tau_j$ is an irreducible cuspidal representation of $\GL_{n_j}\left(\finiteField\right)$ corresponding to the Frobenius orbit of a regular character $\theta_j \colon \multiplicativegroup{\finiteFieldExtension{n_j}} \to \multiplicativegroup{\cComplex}$. Then
 	$$\GaussSumScalar{\tau \times \chi}{\fieldCharacter} = \left(-1\right)^n \cdot \prod_{j=1}^r \GaussSumCharacter{\theta_j}{\chi}{\fieldCharacter_{n_j}}.$$
@@ -342,19 +343,24 @@ We write a more explicit description of $\tilde{G}$ and $\tilde{\algebraicGroup{
 
 \subsubsection{Rational Tori}
 A \emph{rational torus} $\algebraicGroup{T} \subset \algebraicGroup{G}$ over $\finiteField$ is a torus defined over $\finiteField$. 
-Over a finite field, $\algebraicGroup{G}(\finiteField)$ conjugacy classes of maximal rank rational tori \calvin{check if we need connected or something} are parameterized by  Frobenius order twisted conjugacy classes in the Weyl group. In particular if you fix a rational torus $\algebraicGroup{T}_0$ with rank $=\mathrm{rk} \algebraicGroup{G}$ and an element $g \in \algebraicGroup{G}(\algebraicClosure{\finiteField})$ such that $g^{-1}\Frobenius(g) \in N(\algebraicGroup{T}_0)$ then the torus $g\algebraicGroup{T}_0g^{-1}$ is rational, and it's $\algebraicGroup{G}(\finiteField)$-conjugacy class is determined  by the Frobeinus-twisted conjugacy class of the image of $g^{-1}\Frobenius(g)$ in $W(\algebraicGroup{T}_0)(\algebraicClosure{\mathbb{F}})$, see \cite[Section 3.3]{Carter1985}.
+Over a finite field, $\algebraicGroup{G}(\finiteField)$ conjugacy classes of maximal rank rational tori \calvin{check if we need connected or something} are parameterized by  Frobenius order twisted conjugacy classes in the Weyl group. In particular if we fix a rational torus $\algebraicGroup{T}_0$ with rank $\mathrm{rk} \algebraicGroup{G}$ and an element $g \in \algebraicGroup{G}(\algebraicClosure{\finiteField})$ such that $g^{-1}\Frobenius(g) \in N(\algebraicGroup{T}_0)$ then the torus $g\algebraicGroup{T}_0g^{-1}$ is rational, and its $\algebraicGroup{G}(\finiteField)$-conjugacy class is determined  by the Frobeinus-twisted conjugacy class of the image of the Lang map $L \colon \algebraicGroup{G}\left(\algebraicClosure{\finiteField}\right) \to \algebraicGroup{G}\left(\algebraicClosure{\finiteField}\right)$ defined as $L\left(g\right) = g^{-1}\Frobenius(g)$ in $W(\algebraicGroup{T}_0)(\algebraicClosure{\mathbb{F}})$, see \cite[Section 3.3]{Carter1985}.
 
 %since $\Frobenius(g\algebraicGroup{T}_0g^{-1}) = g\algebraicGroup{T}_0g^{-1}$
 %could really demonstrate this by stating Land map is surjective + that all maximal tori are conjugate over an algebraiclly closed field
 
 %since $\Frobenius(g\algebraicGroup{T}_0g^{-1}) = g\algebraicGroup{T}_0g^{-1}$
 %could really demonstrate this by stating Land map is surjective + that all maximal tori are conjugate over an algebraiclly closed field
+
+Let us denote $$\left(\quadraticExtension, x \mapsto \involution{x}\right) = \begin{dcases}
+	\left(\finiteFieldExtension{2}, x \mapsto x^q\right)  & \algebraicGroup{G} \text{ is a unitary group},\\
+	\left(\finiteField, x \mapsto x\right) & \text{otherwise.}
+\end{dcases}$$
 
 Let $\algebraicGroup{A}_n \subset \algebraicGroup{\GL}_n$ be the diagonal torus. We denote for an element $g \in \algebraicGroup{\GL}_n$, $g^{\ast} = w_n \transpose{g}^{-1} w_n$, where $w_n$ is the long Weyl element (see \Cref{subsec:isometry-groups}). Using $\algebraicGroup{A}_n$ we define standard (mostly split) tori in our groups as follows.
 \begin{center}
 \begin{tabular}{|c|c|}
 	\hline 
-		$\algebraicGroup{G}$ & $\algebraicGroup{T}^{\mathrm{std}}_{\algebraicGroup{G}}$ \tabularnewline
+		$\algebraicGroup{G}$ & $\algebraicGroup{T}_0$ \tabularnewline
 		\hline 
 		\hline 
 		$\algebraicGroup{\UnitaryGroup}_{2n}$ & $\left\{ \begin{pmatrix}
@@ -391,7 +397,7 @@ Here, $\algebraicGroup{T}^{\mathrm{std}}_{\algebraicGroup{G}}$ is split for all 
 \begin{center}
 	\begin{tabular}{|c|c|}
 		\hline 
-		$\algebraicGroup{G}$ & $\algebraicGroup{T}^{\mathrm{std}}_{\algebraicGroup{G}}$ \tabularnewline
+		$\algebraicGroup{G}$ & $\algebraicGroup{T}_0$ \tabularnewline
 		\hline 
 		\hline 
 		$\algebraicGroup{\GSp}_{2n}$ or $\algebraicGroup{\GSO}^{+}_{2n}$ & $\left\{\left(\begin{pmatrix}
@@ -413,75 +419,82 @@ Here we realize $\restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\
 \end{pmatrix}, \lambda\right) \mid a^2 - db^2 = \lambda \in \multiplcativeScheme \right\},$$
 where $d$ is as in \Cref{subsec:isometry-groups}.
 
-In the unitary case, the action of $\Frobenius$ on $W(\algebraicGroup{T}_{\algebraicGroup{U}}^{std})$ is conjugation by $w_n$. In the $\algebraicGroup{SO}^-_{2n}$ case, the action of $\Frobenius$ on $W(\algebraicGroup{T}_{\algebraicGroup{U}}^{std})$ is the outer automorphism on the Dynkin diagram of type D. In terms of signed permutations with an even number of negative signs this corresponds to conjugation by the transposition $(-1,1)$ \calvin{or the $(-n,n)$. Kinda depends on conventions. The most correct thing to say is it corresponds to conjugation by the matrix $\begin{pmatrix} I_{n-1} & 0 & 0&0 \\ 0 &0&1&0\\0&1&0&0\\0&0&0&I_{n-1}\end{pmatrix}$}. In all other cases, the action of $\Frobenius$ on $W(\algebraicGroup{T}_{\algebraicGroup{U}}^{std})$ is trivial. We now parameterize the Weyl group $\Frobenius$-twisted conjugacy classes and their corresponding tori:
-
+In the unitary case, the action of $\Frobenius$ on the Weyl group $W\left(\algebraicGroup{T}_{\algebraicGroup{\UnitaryGroup}_n}^{\mathrm{std}}\right)$ is conjugation by $w_n$. In the $\algebraicGroup{\SO}^-_{2n}$ case, the action of $\Frobenius$ on the Weyl group $W\left(\algebraicGroup{T}_{\algebraicGroup{\SO}^{-}_{2n}}^{\mathrm{std}}\right)$ is the outer automorphism on the Dynkin diagram of type $D_n$. In our matrix representation, $\Frobenius$ acts on the Weyl group by conjugation by the matrix $$\left(-n,n\right) \coloneq \begin{pmatrix}\IdentityMatrix{n-1} & 0 & 0 & 0\\
+	0 & 1 & 0 & 0\\
+	0 & 0 & -1 & 0\\
+	0 & 0 & 0 & \IdentityMatrix{n-1}
+\end{pmatrix}.$$ In all other cases, the action of $\Frobenius$ on $W(\algebraicGroup{T}_0)$ is trivial. We now parameterize the Weyl group $\Frobenius$-twisted conjugacy classes and their corresponding tori.
 
 \begin{enumerate}
-    \item (Type A: Unitary groups) The map $w \mapsto w\cdot w_n$ sends a $w_n$-twisted $S_n$ conjugacy class to an $S_n$ conjugacy class. Thus twisted conjugacy classes are determined by the cycle partition $\lambda$ associated to $w\cdot w_n$. The corresponding algebraic torus is \calvin{$L$ is the lang map}
-	$$^{L^{-1}w}\algebraicGroup{T} =\prod_{i} \begin{dcases}
-	\restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} & \lambda_i \textnormal{ is even} \\
-	\restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}  & \lambda_i \textnormal{ is odd}
-	\end{dcases}$$
-    \item (Type B, C, D: Special orthogonal and symplectic groups)
-    Conjugacy classes in the type B Weyl (signed permutations) group are classified by pairs of partitions $(\lambda^+,\lambda^-)$.
-	\begin{enumerate}[(a)]
-        \item ($\algebraicGroup{SO}_{2n+1}$ or $\algebraicGroup{Sp}$) Let $(\lambda^+,\lambda^-)$ correspond to the conjugacy class of $w$. Then
-		$$^{L^{-1}w}\algebraicGroup{T} = \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^-_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1} $$
-        \item ($\algebraicGroup{SO}_{2n}^+$) Viewing the type D Weyl (even signed permutations) group as a subgroup of signed permutations, we can associate to a $(\lambda^+,\lambda^-)$ pair via the conjugacy class of $w$. Then
-		$$^{L^{-1}w}\algebraicGroup{T} = \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^-_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1} $$
-		\item ($\algebraicGroup{SO}_{2n}^-$) The map $w \mapsto w\circ (-1,1)$ sends a $(-1,1)$-twisted conjugacy class in the even signed permutation group to a conjugacy class in the signed permutation group. Let $(\lambda^+,\lambda^-)$ correspond to the signed permutation group conjugacy class of $w\circ (-1,1)$. Then
-		$$^{L^{-1}w}\algebraicGroup{T} = \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^-_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1} $$
-	\end{enumerate}
-	\item (Type C,D similitude groups)
-        \begin{enumerate}[(a)]
-        \item ($\algebraicGroup{GSp}$ or $\algebraicGroup{GSO}_{2n}^+$) Let $(\lambda^+,\lambda^-)$ correspond to the signed permutation group conjugacy class of $w$. Then \calvin{probably should have an alternate description}
-        $$^{L^{-1}w}\algebraicGroup{T} = \{(\vec{x},\vec{y},\lambda) \in  \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{2\lambda^-_i}}{\finiteField}{\multiplcativeScheme}  \times \multiplcativeScheme\} | \FieldNorm{2\lambda_i^-}{\lambda_i^-}(y_i) = \lambda \textnormal{ for all }y_i\}$$
-		\item ($\algebraicGroup{SO}_{2n}^-$) Let $(\lambda^+,\lambda^-)$ correspond to the signed permutation group conjugacy class of $w\circ (-1,1)$. Then
-		$$^{L^{-1}w}\algebraicGroup{T} = \{(\vec{x},\vec{y},\lambda) \in  \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{2\lambda^-_i}}{\finiteField}{\multiplcativeScheme}  \times \multiplcativeScheme\} | \FieldNorm{2\lambda_i^-}{\lambda_i^-}(y_i) = \lambda \textnormal{ for all }y_i\}$$
+    \item Unitary groups: The Weyl group $W\left(\algebraicGroup{\UnitaryGroup}_n\right)$ is isomorphic to the symmetric group $\SymmetricGroup_n$. If $\dot{w} \in \algebraicGroup{\UnitaryGroup}_n$ is a lift of $w \in W\left(\algebraicGroup{\UnitaryGroup}_n\right)$, the map $w \mapsto \dot{w} \cdot w_n$ sends a $w_n$-twisted $\SymmetricGroup_n$ conjugacy class to a $\SymmetricGroup_n$ conjugacy class. Thus twisted conjugacy classes are determined by the cycle partition $\lambda \vdash n$ associated to $\dot{w} \cdot w_n$. Let us denote by $\lambda^+$ the partition formed by taking the even parts of $\lambda$ and by $\lambda^{-}$ the partition formed by taking the odd parts of $\lambda$. The corresponding algebraic torus is
+	$$^{L^{-1}w}\algebraicGroup{T}_0 \cong \prod_{i} 	\restrictionOfScalars{\finiteFieldExtension{\lambda^{+}_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \\
+	\restrictionOfScalars{\finiteFieldExtension{\lambda_i^{-}}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}.$$
+	% The embedding into the unitary group requires conjugation by \diag(1,1,1,\sqrt{d},\sqrt{d},\sqrt{d}). I would rather not write it.
+	
+	%The embedding into $\algebraicGroup{\UnitaryGroup}_n$ is given by the map %\begin{equation}\label{eq:torus-embedding-unitary-group}
+	%	\left( \left(g_i\right)_{i=1}^{\lengthof\left(\lambda^+\right)}, \left(h_i\right)_{i=1}^{\lengthof\left(\lambda^-\right)}\right) \mapsto \diag(g_1,\dots, g_{\lengthof\left(\lambda^+\right)}, h_1^{\ast}, \dots, h_{\lengthof\left(\lambda^{-}\right)}^{\ast}, \involution{(g^{\ast}_{\lengthof\left(\lambda^+\right)})}, \dots, \involution{(g^{\ast}_1)}).
+	%\end{equation}
+	See also \cite[Section 2.3]{ThiemVinroot2009} and \cite[Section 2.2]{SaitoShinoda2000}.
+    \item (Odd special orthogonal and symplectic groups)
+    For $\algebraicGroup{\Sp}_{2n}$ or $\algebraicGroup{\SO}_{2n+1}$, the Weyl group is isomorphic to $$\left\{\pm 1\right\}^n \rtimes \SymmetricGroup_n,$$ which we can identify with the group signed permutations. The conjugacy classes of the Weyl group are classified by pairs of partitions $(\lambda^+,\lambda^-)$ with $\sizeof{\lambda^+} + \sizeof{\lambda^-} = n$. See \cite[Section 2.2]{KonvalinkaMatjavPfeiffer2011} for more details. Let $(\lambda^+,\lambda^-)$ correspond to the conjugacy class of $w$ in the Weyl group. Then
+		$$^{L^{-1}w}\algebraicGroup{T}_0 \cong \prod_{j} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_j}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^-_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}.$$
+		See also \cite[Section 3.2 Part (B)]{Zalesski2018}.
+        \item (Even special orthogonal groups) The Weyl group of $\algebraicGroup{SO}_{2n}^{\pm}$ is isomorphic to $$\left\{ \left(x_1,\dots,x_n\right) \in \left\{\pm 1\right\}^n \mid \prod_{i=1}^n x_i = 1\right\} \rtimes \SymmetricGroup_n,$$ which can be realized the subgroup of the group of signed permutations, consisting of all even signed permutations. Using this realization, we may attach to $w$ in the Weyl group a pair of partitions $\left(\lambda^+, \lambda^-\right)$ as before, with $\sizeof{\lambda^+} + \sizeof{\lambda^-} = n$. If $\lambda^{-}$ is not the empty partition, the pair $\left(\lambda^+, \lambda^-\right)$ determines the conjugacy class of $w$. Otherwise, there are two different conjugacy classes of the Weyl group corresponding to the same pair $\left(\lambda^{+}, \lambda^{-}\right)$. These two conjugacy class correspond to isomorphic tori, and these tori are not conjugate in $\algebraicGroup{\SO}_{2n}^{\pm}$. See \cite[Section 2.3]{KonvalinkaMatjavPfeiffer2011} for more details.
+        \begin{enumerate}
+        	\item (Split case): For $\algebraicGroup{\SO}_{2n}^+$ we have that
+        	$$^{L^{-1}w}\algebraicGroup{T}_0 = \prod_{j} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_j}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^-_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}.$$
+			See also \cite[Section 3.2 Parts (C) and (D)]{Zalesski2018}.        	
+        	\item (Non-split case): As in the unitary group case, for $\algebraicGroup{SO}_{2n}^-$, the map $w \mapsto \dot{w}\circ (-n,n)$ sends a $(-n,n)$-twisted conjugacy class in the even signed permutation group to a conjugacy class in the signed permutation group. Let $(\lambda^+,\lambda^-)$ correspond to the signed permutation group conjugacy class of $\dot{w} \circ (-n,n)$. Then
+        	$$^{L^{-1}w}\algebraicGroup{T}_0 = \prod_{j} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_j}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^-_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}.$$
+			See also \cite[Section 3.2 Part (D)]{Zalesski2018}. Notice that we differ from that \cite{Zalesski2018} since we do not incorporate the element $\left(-n, n\right)$ in the Frobenius root.
         \end{enumerate}
-\end{enumerate}
+    \end{enumerate}
+	We summarize all these cases in the following theorem.
+	
+	\begin{theorem}
+		A maximal rational torus $\algebraicGroup{T}$ of $\algebraicGroup{G} = \algebraicGroup{\UnitaryGroup}_{n}, \algebraicGroup{\Sp}_{2n}, \algebraicGroup{\SO}_{2n + 1}, \algebraicGroup{\SO}_{2n}^{\pm}$ is isomorphic to $$\algebraicGroup{T} \cong \prod_{j} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_j}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^-_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1},$$
+		where $\left(\lambda^+, \lambda^-\right)$ is a pair of partitions such that $\sizeof{\lambda^+} + \sizeof{\lambda^-} = n$, where in the unitary group case we require that $\lambda^+$ consists only of even parts and that $\lambda^-$ consists only of odd parts. We have that $$\algebraicGroup{T}^{\Frobenius} \cong \prod_{j} \multiplicativegroup{\finiteFieldExtension{\lambda_j^+}} \times \prod_{i} \NormOneGroup{2 \lambda_i^{-}}.$$ The embedding $\algebraicGroup{T}^{\Frobenius} \to \algebraicGroup{G}^{\Frobenius}$ is of the form $$\left(\left(a_j\right)_{j=1}^{\lengthof\left(\lambda^+\right)}, \left(t_i\right)_{i=1}^{\lengthof\left(\lambda^-\right)}\right) \mapsto
+		\begin{pmatrix}
+			\iota_+\left( \left(a_j\right)_{j=1}^{\lengthof\left(\lambda^+\right)}\right)\\
+			& \iota_{-}\left( \left(t_i\right)_{i=1}^{\lengthof\left(\lambda^-\right)}
+			 \right) &\\
+			 & & \involution{\iota_+^{\ast}\left( \left(a_j\right)_{j=1}^{\lengthof\left(\lambda^+\right)}\right)}
+		\end{pmatrix},$$
+		where $\iota_+ \colon \prod_{j} \multiplicativegroup{\finiteFieldExtension{\lambda_j^+}} \to \GL_{\frac{\sizeof{\lambda^+}}{\grpIndex{\quadraticExtension}{\finiteField}}}\left(\quadraticExtension\right)$ and $\iota_- \colon \prod_{i} \NormOneGroup{2 \lambda_j^-} \to G'$ are embeddings. Here, $G'$ is a group of the same type as $\algebraicGroup{G}^{\Frobenius}$, with $n$ replaced by $\sizeof{\lambda^{-}}$.
+		
+		In the odd special orthogonal case, the embedding $\iota_{-}$ can be chosen to fix the middle standard vector $e_{n+1}$.
+	\end{theorem}
+    
+    
+    In addition, we write the tori classification for the similitude groups we consider.
+	\begin{enumerate}
+		\item For $\algebraicGroup{\GSp}_{2n}$ or $\algebraicGroup{\GSO}_{2n}^+$, suppose that $(\lambda^+,\lambda^-)$ corresponds to the conjugacy class of $w$ as an element of the group of signed permutations. Then
+			\begin{align*}
+				^{L^{-1}w}\algebraicGroup{T}_0 \cong& \left\{\left(\left(x_j\right)_{i=1}^{\lengthof\left(\lambda^+\right)},\left(y_j\right)_{i=1}^{\lengthof\left(\lambda^-\right)},t\right) \mid \FieldNorm{2\lambda_i^-}{\lambda_i^-}(y_i) = t \text{ for every } i\right\} \\
+				& \subset \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{2\lambda^-_i}}{\finiteField}{\multiplcativeScheme}  \times \multiplcativeScheme.
+			\end{align*}
+			\item For $\algebraicGroup{\GSO}_{2n}^-$, let $(\lambda^+,\lambda^-)$ correspond to the conjugacy class of $w\circ (-n,n)$ viewed as an element of the group of signed permutations. Then
+			\begin{align*}
+				^{L^{-1}w}\algebraicGroup{T}_0 \cong& \left\{\left(\left(x_j\right)_{i=1}^{\lengthof\left(\lambda^+\right)},\left(y_j\right)_{i=1}^{\lengthof\left(\lambda^-\right)},t\right) \mid \FieldNorm{2\lambda_i^-}{\lambda_i^-}(y_i) = t \text{ for every } i\right\} \\
+				& \subset \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{2\lambda^-_i}}{\finiteField}{\multiplcativeScheme}  \times \multiplcativeScheme.
+			\end{align*}
+	\end{enumerate}
 
-
-A summary of the types of tori are
-\begin{center}
-	\begin{tabular}{|c|c|c|}
-		\hline 
-		$\algebraicGroup{G}$ & $W(\algebraicGroup{T}^{\mathrm{std}}_{\algebraicGroup{G}})$ $\Frobenius$-conj. class& corresponding torus\tabularnewline
-		\hline 
-		\hline 
-		$\algebraicGroup{\UnitaryGroup}$ & $\lambda = [w]$ &$\prod_{i} \begin{dcases}
-	\restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} & \lambda_i \textnormal{ is even} \\
-	\restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}  & \lambda_i \textnormal{ is odd}
-	\end{dcases}$  
-    \tabularnewline 
-    \hline
-        $\begin{array}{c}
-\algebraicGroup{\SO}_{2n+1}, \algebraicGroup{\Sp}_{2n}, \algebraicGroup{\SO}^{+}_{2n}\\
-\algebraicGroup{\SO}^{-}_{2n}
-\end{array}$ &
-$(\lambda^+,\lambda^-) = \begin{cases}
-[w] \\
-[w\circ (-1,1)]
-\end{cases}$ & $\prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^-_i}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1} $\tabularnewline
-	\hline 
-		\hline
-        $\begin{array}{c}
-\algebraicGroup{\GSp}_{2n}, \algebraicGroup{\GSO}^{+}_{2n}\\
-\algebraicGroup{\GSO}^{-}_{2n}
-\end{array}$ &
-$(\lambda^+,\lambda^-) = \begin{cases}
-[w] \\
-[w\circ (-1,1)]
-\end{cases}$ & $\prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \left(\prod_{i} \restrictionOfScalars{\finiteFieldExtension{2\lambda^-_i}}{\finiteField}{\multiplcativeScheme}  \times_{\FieldNorm{2\lambda^-_i}{\lambda^-_i}} \multiplcativeScheme\right) $\tabularnewline
-		\hline		
-	\end{tabular}
-\end{center}
-
-\elad{Under construction}
-If $m \ge 1$, we denote 
-$$\NormOneGroup{2m} := \left\{ x \in \multiplicativegroup{\finiteFieldExtension{2m}} \mid \FieldNorm{2m}{m}\left(x\right)= 1\right\} = \left(\mathrm{Res}_{\mathbb{F}_{m}:\mathbb{F}} \algebraicGroup{U}(1)\right)(\mathbb{F}).$$
-
-
+	We summarize these cases in the following theorem.
+	\begin{theorem}
+	A maximal rational torus $\algebraicGroup{T}$ of $\algebraicGroup{G} =  \algebraicGroup{\GSp}_{2n}, \algebraicGroup{\GSO}_{2n}^{\pm}$ is isomorphic to \begin{align*}
+		\algebraicGroup{T} \cong& \left\{\left(\left(x_j\right)_{i=1}^{\lengthof\left(\lambda^+\right)},\left(y_j\right)_{i=1}^{\lengthof\left(\lambda^-\right)},t\right)  \mid \FieldNorm{2\lambda_i^-}{\lambda_i^-}(y_i) = t \text{ for every } i\right\} \\
+		& \subset \prod_{i} \restrictionOfScalars{\finiteFieldExtension{\lambda^+_i}}{\finiteField}{\multiplcativeScheme} \times \prod_{i} \restrictionOfScalars{\finiteFieldExtension{2\lambda^-_i}}{\finiteField}{\multiplcativeScheme}  \times \multiplcativeScheme.
+	\end{align*}
+	where $\left(\lambda^+, \lambda^-\right)$ is a pair of partitions such that $\sizeof{\lambda^+} + \sizeof{\lambda^-} = n$. We have that $$\algebraicGroup{T}^{\Frobenius} \cong \left\{\left(\left(a_j\right)_{j = 1}^{\lengthof\left(\lambda^+\right)}, \left(t_i\right)_{i = 1}^{\lengthof\left(\lambda^-\right)}, z\right) \mid \FieldNorm{2 \lambda_i^{-}}{\lambda_i^{-}}\left(t_i\right) = z \text{ for all } i \right\} \subset \prod_{j} \multiplicativegroup{\finiteFieldExtension{\lambda_j^+}} \times \prod_{i} \multiplicativegroup{\finiteFieldExtension{2 \lambda_i^{-}}} \times \multiplicativegroup{\finiteField}.$$ The embedding $\algebraicGroup{T}^{\Frobenius} \to \algebraicGroup{G}^{\Frobenius}$ is of the form $$\left(\left(a_j\right)_{j=1}^{\lengthof\left(\lambda^+\right)}, \left(t_i\right)_{i=1}^{\lengthof\left(\lambda^-\right)}, z\right) \mapsto
+	\begin{pmatrix}
+		z \cdot \iota_+\left( \left(a_j\right)_{j=1}^{\lengthof\left(\lambda^+\right)}\right)\\
+		& \iota_{-}\left( \left(t_i\right)_{i=1}^{\lengthof\left(\lambda^-\right)}, z
+		\right) &\\
+		& & \iota_+^{\ast}\left( \left(a_j\right)_{j=1}^{\lengthof\left(\lambda^+\right)}\right)
+	\end{pmatrix},$$
+	where $\iota_+ \colon \prod_{j} \multiplicativegroup{\finiteFieldExtension{\lambda_j^+}} \to \GL_{\sizeof{\lambda^+}}\left(\finiteField\right)$ and $$\iota_- \colon \left\{ \left(\left(t_i\right)_{i=1}^{\lengthof\left(\lambda^-\right)}, z\right)\in \prod_{i} \finiteFieldExtension{2\lambda^{-}_i} \times \multiplicativegroup{\finiteField} \mid \FieldNorm{2 \lambda_i^{-}}{\lambda_i^{-}}\left(t_i\right) = z \text{ for all } i \right\} \to G'$$ are embeddings. Here, $G'$ is a group of the same type as $\algebraicGroup{G}^{\Frobenius}$, with $n$ replaced by $\sizeof{\lambda^{-}}$.
+\end{theorem}
 
 \subsection{Deligne--Lusztig theory}
 \elad{Write a 101-intro to Deligne--Lusztig but not too detailed}
