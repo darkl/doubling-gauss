@@ -196,6 +196,8 @@
 \end{abstract}
 \maketitle
 
+\tableofcontents
+
 \section{Introduction}
 
 \section{Preliminaries}
@@ -1040,7 +1042,7 @@ In particular to analyze $g_{T,\rho}(\chi,\theta,\psi)$ for these $\rho$, we nee
         \item[B,C,D Case 2)] $w$ is conjugate to an $n$-cycle with one negative:
  In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $w$ on the preimage and by a $2n$ cycle on the image, and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n})$
     \item[$G=\algebraicGroup{U}$ Case 1)] $w$ is conjugate to $(1,2 \hdots n)$ an even cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the product of two $n$ cycles $\begin{pmatrix} w & 0 \\
-        0 & w
+        0 & w^{\ast}
         \end{pmatrix} \cdot \begin{pmatrix} 0 & I\\I & 0
         \end{pmatrix}$  on the image, and 
     \item[$G=\algebraicGroup{U}$ Case 2)] $w$ is conjugate to $(1,2 \hdots n)$ an odd cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the $2n$ cycle $\begin{pmatrix} w & 0 \\
@@ -1104,14 +1106,12 @@ For the former we will show
 \[
 g_{T,\rho}(\chi,\theta,\psi)= g_{T}(\chi,\theta,\psi) \cdot \begin{cases}
         1  & G \neq Sp, GSp\\
-        \tau{\chi}{\psi} & G = Sp \textnormal{ or } GSp
+        \tau\left(\chi, \fieldCharacter\right) & G = Sp \textnormal{ or } GSp
     \end{cases}.
 \]
 \calvin{$\chi$ or $\chi^{-1}$? Check throughout proof!}
 We will do this casewise, demonstrating in each case that the Frobeinus equivariant map $X_*(\algebraicGroup{T}) \to X_*(\algebraicGroup{G})$ decomposes into a direct sum of $\phi$'s appearing in \Cref{lem:cochar_computation}. Useful here is the description of the rational maximal tori $\algebraicGroup{T} \subseteq \algebraicGroup{G}$ and geometric Frobeinus action on $X_*(\algebraicGroup{T})$. 
 
-\GaussSumCharacter{\left(\theta'_i\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2\lambda_i^-}} 
-\GaussSumCharacter{\alpha_i}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}}.
 \begin{enumerate}
     \item[($\algebraicGroup{U}$)] Given $(T,\theta)$, let $T$ correspond to the $w_n$-twisted conjugacy class $[w]$. Let $w \circ w_n$ have cycle decomposition $\lambda$ 
 	and $\theta$ decompose as a product over $\lambda_i$ of $\alpha_i$ if $\lambda_i$ is even and $\theta_i$ if $\lambda_i$ is odd. Then
