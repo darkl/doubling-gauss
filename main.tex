@@ -403,7 +403,7 @@ Let $\algebraicGroup{A}_n \subset \algebraicGroup{\GL}_n$ be the diagonal torus.
 	\hline		
 	\end{tabular}
 \end{center}
-Here, $\algebraicGroup{T}^{\mathrm{std}}_{\algebraicGroup{G}}$ is split for all rows except for the last row. We also write down the standard tori for the relevant corresponding similitude groups.
+Here, $\algebraicGroup{T}_{0}$ is split for all rows except for the last row. We also write down the standard tori for the relevant corresponding similitude groups.
 \begin{center}
 	\begin{tabular}{|c|c|}
 		\hline 
@@ -429,14 +429,14 @@ Here we realize $\restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\
 \end{pmatrix}, \lambda\right) \mid a^2 - db^2 = \lambda \in \multiplcativeScheme \right\},$$
 where $d$ is as in \Cref{subsec:isometry-groups}.
 
-In the unitary case, the action of $\Frobenius$ on the Weyl group $W\left(\algebraicGroup{T}_{\algebraicGroup{\UnitaryGroup}_n}^{\mathrm{std}}\right)$ is conjugation by $w_n$. In the $\algebraicGroup{\SO}^-_{2n}$ case, the action of $\Frobenius$ on the Weyl group $W\left(\algebraicGroup{T}_{\algebraicGroup{\SO}^{-}_{2n}}^{\mathrm{std}}\right)$ is the outer automorphism on the Dynkin diagram of type $D_n$. In our matrix representation, $\Frobenius$ acts on the Weyl group by conjugation by the matrix $$\left(-n,n\right) \coloneq \begin{pmatrix}\IdentityMatrix{n-1} & 0 & 0 & 0\\
+In the unitary group case, the action of $\Frobenius$ on the Weyl group $W\left(\algebraicGroup{T}_{0}\right)$ is conjugation by $w_n$. In the $\algebraicGroup{\SO}^-_{2n}$ case, the action of $\Frobenius$ on the Weyl group $W\left(\algebraicGroup{T}_{0}\right)$ is the outer automorphism on the Dynkin diagram of type $D_n$. In our matrix representation, $\Frobenius$ acts on the Weyl group by conjugation by the matrix $$\left(-n,n\right) \coloneq \begin{pmatrix}\IdentityMatrix{n-1} & 0 & 0 & 0\\
 	0 & 1 & 0 & 0\\
 	0 & 0 & -1 & 0\\
 	0 & 0 & 0 & \IdentityMatrix{n-1}
 \end{pmatrix}.$$ In all other cases, the action of $\Frobenius$ on $W(\algebraicGroup{T}_0)$ is trivial. We now parameterize the Weyl group $\Frobenius$-twisted conjugacy classes and their corresponding tori.
 
 \begin{enumerate}
-    \item Unitary groups: The Weyl group $W\left(\algebraicGroup{\UnitaryGroup}_n\right)$ is isomorphic to the symmetric group $\SymmetricGroup_n$. If $\dot{w} \in \algebraicGroup{\UnitaryGroup}_n$ is a lift of $w \in W\left(\algebraicGroup{\UnitaryGroup}_n\right)$, the map $w \mapsto \dot{w} \cdot w_n$ sends a $w_n$-twisted $\SymmetricGroup_n$ conjugacy class to a $\SymmetricGroup_n$ conjugacy class. Thus twisted conjugacy classes are determined by the cycle partition $\lambda \vdash n$ associated to $\dot{w} \cdot w_n$. Let us denote by $\lambda^+$ the partition formed by taking the even parts of $\lambda$ and by $\lambda^{-}$ the partition formed by taking the odd parts of $\lambda$. The corresponding algebraic torus is
+    \item Unitary groups: The Weyl group $W\left(\algebraicGroup{T}_{0}\right)$ is isomorphic to the symmetric group $\SymmetricGroup_n$. If $\dot{w} \in \algebraicGroup{\UnitaryGroup}_n$ is a lift of $w \in W\left(\algebraicGroup{T}_{0}\right)$, the map $w \mapsto \dot{w} \cdot w_n$ sends a $w_n$-twisted $\SymmetricGroup_n$ conjugacy class to a $\SymmetricGroup_n$ conjugacy class. Thus twisted conjugacy classes are determined by the cycle partition $\lambda \vdash n$ associated to $\dot{w} \cdot w_n$. Let us denote by $\lambda^+$ the partition formed by taking the even parts of $\lambda$ and by $\lambda^{-}$ the partition formed by taking the odd parts of $\lambda$. The corresponding algebraic torus is
 	$$^{L^{-1}w}\algebraicGroup{T}_0 \cong \restrictionOfScalars{\finiteFieldExtension{\lambda^{+}}}{\finiteField}{\multiplcativeScheme} \times \restrictionOfScalars{\finiteFieldExtension{\lambda^{-}}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}.$$
 	% The embedding into the unitary group requires conjugation by \diag(1,1,1,\sqrt{d},\sqrt{d},\sqrt{d}). I would rather not write it.
 	
@@ -458,7 +458,7 @@ In the unitary case, the action of $\Frobenius$ on the Weyl group $W\left(\algeb
 			See also \cite[Section 3.2 Part (D)]{Zalesski2018}. Notice that we differ from that \cite{Zalesski2018} since we do not incorporate the element $\left(-n, n\right)$ in the Frobenius root.
         \end{enumerate}
     \end{enumerate}
-	We summarize all these cases in the following theorem.
+	The following theorem summarizes these cases.
 	
 	\begin{theorem}
 		A maximal rational torus $\algebraicGroup{T}$ of $\algebraicGroup{G} = \algebraicGroup{\UnitaryGroup}_{n}, \algebraicGroup{\Sp}_{2n}, \algebraicGroup{\SO}_{2n + 1}, \algebraicGroup{\SO}_{2n}^{\pm}$ is isomorphic to 	$$\algebraicGroup{T} \cong \restrictionOfScalars{\finiteFieldExtension{\lambda^{+}}}{\finiteField}{\multiplcativeScheme} \times \restrictionOfScalars{\finiteFieldExtension{\lambda^{-}}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1},$$
@@ -486,7 +486,7 @@ In the unitary case, the action of $\Frobenius$ on the Weyl group $W\left(\algeb
 			\end{align*}
 	\end{enumerate}
 
-	We summarize these cases in the following theorem.
+	The following theorem summarizes these cases.
 	\begin{theorem}
 	A maximal rational torus $\algebraicGroup{T}$ of $\algebraicGroup{G} =  \algebraicGroup{\GSp}_{2n}, \algebraicGroup{\GSO}_{2n}^{\pm}$ is isomorphic to \begin{align*}
 				^{L^{-1}w}\algebraicGroup{T}_0 \cong& \left\{\left(x,y,z\right) \in  \restrictionOfScalars{\finiteFieldExtension{\lambda^+}}{\finiteField}{\multiplcativeScheme} \times \restrictionOfScalars{\finiteFieldExtension{2\lambda^-}}{\finiteField}{\multiplcativeScheme}  \times \multiplcativeScheme \mid \FieldNorm{2\lambda^-}{\lambda^-}(y) = z \right\}.
