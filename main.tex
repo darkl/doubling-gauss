@@ -207,6 +207,8 @@ Let $\finiteField$ be a finite field with $q$ elements, where $2 \nmid q$, and l
 Given a partition $\lambda = \left(\lambda_1, \dots, \lambda_\ell\right)$, we denote the \etale $\finiteField$-algebra $$\finiteFieldExtension{\lambda} = \prod_{i=1}^{\ell} \finiteFieldExtension{\lambda_i}$$ and define
 $$\multiplicativegroup{\finiteFieldExtension{\lambda}} = \prod_{i=1}^{\ell} \multiplicativegroup{\finiteFieldExtension{\lambda_i}}.$$
 
+\elad{Need to define $2 \lambda$ and $\FieldNorm{2\lambda}{\lambda}$ and $\NormOneGroup{2 \lambda}$}
+
 \subsection{Representation theory of $\GL_n\left(\finiteField\right)$}
 
 \subsection{Gauss sums}
@@ -460,11 +462,11 @@ In the unitary case, the action of $\Frobenius$ on the Weyl group $W\left(\algeb
 	
 	\begin{theorem}
 		A maximal rational torus $\algebraicGroup{T}$ of $\algebraicGroup{G} = \algebraicGroup{\UnitaryGroup}_{n}, \algebraicGroup{\Sp}_{2n}, \algebraicGroup{\SO}_{2n + 1}, \algebraicGroup{\SO}_{2n}^{\pm}$ is isomorphic to 	$$\algebraicGroup{T} \cong \restrictionOfScalars{\finiteFieldExtension{\lambda^{+}}}{\finiteField}{\multiplcativeScheme} \times \restrictionOfScalars{\finiteFieldExtension{\lambda^{-}}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1},$$
-		where $\left(\lambda^+, \lambda^-\right)$ is a pair of partitions such that $\sizeof{\lambda^+} + \sizeof{\lambda^-} = n$, where in the unitary group case we require that $\lambda^+$ consists only of even parts and that $\lambda^-$ consists only of odd parts. We have that $$\algebraicGroup{T}^{\Frobenius} \cong \multiplicativegroup{\finiteFieldExtension{\lambda^+}} \times \NormOneGroup{2 \lambda^{-}}.$$ The embedding $\algebraicGroup{T}^{\Frobenius} \to \algebraicGroup{G}^{\Frobenius}$ is of the form $$\left(a, t\right) \mapsto
+		where $\left(\lambda^+, \lambda^-\right)$ is a pair of partitions such that $\sizeof{\lambda^+} + \sizeof{\lambda^-} = n$, where in the unitary group case we require that $\lambda^+$ consists only of even parts and that $\lambda^-$ consists only of odd parts. We have that $$\algebraicGroup{T}^{\Frobenius} \cong \multiplicativegroup{\finiteFieldExtension{\lambda^+}} \times \NormOneGroup{2 \lambda^{-}}.$$ The embedding $\algebraicGroup{T}^{\Frobenius} \to \algebraicGroup{G}^{\Frobenius}$ is of the form $$\left(x, y\right) \mapsto
 		\begin{pmatrix}
-			\iota_+\left(a\right)\\
-			& \iota_{-}\left(t\right) &\\
-			 & & \involution{\iota_+^{\ast}\left(a\right)}
+			\iota_+\left(x\right)\\
+			& \iota_{-}\left(y\right) &\\
+			 & & \involution{\iota_+^{\ast}\left(x\right)}
 		\end{pmatrix},$$
 		where $\iota_+ \colon \multiplicativegroup{\finiteFieldExtension{\lambda^+}} \to \GL_{\frac{\sizeof{\lambda^+}}{\grpIndex{\quadraticExtension}{\finiteField}}}\left(\quadraticExtension\right)$ and $\iota_- \colon \NormOneGroup{2 \lambda^{-}} \to G'$ are embeddings. Here, $G'$ is a group of the same type as $\algebraicGroup{G}^{\Frobenius}$, with $n$ replaced by $\sizeof{\lambda^{-}}$.
 		
@@ -489,7 +491,7 @@ In the unitary case, the action of $\Frobenius$ on the Weyl group $W\left(\algeb
 	A maximal rational torus $\algebraicGroup{T}$ of $\algebraicGroup{G} =  \algebraicGroup{\GSp}_{2n}, \algebraicGroup{\GSO}_{2n}^{\pm}$ is isomorphic to \begin{align*}
 				^{L^{-1}w}\algebraicGroup{T}_0 \cong& \left\{\left(x,y,z\right) \in  \restrictionOfScalars{\finiteFieldExtension{\lambda^+}}{\finiteField}{\multiplcativeScheme} \times \restrictionOfScalars{\finiteFieldExtension{2\lambda^-}}{\finiteField}{\multiplcativeScheme}  \times \multiplcativeScheme \mid \FieldNorm{2\lambda^-}{\lambda^-}(y) = z \right\}.
 	\end{align*}
-	where $\left(\lambda^+, \lambda^-\right)$ is a pair of partitions such that $\sizeof{\lambda^+} + \sizeof{\lambda^-} = n$. We have that $$\algebraicGroup{T}^{\Frobenius} \cong \left\{\left(x, y, z\right) \in \multiplicativegroup{\finiteFieldExtension{\lambda^+}} \times \multiplicativegroup{\finiteFieldExtension{2 \lambda^-}} \times \multiplicativegroup{\finiteField} \mid \FieldNorm{2 \lambda^{-}}{\lambda^{-}}\left(t_i\right) = z \right\}.$$ The embedding $\algebraicGroup{T}^{\Frobenius} \to \algebraicGroup{G}^{\Frobenius}$ is of the form $$\left(x, y, z\right) \mapsto
+	where $\left(\lambda^+, \lambda^-\right)$ is a pair of partitions such that $\sizeof{\lambda^+} + \sizeof{\lambda^-} = n$. We have that $$\algebraicGroup{T}^{\Frobenius} \cong \left\{\left(x, y, z\right) \in \multiplicativegroup{\finiteFieldExtension{\lambda^+}} \times \multiplicativegroup{\finiteFieldExtension{2 \lambda^-}} \times \multiplicativegroup{\finiteField} \mid \FieldNorm{2 \lambda^{-}}{\lambda^{-}}\left(y\right) = z \right\}.$$ The embedding $\algebraicGroup{T}^{\Frobenius} \to \algebraicGroup{G}^{\Frobenius}$ is of the form $$\left(x, y, z\right) \mapsto
 	\begin{pmatrix}
 		z \cdot \iota_+ \left(x\right)\\
 		& \iota_{-}\left(y\right) &\\
