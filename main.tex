@@ -536,7 +536,7 @@ In the unitary group case, the action of $\Frobenius$ on the Weyl group $W\left(
 	where $\left(\lambda^+, \lambda^-\right)$ is a pair of partitions such that $\sizeof{\lambda^+} + \sizeof{\lambda^-} = n$. We have that $$\algebraicGroup{T}^{\Frobenius} \cong \left\{\left(x, y, z\right) \in \multiplicativegroup{\finiteFieldExtension{\lambda^+}} \times \multiplicativegroup{\finiteFieldExtension{2 \lambda^-}} \times \multiplicativegroup{\finiteField} \mid \FieldNorm{2 \lambda^{-}}{\lambda^{-}}\left(y\right) = z \right\}.$$ The embedding $\algebraicGroup{T}^{\Frobenius} \to \algebraicGroup{G}^{\Frobenius}$ is of the form $$\left(x, y, z\right) \mapsto
 	\begin{pmatrix}
 		z \cdot \iota_+ \left(x\right)\\
-		& \iota_{-}\left(y\right) &\\
+		& \iota_{-}\left(y,z\right) &\\
 		& & \iota_+^{\ast}\left(x\right)
 	\end{pmatrix},$$
 	where $\iota_+ \colon \multiplicativegroup{\finiteFieldExtension{\lambda^+}} \to \GL_{\sizeof{\lambda^+}}\left(\finiteField\right)$ and $$\iota_- \colon \left\{ \left(y, z\right)\in \multiplicativegroup{\finiteFieldExtension{2 \lambda^-}} \times \multiplicativegroup{\finiteField} \mid \FieldNorm{2 \lambda^{-}}{\lambda^{-}}\left(y\right) = z \text{ for all } i \right\} \to G'$$ are embeddings. Here, $G'$ is a group of the same type as $\algebraicGroup{G}^{\Frobenius}$, with $n$ replaced by $\sizeof{\lambda^{-}}$.
