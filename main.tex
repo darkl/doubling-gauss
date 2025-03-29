@@ -238,6 +238,20 @@ $$\sum_{\substack{x_1,x_2 \in \multiplicativegroup{\finiteField}\\
 
 As before, we have that $\posDblJacobiSum{\pi}{\chi}$ and $\negDblJacobiSum{\pi}{\chi}$ lie in $\Hom_G\left(\pi, \pi\right)$. Since $\pi$ is irreducible, by Schur's lemma there exists scalars $\dblJacobiSumScalar{\pi}{\chi} \in \multiplicativegroup{\cComplex}$ such that $$\dblJacobiSum{\pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \idmap_{\pi}.$$
 
+\calvin{I think I would like to include a main theorem here even if it's not super precise just to let the reader know what we highlight what we about the sum}
+\begin{theorem}[\Cref{thm:doubling-method-gamma-factor-for-deligne-thm:doubling-method-gamma-factor-for-deligne-lusztig},\Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}]
+	For classical groups $\algebraicGroup{G}$ and $\chi \neq \pm1$, $\genJacobiKernel{\pi,\chi}$ is a stable function which acts as the scalar
+	\[
+		\dblJacobiSumScalar{\pi}{\chi} = \begin{cases}
+		\varepsilon_{\algebraicGroup{H}} c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) g_T\left(\chi, \theta, \fieldCharacter\right) & + \\
+		c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \centralCharacter{\pi}\left(-1\right) g_T\left(\chi, \theta, \fieldCharacter\right) & - \textnormal{ and } \algebraicGroup{G} \neq \algebraicGroup{SO}_{2n+1} \\
+		0 & - \textnormal{ and } \algebraicGroup{G} = \algebraicGroup{SO}_{2n+1}
+		\end{cases}
+	\]
+	on $\pi$
+where $c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)$ is an explicit factor and
+$g_T\left(\chi, \theta, \fieldCharacter\right)$ is a product of Guass sums.
+\end{theorem}
 In this paper, we study the doubling method Jacobi sums $\dblJacobiSum{\pi}{\chi}$. We compute the scalars $\dblJacobiSumScalar{\pi}{\chi}$ in terms of the Deligne--Lusztig data corresponding to $\pi$ and show that, up to some well understood factors, they match the Kondo Gauss sum of the conjectural functorial transfer of $\pi$ to a general linear group. This is done by combining a couple of ingredients. The first ingredient is a lemma of Saito--Shinoda \cite{SaitoShinoda2000} that allows us to explicitly compute the analogous character sums for Deligne--Lusztig virtual representations $R_{T, \theta}$.  The second ingredient, which is a key ingredient for this computation, is that these Jacobi sums are well behaved, in the sense that they are constant on Lusztig series. To show this, we utilize a multiplicativity property of these Jacobi sums from \cite{GirschZelingher2025} and combine it with a careful analysis of the Deligne--Lusztig data corresponding to $\pi$ after functorial transfer. 
 
 
@@ -550,6 +564,7 @@ The $R_T^G(\theta)$ only depends on the $\algebraicGroup{G}(\finiteField)$-conju
 the collection of virtual representations $\{R_T^G(\theta)\}$ contain every irreducible $\algebraicGroup{G}(\finiteField)$-representation as a sub-virtual representation.
 
 \begin{proposition}[cite Digne Michel Cor 12.7]
+\label{prop:semisimple_pair_with_RTtheta}
 Treating $R_T^G(\theta)$ as a class function of $\algebraicGroup{G}(\finiteField)$ via the character of $R_T^G(\theta)$, for any class function $f$ on $\algebraicGroup{G}(\finiteField)$ which satisfies $f(g) = f(s)$ when $g=su$ is the Jordan decompositoin of $g$, we have
 \[
 	\langle R_T^G(\theta),f \rangle_{\algebraicGroup{G}(\finiteField)} = \langle \theta, f|_{\algebraicGroup{T}(\finiteField)}\rangle_{\algebraicGroup{T}(\finiteField)}
@@ -809,7 +824,7 @@ Let us realize $H = \algebraicGroup{H}^{\Frobenius}$, that is, $H$ is the group 
 Given a class function $F \colon H \to \cComplex$ (i.e., a function that is invariant under conjugation by elements of $G$), let us define $$\dblVirtualJacobiSumScalar{F}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} F\left(g\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(g\right).$$
 
 It is clear that if $\pi$ is an irreducible representation of $H$ then $$\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \dim \pi.$$
-Notice that the assignments $g \mapsto \posJacobiKernel{\chi}\left(g\right)$ and $g \mapsto \negJacobiKernel{\chi}\left(g\right)$ only depend on the semisimple part of $g \in H$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result.
+Notice that the assignments $g \mapsto \posJacobiKernel{\chi}\left(g\right)$ and $g \mapsto \negJacobiKernel{\chi}\left(g\right)$ only depend on the semisimple part of $g \in H$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result. \calvin{does this also follow from \Cref{prop:semisimple_pair_with_RTtheta}? Maybe we should say something about it}
 \begin{proposition}\label{prop:reduction-of-gauss-sum-to-torus}
 	For any $\Frobenius$-stable maximal torus $\algebraicGroup{T}$ of $\algebraicGroup{H}$, and any character $\theta \colon T \to \multiplicativegroup{\cComplex}$, where $T = \algebraicGroup{T}^{\Frobenius}$, we have
 	$$ \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{H}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(t\right).$$
@@ -827,7 +842,7 @@ This computation will be useful for the next section, which in turn will be usef
 
 Let us rewrite our sum as
 $$q^{-k} \sum_{z \in \finiteFieldExtension{k}} \sum_{x \in  \multiplicativegroup{\finiteFieldExtension{k}}} \sum_{y \in \multiplicativegroup{\finiteFieldExtension{k}}}\alpha\left(x\right) \chi\left(\FieldNorm{k}{1}\left(y\right)\right) \fieldCharacter_k\left(\left(y - \left(x + 1\right)\right)z\right).$$
-Since $\chi$ is non-trivial, when $z = 0$, the inner sum over $y$ will vanish. Hence, we have that our sum can be rewritten as
+Since $\chi$ is non-trivial, when $z = 0$, the inner sum over $y$ will vanish \calvin{It seems like the inner sum is a guass sum times $\sum_x \alpha(x)$. So if $\alpha$ is nontrivial it will vanish, otherwise we have some error term}. Hence, we have that our sum can be rewritten as
 $$q^{-k} \sum_{z \in \multiplicativegroup{\finiteFieldExtension{k}}} \sum_{x \in  \multiplicativegroup{\finiteFieldExtension{k}}} \sum_{y \in \multiplicativegroup{\finiteFieldExtension{k}}}\alpha\left(x\right) \chi\left(\FieldNorm{k}{1}\left(y\right)\right) \fieldCharacter_k\left(\left(y - \left(x + 1\right)\right)z\right).$$
 Replacing $x$ with $-z^{-1} x$ and $y$ with $z^{-1} y$ and $z$ with $-z$, this becomes
 $$q^{-k} \sum_{z \in \multiplicativegroup{\finiteFieldExtension{k}}} \alpha^{-1}\left(z\right) \chi^{-1}\left(\FieldNorm{k}{1}\left(z\right)\right) \fieldCharacter_k\left(z\right) \sum_{x \in  \multiplicativegroup{\finiteFieldExtension{k}}} \alpha\left(x\right) \fieldCharacter_k\left(x\right) \sum_{y \in \multiplicativegroup{\finiteFieldExtension{k}}} \chi\left(\FieldNorm{k}{1}\left(y\right)\right) \fieldCharacter_k\left(y\right).$$
@@ -836,7 +851,7 @@ $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
 x \ne -1}} \alpha\left(x\right) \chi\left(\FieldNorm{k}{1}\left(x+1\right)\right) = -q^{\frac{k}{2}} \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_k} \tau\left(\alpha, \fieldCharacter_k\right) \tau\left(\chi \circ \FieldNorm{k}{1}, \fieldCharacter_k\right).$$
 
 \subsubsection{Split torus computation II}
-We use the results from the previous section to compute the doubling method Jacobi sum for a torus of the form $\multiplicativegroup{\finiteFieldExtension{k}}$. Let $\alpha \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be characters such that $\involutionPlusOne{\chi} \ne 1$. Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
+We use the results from the previous section to compute the doubling method Jacobi sum for a torus of the form $\multiplicativegroup{\finiteFieldExtension{k}}$. Let $\alpha \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be characters such that $\involutionPlusOne{\chi} \ne 1$. \cavlin{should the characters be from $\mathbb{E}_k$ instead of $\mathbb{F}_k$?} Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
 		x \ne -1}} \alpha \left(x\right) \chi\left(\FieldNorm{k}{1}\left(1 + x\right)\right) \chi\left(\FieldNorm{k}{1}\left(1 + \minusInvolution{x}\right)\right).$$
 This can be rewritten as
 $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
@@ -1079,19 +1094,17 @@ In particular to analyze $g_{T,\rho}(\chi,\theta,\psi)$ for these $\rho$, we nee
 
 \begin{lemma}
 \label{lem:cochar_computation}
-    Let $\phi:X_*(\algebraicGroup{T}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^n \to X_*(\tilde{\algebraicGroup{T}}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^{2n}$ send $x$ to $(x,-x)$. Then we have the following cases corresponding to conjugacy classes in the Weyl group
+    Let $\phi:X_*(\algebraicGroup{T}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^n \to X_*(\tilde{\algebraicGroup{T}}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^{2n}$ send $x$ to $(x,-w_n x)$. Then we have the following cases corresponding to conjugacy classes in the Weyl group
     \begin{enumerate}
-        \item[B,C,D Case 1)] $w$ is conjugate to an $n$-cycle: \calvin{Add in note about the two type B cases. Maybe really should just talk about $\Frobenius$ action} In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $w$ on the preimage and the cycle $(w,w_nww_n)$ on the image, and $$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\finiteFieldExtension{n},\alpha})$$
+        \item[B,C,D Case 1)] $w$ is conjugate to an $n$-cycle: \calvin{Add in note about the two type B cases. Maybe really should just talk about $\Frobenius$ action} In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $w$ on the preimage and the cycle $(w,w^\ast)$ on the image, and $$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\finiteFieldExtension{n},\alpha})$$
         \item[B,C,D Case 2)] $w$ is conjugate to an $n$-cycle with one negative:
  In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $w$ on the preimage and by a $2n$ cycle on the image, and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n})$
-    \item[$G=\algebraicGroup{U}$ Case 1)] $w$ is conjugate to $(1,2 \hdots n)$ an even cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the product of two $n$ cycles $\begin{pmatrix} w & 0 \\
-        0 & w^{\ast}
-        \end{pmatrix} \cdot \begin{pmatrix} 0 & I\\I & 0
+    \item[$G=\algebraicGroup{U}$ Case 1)] $w$ is conjugate to $(1,2 \hdots n)$ an even cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the product of two $n$ cycles $\begin{pmatrix} 0 & w \\
+        w^\ast & 0
         \end{pmatrix}$  on the image, and 
-    \item[$G=\algebraicGroup{U}$ Case 2)] $w$ is conjugate to $(1,2 \hdots n)$ an odd cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the $2n$ cycle $\begin{pmatrix} w & 0 \\
-        0 & w_nwww_n
-        \end{pmatrix} \cdot \begin{pmatrix} 0 & I\\I & 0
-        \end{pmatrix}$ on the image , and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n})$
+    \item[$G=\algebraicGroup{U}$ Case 2)] $w$ is conjugate to $(1,2 \hdots n)$ an odd cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the $2n$ cycle $\begin{pmatrix} 0 & w \\
+        w^\ast & 0
+        \end{pmatrix}$ on the image, and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n})$
     \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -1110,12 +1123,13 @@ For different tori with Frob action we get
 \end{enumerate}
 Now the results follow from the equalities
 \begin{align*}
-	\alpha(\zeta^{((y_1-y_{n+1})+q(y_2-y_{n+2}) + \hdots +q^{n-1}(y_{n}-y_{2n}))})&=\alpha(\zeta^{(y_1+qy_2 + \hdots +q^{n-1}y_{n})}) \alpha^{-1}(\zeta^{(y_{n+1}+qy_{n+2} + \hdots +q^{n-1}y_{2n})}) \\
-	\theta(\beta^{((y_1-y_{n+1})+q(y_2-y_{n+2}) + \hdots +q^{n-1}(y_{n}-y_{2n}))})&=\theta(\beta^{(y_1+qy_2 + \hdots + q^{n-1}y_{n} + q^ny_{n+1}+q^{n+1}y_{n+2} \hdots +q^{2n-1}y_{2n})}) \\
-	&=\theta'(\zeta^{(y_1+q(y_2) + \hdots +q^{2n-1}y_{2n})})\\
-	\alpha(\zeta^{((y_1-y_{n+1})-q(y_2-y_{n+2}) +q^2(y_3-y_{n+3}) \hdots -q^{n-1}(y_{n}-y_{2n}))})&= \alpha(\zeta^{(y_1+qy_{n+2}+q^2y_3 +q^3y_4 \hdots +q^{n-1}y_{2n})}) \alpha^{-1}(\zeta^{(y_{n+1}+q(y_{2}) + q^2y_{n+3}\hdots +q^{n-1}y_{n})}) \\
-	\theta(\beta^{((y_1-y_{n+1})-q(y_2-y_{n+2}) +q^2(y_3-y_{n+3}) \hdots +q^{n-1}(y_{n}-y_{2n}))})&=\theta(\beta^{(y_1+qy_{n+2} +q^2y_3 \hdots + q^{n-1}y_{n} + q^ny_{n+1}+q^{n+1}y_{2} \hdots +q^{2n-1}y_{2n})}) \\
-	&=\theta'(\zeta^{(y_1+qy_2 + \hdots +q^{2n-1}y_{2n})})
+	\alpha(\zeta^{((y_1-y_{2n})+q(y_2-y_{2n-1}) + \hdots +q^{n-1}(y_{n}-y_{n+1}))})&=\alpha(\zeta^{(y_1+qy_2 + \hdots +q^{n-1}y_{n})}) \alpha^{-1}(\zeta^{(y_{2n}+qy_{2n-1} + \hdots +q^{n-1}y_{n+1})}) \\
+	\theta(\beta^{((y_1-y_{2n})+q(y_2-y_{2n-1}) + \hdots +q^{n-1}(y_{n}-y_{n+1}))})&=\theta(\beta^{(y_1+qy_2 + \hdots + q^{n-1}y_{n} + q^ny_{2n}+q^{n+1}y_{2n-1} \hdots +q^{2n-1}y_{n+1})}) \\
+	&=\theta'(\zeta^{(y_1+qy_2 + \hdots + q^{n-1}y_{n} + q^ny_{2n}+q^{n+1}y_{2n-1} \hdots +q^{2n-1}y_{n+1})})\\
+	\alpha(\zeta^{((y_1-y_{2n})-q(y_2-y_{2n-1}) +q^2(y_3-y_{2n-2}) \hdots -q^{n-1}(y_{n}-y_{n+1}))})&= \alpha(\zeta^{(y_1+qy_{2n-1}+q^2y_3 +q^3y_{2n-3} \hdots +q^{n-1}y_{n+1})}) \\
+	&\quad \cdot \alpha^{-1}(\zeta^{(y_{2n}+qy_{2} + q^2y_{2n-2} + \hdots +q^{n-1}y_{n})}) \\
+	\theta(\beta^{((y_1-y_{2n})-q(y_2-y_{2n-1}) +q^2(y_3-y_{2n-2}) \hdots +q^{n-1}(y_{n}-y_{n+1}))})&=\theta(\beta^{(y_1+qy_{2n-1} +q^2y_3 \hdots + q^{n-1}y_{n} + q^ny_{2n}+q^{n+1}y_{2} \hdots +q^{2n-1}y_{n+1})}) \\
+	&=\theta'(\zeta^{(y_1+qy_{2n-1} +q^2y_3 \hdots + q^{n-1}y_{n} + q^ny_{2n}+q^{n+1}y_{2} \hdots +q^{2n-1}y_{n+1})})
 \end{align*}
 %Now the results follow from checking that
 %\[
