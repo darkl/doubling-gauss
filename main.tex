@@ -639,7 +639,7 @@ Let $\pi$ be an irreducible representation of $H$ where $H \in \{G, \GroupExtens
 Since $\genJacobiKernel{\chi}$ is a class function of $\GL_{\quadraticExtension}\left(\hermitianSpace\right)$, and since $G$ is a normal subgroup of $H$, we have that $\genHermitianJacobiKernel{\hermitianSpace}{\chi}$ is a class function of $H$. It follows that $\dblJacobiSum{\pi}{\chi} \in \Hom_{H}\left(\pi, \pi\right)$. By Schur's lemma, there exists a constant $\dblJacobiSumScalar{\pi}{\fieldCharacter} \in \cComplex$, such that $$\dblJacobiSum{\pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$
 We call $\posDblJacobiSumScalar{\pi}{\chi}$ and $\negDblJacobiSumScalar{\pi}{\chi}$ the \emph{doubling method Jacobi sums}.
 
-\subsection{Multiplicativity property}
+\subsection{Multiplicativity}
 The goal of this section is to understand how the doubling method Jacobi sums behave under parabolic induction.
 
 \elad{TODO: work on section}
@@ -755,7 +755,8 @@ Using this notation and using the multiplicativity property of Kondo's Gauss sum
 	However, we will not need this version for our purposes. \elad{Check odd orthogonal case. Probably needs a sign modification (the formula needs to be $\left(-1\right)^{\text{dual group dimension}} \times \text{product of Gauss sums}$). $\varepsilon_{\algebraicGroup{G}}$ contributes half of the dimension so that's why we add another half here.}
 \end{remark}
 
-\subsection{Computation of character sums attached to Deligne--Lusztig data}
+\subsection{Pairing with Deligne--Lusztig characters}
+\calvin{old title: Computation of character sums attached to Deligne--Lusztig data}
 
 The goal of the next two sections is to compute $\dblJacobiSumScalar{\pi}{\chi}$ for $\pi$ that appears in a Deligne--Lusztig virtual character $R_{T,\theta}$ for a suitable maximal torus $T$ and $\theta \colon T \to \multiplicativegroup{\cComplex}$.
 
@@ -931,8 +932,7 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 	\end{align*}
 \end{remark}
 
-\subsection{Invariance under geometric conjugacy}
-\calvin{todo:type in some motivation for class functions whose product doesn't depend on geometric conjugacy, gamma functions whatever}.
+\subsection{Invariance of $\langle \JacobiKernel{}, R_T(\theta) \rangle$ under geometric conjugacy}
 
 Let $f \colon \algebraicGroup{G}^{\Frobenius} \to \cComplex$ be a class function. Then by Schur's lemma for any irreducible representation $\pi$, there exists $\gamma_{f}\left(\pi\right) \in \cComplex$ such that $$\sum_{g \in G} f(g)\pi(g) = \gamma_{f}\left(\pi\right) \cdot \idmap_{\pi}.$$
 
@@ -1183,6 +1183,7 @@ Since the sum above is a Gauss sum for $\GL$ it is equal to the Gauss sum attatc
 \end{proof}
 
 \subsection{Computation for geometric Lusztig series}
+\calvin{retitle: Stability of Jacobi sums}
 
 The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and results of Lusztig to determine $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ for any irreducible representation $\pi$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$.
 
@@ -1233,7 +1234,7 @@ So all the cuspidal $\pi$ in a Lusztig packet $\LusztigSeries{G}{s}$ are irreduc
 \calvin{end alternate writeup}
 \end{comment}
 \calvin{start alternate writeup 2 of section 3.4/3.4.1}
-\subsection{Computation for Lusztig Series}
+\subsection{Stability}
 The goal of this section is to prove \Cref{thm:Phi_stable} in particular:
 \begin{theorem}
 \label{thm:doubling-method-gamma-factor-for-deligne-lusztig} For either $G=G$ or its extension $\GroupExtension{G}$. If $c_{\pi}$ is nonzero in the virtual representation $R_T(\theta) = \sum c_{\pi} \pi$ then
