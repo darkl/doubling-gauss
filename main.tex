@@ -563,7 +563,7 @@ The $\ell$-adic \'etale Euler characteristic of this space is a $\algebraicGroup
 The $R_T^G(\theta)$ only depends on the $\algebraicGroup{G}(\finiteField)$-conjugacy class of $(\algebraicGroup{T},\theta)$ and
 the collection of virtual representations $\{R_T^G(\theta)\}$ contain every irreducible $\algebraicGroup{G}(\finiteField)$-representation as a sub-virtual representation.
 
-\begin{proposition}[cite Digne Michel Cor 12.7]
+\begin{proposition}[{\cite[Corollary 12.7]{DigneMichel1991}}]
 \label{prop:semisimple_pair_with_RTtheta}
 Treating $R_T^G(\theta)$ as a class function of $\algebraicGroup{G}(\finiteField)$ via the character of $R_T^G(\theta)$, for any class function $f$ on $\algebraicGroup{G}(\finiteField)$ which satisfies $f(g) = f(s)$ when $g=su$ is the Jordan decompositoin of $g$, we have
 \[
@@ -587,7 +587,7 @@ The \emph{dual group over $\finiteField$} of $\algebraicGroup{G}$ with respect t
 such that the isomorphism respects the Frobenius actions on $\CharacterLattice{\cdot}$ and $\CocharacterLattice{\cdot}$.
 
 Fix an isomorphism $\multiplicativegroup{\algebraicClosure{\finiteField}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}$ and an embedding $\exp:(\mathbb{Q}/\mathbb{Z})_{p'} \to \overline{\mathbb{Q}_\ell}^\times$. 
-By \cite[Proposition 13.7 (ii)]{DigneMichel2020}, we have an exact sequence
+By \cite[Proposition 13.7 (ii)]{DigneMichel1991}, we have an exact sequence
 \begin{equation}
 	\label{eq:DL}
 	\xymatrix{0 \ar[r] & \CocharacterLattice{\algebraicGroup{T}}_{(\mathbb{Q}/\mathbb{Z})_{p'}} \ar[r]^{\Frobenius-\idmap} & \CocharacterLattice{\algebraicGroup{T}}_{(\mathbb{Q}/\mathbb{Z})_{p'}} \ar[r] & \algebraicGroup{T} \ar[r] & 0}
@@ -599,7 +599,7 @@ We say that $(\algebraicGroup{T},\theta)$ is a \emph{torus character pair} for $
 \[
 \exp(\innerproduct{x_{\algebraicGroup{T},\theta}}{y}) = \theta(\aFieldNorm_{\algebraicGroup{T}^{\Frobenius^n}:\algebraicGroup{T}^{\Frobenius}}(y(\zeta_n)))
 \]
-for large enough $n$. This $x_{\algebraicGroup{T},\theta}$ is well defined up to the Weyl group, and in fact, by \cite[Corollary 13.9]{DigneMichel2020} there is a correspondence between torus character pairs $(\algebraicGroup{T},\theta)$ and $\Frobenius$-stable Weyl group orbits in $\CharacterLattice{\algebraicGroup{T}'}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$.  Using the given the identification $\CharacterLattice{\algebraicGroup{T}} = \CocharacterLattice{\algebraicGroup{T}^{\ast}}$ and composing with \eqref{eq:DL} (with $\algebraicGroup{T}$ replaced with $\algebraicGroup{T}^{\ast}$), we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $\algebraicGroup{G}^*$.
+for large enough $n$. This $x_{\algebraicGroup{T},\theta}$ is well defined up to the Weyl group, and in fact, by \cite[Corollary 13.9]{DigneMichel1991} there is a correspondence between torus character pairs $(\algebraicGroup{T},\theta)$ and $\Frobenius$-stable Weyl group orbits in $\CharacterLattice{\algebraicGroup{T}'}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$.  Using the given the identification $\CharacterLattice{\algebraicGroup{T}} = \CocharacterLattice{\algebraicGroup{T}^{\ast}}$ and composing with \eqref{eq:DL} (with $\algebraicGroup{T}$ replaced with $\algebraicGroup{T}^{\ast}$), we associate to a torus character pair a Frobenius stable semisimple conjugacy class in $\algebraicGroup{G}^*$.
 
 Denote the Frobenius semisimple conjugacy class associated to a torus character pair $(\algebraicGroup{T},\theta)$ by $(s_{\algebraicGroup{T},\theta})$. Similarly, denote the $\Frobenius$-stable Weyl group orbit in $\CharacterLattice{\algebraicGroup{T}}_{(\mathbb{Q}/\mathbb{Z})_{p'}}$ corresponding to $(\algebraicGroup{T},\theta)$ by $(x_{\algebraicGroup{T},\theta}).$
 
@@ -824,7 +824,7 @@ Let us realize $H = \algebraicGroup{H}^{\Frobenius}$, that is, $H$ is the group 
 Given a class function $F \colon H \to \cComplex$ (i.e., a function that is invariant under conjugation by elements of $G$), let us define $$\dblVirtualJacobiSumScalar{F}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} F\left(g\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(g\right).$$
 
 It is clear that if $\pi$ is an irreducible representation of $H$ then $$\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \dim \pi.$$
-Notice that the assignments $g \mapsto \posJacobiKernel{\chi}\left(g\right)$ and $g \mapsto \negJacobiKernel{\chi}\left(g\right)$ only depend on the semisimple part of $g \in H$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result. \calvin{does this also follow from \Cref{prop:semisimple_pair_with_RTtheta}? Maybe we should say something about it}
+Notice that the assignments $g \mapsto \posJacobiKernel{\chi}\left(g\right)$ and $g \mapsto \negJacobiKernel{\chi}\left(g\right)$ only depend on the semisimple part of $g \in H$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result. \calvin{does this also follow from \Cref{prop:semisimple_pair_with_RTtheta}? Maybe we should say something about it} \elad{Can you compare the proofs?}
 \begin{proposition}\label{prop:reduction-of-gauss-sum-to-torus}
 	For any $\Frobenius$-stable maximal torus $\algebraicGroup{T}$ of $\algebraicGroup{H}$, and any character $\theta \colon T \to \multiplicativegroup{\cComplex}$, where $T = \algebraicGroup{T}^{\Frobenius}$, we have
 	$$ \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{H}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(t\right).$$
@@ -842,7 +842,7 @@ This computation will be useful for the next section, which in turn will be usef
 
 Let us rewrite our sum as
 $$q^{-k} \sum_{z \in \finiteFieldExtension{k}} \sum_{x \in  \multiplicativegroup{\finiteFieldExtension{k}}} \sum_{y \in \multiplicativegroup{\finiteFieldExtension{k}}}\alpha\left(x\right) \chi\left(\FieldNorm{k}{1}\left(y\right)\right) \fieldCharacter_k\left(\left(y - \left(x + 1\right)\right)z\right).$$
-Since $\chi$ is non-trivial, when $z = 0$, the inner sum over $y$ will vanish \calvin{It seems like the inner sum is a guass sum times $\sum_x \alpha(x)$. So if $\alpha$ is nontrivial it will vanish, otherwise we have some error term}. Hence, we have that our sum can be rewritten as
+Since $\chi$ is non-trivial, when $z = 0$, the inner sum over $y$ will vanish \calvin{It seems like the inner sum is a guass sum times $\sum_x \alpha(x)$. So if $\alpha$ is nontrivial it will vanish, otherwise we have some error term} \elad{Note that the sum over $\alpha$ is with respect to a different variable $x$ so the sum over $y$ vanishes if $\chi \ne 1$}. Hence, we have that our sum can be rewritten as
 $$q^{-k} \sum_{z \in \multiplicativegroup{\finiteFieldExtension{k}}} \sum_{x \in  \multiplicativegroup{\finiteFieldExtension{k}}} \sum_{y \in \multiplicativegroup{\finiteFieldExtension{k}}}\alpha\left(x\right) \chi\left(\FieldNorm{k}{1}\left(y\right)\right) \fieldCharacter_k\left(\left(y - \left(x + 1\right)\right)z\right).$$
 Replacing $x$ with $-z^{-1} x$ and $y$ with $z^{-1} y$ and $z$ with $-z$, this becomes
 $$q^{-k} \sum_{z \in \multiplicativegroup{\finiteFieldExtension{k}}} \alpha^{-1}\left(z\right) \chi^{-1}\left(\FieldNorm{k}{1}\left(z\right)\right) \fieldCharacter_k\left(z\right) \sum_{x \in  \multiplicativegroup{\finiteFieldExtension{k}}} \alpha\left(x\right) \fieldCharacter_k\left(x\right) \sum_{y \in \multiplicativegroup{\finiteFieldExtension{k}}} \chi\left(\FieldNorm{k}{1}\left(y\right)\right) \fieldCharacter_k\left(y\right).$$
@@ -851,7 +851,7 @@ $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
 x \ne -1}} \alpha\left(x\right) \chi\left(\FieldNorm{k}{1}\left(x+1\right)\right) = -q^{\frac{k}{2}} \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_k} \tau\left(\alpha, \fieldCharacter_k\right) \tau\left(\chi \circ \FieldNorm{k}{1}, \fieldCharacter_k\right).$$
 
 \subsubsection{Split torus computation II}
-We use the results from the previous section to compute the doubling method Jacobi sum for a torus of the form $\multiplicativegroup{\finiteFieldExtension{k}}$. Let $\alpha \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be characters such that $\involutionPlusOne{\chi} \ne 1$. \cavlin{should the characters be from $\mathbb{E}_k$ instead of $\mathbb{F}_k$?} Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
+We use the results from the previous section to compute the doubling method Jacobi sum for a torus of the form $\multiplicativegroup{\quadraticFieldExtension{k}}$. Let $\alpha \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ be characters such that $\involutionPlusOne{\chi} \ne 1$. Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
 		x \ne -1}} \alpha \left(x\right) \chi\left(\FieldNorm{k}{1}\left(1 + x\right)\right) \chi\left(\FieldNorm{k}{1}\left(1 + \minusInvolution{x}\right)\right).$$
 This can be rewritten as
 $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
