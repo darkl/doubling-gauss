@@ -823,7 +823,7 @@ Let us realize $H = \algebraicGroup{H}^{\Frobenius}$, that is, $H$ is the group 
 Given a class function $F \colon H \to \cComplex$ (i.e., a function that is invariant under conjugation by elements of $G$), let us define $$\dblVirtualJacobiSumScalar{F}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} F\left(g\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(g\right).$$
 
 It is clear that if $\pi$ is an irreducible representation of $H$ then $$\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \dim \pi.$$
-Notice that the assignments $g \mapsto \posJacobiKernel{\chi}\left(g\right)$ and $g \mapsto \negJacobiKernel{\chi}\left(g\right)$ only depend on the semisimple part of $g \in H$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result. \calvin{does this also follow from \Cref{prop:semisimple_pair_with_RTtheta}? Maybe we should say something about it} \elad{Can you compare the proofs?}
+Notice that the assignments $g \mapsto \posJacobiKernel{\chi}\left(g\right)$ and $g \mapsto \negJacobiKernel{\chi}\left(g\right)$ only depend on the semisimple part of $g \in H$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result. \calvin{does this also follow from \Cref{prop:semisimple_pair_with_RTtheta}? Maybe we should say something about it} \elad{Can you compare the proofs?}\calvin{they use the same proof: basically they just use the character formula for RTtheta}
 \begin{proposition}\label{prop:reduction-of-gauss-sum-to-torus}
 	For any $\Frobenius$-stable maximal torus $\algebraicGroup{T}$ of $\algebraicGroup{H}$, and any character $\theta \colon T \to \multiplicativegroup{\cComplex}$, where $T = \algebraicGroup{T}^{\Frobenius}$, we have
 	$$ \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{H}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(t\right).$$
@@ -1098,11 +1098,11 @@ In particular to analyze $g_{T,\rho}(\chi,\theta,\psi)$ for these $\rho$, we nee
         \item[B,C,D Case 1)] $w$ is conjugate to an $n$-cycle: \calvin{Add in note about the two type B cases. Maybe really should just talk about $\Frobenius$ action} In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $w$ on the preimage and the cycle $(w,w^\ast)$ on the image, and $$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\finiteFieldExtension{n},\alpha})$$
         \item[B,C,D Case 2)] $w$ is conjugate to an $n$-cycle with one negative:
  In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $w$ on the preimage and by a $2n$ cycle on the image, and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n})$
-    \item[$G=\algebraicGroup{U}$ Case 1)] $w$ is conjugate to $(1,2 \hdots n)$ an even cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the product of two $n$ cycles $\begin{pmatrix} 0 & w \\
-        w^\ast & 0
+    \item[$G=\algebraicGroup{U}$ Case 1)] $w$ is conjugate to $(1,2 \hdots n)$ an even cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the product of two $n$ cycles $\begin{pmatrix} 0 & w_nw \\
+        w w_n & 0
         \end{pmatrix}$  on the image, and 
-    \item[$G=\algebraicGroup{U}$ Case 2)] $w$ is conjugate to $(1,2 \hdots n)$ an odd cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the $2n$ cycle $\begin{pmatrix} 0 & w \\
-        w^\ast & 0
+    \item[$G=\algebraicGroup{U}$ Case 2)] $w$ is conjugate to $(1,2 \hdots n)$ an odd cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the $2n$ cycle $\begin{pmatrix} 0 & w_nw \\
+        w w_n& 0
         \end{pmatrix}$ on the image, and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n})$
     \end{enumerate}
 \end{lemma}
@@ -1160,59 +1160,60 @@ By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-charac
 
 For the former we will show
 \[
-g_{T,\rho}(\chi,\theta,\psi)= g_{T}(\chi,\theta,\psi) \cdot \begin{cases}
+g_{T,\rho}(\chi,\theta,\fieldCharacter)= g_{T}(\chi^{-1},\theta^{-1},\fieldCharacter) \cdot \begin{cases}
         1  & G \neq Sp, GSp\\
-        \tau\left(\chi, \fieldCharacter\right) & G = Sp \textnormal{ or } GSp
+        \tau\left(\chi^{-1}, \fieldCharacter\right) & G = Sp \textnormal{ or } GSp
     \end{cases}.
 \]
 \calvin{$\chi$ or $\chi^{-1}$? Check throughout proof!}
 We will do this casewise, demonstrating in each case that the Frobeinus equivariant map $X_*(\algebraicGroup{T}) \to X_*(\algebraicGroup{G})$ decomposes into a direct sum of $\phi$'s appearing in \Cref{lem:cochar_computation}. Useful here is the description of the rational maximal tori $\algebraicGroup{T} \subseteq \algebraicGroup{G}$ and geometric Frobeinus action on $X_*(\algebraicGroup{T})$. 
 
 \begin{enumerate}
-    \item[($\algebraicGroup{U}$)] Given $(T,\theta)$, let $T$ correspond to the $w_n$-twisted conjugacy class $[w]$. Let $w \circ w_n$ have cycle decomposition $\lambda$ 
-	and $\theta$ decompose as a product over $\lambda_i$ of $\alpha_i$ if $\lambda_i$ is even and $\theta_i$ if $\lambda_i$ is odd. Then
+    \item[($\algebraicGroup{U}$)] \calvin{right now can only deal with the case that $\chi$ is a square} Given $(T,\theta)$, let $T$ correspond to the $w_n$-twisted conjugacy class $[w]$. Let $w \circ w_n$ have cycle decomposition $\lambda$ 
+	and $\theta$ decompose as a product over $\lambda_i$ of $\alpha_i$ if $\lambda_i$ is even and $\theta_i$ if $\lambda_i$ is odd. 
+	Write $\chi = \chi'+\chi_{\mathbb{F}}\circ \FieldNorm{\quadraticExtension}{\mathbb{F}}$ and $\chi'^{-1} = (\chi')^c$. 
+	Then
 	$$\rho_* = \bigoplus_{\lambda_i} \phi_{U,\lambda_i}$$
 	and applying \Cref{lem:cochar_computation}
 	\begin{align*}
 		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i} \begin{cases}
-			\GaussSumCharacter{\alpha_i}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i/2}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i/2}}} & \lambda_i \textnormal{ even} \\
-			\GaussSumCharacter{\left(\theta'_i\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2\lambda_i}} & \lambda_i \textnormal{ odd}
+			\GaussSumCharacter{\left(\alpha_i \times \chi'\right)}{\left(\chi_{\mathbb{F}}\circ \FieldNorm{\quadraticExtension}{\mathbb{F}}\right)}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i/2}}} \times \GaussSumCharacter{\left(\alpha_i^{-1}\times \chi'^c\right)}{\left(\chi_{\mathbb{F}}\circ \FieldNorm{\quadraticExtension}{\mathbb{F}}\right)}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i/2}}} & \lambda_i \textnormal{ even} \\
+			\GaussSumCharacter{\left(\theta'_i \times \chi'\right)}{\left(\chi_{\mathbb{F}}\circ \FieldNorm{\quadraticExtension}{\mathbb{F}}\right)}{\fieldCharacter_{2\lambda_i}} & \lambda_i \textnormal{ odd}
 		\end{cases}
 	\end{align*}
-	which is equal to $g_{T}(\chi,\theta,\psi)$.
+	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.
 	\item[($\algebraicGroup{SO}_{2n+1}$)] Given $(T,\theta)$, let $T$ correspond to the conjugacy class $[w]$ with cycle decomposition $(\lambda^+,\lambda^-)$ 
 	and $\theta$ decompose as a product $\Pi_{\lambda_i^+ }\alpha_{i+} \times \Pi_{\lambda_i^-}\theta_{i-}$. Then
 	$$\rho_* = \bigoplus_{\lambda_i^+} \phi_{B,\lambda_i^+} \oplus \bigoplus_{\lambda_i^-} \phi_{B,\lambda_i^-} $$
 	and applying \Cref{lem:cochar_computation}
 	\begin{align*}
-		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \times \Pi_{\lambda_i^-}\GaussSumCharacter{\left(\theta'_i\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2\lambda_i^-}}
+		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} 
 	\end{align*}
-	which is equal to $g_{T}(\chi,\theta,\psi)$.
+	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.
 	\item[($\algebraicGroup{Sp}$)] Given $(T,\theta)$, let $T$ correspond to the conjugacy class $[w]$ with cycle decomposition $(\lambda^+,\lambda^-)$ 
 	and $\theta$ decompose as a product $\Pi_{\lambda_i^+ }\alpha_{i+} \times \Pi_{\lambda_i^-}\theta_{i-}$. Then
 	$$\rho_* = \bigoplus_{\lambda_i^+} \phi_{B,\lambda_i^+} \oplus \bigoplus_{\lambda_i^-} \phi_{B,\lambda_i^-} \oplus \left(0:X_*(\algebraicGroup{T}) \to \mathbb{Z}\right)$$
 	applying \Cref{lem:cochar_computation}
 	\begin{align*}
-		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\left(\theta'_i\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2\lambda_i^-}} 
-		\times \tau{\chi}{\psi}
+		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} \times \tau(\chi,\psi)
 	\end{align*}
-	which is equal to $g_{T}(\chi,\theta,\psi) \cdot \tau(\chi,\psi)$.
+	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi) \cdot \tau(\chi,\psi)$. \calvin{check inverses}
 	\item[($\algebraicGroup{SO}_{2n}^+$)] Let $T$ correspond to the signed permutation conjugacy class $[w]$ with cycle decomposition $(\lambda^+,\lambda^-)$ 
 	and $\theta$ decompose as a product $\Pi_{\lambda_i^+ }\alpha_{i+} \times \Pi_{\lambda_i^-}\theta_{i-}$. Then
 	$$\rho_* = \bigoplus_{\lambda_i^+} \phi_{B,\lambda_i^+} \oplus \bigoplus_{\lambda_i^-} \phi_{B,\lambda_i^-}$$
 	applying \Cref{lem:cochar_computation}
 	\begin{align*}
-		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\left(\theta'_i\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2\lambda_i^-}} 
+		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} 
 	\end{align*}
-	which is equal to $g_{T}(\chi,\theta,\psi)$.
+	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.
 	\item[($\algebraicGroup{SO}_{2n}^-$)] Let $T$ correspond to the $(-n,n)$-twisted permutation conjugacy class $[w]$ with cycle decompositionof $[w \cdot (-n,n)]$ equal to $(\lambda^+,\lambda^-)$ 
 	and $\theta$ decompose as a product $\Pi_{\lambda_i^+ }\alpha_{i+} \times \Pi_{\lambda_i^-}\theta_{i-}$. Then
 	$$\rho_* = \bigoplus_{\lambda_i^+} \phi_{B,\lambda_i^+} \oplus \bigoplus_{\lambda_i^-} \phi_{B,\lambda_i^-}$$
 	applying \Cref{lem:cochar_computation}
 	\begin{align*}
-		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\left(\theta'_i\right)^{-1}}{\chi^{-1}}{\fieldCharacter_{2\lambda_i^-}} 
+		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} 
 	\end{align*}
-	which is equal to $g_{T}(\chi,\theta,\psi)$.
+	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.
 \end{enumerate}
    
 \begin{comment}
@@ -1237,15 +1238,6 @@ Since the sum above is a Gauss sum for $\GL$ it is equal to the Gauss sum attatc
 \end{comment}
 \end{proof}
 
-\subsection{Computation for geometric Lusztig series}
-\calvin{retitle: Stability of Jacobi sums}
-
-The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and results of Lusztig to determine $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ for any irreducible representation $\pi$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$.
-
-\begin{theorem}\label{thm:doubling-method-gamma-factor-for-deligne-lusztig}
-	Let $T \subset H$ be a maximal torus and let $\theta \colon T \to \multiplicativegroup{\cComplex}$ be a character. Write $$R_{T,\theta} = \sum_{\Pi} c_{\Pi} \trace \Pi,$$
-	where $\Pi$ goes over all the irreducible representations of $H$ and $c_{\Pi} \in \zIntegers$. Suppose that $\pi$ is an irreducible representation such that $c_{\pi} \ne 0$. Then $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_T\left(\theta, \fieldCharacter\right).$$
-\end{theorem}
 \begin{comment}
 \calvin{start alternate writeup of section 3.4/3.4.1:}
 \subsection{Computation for Lusztig Series}
@@ -1289,13 +1281,21 @@ So all the cuspidal $\pi$ in a Lusztig packet $\LusztigSeries{G}{s}$ are irreduc
 \calvin{end alternate writeup}
 \end{comment}
 \calvin{start alternate writeup 2 of section 3.4/3.4.1}
-\subsection{Stability}
-The goal of this section is to prove \Cref{thm:Phi_stable} in particular:
+\subsection{Stability (one option)}
+The goal of this section is to compute $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ proving \Cref{thm:Phi_stable}:
 \begin{theorem}
 \label{thm:doubling-method-gamma-factor-for-deligne-lusztig} For either $G=G$ or its extension $\GroupExtension{G}$. If $c_{\pi}$ is nonzero in the virtual representation $R_T(\theta) = \sum c_{\pi} \pi$ then
-$$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$
+$$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_{T \cap G}\left(\chi,\theta|_{T \cap G}, \fieldCharacter\right)$$
 \end{theorem}
 \calvin{add in $\chi$} the right hand side of which we showed in \Cref{lem:indep_geo_conj} only depends on the geometric conjugacy class of $(T,\theta)$ hence on the Lusztig series $\LusztigSeries{G}{s}$ which contains $\pi$, implying \Cref{thm:Phi_stable}.
+
+The proof strategy is to prove the following inductive statements
+\begin{enumerate}[(A)]
+	\item If for all representations with $\dim_{\mathbb{E}} V < n$, \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} holds, then \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} holds for all non cuspidal representations with $\dim_{\mathbb{E}} V = n$.
+	\item If \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} holds for all non cuspidal representations with $\dim_{\mathbb{E}} V = n$, then it holds for all cuspidal representations with $\dim_{\mathbb{E}} V = n$.
+\end{enumerate}
+The key input to (A) is the multiplicativity [CITE] of the $\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter}$ factor. The key input to (B) is \Cref{lem:indep_geo_conj} along with results of Lusztig controlling the cupsidal elements in a Lusztig series.
+
 \subsubsection{Proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig}}
 We first reduce \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} to the case $G$ has connected center. For any irreducible representation $\pi$ of $G$ which is the a component of an irreducible representation $\tilde{\pi}$ of $\GroupExtension{G}$ restricted to $\pi$,
 \[
@@ -1334,7 +1334,15 @@ So the proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} is c
 
 \calvin{end alternate writeup 2}
 
+\subsection{Stability (another option)}
+\calvin{retitle: Stability of Jacobi sums}
 
+The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and results of Lusztig to determine $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ for any irreducible representation $\pi$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$.
+
+\begin{theorem}\label{thm:doubling-method-gamma-factor-for-deligne-lusztig}
+	Let $T \subset H$ be a maximal torus and let $\theta \colon T \to \multiplicativegroup{\cComplex}$ be a character. Write $$R_{T,\theta} = \sum_{\Pi} c_{\Pi} \trace \Pi,$$
+	where $\Pi$ goes over all the irreducible representations of $H$ and $c_{\Pi} \in \zIntegers$. Suppose that $\pi$ is an irreducible representation such that $c_{\pi} \ne 0$. Then $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_T\left(\theta, \fieldCharacter\right).$$
+\end{theorem}
 \subsubsection{Proof of the main result \calvin{\Cref{thm:Phi_stable}}}
 
 \elad{Merge with Calvin's stuff}
