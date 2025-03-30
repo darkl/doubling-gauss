@@ -850,11 +850,11 @@ $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
 x \ne -1}} \alpha\left(x\right) \chi\left(\FieldNorm{k}{1}\left(x+1\right)\right) = -q^{\frac{k}{2}} \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_k} \tau\left(\alpha, \fieldCharacter_k\right) \tau\left(\chi \circ \FieldNorm{k}{1}, \fieldCharacter_k\right).$$
 
 \subsubsection{Split torus computation II}
-We use the results from the previous section to compute the doubling method Jacobi sum for a torus of the form $\multiplicativegroup{\quadraticFieldExtension{k}}$. Let $\alpha \colon \multiplicativegroup{\quadraticFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\quadraticField} \to \multiplicativegroup{\cComplex}$ be characters such that $\involutionPlusOne{\chi} \ne 1$. Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
-		x \ne -1}} \alpha \left(x\right) \chi\left(\FieldNorm{k}{1}\left(1 + x\right)\right) \chi\left(\FieldNorm{k}{1}\left(1 + \minusInvolution{x}\right)\right).$$
+We use the results from the previous section to compute the doubling method Jacobi sum for a torus of the form $\multiplicativegroup{\quadraticFieldExtension{k}}$. Let $\alpha \colon \multiplicativegroup{\quadraticFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be characters such that $\involutionPlusOne{\chi} \ne 1$. Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\quadraticFieldExtension{k}}\\
+		x \ne -1}} \alpha \left(x\right) \chi\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(1 + x\right)\right) \chi\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(1 + \minusInvolution{x}\right)\right).$$
 This can be rewritten as
-$$\sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
-		x \ne -1}} \alpha \left(x\right) \minusInvolution{\chi}\left(\FieldNorm{k}{1}\left(x\right)\right) \involutionPlusOne{\chi}\left(\FieldNorm{k}{1}\left(1 + x\right)\right).$$
+$$\sum_{\substack{x \in \multiplicativegroup{\quadraticFieldExtension{k}}\\
+		x \ne -1}} \alpha \left(x\right) \minusInvolution{\chi}\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(x\right)\right) \involutionPlusOne{\chi}\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(1 + x\right)\right).$$
 By the previous section, this equals
 \begin{equation*}
 	-q^{\frac{k}{2}} \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\alpha}{\minusInvolution{\chi}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^k,
@@ -866,8 +866,8 @@ which equals
 Thus we obtained the following.
 \begin{theorem}We have the identity
 \begin{align*}
-	& \sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension{k}}\\
-			x \ne -1}} \alpha \left(x\right) \chi\left(\FieldNorm{k}{1}\left(1 + x\right)\right) \chi\left(\FieldNorm{k}{1}\left(1 + \minusInvolution{x}\right)\right) \\
+	& \sum_{\substack{x \in \multiplicativegroup{\quadraticFieldExtension{k}}\\
+			x \ne -1}} \alpha \left(x\right) \chi\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(1 + x\right)\right) \chi\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(1 + \minusInvolution{x}\right)\right) \\
 	=& -q^{\frac{k}{2}} \GaussSumCharacter{\alpha^{-1}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\involution{\alpha}}{\chi^{-1}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \tau\left(\involutionPlusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^k.
 \end{align*}
 \end{theorem}
