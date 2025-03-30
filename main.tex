@@ -226,7 +226,7 @@ Since Godement--Jacquet developed their theory for the standard $L$-functions, m
 
 Thus, a promising way to obtain a well behaved exponential sum for classical groups is to consider the finite field analog of the ``doubling method'' construction of Piatetski-Shapiro--Rallis and analyzing the formula for the gamma factor that this theory yields. This was done for $\Sp_{2n}\left(\finiteField\right)$ by Jun Chang \cite{Chang1997} in her doctoral thesis. In the upcoming work of Girsch and the second author \cite{GirschZelingher2025}, the finite field theory analog of the doubling method is developed for all classical groups.
 
-The computations of \cite{Chang1997} and \cite{GirschZelingher2025} show that, generically speaking, the finite field doubling method gamma factor for classical groups is given by exponential sums that resemble Jacobi sums. Let $G \subset \GL\left(\hermitianSpace\right)$ be a classical group, corresponding to the space $\left(\hermitianSpace, \innerproduct{\cdot}{\cdot}\right)$, and let $\lieAlgebra \subset \EndomorphismRing\left(\hermitianSpace\right)$ be the Lie algebra of $G$. Given an irreducible representation $\pi$ of $G$ and a character $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ such that $\chi^2 \ne 1$, the exponential sums arising from the finite field doubling method gamma factor of $\pi$ are given by the formula
+The computations of \cite{Chang1997} and \cite{GirschZelingher2025} show that, generically speaking, the finite field doubling method gamma factor for classical groups is given by exponential sums that resemble Jacobi sums. Let $G \subset \GL\left(\hermitianSpace\right)$ be a classical group, corresponding to the space $\left(\hermitianSpace, \innerproduct{\cdot}{\cdot}\right)$, and let $\lieAlgebra \subset \EndomorphismRing\left(\hermitianSpace\right)$ be the Lie algebra of $G$. Given an irreducible representation $\pi$ of $G$ and a character $\chi \colon Z\left(\GL\left(\hermitianSpace\right)\right) \to \multiplicativegroup{\cComplex}$ not trivial on the subgroup of scalars that preserve the form $\innerproduct{\cdot}{\cdot}$, the exponential sums arising from the finite field doubling method gamma factor of $\pi$ are given by the formula
 $$\dblJacobiSum{\pi}{\chi} = \frac{1}{\sizeof{\lieAlgebra}^{1 \slash 2}} \sum_{\substack{g \in G\\
 \det\left(g \pm \idmap_{\hermitianSpace}\right) \ne 0}} \pi\left(g\right) \chi\left(\det\left(\idmap_{\hermitianSpace} \pm g\right)\right).$$
 
@@ -240,13 +240,13 @@ As before, we have that $\posDblJacobiSum{\pi}{\chi}$ and $\negDblJacobiSum{\pi}
 
 \calvin{I think I would like to include a main theorem here even if it's not super precise just to let the reader know what we highlight what we about the sum}
 \begin{theorem}[\Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig}, \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}]
-	For classical groups $\algebraicGroup{G}$ and $\chi \neq \pm1$, $\genJacobiKernel{\pi,\chi}$ is a stable function. We have that
+	For a classical group $G$ and a multiplicative character $\chi$ as above, $\genHermitianJacobiKernel{\hermitianSpace}{\chi}$ are stable functions. We have that
 	$$\posDblJacobiSumScalar{\pi}{\chi} =
 		\varepsilon_{\algebraicGroup{H}} c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) g_T\left(\chi, \theta, \fieldCharacter\right),$$
 		and that
-	$$\negJacobiKernel{\pi}{\chi} = \begin{dcases}
-		0 & \algebraicGroup{G} = \algebraicGroup{\SO}_{2n+1},\\
-		\centralCharacter{\pi}\left(-1\right) \posDblJacobiSumScalar{\pi}{\chi} &  \text{Otherwise.}
+	$$\negDblJacobiSumScalar{\pi}{\chi} = \begin{dcases}
+		0 & $G$ \text{ is an odd special orthogonal group},\\
+		\centralCharacter{\pi}\left(-1\right) \posDblJacobiSumScalar{\pi}{\chi} &  \text{otherwise.}
 	\end{dcases}$$
 Here $c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)$ is an explicit factor and
 $g_T\left(\chi, \theta, \fieldCharacter\right)$ is a product of Gauss sums, see \Cref{subsec:normalization-factor} and \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}.
