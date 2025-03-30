@@ -244,8 +244,7 @@ As before, we have that $\posDblJacobiSum{\pi}{\chi}$ and $\negDblJacobiSum{\pi}
 	$$\posDblJacobiSumScalar{\pi}{\chi} =
 		\varepsilon_{\algebraicGroup{H}} c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) g_T\left(\chi, \theta, \fieldCharacter\right),$$
 		and that
-	$$\negDblJacobiSumScalar{\pi}{\chi} = \begin{dcases}
-		0 & $G$ \text{ is an odd special orthogonal group},\\
+	$$\negDblJacobiSumScalar{\pi}{\chi} = \begin{dcases} 0 & G \text{ is an odd special orthogonal group},\\
 		\centralCharacter{\pi}\left(-1\right) \posDblJacobiSumScalar{\pi}{\chi} &  \text{otherwise.}
 	\end{dcases}$$
 Here $c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)$ is an explicit factor and
@@ -1281,7 +1280,7 @@ So all the cuspidal $\pi$ in a Lusztig packet $\LusztigSeries{G}{s}$ are irreduc
 \calvin{end alternate writeup}
 \end{comment}
 \calvin{start alternate writeup 2 of section 3.4/3.4.1}
-\subsection{Stability (one option)}
+\subsection{Stability (one option)}\label{subsec:stability}
 The goal of this section is to compute $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ proving \Cref{thm:Phi_stable}:
 \begin{theorem}
 \label{thm:doubling-method-gamma-factor-for-deligne-lusztig} For either $G=G$ or its extension $\GroupExtension{G}$. If $c_{\pi}$ is nonzero in the virtual representation $R_T(\theta) = \sum c_{\pi} \pi$ then
@@ -1314,15 +1313,16 @@ The following proposition implies that if $\pi \in \LusztigSeries{\FrobeniusFixe
 
 We now prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for the extension $\GroupExtension{G}$.
 
-Our proof will be via induction on $\dim_{\quadraticExtension} \hermitianSpace$. First we will use \Cref{thm:multiplicativity-in-terms-of-gamma-factors}  and MULTIPLICAATIVITY-OF-GTTHETA to prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for any non cuspidal $\pi$ assuming \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for all Levi factors. \\
-
-\begin{proof}
+Our proof will be via induction as descriped in \ref{subsec:stability}.
+%First we will use \Cref{thm:multiplicativity-in-terms-of-gamma-factors}  and MULTIPLICAATIVITY-OF-GTTHETA to prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for any non cuspidal $\pi$ assuming \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for all Levi factors. \\
+\begin{proof}[Proof of (A)]
 \calvin{should be short proof. Might not even need to put--just need to say both are multiplicative}
 \end{proof}
+\begin{proof}[Proof of (B)]
 
-Combining this with our inductive hypothesis implies \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for non cupsidal $\pi$.
+%Combining this with our inductive hypothesis implies \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for non cupsidal $\pi$.
 By \Cref{lem:indep_geo_conj}, we know that for $R_T(\theta) = \sum c_{\pi} \pi$, 
-$$\sum c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = (\sum c_{\pi})g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$. Subtracting our the equality for non-cupsidal $\pi$ we are left with:
+$$\sum c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = (\sum c_{\pi})g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right).$$Subtracting our the equality for non-cupsidal $\pi$ we are left with:
 $$ \sum_{\pi \textnormal{ cuspidal}} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \left(\sum_{\pi \textnormal{ cuspidal}} c_{\pi}\right)g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$.
 
 But it is well known that there is only one cuspidal $\pi$ appearing in our sum:
@@ -1331,7 +1331,7 @@ But it is well known that there is only one cuspidal $\pi$ appearing in our sum:
 \end{proposition}
 
 So the proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} is complete.
-
+\end{proof}
 \calvin{end alternate writeup 2}
 
 \subsection{Stability (another option)}
