@@ -563,15 +563,15 @@ The $\ell$-adic \'etale Euler characteristic of this space is a $\algebraicGroup
 The $R_T^G(\theta)$ only depends on the $\algebraicGroup{G}(\finiteField)$-conjugacy class of $(\algebraicGroup{T},\theta)$ and
 the collection of virtual representations $\{R_T^G(\theta)\}$ contain every irreducible $\algebraicGroup{G}(\finiteField)$-representation as a sub-virtual representation.
 
-\begin{proposition}[{\cite[Corollary 12.7]{DigneMichel1991}}]
+\begin{proposition}[{\cite[Corollary 12.6]{DigneMichel1991}}]
 \label{prop:semisimple_pair_with_RTtheta}
-Treating $R_T^G(\theta)$ as a class function of $\algebraicGroup{G}(\finiteField)$ via the character of $R_T^G(\theta)$, for any class function $f$ on $\algebraicGroup{G}(\finiteField)$ which satisfies $f(g) = f(s)$ when $g=su$ is the Jordan decompositoin of $g$, we have
+Treating $R_T^G(\theta)$ as a class function of $\algebraicGroup{G}(\finiteField)$ via the character of $R_T^G(\theta)$, for any class function $f$ on $\algebraicGroup{G}(\finiteField)$ which satisfies $f(g) = f(s)$ when $g=su$ is the Jordan decomposition of $g$, we have
 \[
-	\langle R_T^G(\theta),f \rangle_{\algebraicGroup{G}(\finiteField)} = \langle \theta, f|_{\algebraicGroup{T}(\finiteField)}\rangle_{\algebraicGroup{T}(\finiteField)}
+	\innerproduct{R_T^G(\theta)}{f}_{\algebraicGroup{G}(\finiteField)} = \innerproduct{\theta}{f\restriction_{\algebraicGroup{T}(\finiteField)}}_{\algebraicGroup{T}(\finiteField)}.
 \]
-in other words:
+Alternatively,
 \[
-	\frac{1}{|\algebraicGroup{G}(\finiteField)|}\sum_{g \in \algebraicGroup{G}(\finiteField)}\left(R_T^G(\theta)\right)(g)f(g) = \frac{1}{|\algebraicGroup{T}(\finiteField)|}\sum_{t \in  \algebraicGroup{T}(\finiteField)} \theta(t)f(t)
+	\frac{1}{\sizeof{\algebraicGroup{G}(\finiteField)}}\sum_{g \in \algebraicGroup{G}(\finiteField)}\left(R_T^G(\theta)\right)(g)\conjugate{f(g)} = \frac{1}{\sizeof{\algebraicGroup{T}(\finiteField)}}\sum_{t \in  \algebraicGroup{T}(\finiteField)} \theta(t)\conjugate{f(t)}.
 \]
 \end{proposition}
 
