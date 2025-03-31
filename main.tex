@@ -1032,12 +1032,12 @@ In this section we prove a slightly weaker result:
 \end{lemma}
 
 We recall\[
-	\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n} = \Pi_{a \in \mathbb{Z}/n\mathbb{Z}} \left(\algebraicGroup{\GL}_n\right)_a
+	\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n} = \prod_{a \in \mathbb{Z}/m\mathbb{Z}} \left(\algebraicGroup{\GL}_n\right)_a
 \]
-with Frobenius root action $\Frobenius(g_0,g_1, \hdots, g_{n-1}) = (\Frobenius(g_{n-1}, \Frobenius(g_0), \Frobenius(g_1), \hdots, \Frobenius(g_{n-2}))$.
+with Frobenius root action $$\Frobenius(g_0,g_1, \hdots, g_{m-1}) = (\Frobenius(g_{m-1}), \Frobenius(g_0), \Frobenius(g_1), \hdots, \Frobenius(g_{m-2})).$$
 
 \begin{remark}
-Torus,Theta pairs in the restriction are the same as torus theta pairs before the restriction.
+Torus character pairs for $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$ are the same as torus character pairs for $\algebraicGroup{\GL}_n$ as a group over $\finiteFieldExtension{m}$.
 \end{remark}
 
 Given a rational maximal torus $\algebraicGroup{T} \subset \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$, a character of $\algebraicGroup{T}(\mathbb{F})$, and a non-trivial additive character $\psi$ of $\finiteFieldExtension{m}$, we define a Guass sum
