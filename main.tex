@@ -430,13 +430,13 @@ Let $\algebraicGroup{A}_n \subset \algebraicGroup{\GL}_n$ be the diagonal torus.
 		$\algebraicGroup{\UnitaryGroup}_{2n}$ & $\left\{ \begin{pmatrix}
 			a\\
 			& \involution{\left(a^{\ast}\right)}
-		\end{pmatrix}  \mid a \in \algebraicGroup{A}_n \right\}$ \tabularnewline
+		\end{pmatrix}  \mid a \in \restrictionOfScalars{\quadraticExtension}{\finiteField}{\algebraicGroup{A}_n} \right\}$ \tabularnewline
 		\hline 
 		$\algebraicGroup{\UnitaryGroup}_{2n+1}$ & $\left\{ \begin{pmatrix}
 	a \\
 	& t\\
 	& & \involution{\left(a^{\ast}\right)}
-\end{pmatrix}  \mid a \in \algebraicGroup{A}_n,\,\, t \in \algebraicGroup{U}_1 \right\}$ \tabularnewline
+\end{pmatrix}  \mid a \in \restrictionOfScalars{\quadraticExtension}{\finiteField}{\algebraicGroup{A}_n},\,\, t \in \algebraicGroup{U}_1 \right\}$ \tabularnewline
 \hline 
 	$\algebraicGroup{\SO}_{2n+1}$ & $\left\{ \begin{pmatrix}
 		a\\
@@ -616,7 +616,8 @@ The virtual representations $R_T^G(\theta)$ and $R_{T'}^G(\theta')$ share an irr
 \begin{center}
 	\begin{tabular}{|c|c|c|c|c|c|} \hline
 		$\algebraicGroup{G}$ & $\algebraicGroup{T} \subset \algebraicGroup{G}$ & $\Frobenius$ action on $\CharacterLattice{\algebraicGroup{T}}$ & $\algebraicGroup{G}^{\ast}$ & $\algebraicGroup{T}^{\ast} \subset \algebraicGroup{G}^{\ast}$ \tabularnewline \hline \hline
-		$\algebraicGroup{\UnitaryGroup}_n$ & $\multiplcativeScheme^{n}$ & $\left(-1\right)^{\times n}$ & $\algebraicGroup{\UnitaryGroup}_n$ &  $\multiplcativeScheme^{n}$ \tabularnewline \hline		 
+		$\algebraicGroup{\UnitaryGroup}_{2n}$ & $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}}$ & $\left(-1\right)^{\times n}$ & $\algebraicGroup{\UnitaryGroup}_{2n}$ &  $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}}$ \tabularnewline \hline
+		$\algebraicGroup{\UnitaryGroup}_{2n+1}$ & $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}} \times \algebraicGroup{\UnitaryGroup}_1$ & $\left(-1\right)^{\times n}$ & $\algebraicGroup{\UnitaryGroup}_{2n+1}$ &  $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n} \times \algebraicGroup{\UnitaryGroup}}_1$ \tabularnewline \hline		 				 
 		$\algebraicGroup{\SO}_{2n+1}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\Sp}_{2n}$ &  $\multiplcativeScheme^n$ \tabularnewline \hline
 		$\algebraicGroup{\Sp}_{2n}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\SO}_{2n+1}$ & $\multiplcativeScheme^n$ \tabularnewline \hline		 
 		$\algebraicGroup{\SO}^{+}_{2n}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\SO}^{+}_{2n}$ &  $\multiplcativeScheme^n$ \tabularnewline \hline
