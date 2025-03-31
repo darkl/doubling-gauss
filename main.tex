@@ -208,7 +208,7 @@
 Gauss sums are prominent objects in number theory...
 
 Let $\finiteField$ be a finite field with $q$ elements and let $\fieldCharacter \colon \finiteField \to \multiplicativegroup{\cComplex}$ be a non-trivial character. Given a character $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ the normalized Gauss sum corresponding to the data $\left(\chi, \fieldCharacter\right)$ is defined by the formula
-$$\tau\left(\chi, \fieldCharacter\right) = -\frac{1}{\sqrt{q}}\sum_{x \in \multiplicativegroup{\finiteField}} \chi^{-1}\left(x\right) \fieldCharacter\left(x\right).$$
+$$\GaussSumSingleCharacter{\chi}{\fieldCharacter} = -\frac{1}{\sqrt{q}}\sum_{x \in \multiplicativegroup{\finiteField}} \chi^{-1}\left(x\right) \fieldCharacter\left(x\right).$$
 
 In the 1960s, Kondo \cite{Kondo1963} introduced an interesting exponential sum, which can be thought of as a higher dimensional version of the Gauss sum defined above. Let $\pi$ be an irreducible representation of $\GL_n\left(\finiteField\right)$. Then the sum $$\GaussSum{\pi}{\fieldCharacter} = q^{-\frac{n^2}{2}} \sum_{g \in \GL_n\left(\finiteField\right)} \fieldCharacter\left(\trace g^{-1}\right) \pi\left(g\right)$$
 defines an operator in $\Hom_{\GL_n\left(\finiteField\right)}\left(\pi, \pi\right)$. Since $\pi$ is irreducible, by Schur's lemma there exists a scalar $\GaussSumScalar{\pi}{\fieldCharacter} \in \cComplex$ such that $$\GaussSum{\pi}{\fieldCharacter} = \GaussSumScalar{\pi}{\fieldCharacter} \cdot \idmap_{\pi}.$$
@@ -277,7 +277,7 @@ $$\GaussSum{\tau \times \chi}{\fieldCharacter} = \GaussSumScalar{\tau \times \ch
 
 In order to state Kondo's result, we need to introduce some Gauss sum notation which will be used throughout the paper.
 
-If $\alpha \colon \multiplicativegroup{\finiteFieldExtension{n}} \to \multiplicativegroup{\cComplex}$ is a character, denote the \emph{Gauss sum} $$\tau\left(\alpha, \fieldCharacter_n\right) = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha^{-1}\left(x\right) \fieldCharacter_n\left(x\right),$$where $\fieldCharacter_n \colon \finiteFieldExtension{n} \to \multiplicativegroup{\cComplex}$ is given by $\fieldCharacter_n = \fieldCharacter \circ \trace_{\finiteFieldExtension{n} \slash \finiteField}$. If $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ is a character and if $\alpha$ is as above, denote the \emph{twisted Gauss sum}
+If $\alpha \colon \multiplicativegroup{\finiteFieldExtension{n}} \to \multiplicativegroup{\cComplex}$ is a character, denote the \emph{Gauss sum} $$\GaussSumSingleCharacter{\alpha}{\fieldCharacter_n} = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha^{-1}\left(x\right) \fieldCharacter_n\left(x\right),$$where $\fieldCharacter_n \colon \finiteFieldExtension{n} \to \multiplicativegroup{\cComplex}$ is given by $\fieldCharacter_n = \fieldCharacter \circ \trace_{\finiteFieldExtension{n} \slash \finiteField}$. If $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ is a character and if $\alpha$ is as above, denote the \emph{twisted Gauss sum}
 $$\GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_n} = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha^{-1}\left(x\right) \chi^{-1}\left( \FieldNorm{n}{1}\left(x\right)\right) \fieldCharacter_n\left(x\right).$$
 
 We are now ready to state Kondo's result.
@@ -671,7 +671,7 @@ The goal of this section is to express $\posDblJacobiSumScalar{\tau}{\chi}$ in t
 We now use this to compute $\posDblJacobiSum{\tau}{\chi}$. We have that $$\posDblJacobiSum{\tau}{\chi} = q^{-k^2} \chi\left(-1\right)^k \GaussSumScalar{\chi_{\GL_k}}{\fieldCharacter} \sum_{x, y \in \GL_k\left(\finiteField\right)} \fieldCharacter\left(\trace x\right) \chi^{-1}\left(\det y\right) \fieldCharacter\left(\trace y\right) \tau\left(y^{-1} x\right).$$
 The last equality implies the following result.
 \begin{theorem}\label{thm:gln-doubling-gauss-sum-in-terms-of-kondo}For any irreducible representation $\tau$ of $\GL_k\left(\finiteField\right)$ and any non-trivial character $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$, the following identity holds:
-	$$\posDblJacobiSumScalar{\tau}{\chi} = \chi\left(-1\right)^k \left(-\tau\left(\chi^{-1},\fieldCharacter\right)\right)^k \GaussSumScalar{\tau^{\vee}}{\fieldCharacter} \GaussSumScalar{\tau \times \chi}{\fieldCharacter}.$$
+	$$\posDblJacobiSumScalar{\tau}{\chi} = \chi\left(-1\right)^k \left(-\GaussSumSingleCharacter{\chi^{-1}}{\fieldCharacter}\right)^k \GaussSumScalar{\tau^{\vee}}{\fieldCharacter} \GaussSumScalar{\tau \times \chi}{\fieldCharacter}.$$
 \end{theorem}
 
 We can define analogous sums $\negDblJacobiSum{\tau}{\chi}$ and $\negDblJacobiSumScalar{\tau}{\chi}$ by the formulas
@@ -785,11 +785,11 @@ In order to make the computations more tolerable, it is beneficial to work with 
 Let $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be a character.
 
 We define a normalization factor as follows $$c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) = \begin{dcases}
-	\tau\left(\chi^{-2}, \fieldCharacter\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is even,}\\
-	\chi\left(2\right) \tau\left(\chi^{-2}, \fieldCharacter\right)^{\frac{\dim_{\finiteField} \hermitianSpace - 1}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is odd,}	\\
-	\tau\left(\chi^{-1}\restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^{\dim_{\quadraticExtension} \hermitianSpace} & \quadraticExtension \ne \finiteField.
+	\GaussSumSingleCharacter{\chi^{-2}}{\fieldCharacter}^{\frac{\dim_{\finiteField} \hermitianSpace}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is even,}\\
+	\chi\left(2\right) \GaussSumSingleCharacter{\chi^{-2}}{\fieldCharacter}^{\frac{\dim_{\finiteField} \hermitianSpace - 1}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is odd,}	\\
+	\GaussSumSingleCharacter{\chi^{-1}\restriction_{\multiplicativegroup{\finiteField}}}{\fieldCharacter}^{\dim_{\quadraticExtension} \hermitianSpace} & \quadraticExtension \ne \finiteField.
 \end{dcases}$$
-Notice that if $\quadraticExtension \ne \finiteField$ then by the Hasse--Davenport relation $\tau\left(\chi^{-1}\restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^{2} = \tau\left(\minusInvolutionMinusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)$.
+Notice that if $\quadraticExtension \ne \finiteField$ then by the Hasse--Davenport relation $\GaussSumSingleCharacter{\chi^{-1}\restriction_{\multiplicativegroup{\finiteField}}}{\fieldCharacter}^{2} = \GaussSumSingleCharacter{\minusInvolutionMinusOne{\chi}} {\fieldCharacter_{\quadraticExtension}}$.
 
 For an irreducible representation  $\tau$ of $\GL_k\left(\quadraticExtension\right)$, define $$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \GaussSumScalar{\Contragradient{\tau} \times \involution{\chi}}{\fieldCharacter} \GaussSumScalar{\tau \times \chi}{\fieldCharacter}.$$
 For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \frac{\posDblJacobiSumScalar{\pi}{\chi}}{c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)}.$$
@@ -807,7 +807,7 @@ Using this notation and using the multiplicativity property of Kondo's Gauss sum
 \begin{remark}
 	The ``correct'' gamma factor (expected by Langlands functoriality) is given by $$\dblLanglandsGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} \cdot \begin{dcases}
 				\left(-1\right)^n & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = 1\\
-				\left(-1\right)^{n+1} \tau\left(\chi, \fieldCharacter\right) & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = -1 \\
+				\left(-1\right)^{n+1} \GaussSumSingleCharacter{\chi} {\fieldCharacter} & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = -1 \\
 				1 & \text{otherwise.}
 	\end{dcases},$$
 	where $n = \left\lfloor \frac{\dim_{\finiteField} \hermitianSpace}{2} \right\rfloor$.
@@ -850,7 +850,7 @@ Replacing $x$ with $-z^{-1} x$ and $y$ with $z^{-1} y$ and $z$ with $-z$, this b
 $$\frac{1}{\sizeof{\quadraticFieldExtension{k}}} \sum_{z \in \multiplicativegroup{\quadraticFieldExtension{k}}} \alpha^{-1}\left(z\right) \chi^{-1}\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(z\right)\right) \fieldCharacter_{\quadraticFieldExtension{k}}\left(z\right) \sum_{x \in  \multiplicativegroup{\quadraticFieldExtension{k}}} \alpha\left(x\right) \fieldCharacter_{\quadraticFieldExtension{k}}\left(x\right) \sum_{y \in \multiplicativegroup{\quadraticFieldExtension{k}}} \chi\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(y\right)\right) \fieldCharacter_{\quadraticFieldExtension{k}}\left(y\right).$$
 Hence, we have the identity
 $$\sum_{\substack{x \in \multiplicativegroup{\quadraticFieldExtension{k}}\\
-x \ne -1}} \alpha\left(x\right) \chi\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(x+1\right)\right) = -\sizeof{\quadraticFieldExtension{k}}^{1/2} \GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \tau\left(\alpha^{-1}, \fieldCharacter_{\quadraticFieldExtension{k}}\right) \tau\left(\chi^{-1} \circ \aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}, \fieldCharacter_{\quadraticFieldExtension{k}}\right).$$
+x \ne -1}} \alpha\left(x\right) \chi\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(x+1\right)\right) = -\sizeof{\quadraticFieldExtension{k}}^{1/2} \GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumSingleCharacter{\alpha^{-1}} {\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumSingleCharacter{\chi^{-1} \circ \aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}}{\fieldCharacter_{\quadraticFieldExtension{k}}}.$$
 
 \subsubsection{Split torus computation II}
 We use the results from the previous section to compute the doubling method Jacobi sum for a torus of the form $\multiplicativegroup{\quadraticFieldExtension{k}}$. Let $\alpha \colon \multiplicativegroup{\quadraticFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be characters such that $\involutionPlusOne{\chi} \ne 1$. Our goal is to compute $$\sum_{\substack{x \in \multiplicativegroup{\quadraticFieldExtension{k}}\\
@@ -860,18 +860,18 @@ $$\sum_{\substack{x \in \multiplicativegroup{\quadraticFieldExtension{k}}\\
 		x \ne -1}} \alpha \left(x\right) \minusInvolution{\chi}\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(x\right)\right) \involutionPlusOne{\chi}\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(1 + x\right)\right).$$
 By the previous section, this equals
 \begin{equation*}
-	-\sizeof{\quadraticExtension}^{\frac{k}{2}} \GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\alpha^{-1}}{\involution{\chi}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \tau\left(\minusInvolutionMinusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^k,
+	-\sizeof{\quadraticExtension}^{\frac{k}{2}} \GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\alpha^{-1}}{\involution{\chi}}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumSingleCharacter{\minusInvolutionMinusOne{\chi}}{\fieldCharacter_{\quadraticExtension}}^k,
 \end{equation*}
 which equals
 \begin{equation*}
-	-\sizeof{\quadraticExtension}^{\frac{k}{2}} \GaussSumCharacter{\involution{\alpha}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\minusInvolution{\alpha}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \tau\left(\minusInvolutionMinusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^k,
+	-\sizeof{\quadraticExtension}^{\frac{k}{2}} \GaussSumCharacter{\involution{\alpha}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\minusInvolution{\alpha}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumSingleCharacter{\minusInvolutionMinusOne{\chi}}{\fieldCharacter_{\quadraticExtension}}^k.
 \end{equation*}
 Thus we obtained the following.
 \begin{theorem}We have the identity
 \begin{align*}
 	& \sum_{\substack{x \in \multiplicativegroup{\quadraticFieldExtension{k}}\\
 			x \ne -1}} \alpha \left(x\right) \chi\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(1 + x\right)\right) \chi\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(1 + \minusInvolution{x}\right)\right) \\
-	=& -\sizeof{\quadraticExtension}^{\frac{k}{2}} \GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\minusInvolution{\alpha}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \tau\left(\minusInvolutionMinusOne{\chi}, \fieldCharacter_{\quadraticExtension}\right)^k.
+	=& -\sizeof{\quadraticExtension}^{\frac{k}{2}} \GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\minusInvolution{\alpha}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumSingleCharacter{\minusInvolutionMinusOne{\chi}}{\fieldCharacter_{\quadraticExtension}}^k.
 \end{align*}
 \end{theorem}
 
@@ -890,7 +890,7 @@ As usual, we rewrite the sum as follows
 $$q^{-2m} \sum_{z \in \finiteFieldExtension{2m}} \sum_{y \in \multiplicativegroup{\finiteFieldExtension{2m}}} \sum_{x \in \NormOneGroup{2m}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(y\right)\right) \fieldCharacter_{2m}\left(z\left(y-\left(1+x\right)\right)\right).$$
 
 If $z=0$ then the sum over $y$ will vanish. Hence we can reduce the sum to $z \in \multiplicativegroup{\finiteFieldExtension{2m}}$. Replacing $y$ with $z^{-1} y$ and $z$ with $-z$, we get the sum
-$$-q^{-m} \tau\left(\chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}, \fieldCharacter_{2m}\right) \sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(z\right)\right) \fieldCharacter_{2m}\left(z\right)  \sum_{x \in \NormOneGroup{2m}} \theta \left(x\right) \fieldCharacter_{2m}\left(xz\right).$$
+$$-q^{-m} \GaussSumSingleCharacter{\chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}}{\fieldCharacter_{2m}} \sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(z\right)\right) \fieldCharacter_{2m}\left(z\right)  \sum_{x \in \NormOneGroup{2m}} \theta \left(x\right) \fieldCharacter_{2m}\left(xz\right).$$
 To proceed, we use the Hilbert 90 map $\multiplicativegroup{\finiteFieldExtension{2m}} \to \NormOneGroup{2m}$ given by $t \mapsto t^{1 - q^m}$. This map is surjective, and its kernel is $\multiplicativegroup{\finiteFieldExtension{m}}$. Define $\theta' \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex}$ by $\theta'\left(t\right) = \theta\left(t^{1-q^m}\right)$. Replacing the sum over $x \in \NormOneGroup{2m}$ with a sum over $t \in \multiplicativegroup{\finiteFieldExtension{2m}}$, we get \begin{align*}
 	& \sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(z\right)\right) \fieldCharacter_{2m}\left(z\right) \sum_{x \in \NormOneGroup{2m}} \theta \left(x\right) \fieldCharacter_{2m}\left(xz\right) \\
 	= & \frac{1}{q^m-1}\sum_{z \in \multiplicativegroup{\finiteFieldExtension{2m}}} \sum_{t \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(z\right)\right) \fieldCharacter_{2m}\left(z^{q^m}\right) \theta' \left(t\right) \fieldCharacter_{2m}\left(t^{1-q^m} z\right).
@@ -906,20 +906,20 @@ Since $\chi \circ \aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField} \n
 \end{align*}
 By the appendix, this equals
 \begin{align*}
-	q^{\frac{m}{2}} \tau\left(\chi \circ \aFieldNorm_{\finiteFieldExtension{m} \slash \finiteField}, \fieldCharacter_m\right)^2 \tau\left(\chi^{-2} \circ \aFieldNorm_{\finiteFieldExtension{m} \slash \finiteField}, \fieldCharacter_m\right) \left(\sum_{t \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(t\right)\right) \theta' \left(t\right) \fieldCharacter_{2m}\left(t\right)\right).
+	q^{\frac{m}{2}} \GaussSumSingleCharacter{\chi \circ \aFieldNorm_{\finiteFieldExtension{m} \slash \finiteField}}{\fieldCharacter_m}^2 \GaussSumSingleCharacter{\chi^{-2} \circ \aFieldNorm_{\finiteFieldExtension{m} \slash \finiteField}}{\fieldCharacter_m} \left(\sum_{t \in \multiplicativegroup{\finiteFieldExtension{2m}}} \chi^{-1}\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(t\right)\right) \theta' \left(t\right) \fieldCharacter_{2m}\left(t\right)\right).
 \end{align*}
 
 To summarize, we have
 \begin{align*}
 	& \sum_{\substack{x \in \NormOneGroup{2m}\\
 			x \ne -1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(1 + x\right)\right) \\
-		=& q^{\frac{m}{2}} \tau\left(\chi, \fieldCharacter\right)^{2m} \tau\left(\chi^{-1}, \fieldCharacter\right)^{2m} \tau\left(\chi^{-2}, \fieldCharacter\right)^m \tau\left(\left(\theta'\right)^{-1} \times \chi, \fieldCharacter_{2m}\right),
+		=& q^{\frac{m}{2}} \GaussSumSingleCharacter{\chi}{\fieldCharacter}^{2m} \GaussSumSingleCharacter{\chi^{-1}}{\fieldCharacter}^{2m} \GaussSumSingleCharacter{\chi^{-2}}{\fieldCharacter}^m \GaussSumCharacter{\left(\theta'\right)^{-1}}{\chi}{\fieldCharacter_{2m}},
 \end{align*}
 where $\theta'\left(t\right) = \theta\left(t^{1-q^m}\right)$.
 Since $\tau\left(\chi^{-1}, \fieldCharacter\right) = \chi\left(-1\right) \conjugate{\tau\left(\chi, \fieldCharacter\right)}$ and since $\chi \ne 1$, we have that $\tau\left(\chi, \fieldCharacter\right) \tau\left(\chi^{-1}, \fieldCharacter\right) = \chi\left(-1\right)$. Combining this with the fact that $\left(\theta'\right)^{-1} = \left(\theta'\right)^{q^m}$ lies in the same Frobenius orbit as $\theta'$, we get the following theorem.
 \begin{theorem}
 	We have the identity $$\sum_{\substack{x \in \NormOneGroup{2m}\\
-			x \ne -1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(1 + x\right)\right) = q^{\frac{m}{2}} \tau\left(\chi^{-2}, \fieldCharacter\right)^m \tau\left(\theta' \times \chi, \fieldCharacter_{2m}\right).$$
+			x \ne -1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(1 + x\right)\right) = q^{\frac{m}{2}} \GaussSumSingleCharacter{\chi^{-2}}{\fieldCharacter}^m \GaussSumCharacter{\theta'}{\chi}{\fieldCharacter_{2m}}.$$
 \end{theorem}
 
 \subsubsection{Elliptic torus computation: the case $\quadraticExtension \ne \finiteField$}
@@ -934,7 +934,7 @@ $$q^{\frac{m}{2}} \tau\left(\chi^{-1} \restriction_{\multiplicativegroup{\finite
 Thus, we obtained the following.
 \begin{theorem}
 	We have the following identity $$\sum_{\substack{x \in \NormOneGroup{2m}\\
-			x \ne -1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{2}}\left(1 + x\right)\right) = q^{\frac{m}{2}} \tau\left(\chi^{-1} \restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^m \GaussSumCharacter{\theta'}{\chi}{\fieldCharacter_{2m}}.$$
+			x \ne -1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{2}}\left(1 + x\right)\right) = q^{\frac{m}{2}} \GaussSumSingleCharacter{\chi^{-1} \restriction_{\multiplicativegroup{\finiteField}}}{\fieldCharacter}^m \GaussSumCharacter{\theta'}{\chi}{\fieldCharacter_{2m}}.$$
 \end{theorem}
 
 \subsubsection{Computation for Deligne--Lusztig characters}
