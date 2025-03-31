@@ -793,6 +793,7 @@ Notice that if $\quadraticExtension \ne \finiteField$ then by the Hasse--Davenpo
 
 For an irreducible representation  $\tau$ of $\GL_k\left(\quadraticExtension\right)$, define $$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \GaussSumScalar{\Contragradient{\tau} \times \involution{\chi}}{\fieldCharacter} \GaussSumScalar{\tau \times \chi}{\fieldCharacter}.$$
 For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \frac{\posDblJacobiSumScalar{\pi}{\chi}}{c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)}.$$
+\elad{I don't normalize by the sign that appears in the $\left(-\GaussSumSingleCharacter{\minusInvolutionMinusOne{\chi}}{\fieldCharacter_{\quadraticExtension}}\right)^k$. Is that a problem? maybe I should normalize by it and it will get rid of the $\varepsilon_{\algebraicGroup{H}}$ in \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}.}
 Using this notation and using the multiplicativity property of Kondo's Gauss sum and \Cref{thm:multiplicativity-in-terms-of-gauss-sums}, we have the following multiplicativity property.
 
 \begin{theorem}\label{thm:multiplicativity-in-terms-of-gamma-factors}
@@ -811,7 +812,7 @@ Using this notation and using the multiplicativity property of Kondo's Gauss sum
 				1 & \text{otherwise.}
 	\end{dcases},$$
 	where $n = \left\lfloor \frac{\dim_{\finiteField} \hermitianSpace}{2} \right\rfloor$.
-	However, we will not need this version for our purposes. \elad{Check odd orthogonal case. Probably needs a sign modification (the formula needs to be $\left(-1\right)^{\text{dual group dimension}} \times \text{product of Gauss sums}$). $\varepsilon_{\algebraicGroup{G}}$ contributes half of the dimension so that's why we add another half here.} \elad{Maybe this is the better version for Calvin's computations}
+	However, we will not need this version for our purposes. \elad{Maybe this is the better version for Calvin's computations}
 \end{remark}
 
 \subsection{Pairing with Deligne--Lusztig characters}
