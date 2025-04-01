@@ -170,6 +170,7 @@
 \newcommand{\CharacterLattice}[1]{X^{\ast}\left(#1\right)}
 \newcommand{\CocharacterLattice}[1]{X_{\ast}\left(#1\right)}
 \newcommand{\SymmetricGroup}{\mathfrak{S}}
+\newcommand{\Kernel}{\operatorname{Ker}}
 
 
 \newcommand{\calvin}[1]{\textcolor{orange}{\sffamily ((CALVIN: #1))}}
@@ -260,10 +261,13 @@ In this paper, we study the doubling method Jacobi sums $\dblJacobiSum{\pi}{\chi
 \section{Preliminaries}
 Let $\finiteField$ be a finite field with $q$ elements, where $2 \nmid q$, and let $\fieldCharacter \colon \finiteField \to \multiplicativegroup{\cComplex}$ be a non-trivial character. Fix an algebraic closure $\algebraicClosure{\finiteField}$ of $\finiteField$. For any $k \ge 1$, let $\finiteFieldExtension{k} \slash \finiteField$ be the unique field extension of degree $k$ contained in $\algebraicClosure{\finiteField}$. If $k' \mid k$, let $\FieldNorm{k}{k'} \colon \multiplicativegroup{\finiteFieldExtension{k}} \to \multiplicativegroup{\finiteFieldExtension{k'}}$ be the norm map.
 
+Given an integer $m \ge 1$ we define $$\NormOneGroup{2m} = \Kernel \FieldNorm{2m}{m} = \left\{ x \in \multiplicativegroup{\finiteFieldExtension{2m}} \mid \FieldNorm{2m}{m}\left(x\right) = 1\right\}.$$
+
 Given a partition $\lambda = \left(\lambda_1, \dots, \lambda_\ell\right)$, we denote the \etale $\finiteField$-algebra $$\finiteFieldExtension{\lambda} = \prod_{i=1}^{\ell} \finiteFieldExtension{\lambda_i}$$ and define
 $$\multiplicativegroup{\finiteFieldExtension{\lambda}} = \prod_{i=1}^{\ell} \multiplicativegroup{\finiteFieldExtension{\lambda_i}}.$$
-
-\elad{Need to define $2 \lambda$ and $\FieldNorm{2\lambda}{\lambda}$ and $\NormOneGroup{2 \lambda}$}
+We also define $2 \lambda = \left(2 \lambda_1, \dots, 2 \lambda_{\ell}\right)$ and $\aFieldNorm_{\finiteFieldExtension{2\lambda} \slash \finiteFieldExtension{\lambda}} \colon \multiplicativegroup{\finiteFieldExtension{2 \lambda}} \to \multiplicativegroup{\finiteFieldExtension{\lambda}}$ by $$\aFieldNorm_{\finiteFieldExtension{2\lambda} \slash \finiteFieldExtension{\lambda}}\left(x_1,\dots,x_{\ell}\right) = \left(\FieldNorm{2\lambda_1}{\lambda_1}\left(x_1\right), \dots, \FieldNorm{2\lambda_{\ell}}{\lambda_{\ell}}\left(x_{\ell}\right)\right).$$
+This is the restriction to $\multiplicativegroup{\finiteFieldExtension{2 \lambda}}$ of the norm map given by viewing $\finiteFieldExtension{2\lambda}$ as an algebra over $\finiteFieldExtension{\lambda}$. We define $$\NormOneGroup{2\lambda} = \Kernel \aFieldNorm_{\finiteFieldExtension{2\lambda} \slash \finiteFieldExtension{\lambda}} = \left\{x \in \multiplicativegroup{\finiteFieldExtension{2\lambda}} \mid \aFieldNorm_{\finiteFieldExtension{2\lambda} \slash \finiteFieldExtension{\lambda}}\left(x\right) = 1\right\},$$
+where $\multiplicativegroup{\finiteField} \to \multiplicativegroup{\finiteFieldExtension{\lambda}}$ is embedded diagonally. It is clear that $$\NormOneGroup{2\lambda} = \prod_{i=1}^{\ell} \NormOneGroup{2 \lambda_j}.$$
 
 \subsection{Representation theory of $\GL_n\left(\finiteField\right)$}
 
