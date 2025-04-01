@@ -407,7 +407,7 @@ We write a more explicit description of $\tilde{G}$ and $\tilde{\algebraicGroup{
 \end{enumerate}
 
 
-\subsubsection{Rational Tori}
+\subsubsection{Rational Tori}\label{subsubsec:rational-tori}
 A \emph{rational torus} $\algebraicGroup{T} \subset \algebraicGroup{G}$ over $\finiteField$ is a torus defined over $\finiteField$. 
 Over a finite field, $\algebraicGroup{G}(\finiteField)$ conjugacy classes of maximal rank rational tori \calvin{check if we need connected or something} are parameterized by  Frobenius order twisted conjugacy classes in the Weyl group. In particular if we fix a rational torus $\algebraicGroup{T}_0$ with rank $\mathrm{rk} \algebraicGroup{G}$ and an element $g \in \algebraicGroup{G}(\algebraicClosure{\finiteField})$ such that $g^{-1}\Frobenius(g) \in N(\algebraicGroup{T}_0)$ then the torus $g\algebraicGroup{T}_0g^{-1}$ is rational, and its $\algebraicGroup{G}(\finiteField)$-conjugacy class is determined  by the Frobeinus-twisted conjugacy class of the image of the Lang map $L \colon \algebraicGroup{G}\left(\algebraicClosure{\finiteField}\right) \to \algebraicGroup{G}\left(\algebraicClosure{\finiteField}\right)$ defined as $L\left(g\right) = g^{-1}\Frobenius(g)$ in $W(\algebraicGroup{T}_0)(\algebraicClosure{\mathbb{F}})$, see \cite[Section 3.3]{Carter1985}.
 
@@ -485,7 +485,7 @@ Here we realize $\restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\
 \end{pmatrix}, \lambda\right) \mid a^2 - db^2 = \lambda \in \multiplcativeScheme \right\},$$
 where $d$ is as in \Cref{subsec:isometry-groups}.
 
-In the unitary group case, the action of $\Frobenius$ on the Weyl group $W\left(\algebraicGroup{T}_{0}\right)$ is conjugation by $w_n$. In the $\algebraicGroup{\SO}^-_{2n}$ case, the action of $\Frobenius$ on the Weyl group $W\left(\algebraicGroup{T}_{0}\right)$ is the outer automorphism on the Dynkin diagram of type $D_n$. In our matrix representation, $\Frobenius$ acts on the Weyl group by conjugation by the matrix $$\left(-n,n\right) \coloneq \begin{pmatrix}\IdentityMatrix{n-1} & 0 & 0 & 0\\
+In the unitary group case, the action of $\Frobenius$ on the Weyl group $W\left(\algebraicGroup{T}_{0}\right)$ is conjugation by $w_n$. In the $\algebraicGroup{\SO}^-_{2n}$ and $\algebraicGroup{\GSO}^-_{2n}$ cases, the action of $\Frobenius$ on the Weyl group $W\left(\algebraicGroup{T}_{0}\right)$ is the outer automorphism on the Dynkin diagram of type $D_n$. In our matrix representation, $\Frobenius$ acts on the Weyl group by conjugation by the matrix $$\left(-n,n\right) \coloneq \begin{pmatrix}\IdentityMatrix{n-1} & 0 & 0 & 0\\
 	0 & 1 & 0 & 0\\
 	0 & 0 & -1 & 0\\
 	0 & 0 & 0 & \IdentityMatrix{n-1}
@@ -618,8 +618,8 @@ The virtual representations $R_T^G(\theta)$ and $R_{T'}^G(\theta')$ share an irr
 \begin{center}
 	\begin{tabular}{|c|c|c|c|c|c|} \hline
 		$\algebraicGroup{G}$ & $\algebraicGroup{T} \subset \algebraicGroup{G}$ & $\Frobenius$ action on $\CharacterLattice{\algebraicGroup{T}}$ & $\algebraicGroup{G}^{\ast}$ & $\algebraicGroup{T}^{\ast} \subset \algebraicGroup{G}^{\ast}$ \tabularnewline \hline \hline
-		$\algebraicGroup{\UnitaryGroup}_{2n}$ & $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}}$ & $\left(-1\right)^{\times n}$ & $\algebraicGroup{\UnitaryGroup}_{2n}$ &  $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}}$ \tabularnewline \hline
-		$\algebraicGroup{\UnitaryGroup}_{2n+1}$ & $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}} \times \algebraicGroup{\UnitaryGroup}_1$ & $\left(-1\right)^{\times n}$ & $\algebraicGroup{\UnitaryGroup}_{2n+1}$ &  $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n} \times \algebraicGroup{\UnitaryGroup}}_1$ \tabularnewline \hline		 				 
+		$\algebraicGroup{\UnitaryGroup}_{2n}$ & $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}}$ & $-1\circ w_{2n}$ & $\algebraicGroup{\UnitaryGroup}_{2n}$ &  $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}}$ \tabularnewline \hline
+		$\algebraicGroup{\UnitaryGroup}_{2n+1}$ & $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}} \times \algebraicGroup{\UnitaryGroup}_1$ & $-1 \circ w_{2n+1}$ & $\algebraicGroup{\UnitaryGroup}_{2n+1}$ &  $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n} \times \algebraicGroup{\UnitaryGroup}}_1$ \tabularnewline \hline		 				 
 		$\algebraicGroup{\SO}_{2n+1}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\Sp}_{2n}$ &  $\multiplcativeScheme^n$ \tabularnewline \hline
 		$\algebraicGroup{\Sp}_{2n}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\SO}_{2n+1}$ & $\multiplcativeScheme^n$ \tabularnewline \hline		 
 		$\algebraicGroup{\SO}^{+}_{2n}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\SO}^{+}_{2n}$ &  $\multiplcativeScheme^n$ \tabularnewline \hline
@@ -629,8 +629,9 @@ The virtual representations $R_T^G(\theta)$ and $R_{T'}^G(\theta')$ share an irr
 		$\algebraicGroup{\GSO}^{-}_{2n}$ & $\multiplcativeScheme^{n-1} \times \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ & $\left(1\right)^{\times {\left(n-1\right)}} \times \sigma^{\ast}$ & $\algebraicGroup{GSpin}_{2n}^{-}$ &  $\multiplcativeScheme^{n-1} \times \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ \tabularnewline \hline
 	\end{tabular}
 \end{center}
-\calvin{correct the tori and how Fr acts on cocharacters and the Weyl group}
-For all the pairs $\algebraicGroup{T} \subset \algebraicGroup{G}$ in this list, the Frobenius root $\Frobenius$ of $\algebraicGroup{G}$ acts trivially on the Weyl group $W\left(\algebraicGroup{T}\right)$. In the last row, $\sigma \colon \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme} \to \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ is the automorphism $a + b\sqrt{d} \mapsto a - b\sqrt{d}$ where $d \in \multiplicativegroup{\finiteField}$ is a non-square.
+\calvin{maybe we don't need to mention how $\Frobenius$ acts on the Weyl group because we stated it in section 2.3.4}
+In the last row, $\sigma \colon \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme} \to \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ is the automorphism $a + b\sqrt{d} \mapsto a - b\sqrt{d}$ where $d \in \multiplicativegroup{\finiteField}$ is a non-square.
+The Frobenius root acts on the Weyl group is described in section \ref{subsubsec:rational-tori}. 
 
 \section{Doubling method Jacobi sums}
 
