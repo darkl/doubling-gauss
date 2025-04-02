@@ -791,33 +791,32 @@ In order to make the computations more tolerable, it is beneficial to work with 
 Let $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be a character.
 
 We define a normalization factor as follows $$c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) = \begin{dcases}
-	\GaussSumSingleCharacter{\chi^{-2}}{\fieldCharacter}^{\frac{\dim_{\finiteField} \hermitianSpace}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is even,}\\
-	\chi\left(2\right) \GaussSumSingleCharacter{\chi^{-2}}{\fieldCharacter}^{\frac{\dim_{\finiteField} \hermitianSpace - 1}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is odd,}	\\
-	\GaussSumSingleCharacter{\chi^{-1}\restriction_{\multiplicativegroup{\finiteField}}}{\fieldCharacter}^{\dim_{\quadraticExtension} \hermitianSpace} & \quadraticExtension \ne \finiteField.
+	\left(-\GaussSumSingleCharacter{\chi^{-2}}{\fieldCharacter}\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is even,}\\
+	\chi\left(2\right) \left(-\GaussSumSingleCharacter{\chi^{-2}}{\fieldCharacter}\right)^{\frac{\dim_{\finiteField} \hermitianSpace - 1}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is odd,}	\\
+	\left(-\GaussSumSingleCharacter{\chi^{-1}\restriction_{\multiplicativegroup{\finiteField}}}{\fieldCharacter}\right)^{\dim_{\quadraticExtension} \hermitianSpace} & \quadraticExtension \ne \finiteField.
 \end{dcases}$$
 Notice that if $\quadraticExtension \ne \finiteField$ then by the Hasse--Davenport relation $\GaussSumSingleCharacter{\chi^{-1}\restriction_{\multiplicativegroup{\finiteField}}}{\fieldCharacter}^{2} = \GaussSumSingleCharacter{\minusInvolutionMinusOne{\chi}} {\fieldCharacter_{\quadraticExtension}}$.
 
 For an irreducible representation  $\tau$ of $\GL_k\left(\quadraticExtension\right)$, define $$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \GaussSumScalar{\Contragradient{\tau} \times \involution{\chi}}{\fieldCharacter} \GaussSumScalar{\tau \times \chi}{\fieldCharacter}.$$
 For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \frac{\posDblJacobiSumScalar{\pi}{\chi}}{c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)}.$$
-\elad{I don't normalize by the sign that appears in the $\left(-\GaussSumSingleCharacter{\minusInvolutionMinusOne{\chi}}{\fieldCharacter_{\quadraticExtension}}\right)^k$. Is that a problem? maybe I should normalize by it and it will get rid of the $\varepsilon_{\algebraicGroup{H}}$ in \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}.}
+
 Using this notation and using the multiplicativity property of Kondo's Gauss sum and \Cref{thm:multiplicativity-in-terms-of-gauss-sums}, we have the following multiplicativity property.
 
 \begin{theorem}\label{thm:multiplicativity-in-terms-of-gamma-factors}
 	\begin{enumerate}
 		\item If $\tau_1$ and $\tau_2$ are irreducible representations of $\GL_{k_1}\left(\finiteField\right)$ and $\GL_{k_2}\left(\finiteField\right)$, respectively, then for any irreducible subrepresentation $\tau$ of the parabolic induction $\tau_1 \circ \tau_2$, we have
 		$$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \dblGammaFactor{\tau_1}{\chi}{\fieldCharacter} \dblGammaFactor{\tau_2}{\chi}{\fieldCharacter}.$$
-		\item If $\tau$, $\pi'$ and $\pi$ are as in \Cref{thm:multiplicativity-in-terms-of-gauss-sums} and $\chi \ne 1$, then
+		\item If $\tau$, $\pi'$ and $\pi$ are as in \Cref{thm:multiplicativity-in-terms-of-gauss-sums} and $\involutionPlusOne{\chi} \ne 1$, then
 		$$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace'}{\pi'}{\chi}{\fieldCharacter} \dblGammaFactor{\tau}{\chi}{\fieldCharacter}.$$
 	\end{enumerate}
 \end{theorem}
 
 \begin{remark}
 	The ``correct'' gamma factor (expected by Langlands functoriality) is given by $$\dblLanglandsGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} \cdot \begin{dcases}
-				\left(-1\right)^n & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = 1\\
-				\left(-1\right)^{n+1} \GaussSumSingleCharacter{\chi} {\fieldCharacter} & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = -1 \\
-				1 & \text{otherwise.}
-	\end{dcases},$$
-	where $n = \left\lfloor \frac{\dim_{\finiteField} \hermitianSpace}{2} \right\rfloor$.
+				1 & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = 1\\
+				-\GaussSumSingleCharacter{\chi} {\fieldCharacter} & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = -1 \\
+				\left(-1\right)^{\dim_{\quadraticExtension} \hermitianSpace} & \text{otherwise.}
+	\end{dcases}$$
 	However, we will not need this version for our purposes. \elad{Maybe this is the better version for Calvin's computations}
 \end{remark}
 
@@ -948,7 +947,7 @@ Thus, we obtained the following.
 Combining the results of the previous sections with \Cref{prop:reduction-of-gauss-sum-to-torus}, we arrive at the following result.
 
 \begin{theorem}\label{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}
-	Suppose that $T \cong \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$ is a maximal torus of $H$. Suppose that $\theta \colon T \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s$, where $\alpha_j \colon \multiplicativegroup{\quadraticFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote \begin{align*}
+	Suppose that $T = T_G \cong \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$ is a maximal torus of $G$ and let $T_H$ be the unique maximal torus of $H$ such that $T_H \cap G = T_G$. Suppose that $\theta \colon T_G \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s$, where $\alpha_j \colon \multiplicativegroup{\quadraticFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote \begin{align*}
 		g_T\left(\chi, \theta, \fieldCharacter\right)
 		= & \prod_{i=1}^s \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2m_i}} \cdot \prod_{j=1}^r \GaussSumCharacter{\minusInvolution{\alpha_j}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k_j}}} \GaussSumCharacter{\alpha_j}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k_j}}}.
 	\end{align*} Then
@@ -963,9 +962,9 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 	\end{align*}
 \end{theorem}
 \begin{proof}
-	Notice that if $\dim_{\finiteField} \hermitianSpace$ is odd then $\negJacobiKernel{\chi}\left(t\right) = 0$ for any $t \in T$, as $\idmap_{\hermitianSpace} - t$ always has determinant zero.
+	Notice that if $\dim_{\finiteField} \hermitianSpace$ is odd then $\negJacobiKernel{\chi}\left(t\right) = 0$ for any $t \in T_{G}$, as $\idmap_{\hermitianSpace} - t$ always has determinant zero.
 	
-	We have that if $t$ corresponds to $\left(a_1,\dots,a_r,t_1,\dots,t_s\right) \in \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \NormOneGroup{2m_i}$ such that $\idmap_{\hermitianSpace} + t$ is invertible then \begin{align*}
+	We have that if $t \in T_G$ corresponds to $\left(a_1,\dots,a_r,t_1,\dots,t_s\right) \in \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \NormOneGroup{2m_i}$ such that $\idmap_{\hermitianSpace} + t$ is invertible then \begin{align*}
 		\posJacobiKernel{\chi}\left(t\right) =& \prod_{i=1}^s \chi\left(\FieldNorm{2m_i}{1}\left(1 + t_i\right)\right) \cdot \prod_{j=1}^r \chi\left(\aFieldNorm_{\quadraticFieldExtension{k_j} / \quadraticExtension}\left(1 + a_j\right)\right) \chi\left(\aFieldNorm_{\quadraticFieldExtension{k_j} / \quadraticExtension}\left(1 + \minusInvolution{a_j}\right)\right) \\
 		& \times  \begin{dcases}
 			\chi\left(2\right) & \dim_{\finiteField} \hermitianSpace \text{ is odd},\\
@@ -981,10 +980,14 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 	
 
 	
-	Hence our theorem follows from the results mentioned above and from the formula $$R_T\left(1\right) = \varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}} \frac{\grpIndex{H}{T}}{\sizeof{H}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{H}_p^2 \cdot q^{\left\lfloor\frac{\dim_{\finiteField} \hermitianSpace}{2}\right\rfloor},$$
-	and the fact \begin{equation*}
-		\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^r.
+	Hence our theorem follows from the results mentioned above and from the formula $$R_T\left(1\right) = \varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}_{\algebraicGroup{H}}} \frac{\grpIndex{H}{T}}{\sizeof{H}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{H}_p^2 \cdot q^{\left\lfloor\frac{\dim_{\finiteField} \hermitianSpace}{2}\right\rfloor},$$
+	the fact that \begin{equation*}
+		\varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}_{\algebraicGroup{H}}} = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}_{\algebraicGroup{G}}},
 	\end{equation*}
+	and the facts
+	\begin{align*}
+		\varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\left\lfloor \frac{1}{2}\dim_{\finiteField} \hermitianSpace \right\rfloor} & \,\,\,\,\,\text{and}\,\,\,\,\, \varepsilon_{\algebraicGroup{T}_{\algebraicGroup{G}}} = \left(-1\right)^r.
+	\end{align*}
 \end{proof}
 \begin{remark}
 	We have $$\varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\left\lfloor \frac{\dim_{\finiteField} \hermitianSpace}{2}\right\rfloor}.$$ If $\finiteField = \quadraticExtension$ and $\dim_{\finiteField} \hermitianSpace$ is even then we also have $$\varepsilon_{\algebraicGroup{\GroupExtension{G}}} = \left(-1\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2} + 1}.$$
