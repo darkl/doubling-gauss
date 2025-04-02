@@ -293,10 +293,11 @@ $$\GaussSumTorusCharacter{T}{\alpha}{\chi}{\fieldCharacter} = \prod_{j=1}^{\leng
 
 We are now ready to state Kondo's result.
 \begin{theorem}[Kondo {\cite{Kondo1963}}]\label{thm:KondoClassical}
-	Suppose that $\tau$ is an irreducible representation of $\GL_n\left(\finiteField\right)$ with cuspidal support $\left\{\tau_1,\dots, \tau_r\right\}$, where $n_1 + \dots + n_r = n$, and where for every $j$, $\tau_j$ is an irreducible cuspidal representation of $\GL_{n_j}\left(\finiteField\right)$ corresponding to the Frobenius orbit of a regular character $\theta_j \colon \multiplicativegroup{\finiteFieldExtension{n_j}} \to \multiplicativegroup{\cComplex}$. Then
-	$$\GaussSumScalar{\tau \times \chi}{\fieldCharacter} = \left(-1\right)^n \cdot \prod_{j=1}^r \GaussSumCharacter{\theta_j}{\chi}{\fieldCharacter_{n_j}}.$$
-	
-	If $\tau$ is an irreducible representation such that $\innerproduct{\trace \tau}{R_{T, \alpha}} \ne 0$ for some maximal torus $T$ of $\GL_n\left(\finiteField\right)$ and some character $\alpha \colon T \to \multiplicativegroup{\cComplex}$ then $$\GaussSumScalar{\tau \times \chi}{\fieldCharacter} = \left(-1\right)^n \GaussSumTorusCharacter{T}{\alpha}{\chi}{\fieldCharacter}.$$
+	\begin{enumerate}
+		\item Suppose that $\tau$ is an irreducible representation of $\GL_n\left(\finiteField\right)$ with cuspidal support $\left\{\tau_1,\dots, \tau_r\right\}$, where $n_1 + \dots + n_r = n$, and where for every $j$, $\tau_j$ is an irreducible cuspidal representation of $\GL_{n_j}\left(\finiteField\right)$ corresponding to the Frobenius orbit of a regular character $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{n_j}} \to \multiplicativegroup{\cComplex}$. Then
+		$$\GaussSumScalar{\tau \times \chi}{\fieldCharacter} = \left(-1\right)^n \cdot \prod_{j=1}^r \GaussSumCharacter{\alpha_j}{\chi}{\fieldCharacter_{n_j}}.$$
+		\item Suppose that $\tau$ is an irreducible representation of $\GL_n\left(\finiteField\right)$ such that $\innerproduct{\trace \tau}{R_{T, \alpha}} \ne 0$ for some maximal torus $T$ of $\GL_n\left(\finiteField\right)$ and some character $\alpha \colon T \to \multiplicativegroup{\cComplex}$. Then $$\GaussSumScalar{\tau \times \chi}{\fieldCharacter} = \left(-1\right)^n \GaussSumTorusCharacter{T}{\alpha}{\chi}{\fieldCharacter}.$$
+	\end{enumerate}
 \end{theorem}
 
 We will need the following lemma that allows us to determine whether a degenerate Kondo Gauss sum vanishes.
