@@ -873,7 +873,7 @@ which equals
 	-\sizeof{\quadraticExtension}^{\frac{k}{2}} \GaussSumCharacter{\involution{\alpha}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumCharacter{\minusInvolution{\alpha}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k}}} \GaussSumSingleCharacter{\minusInvolutionMinusOne{\chi}}{\fieldCharacter_{\quadraticExtension}}^k.
 \end{equation*}
 Thus we obtained the following.
-\begin{theorem}We have the identity
+\begin{theorem}\label{thm:split-case-deligne-lusztig-computation}We have the identity
 \begin{align*}
 	& \sum_{\substack{x \in \multiplicativegroup{\quadraticFieldExtension{k}}\\
 			x \ne -1}} \alpha \left(x\right) \chi\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(1 + x\right)\right) \chi\left(\aFieldNorm_{\quadraticFieldExtension{k} \slash \quadraticExtension}\left(1 + \minusInvolution{x}\right)\right) \\
@@ -988,6 +988,7 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 	\begin{align*}
 		\varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\left\lfloor \frac{1}{2}\dim_{\finiteField} \hermitianSpace \right\rfloor} & \,\,\,\,\,\text{and}\,\,\,\,\, \varepsilon_{\algebraicGroup{T}_{\algebraicGroup{G}}} = \left(-1\right)^r.
 	\end{align*}
+	In this computation, the factor $\varepsilon_{\algebraicGroup{T}_{\algebraicGroup{G}}}$ comes from \Cref{thm:split-case-deligne-lusztig-computation} while the factor $\varepsilon_{\algebraicGroup{G}}$ comes from the definition of the normalization factor $c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)$.
 \end{proof}
 \begin{remark}
 	We have $$\varepsilon_{\algebraicGroup{G}} = \left(-1\right)^{\left\lfloor \frac{\dim_{\finiteField} \hermitianSpace}{2}\right\rfloor}.$$ If $\finiteField = \quadraticExtension$ and $\dim_{\finiteField} \hermitianSpace$ is even then we also have $$\varepsilon_{\algebraicGroup{\GroupExtension{G}}} = \left(-1\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2} + 1}.$$
