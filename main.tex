@@ -138,6 +138,7 @@
 \newcommand{\Mat}[2]{\operatorname{Mat}_{#1 \times #2}}
 \newcommand{\GaussSum}[2]{\mathcal{G}\left(#1, #2\right)}
 \newcommand{\GaussSumSingleCharacter}[2]{\tau\left(#1, #2\right)}
+\newcommand{\GaussSumSingleTorusCharacter}[3]{\tau_{#1}\left(#2, #3\right)}
 \newcommand{\dblJacobiSum}[2]{\mathcal{J}_{\pm}^{\mathrm{dbl}}\left(#1, #2\right)}
 \newcommand{\posDblJacobiSum}[2]{\mathcal{J}_{+}^{\mathrm{dbl}}\left(#1, #2\right)}
 \newcommand{\negDblJacobiSum}[2]{\mathcal{J}_{-}^{\mathrm{dbl}}\left(#1, #2\right)}
@@ -159,6 +160,7 @@
 \newcommand{\dblGammaFactorSpace}[4]{\Gamma^{\mathrm{dbl}}_{#1}\left(#2 \times #3, #4\right)}
 \newcommand{\dblLanglandsGammaFactorSpace}[4]{\gamma^{\mathrm{dbl}}_{#1}\left(#2 \times #3, #4\right)}
 \newcommand{\GaussSumCharacter}[3]{\tau\left(#1 \times #2, #3\right)}
+\newcommand{\GaussSumTorusCharacter}[4]{\tau_{#1}\left(#2 \times #3, #4\right)}
 \newcommand{\ladicnumbers}{\algebraicClosure{\mathbb{Q}_{\ell}}}
 \newcommand{\IsometryGroup}{\mathrm{Isom}}
 \newcommand{\lieAlgebra}{\mathfrak{g}}
@@ -285,11 +287,16 @@ In order to state Kondo's result, we need to introduce some Gauss sum notation w
 If $\alpha \colon \multiplicativegroup{\finiteFieldExtension{n}} \to \multiplicativegroup{\cComplex}$ is a character, denote the \emph{Gauss sum} $$\GaussSumSingleCharacter{\alpha}{\fieldCharacter_n} = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha^{-1}\left(x\right) \fieldCharacter_n\left(x\right),$$where $\fieldCharacter_n \colon \finiteFieldExtension{n} \to \multiplicativegroup{\cComplex}$ is given by $\fieldCharacter_n = \fieldCharacter \circ \trace_{\finiteFieldExtension{n} \slash \finiteField}$. If $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ is a character and if $\alpha$ is as above, denote the \emph{twisted Gauss sum}
 $$\GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_n} = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha^{-1}\left(x\right) \chi^{-1}\left( \FieldNorm{n}{1}\left(x\right)\right) \fieldCharacter_n\left(x\right).$$
 
+Given a torus $T \subset \GL_n\left(\finiteField\right)$ of the form $T \cong \multiplicativegroup{\finiteFieldExtension{\lambda}}$ where $\lambda \vdash n$ is a partition and given characters $\alpha \colon \multiplicativegroup{\finiteFieldExtension{\lambda}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon T \to \multiplicativegroup{\cComplex}$, we define $$\GaussSumTorusCharacter{T}{\alpha}{\chi}{\fieldCharacter} = \left(-1\right)^{\lengthof\left(\lambda\right)} q^{-\frac{n}{2}} \sum_{t \in T} \alpha^{-1}\left(t\right) \chi^{-1}\left(\det t\right) \fieldCharacter\left(\trace t\right).$$
+Notice that if $\alpha = \alpha_1 \times \dots \times \alpha_{\lengthof\left(\lambda\right)}$, where $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{\lambda_j}} \to \multiplicativegroup{\cComplex}$ is a character for every $j$, then
+$$\GaussSumTorusCharacter{T}{\alpha}{\chi}{\fieldCharacter} = \prod_{j=1}^{\lengthof\left(\lambda\right)} \GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_{\lambda_j}}.$$
+
 We are now ready to state Kondo's result.
-%test
 \begin{theorem}[Kondo {\cite{Kondo1963}}]\label{thm:KondoClassical}
 	Suppose that $\tau$ is an irreducible representation of $\GL_n\left(\finiteField\right)$ with cuspidal support $\left\{\tau_1,\dots, \tau_r\right\}$, where $n_1 + \dots + n_r = n$, and where for every $j$, $\tau_j$ is an irreducible cuspidal representation of $\GL_{n_j}\left(\finiteField\right)$ corresponding to the Frobenius orbit of a regular character $\theta_j \colon \multiplicativegroup{\finiteFieldExtension{n_j}} \to \multiplicativegroup{\cComplex}$. Then
 	$$\GaussSumScalar{\tau \times \chi}{\fieldCharacter} = \left(-1\right)^n \cdot \prod_{j=1}^r \GaussSumCharacter{\theta_j}{\chi}{\fieldCharacter_{n_j}}.$$
+	
+	If $\tau$ is an irreducible representation such that $\innerproduct{\trace \tau}{R_{T, \alpha}} \ne 0$ for some maximal torus $T$ of $\GL_n\left(\finiteField\right)$ and some character $\alpha \colon T \to \multiplicativegroup{\cComplex}$ then $$\GaussSumScalar{\tau \times \chi}{\fieldCharacter} = \left(-1\right)^n \GaussSumTorusCharacter{T}{\alpha}{\chi}{\fieldCharacter}.$$
 \end{theorem}
 
 We will need the following lemma that allows us to determine whether a degenerate Kondo Gauss sum vanishes.
@@ -958,11 +965,11 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 \begin{theorem}\label{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}
 	Suppose that $\algebraicGroup{T}_{\algebraicGroup{H}}$ is a maximal rational torus of $\algebraicGroup{H}$ that corresponds to the pair of partitions $\left(\lambda^+, \lambda^-\right)$ and let $\algebraicGroup{T}_{\algebraicGroup{G}} \coloneq \algebraicGroup{G} \cap \algebraicGroup{T}_{\algebraicGroup{H}}$ and $T = T_G = \algebraicGroup{T}_{\algebraicGroup{G}}^{\Frobenius}$. Suppose that $\theta_{H} \colon \algebraicGroup{T}_{\algebraicGroup{H}}^{\Frobenius} \to \multiplicativegroup{\cComplex}$ is a character and let $$\theta = \theta_{\algebraicGroup{G}} \coloneq \theta_{\algebraicGroup{H}} \restriction_{T_G} \colon T_G \to \multiplicativegroup{\cComplex}.$$ Then
 	\begin{align*}
-		 \dblPosVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) g_{T'}\left(\chi, \theta', \fieldCharacter\right),
+		 \dblPosVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter},
 	\end{align*}
 	and \begin{align*}
 		\dblNegVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \begin{dcases}
-			0 & \dim_{\finiteField} \hermitianSpace \text{ is odd.}\\
+			0 & \dim_{\finiteField} \hermitianSpace \text{ is odd,}\\
 			\dblPosVirtualJacobiSumScalar{R_{T, \theta}}{\chi} \cdot \theta\left(-1\right) & \text{ otherwise.}
 		\end{dcases}
 	\end{align*}
