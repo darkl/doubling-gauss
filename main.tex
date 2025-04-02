@@ -34,6 +34,7 @@
 \theoremstyle{definition}
 \newtheorem{example}[theorem]{Example}
 
+
 %% frequently used symbols
 % Common math notions
 \newcommand{\zIntegers}{\mathbb{Z}}
@@ -567,7 +568,7 @@ The $\ell$-adic \'etale Euler characteristic of this space is a $\algebraicGroup
 The $R_T^G(\theta)$ only depends on the $\algebraicGroup{G}(\finiteField)$-conjugacy class of $(\algebraicGroup{T},\theta)$ and
 the collection of virtual representations $\{R_T^G(\theta)\}$ contain every irreducible $\algebraicGroup{G}(\finiteField)$-representation as a sub-virtual representation.
 
-\begin{proposition}[{\cite[Corollary 12.6]{DigneMichel1991}}]
+\begin{proposition}[{\cite[Corollary 12.6]{DigneMichel1991} or \cite[Theorem 1.2]{SaitoShinoda2000}}]
 \label{prop:semisimple_pair_with_RTtheta}
 Treating $R_T^G(\theta)$ as a class function of $\algebraicGroup{G}(\finiteField)$ via the character of $R_T^G(\theta)$, for any class function $f$ on $\algebraicGroup{G}(\finiteField)$ which satisfies $f(g) = f(s)$ when $g=su$ is the Jordan decomposition of $g$, we have
 \[
@@ -832,7 +833,7 @@ Let us realize $H = \algebraicGroup{H}^{\Frobenius}$, that is, $H$ is the group 
 Given a class function $F \colon H \to \cComplex$ (i.e., a function that is invariant under conjugation by elements of $G$), let us define $$\dblVirtualJacobiSumScalar{F}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} F\left(g\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(g\right).$$
 
 It is clear that if $\pi$ is an irreducible representation of $H$ then $$\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \dim \pi.$$
-Notice that the assignments $g \mapsto \posJacobiKernel{\chi}\left(g\right)$ and $g \mapsto \negJacobiKernel{\chi}\left(g\right)$ only depend on the semisimple part of $g \in H$. By \cite[Theorem in Section 1.2]{SaitoShinoda2000}, we have the following result. \calvin{does this also follow from \Cref{prop:semisimple_pair_with_RTtheta}? Maybe we should say something about it} \elad{Can you compare the proofs?}\calvin{they use the same proof: basically they just use the character formula for RTtheta}
+Notice that the assignments $g \mapsto \posJacobiKernel{\chi}\left(g\right)$ and $g \mapsto \negJacobiKernel{\chi}\left(g\right)$ only depend on the semisimple part of $g \in H$. By \Cref{prop:semisimple_pair_with_RTtheta}, we have the following result.
 \begin{proposition}\label{prop:reduction-of-gauss-sum-to-torus}
 	For any $\Frobenius$-stable maximal torus $\algebraicGroup{T}$ of $\algebraicGroup{H}$, and any character $\theta \colon T \to \multiplicativegroup{\cComplex}$, where $T = \algebraicGroup{T}^{\Frobenius}$, we have
 	$$ \dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \frac{\grpIndex{H}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(t\right).$$
@@ -1011,10 +1012,10 @@ Let $f \colon \algebraicGroup{G}^{\Frobenius} \to \cComplex$ be a class function
 Here is a basic example of a stable class function.
 \begin{proposition}
 \label{prop:central_char}
-    If $f \colon \algebraicGroup{G}^{\Frobenius} \to \cComplex$ is supported on the center $\algebraicGroup{Z}^{\Frobenius}$ of $\algebraicGroup{G}^{\Frobenius}$, then $f$ is a stable function.
+If $f \colon \algebraicGroup{G}^{\Frobenius} \to \cComplex$ is supported on $\algebraicGroup{Z}^{\Frobenius}$, where $\algebraicGroup{Z}$ is the center of $\algebraicGroup{G}$, then $f$ is a stable function.
 \end{proposition}
 \begin{proof}
-By \cite[Lemma 2.2]{Malle2007}, if $\pi$ and $\pi'$ lie in the same geometric Lusztig series, then they have the same central character. The result now immediately follows.\calvin{central character means (center of $G$)($\mathbb{F}$) not center of ($G(\mathbb{F})$)?}
+By \cite[Lemma 2.2]{Malle2007}, if $\pi$ and $\pi'$ lie in the same geometric Lusztig series, then the restrictions of their central characters to $\algebraicGroup{Z}^{\Frobenius}$ coincide. The result now immediately follows.
 \end{proof}
 %adding in the commented out sketched proof just in case:
 \begin{comment}
