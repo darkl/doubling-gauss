@@ -935,7 +935,8 @@ $$\sum_{\substack{x \in \NormOneGroup{2m}\\
 By the appendix, this equals
 $$q^{\frac{m}{2}} \GaussSumCharacter{\theta'}{\chi}{\fieldCharacter_{2m}} \tau\left(\chi^{-1} \restriction_{\multiplicativegroup{\finiteField}} \circ \FieldNorm{m}{1}, \fieldCharacter_m\right),$$
 which equals
-$$q^{\frac{m}{2}} \tau\left(\chi^{-1} \restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^m \GaussSumCharacter{\theta'}{\chi}{\fieldCharacter_{2m}}.$$
+$$q^{\frac{m}{2}} \tau\left(\chi^{-1} \restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right)^m \GaussSumCharacter{\theta'}{\chi}{\fieldCharacter_{2m}},$$
+where we recall that $\theta' \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex}$ is given by $\theta'\left(x\right) = \theta\left(x^{1-q^m}\right)$.
 
 Thus, we obtained the following.
 \begin{theorem}
@@ -943,35 +944,40 @@ Thus, we obtained the following.
 			x \ne -1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{2}}\left(1 + x\right)\right) = q^{\frac{m}{2}} \GaussSumSingleCharacter{\chi^{-1} \restriction_{\multiplicativegroup{\finiteField}}}{\fieldCharacter}^m \GaussSumCharacter{\theta'}{\chi}{\fieldCharacter_{2m}}.$$
 \end{theorem}
 
+\subsubsection{Some notation}
+Recall that by \Cref{subsubsec:rational-tori} maximal rational tori of $\algebraicGroup{G}$ correspond to certain pairs of partitions $\left(\lambda^+, \lambda^-\right)$ and we have that the $\Frobenius$ fixed points of a maximal torus $\algebraicGroup{T}$ corresponding to the pair $\left(\lambda^+, \lambda^-\right)$ are of the form $$T = \algebraicGroup{T}^{\Frobenius} \cong \prod_{j=1}^{\lengthof(\lambda^+)} \multiplicativegroup{\finiteFieldExtension{\lambda_j^{+}}} \times \prod_{i=1}^{\lengthof(\lambda^-)} \NormOneGroup{2 \lambda_i^{-}},$$
+where if $\algebraicGroup{G}$ is a unitary group then $\lambda_j^{+}$ is even for every $j$, and thus $\finiteFieldExtension{\lambda^+_j}$ is always a field extension of $\quadraticExtension$.
+
+Given a character $$\theta = \prod_{j=1}^{\lengthof(\lambda^+)} \alpha_j \times \prod_{i=1}^{\lengthof(\lambda^-)} \theta_i \colon \algebraicGroup{T}^{\Frobenius} \to \multiplicativegroup{\cComplex},$$ we choose a torus of $T'$ of $\GL_{2 \left\lfloor\frac{\dim_{\finiteField} \hermitianSpace}{2}\right\rfloor}\left(\quadraticExtension\right)$ of the form $$T' \cong \prod_{j=1}^{\lengthof(\lambda^+)} \left(\multiplicativegroup{\finiteFieldExtension{\lambda_j^{+}}} \times \multiplicativegroup{\finiteFieldExtension{\lambda_j^{+}}}\right) \times \prod_{i=1}^{\lengthof(\lambda^-)} \multiplicativegroup{\finiteFieldExtension{2 \lambda_i^{-}}}$$ and define a character $\theta' \colon T' \to \multiplicativegroup{\cComplex}$ by the formula
+$$\theta' = \prod_{j=1}^{\lengthof(\lambda^+)} \left(\alpha_j \times \minusInvolution{\alpha}_j\right) \times \prod_{i=1}^{\lengthof(\lambda^-)} \theta'_j,$$
+where we recall that $\theta'_j \colon \multiplicativegroup{\finiteFieldExtension{2 \lambda_j^{-}}} \to \multiplicativegroup{\cComplex}$ is given by $$\theta'_j\left(x\right) = \theta_j\left(x^{1-q^{\lambda_j^-}}\right).$$
+
 \subsubsection{Computation for Deligne--Lusztig characters}
 Combining the results of the previous sections with \Cref{prop:reduction-of-gauss-sum-to-torus}, we arrive at the following result.
 
 \begin{theorem}\label{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}
-	Suppose that $T = T_G \cong \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \finiteFieldExtension{2m_i}^1$ is a maximal torus of $G$ and let $T_H$ be the unique maximal torus of $H$ such that $T_H \cap G = T_G$. Suppose that $\theta \colon T_G \to \multiplicativegroup{\cComplex}$ is a character and that under the above isomorphism $\theta = \alpha_1 \times \dots \times \alpha_r \times \theta_1 \times \dots \times \theta_s$, where $\alpha_j \colon \multiplicativegroup{\quadraticFieldExtension{k_j}} \to \multiplicativegroup{\cComplex}$ and $\theta_i \colon \finiteFieldExtension{2m_i}^1 \to \multiplicativegroup{\cComplex}$ are characters for every $i$ and $j$. Denote \begin{align*}
-		g_T\left(\chi, \theta, \fieldCharacter\right)
-		= & \prod_{i=1}^s \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2m_i}} \cdot \prod_{j=1}^r \GaussSumCharacter{\minusInvolution{\alpha_j}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k_j}}} \GaussSumCharacter{\alpha_j}{\chi}{\fieldCharacter_{\quadraticFieldExtension{k_j}}}.
-	\end{align*} Then
+	Suppose that $\algebraicGroup{T}_{\algebraicGroup{H}}$ is a maximal rational torus of $\algebraicGroup{H}$ that corresponds to the pair of partitions $\left(\lambda^+, \lambda^-\right)$ and let $\algebraicGroup{T}_{\algebraicGroup{G}} \coloneq \algebraicGroup{G} \cap \algebraicGroup{T}_{\algebraicGroup{H}}$ and $T = T_G = \algebraicGroup{T}_{\algebraicGroup{G}}^{\Frobenius}$. Suppose that $\theta_{H} \colon \algebraicGroup{T}_{\algebraicGroup{H}}^{\Frobenius} \to \multiplicativegroup{\cComplex}$ is a character and let $$\theta = \theta_{\algebraicGroup{G}} \coloneq \theta_{\algebraicGroup{H}} \restriction_{T_G} \colon T_G \to \multiplicativegroup{\cComplex}.$$ Then
 	\begin{align*}
-		 \dblPosVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) g_T\left(\chi, \theta, \fieldCharacter\right),
+		 \dblPosVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) g_{T'}\left(\chi, \theta', \fieldCharacter\right),
 	\end{align*}
 	and \begin{align*}
 		\dblNegVirtualJacobiSumScalar{R_{T, \theta}}{\chi} = \begin{dcases}
 			0 & \dim_{\finiteField} \hermitianSpace \text{ is odd.}\\
-			\dblPosVirtualJacobiSumScalar{R_{T, \theta}}{\chi} \cdot \prod_{i=1}^s \theta_i\left(-1\right) \cdot \prod_{j=1}^r \alpha_j\left(-1\right) & \text{ otherwise.}
+			\dblPosVirtualJacobiSumScalar{R_{T, \theta}}{\chi} \cdot \theta\left(-1\right) & \text{ otherwise.}
 		\end{dcases}
 	\end{align*}
 \end{theorem}
 \begin{proof}
 	Notice that if $\dim_{\finiteField} \hermitianSpace$ is odd then $\negJacobiKernel{\chi}\left(t\right) = 0$ for any $t \in T_{G}$, as $\idmap_{\hermitianSpace} - t$ always has determinant zero.
 	
-	We have that if $t \in T_G$ corresponds to $\left(a_1,\dots,a_r,t_1,\dots,t_s\right) \in \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \NormOneGroup{2m_i}$ such that $\idmap_{\hermitianSpace} + t$ is invertible then \begin{align*}
-		\posJacobiKernel{\chi}\left(t\right) =& \prod_{i=1}^s \chi\left(\FieldNorm{2m_i}{1}\left(1 + t_i\right)\right) \cdot \prod_{j=1}^r \chi\left(\aFieldNorm_{\quadraticFieldExtension{k_j} / \quadraticExtension}\left(1 + a_j\right)\right) \chi\left(\aFieldNorm_{\quadraticFieldExtension{k_j} / \quadraticExtension}\left(1 + \minusInvolution{a_j}\right)\right) \\
+	We have that if $t \in T_G$ corresponds to $\left(x,y\right) \in \multiplicativegroup{\finiteFieldExtension{\lambda^+}} \times \NormOneGroup{2 \lambda^{-}}$ such that $\idmap_{\hermitianSpace} + t$ is invertible then \begin{align*}
+		\posJacobiKernel{\chi}\left(t\right) =& \prod_{i=1}^{\lengthof(\lambda^-)} \chi\left(\FieldNorm{2 \lambda^-_i}{1}\left(1 + y_i\right)\right) \cdot \prod_{j=1}^{\lengthof(\lambda^+)} \chi\left(\aFieldNorm_{\finiteFieldExtension{\lambda_j^+} / \quadraticExtension}\left(1 + x_j\right)\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{\lambda_j^+} / \quadraticExtension}\left(1 + \minusInvolution{x_j}\right)\right) \\
 		& \times  \begin{dcases}
 			\chi\left(2\right) & \dim_{\finiteField} \hermitianSpace \text{ is odd},\\
 			1 & \text{otherwise}
 		\end{dcases}.
 	\end{align*}
-	If $t$ corresponds to $\left(a_1,\dots,a_r,t_1,\dots,t_s\right) \in \prod_{j=1}^r \multiplicativegroup{\quadraticFieldExtension{k_j}} \times \prod_{i=1}^s \NormOneGroup{2m_i}$ such that $\idmap_{\hermitianSpace} - t$ is invertible then \begin{align*}
+	If $t$ corresponds to $\left(x,y\right) \in \multiplicativegroup{\finiteFieldExtension{\lambda^+}} \times \NormOneGroup{2 \lambda^{-}}$ such that $\idmap_{\hermitianSpace} - t$ is invertible then \begin{align*}
 		\negJacobiKernel{\chi}\left(t\right) =& \begin{dcases}
 			0 & \dim_{\finiteField} \hermitianSpace \text{ is odd},\\
 			\posJacobiKernel{\chi}\left(-t\right) & \text{otherwise.}
@@ -993,10 +999,10 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 \begin{remark}
 	Suppose that $\pi$ is any irreducible representation of $H$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$. Then the central character of $\pi$ satisfies
 	\begin{align*}
-		\centralCharacter{\pi}\left(-1\right) = \theta\left(-1\right) =& \prod_{j=1}^r \alpha_j\left(-1\right) \cdot \prod_{i=1}^s \theta_i\left(-1\right).
+		\centralCharacter{\pi}\left(-1\right) = \theta\left(-1\right).
 	\end{align*}
 	Thus \begin{align*}
-		\dblNegVirtualJacobiSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \centralCharacter{\pi}\left(-1\right) g_T\left(\chi, \theta, \fieldCharacter\right).
+		\dblNegVirtualJacobiSumScalar{R_{T, \theta}}{\chi} =& R_{T,\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \centralCharacter{\pi}\left(-1\right) g_{T'}\left(\chi, \theta', \fieldCharacter\right).
 	\end{align*}
 \end{remark}
 
