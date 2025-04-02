@@ -1074,9 +1074,9 @@ Given a rational maximal torus $\algebraicGroup{T} \subset \restrictionOfScalars
 
 Given a torus character pair $(\algebraicGroup{T},\theta)$ with associated $\Frobenius$-twisted conjugacy class $(w) \in W(\algebraicGroup{T}_0)$ along with an embedding $\rho:\algebraicGroup{G}^* \to \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$ and a Frobenius stable maximal tori $\algebraicGroup{T}^* \subset \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$ such that $\rho(\algebraicGroup{T}_0^*) \subseteq \algebraicGroup{T}^*$, let $\tilde{\algebraicGroup{T}}$ be the torus of $\algebraicGroup{\GL}_n$ corresponding to the $\Frobenius$-twisted conjugacy class of $\rho(w) \in W(\algebraicGroup{T})$ and $\tilde{\theta}$ such that $(\rho(s_{\algebraicGroup{T},\theta})) = (s_{\tilde{\algebraicGroup{T}},\tilde{\theta}})$. Define
 \[
-    g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) := \tau_{\Tilde{\algebraicGroup{T}}}(\tilde{\theta} \times \chi(\det(t_0)),\psi).
+    g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) := \tau_{\Tilde{\algebraicGroup{T}}}(\tilde{\theta} \times \chi_0 \circ \det,\psi).
 \]
-where $\chi$ is a multiplicative character of $\finiteFieldExtension{m}$ and $\psi$ and additive character of $\finiteFieldExtension{m}$.
+Here $\chi \colon \multiplicativegroup{\finiteFieldExtension{m}} \to \multiplicativegroup{\cComplex}$ and $\fieldCharacter \colon \finiteFieldExtension{m} \to \multiplicativegroup{\cComplex}$ are characters and $\chi_0 \circ \det \colon \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}\left(\finiteField\right) \to \multiplicativegroup{\cComplex}$ is given by $$\left(\chi \circ \det\right)\left(g_0,\dots,g_{m-1}\right) = \chi\left(\det g_0\right)$$ \elad{This is weird. Maybe we should just say that we identify $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}\left(\finiteField\right) = \GL_n\left(\finiteFieldExtension{m}\right)$ by $\left(g_0,\dots,g_{m-1}\right) \mapsto g_0$?}.
 The following lemma shows that this is well defined.
 
 \begin{lemma}
@@ -1088,9 +1088,9 @@ The following lemma shows that this is well defined.
 \end{lemma}
 \begin{proof}
 \begin{enumerate}[(i)]
-	\item In this case when $T = \prod_{i} \multiplicativegroup{\finiteFieldExtension{n_i}}$ and $\theta = \prod_{i} \alpha_i$, we recover the Gauss sum
+	\item In this case when $T \cong \multiplicativegroup{\finiteFieldExtension{\lambda}}$, we recover the Gauss sum
 	\[
-	g_{T,\rho}(\chi,\theta,\psi)  = \prod_i \tau(\alpha_i \times \chi, \fieldCharacter_{n_i}) = (-1)^nq^{-n/2}G(\tau \times \chi,\psi)
+	g_{T,\rho}(\chi,\theta,\psi) = \GaussSumTorusCharacter{T}{\theta}{\chi}{\fieldCharacter} = \left(-1\right)^n \GaussSumScalar{\tau \times \chi}{\fieldCharacter},
 	\]
 	where $\tau$ is any subrepresentation of $R_{T,\theta}$. By \Cref{thm:KondoClassical}, this only depends on geometric conjugacy class of $(T,\theta)$ hence the semisimple conjugacy class of $(s_{T,\theta})$.
 	\item For a Frobenius stable semisimple conjugacy class $(s)$ in $\GL_n$, we define
