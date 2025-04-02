@@ -288,6 +288,7 @@ If $\alpha \colon \multiplicativegroup{\finiteFieldExtension{n}} \to \multiplica
 $$\GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_n} = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha^{-1}\left(x\right) \chi^{-1}\left( \FieldNorm{n}{1}\left(x\right)\right) \fieldCharacter_n\left(x\right).$$
 
 Given a torus $T \subset \GL_n\left(\finiteField\right)$ of the form $T \cong \multiplicativegroup{\finiteFieldExtension{\lambda}}$ where $\lambda \vdash n$ is a partition and given characters $\alpha \colon \multiplicativegroup{\finiteFieldExtension{\lambda}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon T \to \multiplicativegroup{\cComplex}$, we define $$\GaussSumTorusCharacter{T}{\alpha}{\chi}{\fieldCharacter} = \left(-1\right)^{\lengthof\left(\lambda\right)} q^{-\frac{n}{2}} \sum_{t \in T} \alpha^{-1}\left(t\right) \chi^{-1}\left(\det t\right) \fieldCharacter\left(\trace t\right).$$
+We also define $$\GaussSumSingleTorusCharacter{T}{\alpha}{\fieldCharacter} = \GaussSumTorusCharacter{T}{\alpha}{1}{\fieldCharacter}.$$
 Notice that if $\alpha = \alpha_1 \times \dots \times \alpha_{\lengthof\left(\lambda\right)}$, where $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{\lambda_j}} \to \multiplicativegroup{\cComplex}$ is a character for every $j$, then
 $$\GaussSumTorusCharacter{T}{\alpha}{\chi}{\fieldCharacter} = \prod_{j=1}^{\lengthof\left(\lambda\right)} \GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_{\lambda_j}}.$$
 
