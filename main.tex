@@ -1101,7 +1101,7 @@ Both are equal to $g_{(\rho(s_{T,\theta}))}(\psi,\chi) = g_{(\rho(s_{T',\theta'}
 	The above work is not surpising as it is really a rephrasing that the eigenvalues of $\rho(s)$ are independent of conjugacy.
 \end{remark}
 
-The idea behind the proof of \Cref{lem:indep_geo_conj} is that the formula from \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} relates $\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi}/R_{T,\theta}(1)$ to $g_{T,\rho}(\chi,\theta,\psi)$ for the appropriate $\rho$ in the table below. 
+The idea behind the proof of \Cref{lem:indep_geo_conj} is that the formula from \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} relates $\dblVirtualJacobiSumScalar{R_{T, \theta}}{\chi}/R_{T,\theta}(1)$ to $g_{T,\rho}(\chi,\theta,\psi)$ for the appropriate \calvin{doubling representation} $\rho$ in the table below. 
 
 \begin{center}
 	\begin{tabular}{|c|c|} \hline
@@ -1137,17 +1137,25 @@ Our proof of \Cref{lem:cochar_computation} will check that $\rho(s_{T,\theta}) =
         w w_n & 0
         \end{pmatrix}$  on the image, and 
 		$$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-q}} = \phi(x_{\finiteFieldExtension{n},\alpha}).$$
-		where explitely $\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-q}$ refers to the torus
+		where explitely $\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-q}$ refers to the torus character pair
 		\[
 \left(\begin{pmatrix}
-x_0 & 0\\
-0 & y_0
+x_0 & 0 & 0 & 0 & \hdots & 0 \\
+0 & y_0 & 0 & 0 & \hdots & 0 \\
+0 & 0 & F^2(x_0) & 0 & \hdots & 0 \\
+0 & 0 & 0 & F^2(y_0) & \hdots & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & 0 & \hdots & F^{n-2}(y_0) \\
 \end{pmatrix},\begin{pmatrix}
-	F(x_0) & 0\\
-	0 & F(y_0)
-	\end{pmatrix} \right) \in \restrictionOfScalars{\quadraticExtension}{\finiteField}{GL}_n
+	F(x_0) & 0 & 0 & 0 & \hdots & 0 \\
+	0 & F(y_0) & 0 & 0 & \hdots & 0 \\
+	0 & 0 & F^3(x_0) & 0 & \hdots & 0 \\
+	0 & 0 & 0 & F^3(y_0) & \hdots & 0 \\
+	\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+	0 & 0 & 0 & 0 & \hdots & F^{n-1}(y_0) \\
+	\end{pmatrix} \right)
 		\]
-		with character $\alpha(x_0)\alpha^{-q}(y_0)$.
+		mapping to $\alpha(x_0)\alpha^{-q}(y_0)$.
     \item[$G=\algebraicGroup{U}$ Case 2)] $w$ is conjugate to $(1,2 \hdots n)$ an odd cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the $2n$ cycle $\begin{pmatrix} 0 & w_nw \\
         w w_n& 0
         \end{pmatrix}$ on the image, and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n})$
