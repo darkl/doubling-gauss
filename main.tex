@@ -18,6 +18,7 @@
 \usepackage{comment}
 \usepackage{xypic}
 \usepackage{mathtools}
+%\usepackage{xcolor}
 
 % new environment
 \newtheorem{theorem}{Theorem}[section]
@@ -200,6 +201,8 @@
 % 20C33    Representations of finite groups of Lie type
 
 \begin{document}
+%\pagecolor{black}
+%\color{white}
 
 \begin{abstract}
 \end{abstract}
@@ -290,7 +293,10 @@ $$\GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_n} = -q^{-\frac{n}{2}}\sum_{x
 Given a torus $T \subset \GL_n\left(\finiteField\right)$ of the form $T \cong \multiplicativegroup{\finiteFieldExtension{\lambda}}$ where $\lambda \vdash n$ is a partition and given characters $\alpha \colon \multiplicativegroup{\finiteFieldExtension{\lambda}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon T \to \multiplicativegroup{\cComplex}$, we define $$\GaussSumTorusCharacter{T}{\alpha}{\chi}{\fieldCharacter} = \left(-1\right)^{\lengthof\left(\lambda\right)} q^{-\frac{n}{2}} \sum_{t \in T} \alpha^{-1}\left(t\right) \chi^{-1}\left(\det t\right) \fieldCharacter\left(\trace t\right).$$
 We also define $$\GaussSumSingleTorusCharacter{T}{\alpha}{\fieldCharacter} = \GaussSumTorusCharacter{T}{\alpha}{1}{\fieldCharacter}.$$
 Notice that if $\alpha = \alpha_1 \times \dots \times \alpha_{\lengthof\left(\lambda\right)}$, where $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{\lambda_j}} \to \multiplicativegroup{\cComplex}$ is a character for every $j$, then
-$$\GaussSumTorusCharacter{T}{\alpha}{\chi}{\fieldCharacter} = \prod_{j=1}^{\lengthof\left(\lambda\right)} \GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_{\lambda_j}}.$$
+\begin{align}
+	\label{eq:Gauss_multiplicitive}
+	\GaussSumTorusCharacter{T}{\alpha}{\chi}{\fieldCharacter} = \prod_{j=1}^{\lengthof\left(\lambda\right)} \GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_{\lambda_j}}.
+\end{align}
 
 We are now ready to state Kondo's result.
 \begin{theorem}[Kondo {\cite{Kondo1963}}]\label{thm:KondoClassical}
@@ -713,7 +719,7 @@ Let $\pi$ be an irreducible representation of $H$ where $H \in \{G, \GroupExtens
 Since $\genJacobiKernel{\chi}$ is a class function of $\GL_{\quadraticExtension}\left(\hermitianSpace\right)$, and since $G$ is a normal subgroup of $H$, we have that $\genHermitianJacobiKernel{\hermitianSpace}{\chi}$ is a class function of $H$. It follows that $\dblJacobiSum{\pi}{\chi} \in \Hom_{H}\left(\pi, \pi\right)$. By Schur's lemma, there exists a constant $\dblJacobiSumScalar{\pi}{\fieldCharacter} \in \cComplex$, such that $$\dblJacobiSum{\pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \idmap_\pi.$$
 We call $\posDblJacobiSumScalar{\pi}{\chi}$ and $\negDblJacobiSumScalar{\pi}{\chi}$ the \emph{doubling method Jacobi sums}.
 
-\subsection{Multiplicativity}
+\subsection{Multiplicativity}\label{subsec:multiplicativity}
 The goal of this section is to understand how the doubling method Jacobi sums behave under parabolic induction.
 
 \elad{TODO: work on section}
@@ -1059,24 +1065,25 @@ The main result of this paper is
 We recall\[
 	\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n} = \prod_{a \in \mathbb{Z}/m\mathbb{Z}} \left(\algebraicGroup{\GL}_n\right)_a
 \]
-with Frobenius root action $$\Frobenius(g_0,g_1, \hdots, g_{m-1}) = (\Frobenius(g_{m-1}), \Frobenius(g_0), \Frobenius(g_1), \hdots, \Frobenius(g_{m-2})).$$
+with Frobenius root action $$\Frobenius(g_0,g_1, \hdots, g_{m-1}) = (\Frobenius(g_{m-1}), \Frobenius(g_0), \Frobenius(g_1), \hdots, \Frobenius(g_{m-2})).$$ Thus we identify $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}(\finiteField) = \algebraicGroup{\GL}_n(\finiteFieldExtension{m})$ via the first coordinate $g_0$.
 
 \begin{remark}
 Torus character pairs for $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$ are the same as torus character pairs for $\algebraicGroup{\GL}_n$ as a group over $\finiteFieldExtension{m}$.
 \end{remark}
 
-Given a rational maximal torus $\algebraicGroup{T} \subset \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$, a character of $\algebraicGroup{T}(\mathbb{F})$, and a non-trivial additive character $\psi$ of $\finiteFieldExtension{m}$, we define a Guass sum
-\[
-	\tau_{\algebraicGroup{T}}(\theta,\psi) := \varepsilon_{\algebraicGroup{
-    \algebraicGroup{T}}}\sum_{t\in \tilde{\algebraicGroup{T}}^{\Frobenius}} \theta^{-1}(t)\psi(\trace(t)).
-\]
-\calvin{maybe should do inverses in the definition. Not sure if $\tau$ or $g$ make more sense.}
+%Given a rational maximal torus $\algebraicGroup{T} \subset \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$, a character of $\algebraicGroup{T}(\mathbb{F})$, and a non-trivial additive character $\psi$ of $\finiteFieldExtension{m}$, we define a Guass sum
+%\[
+%	\tau_{\algebraicGroup{T}}(\theta,\psi) := \varepsilon_{\algebraicGroup{
+%    \algebraicGroup{T}}}\sum_{t\in \tilde{\algebraicGroup{T}}^{\Frobenius}} \theta^{-1}(t)\psi(\trace(t)).
+%\]
+%\calvin{maybe should do inverses in the definition. Not sure if $\tau$ or $g$ make more sense.}
 
 Given a torus character pair $(\algebraicGroup{T},\theta)$ with associated $\Frobenius$-twisted conjugacy class $(w) \in W(\algebraicGroup{T}_0)$ along with an embedding $\rho:\algebraicGroup{G}^* \to \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$ and a Frobenius stable maximal tori $\algebraicGroup{T}^* \subset \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$ such that $\rho(\algebraicGroup{T}_0^*) \subseteq \algebraicGroup{T}^*$, let $\tilde{\algebraicGroup{T}}$ be the torus of $\algebraicGroup{\GL}_n$ corresponding to the $\Frobenius$-twisted conjugacy class of $\rho(w) \in W(\algebraicGroup{T})$ and $\tilde{\theta}$ such that $(\rho(s_{\algebraicGroup{T},\theta})) = (s_{\tilde{\algebraicGroup{T}},\tilde{\theta}})$. Define
 \[
-    g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) := \tau_{\Tilde{\algebraicGroup{T}}}(\tilde{\theta} \times \chi_0 \circ \det,\psi).
+    g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) := \tau_{\Tilde{\algebraicGroup{T}}}(\tilde{\theta} \times \chi \circ \det,\psi) = q^{-(nm)/2}\epsilon_{\Tilde{\algebraicGroup{T}}}\sum_{t \in \tilde{\algebraicGroup{T}}^{\Frobenius}} \tilde{\theta}^{-1}(t)\chi^{-1}(\det(t)) \psi(\trace(t)).
 \]
-Here $\chi \colon \multiplicativegroup{\finiteFieldExtension{m}} \to \multiplicativegroup{\cComplex}$ and $\fieldCharacter \colon \finiteFieldExtension{m} \to \multiplicativegroup{\cComplex}$ are characters and $\chi_0 \circ \det \colon \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}\left(\finiteField\right) \to \multiplicativegroup{\cComplex}$ is given by $$\left(\chi \circ \det\right)\left(g_0,\dots,g_{m-1}\right) = \chi\left(\det g_0\right)$$ \elad{This is weird. Maybe we should just say that we identify $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}\left(\finiteField\right) = \GL_n\left(\finiteFieldExtension{m}\right)$ by $\left(g_0,\dots,g_{m-1}\right) \mapsto g_0$?}.
+\calvin{should the power be $q^{(-nm)/2}$ or $q^{-n/2}$?}
+Here $\chi \colon \multiplicativegroup{\finiteFieldExtension{m}} \to \multiplicativegroup{\cComplex}$ and $\fieldCharacter \colon \finiteFieldExtension{m} \to \multiplicativegroup{\cComplex}$ are characters and $\chi_0 \circ \det \colon \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}\left(\finiteField\right) \to \multiplicativegroup{\cComplex}$ is given by $$\left(\chi \circ \det\right)\left(g_0,\dots,g_{m-1}\right) = \chi\left(\det g_0\right)$$ \elad{This is weird. Maybe we should just say that we identify $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}\left(\finiteField\right) = \GL_n\left(\finiteFieldExtension{m}\right)$ by $\left(g_0,\dots,g_{m-1}\right) \mapsto g_0$?}\calvin{yeah that makes sense}.
 The following lemma shows that this is well defined.
 
 \begin{lemma}
@@ -1379,15 +1386,15 @@ The proof strategy is to prove the following inductive statements
 	\item If for all representations with $\dim_{\mathbb{E}} V < n$, \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} holds, then \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} holds for all non cuspidal representations with $\dim_{\mathbb{E}} V = n$.
 	\item If \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} holds for all non cuspidal representations with $\dim_{\mathbb{E}} V = n$, then it holds for all cuspidal representations with $\dim_{\mathbb{E}} V = n$.
 \end{enumerate}
-The key input to (A) is the multiplicativity [CITE] of the $\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter}$ factor. The key input to (B) is \Cref{lem:indep_geo_conj} along with results of Lusztig controlling the cupsidal elements in a Lusztig series.
+The key input to (A) is the multiplicativity of the $\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter}$ factor. The key input to (B) \Cref{lem:indep_geo_conj} along with results of Lusztig controlling the cupsidal elements in a Lusztig series.
 
 \subsubsection{Proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig}}
-We first reduce \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} to the case $G$ has connected center. For any irreducible representation $\pi$ of $G$ which is the a component of an irreducible representation $\tilde{\pi}$ of $\GroupExtension{G}$ restricted to $\pi$,
+We first reduce \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} to the case $G$ has connected center. For any irreducible representation $\pi$ of $G$ which is subrepresentation of an irreducible representation $\tilde{\pi}$ of $\GroupExtension{G}$ restricted to $\pi$,
 \[
     \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace}{\tilde{\pi}}{\chi}{\fieldCharacter}.
 \]
 
-The following proposition implies that if $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$ then there exists $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{G}}{\tilde{s}}$ for $\tilde{s}$ only depending on $s$. Thus \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for $G$ follows from \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for $\GroupExtension{G}$ (see section 3.2). 
+Since the map $\algebraicGroup{\GroupExtension{G}}^*(\finiteField) \to \algebraicGroup{G}^*(\finiteField)$ is surjective \calvin{check this!}, the following proposition implies that there exists $\tilde{s}$ depending on $s$ such that each $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$ is an irreducible subrepresentation of some $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ restricted to $G$. Thus \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for $G$ follows from \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for $\GroupExtension{G}$. 
 
 \begin{proposition}[{\cite[Proposition 11.7]{Bonnafe2006}}]
 	Let $\tilde{s}$ be a semisimple element of $\DualFrobeniusFixedPoints{\GroupExtension{G}}$ and let $s = i^{\ast}\left(\tilde{s}\right)$. Then
@@ -1399,13 +1406,19 @@ The following proposition implies that if $\pi \in \LusztigSeries{\FrobeniusFixe
 
 We now prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for the extension $\GroupExtension{G}$.
 
-Our proof will be via induction as descriped in \ref{subsec:stability}.
+Our proof will be via induction as described in \ref{subsec:stability}.
 %First we will use \Cref{thm:multiplicativity-in-terms-of-gamma-factors}  and MULTIPLICAATIVITY-OF-GTTHETA to prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for any non cuspidal $\pi$ assuming \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for all Levi factors. \\
 \begin{proof}[Proof of (A)]
-\calvin{should be short proof. Might not even need to put--just need to say both are multiplicative}
+	Since every proper parabolic of $H$ is contained in a proper parabolic of the form $\algebraicGroup{\GL}_n \times H'$ where $H'$ is as in \Cref{subsec:multiplicativity}, the multiplicativity of the left hand side of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} follows from \Cref{thm:multiplicativity-in-terms-of-gamma-factors}. \\
+	For the right hand side, first the following result of Lusztig tells us that if $\pi \in \LusztigSeries{
+		\algebraicGroup{G}^{\Frobenius}}{(s)}$ is contained in the parabolical induction of $\sigma$ from a Levi $L$, then $\sigma \in \LusztigSeries{
+		\algebraicGroup{L}^{\Frobenius}}{(s)}$.
+		\begin{proposition}[{\cite[Proof of Corollary 3.3.21]{GeckMalle2020}}]
+			For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(\FrobeniusFixedPoints{\algebraicGroup{P}},\sigma\right)$ where $\algebraicGroup{P}$ is a parabolic subgroup of $\algebraicGroup{\GroupExtension{G}}$ with Levi part $\algebraicGroup{L}$ with $s \in \DualFrobeniusFixedPoints{L}$ and $\sigma \in \LusztigSeries{\FrobeniusFixedPoints{L}}{s}$ is an irreducible cuspidal representation.
+		\end{proposition}
+	Thus if $\pi$ is contained in the parabolical induction from a proper Levi $L$ then $(T,\theta)$ is geometrically conjugate to $(T_1 \times T_2,\theta_1 \times \theta_2)$ for $T_1 \times T_2$ a torus of $L$. As proved in \Cref{lem:indep_geo_conj}, $$g_{T \cap G}(\chi,\theta|_{T \cap G},\psi) = g_{(T_1 \times T_2) \cap G}(\chi,\left(\theta_1\times \theta_2\right)|_{(T_1 \times T_2) \cap G},\psi).$$ The right hand of the above is multiplicative since Gauss sums are multiplicative by \Cref{eq:Gauss_multiplicitive}.
 \end{proof}
 \begin{proof}[Proof of (B)]
-
 %Combining this with our inductive hypothesis implies \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for non cupsidal $\pi$.
 By \Cref{lem:indep_geo_conj}, we know that for $R_T(\theta) = \sum c_{\pi} \pi$, 
 $$\sum c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = (\sum c_{\pi})g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right).$$Subtracting our the equality for non-cupsidal $\pi$ we are left with:
