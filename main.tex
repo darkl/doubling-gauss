@@ -864,23 +864,23 @@ Using this notation and using the multiplicativity property of Kondo's Gauss sum
 \subsection{Pairing with Deligne--Lusztig characters}
 \calvin{old title: Computation of character sums attached to Deligne--Lusztig data}
 
-The goal of the next two sections is to compute $\dblJacobiSumScalar{\pi}{\chi}$ for $\pi$ that appears in a Deligne--Lusztig virtual representation $\RTThetaVirtual{T}{G}{\theta}$ for a suitable maximal torus $T$ and $\theta \colon T \to \multiplicativegroup{\cComplex}$.
+The goal of the next two sections is to compute $\dblJacobiSumScalar{\pi}{\chi}$ for $\pi$ that appears in a Deligne--Lusztig virtual representation $\RTThetaVirtual{T}{H}{\theta_H}$ for a suitable maximal torus $T_H$ and $\theta_H \colon T_H \to \multiplicativegroup{\cComplex}$.
 
-In this section, we focus on the computing the analogous character sum corresponding to $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ for the virtual character $\RTTheta{T}{\theta}$.
+In this section, we focus on the computing the analogous character sum corresponding to $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ for the virtual character $\RTGTheta{T_H}{H}{\theta_H}$.
 
 Let us realize $H = \algebraicGroup{H}^{\Frobenius}$, that is, $H$ is the group consisting fixed points of the Frobenius map $\Frobenius$ acting on the connected reductive algebraic group $\algebraicGroup{H}$, where $\algebraicGroup{H} = \tilde{\algebraicGroup{G}}$ if $H = \tilde{G}$ and $\algebraicGroup{H} = \algebraicGroup{G}$ if $H = G$.
 
-Given a class function $F \colon H \to \cComplex$, let us define $$\dblVirtualJacobiSumScalar{F}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} F\left(g\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(g\right).$$
+Given a class function $F \colon H \to \cComplex$, let us define $$\dblVirtualJacobiSumScalar{F}{\chi} = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in H} F\left(g\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(g\right) =  \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} F\left(g\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(g\right).$$
 
 It is clear that if $\pi$ is an irreducible representation of $H$ then $$\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dblJacobiSumScalar{\pi}{\chi} \cdot \dim \pi.$$
 Notice that the assignments $g \mapsto \posJacobiKernel{\chi}\left(g\right)$ and $g \mapsto \negJacobiKernel{\chi}\left(g\right)$ only depend on the semisimple part of $g \in H$. By \Cref{prop:semisimple_pair_with_RTtheta}, we have the following result.
 \begin{proposition}\label{prop:reduction-of-gauss-sum-to-torus}
-	For any $\Frobenius$-stable maximal torus $\algebraicGroup{T}$ of $\algebraicGroup{H}$, and any character $\theta \colon T \to \multiplicativegroup{\cComplex}$, where $T = \algebraicGroup{T}^{\Frobenius}$, we have
-	$$ \dblVirtualJacobiSumScalar{\RTTheta{T}{\theta}}{\chi} = \frac{\grpIndex{H}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(t\right).$$
+	For any $\Frobenius$-stable rational maximal torus $\algebraicGroup{T}_{\algebraicGroup{H}}$ of $\algebraicGroup{H}$, and any character $\theta_{H} \colon T_{H} \to \multiplicativegroup{\cComplex}$, where $T_H = \algebraicGroup{T}_{\algebraicGroup{H}}^{\Frobenius}$, we have
+	$$ \dblVirtualJacobiSumScalar{\RTTheta{T_H}{\theta_H}}{\chi} = \frac{\grpIndex{H}{T}}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T_H} \theta_H\left(t\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(t\right).$$
 \end{proposition}
-In the special case that $\theta$ is in general position, the virtual character $\varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}} \RTTheta{T}{\theta}$ equals $\trace \pi$ for some irreducible representation $\pi$ of $H$ and we have that for this $\pi$,
-$$\dblJacobiSumScalar{\pi}{\chi} = \varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}} \frac{\sizeof{H}_p}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T} \theta\left(t\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(t\right).$$
-Here $\varepsilon_{\algebraicGroup{H}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{H}}$ and $\varepsilon_{\algebraicGroup{T}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{T}}$, and $\sizeof{H}_p$ is the size of the $p$-Sylow group of $H$, where $p$ is the characteristic of $\finiteField$. 
+In the special case that $\theta_H$ is in general position, the virtual character $\varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}_{\algebraicGroup{H}}} \RTTheta{T_H}{\theta_H}$ equals $\trace \pi$ for some irreducible representation $\pi$ of $H$ and we have that for this $\pi$,
+$$\dblJacobiSumScalar{\pi}{\chi} = \varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}_{\algebraicGroup{H}}} \frac{\sizeof{H}_p}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{t \in T_H} \theta_H\left(t\right) \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(t\right).$$
+Here $\varepsilon_{\algebraicGroup{H}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{H}}$ and $\varepsilon_{\algebraicGroup{T}_{\algebraicGroup{H}}} = \left(-1\right)^{\mathrm{rel.rank} \algebraicGroup{T}_{\algebraicGroup{H}}}$ \elad{These should probably be introduced earlier in the article}, and $\sizeof{H}_p$ is the size of the $p$-Sylow group of $H$, where $p$ is the characteristic of $\finiteField$. 
 
 \subsubsection{Split torus computation I}
 Let $\alpha \colon \multiplicativegroup{\quadraticFieldExtension{k}} \to \multiplicativegroup{\cComplex}$ be a character and let $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be a non-trivial character.
@@ -997,14 +997,14 @@ where we recall that $\theta'_j \colon \multiplicativegroup{\finiteFieldExtensio
 Combining the results of the previous sections with \Cref{prop:reduction-of-gauss-sum-to-torus}, we arrive at the following result.
 
 \begin{theorem}\label{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}
-	Suppose that $\algebraicGroup{T}_{\algebraicGroup{H}}$ is a maximal rational torus of $\algebraicGroup{H}$ that corresponds to the pair of partitions $\left(\lambda^+, \lambda^-\right)$ and let $\algebraicGroup{T}_{\algebraicGroup{G}} \coloneq \algebraicGroup{G} \cap \algebraicGroup{T}_{\algebraicGroup{H}}$ and $T = T_G = \algebraicGroup{T}_{\algebraicGroup{G}}^{\Frobenius}$. Suppose that $\theta_{H} \colon \algebraicGroup{T}_{\algebraicGroup{H}}^{\Frobenius} \to \multiplicativegroup{\cComplex}$ is a character and let $$\theta = \theta_{\algebraicGroup{G}} \coloneq \theta_{\algebraicGroup{H}} \restriction_{T_G} \colon T_G \to \multiplicativegroup{\cComplex}.$$ Then
+	Suppose that $\algebraicGroup{T}_{\algebraicGroup{H}}$ is a maximal rational torus of $\algebraicGroup{H}$ that corresponds to the pair of partitions $\left(\lambda^+, \lambda^-\right)$ and let $\algebraicGroup{T}_{\algebraicGroup{G}} \coloneq \algebraicGroup{G} \cap \algebraicGroup{T}_{\algebraicGroup{H}}$. Denote $T_H = \algebraicGroup{T}_{\algebraicGroup{H}}^{\Frobenius}$ and $T = T_G = \algebraicGroup{T}_{\algebraicGroup{G}}^{\Frobenius}$. Suppose that $\theta_{H} \colon T_H \to \multiplicativegroup{\cComplex}$ is a character and let $$\theta = \theta_{G} \coloneq \theta_{H} \restriction_{T_G} \colon T_G \to \multiplicativegroup{\cComplex}.$$ Then
 	\begin{align*}
-		 \dblPosVirtualJacobiSumScalar{\RTTheta{T}{\theta}}{\chi} = \RTTheta{T}{\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter},
+		 \dblPosVirtualJacobiSumScalar{\RTGTheta{T_H}{H}{\theta_H}}{\chi} = \RTGTheta{T_H}{H}{\theta_H}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter},
 	\end{align*}
 	and \begin{align*}
-		\dblNegVirtualJacobiSumScalar{\RTTheta{T}{\theta}}{\chi} = \begin{dcases}
+		\dblNegVirtualJacobiSumScalar{\RTGTheta{T_H}{H}{\theta_H}}{\chi} = \begin{dcases}
 			0 & \dim_{\finiteField} \hermitianSpace \text{ is odd,}\\
-			\dblPosVirtualJacobiSumScalar{\RTTheta{T}{\theta}}{\chi} \cdot \theta\left(-1\right) & \text{ otherwise.}
+			\dblPosVirtualJacobiSumScalar{\RTGTheta{T_H}{H}{\theta_H}}{\chi} \cdot \theta\left(-1\right) & \text{ otherwise.}
 		\end{dcases}
 	\end{align*}
 \end{theorem}
@@ -1027,7 +1027,7 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 	
 
 	
-	Hence our theorem follows from the results mentioned above and from the formula $$\RTTheta{T}{\theta}\left(1\right) = \varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}_{\algebraicGroup{H}}} \frac{\grpIndex{H}{T}}{\sizeof{H}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{H}_p^2 \cdot q^{\left\lfloor\frac{\dim_{\finiteField} \hermitianSpace}{2}\right\rfloor},$$
+	Hence our theorem follows from the results mentioned above and from the formula $$\RTGTheta{T_H}{H}{\theta_H}\left(1\right) = \varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}_{\algebraicGroup{H}}} \frac{\grpIndex{H}{T_H}}{\sizeof{H}_p},$$ the fact that $$ \sizeof{\lieAlgebra} = \sizeof{H}_p^2 \cdot q^{\left\lfloor\frac{\dim_{\finiteField} \hermitianSpace}{2}\right\rfloor},$$
 	the fact that \begin{equation*}
 		\varepsilon_{\algebraicGroup{H}} \varepsilon_{\algebraicGroup{T}_{\algebraicGroup{H}}} = \varepsilon_{\algebraicGroup{G}} \varepsilon_{\algebraicGroup{T}_{\algebraicGroup{G}}},
 	\end{equation*}
@@ -1038,12 +1038,12 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 	In this computation, the factor $\varepsilon_{\algebraicGroup{T}_{\algebraicGroup{G}}}$ comes from \Cref{thm:split-case-deligne-lusztig-computation} while the factor $\varepsilon_{\algebraicGroup{G}}$ comes from the definition of the normalization factor $c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)$.
 \end{proof}
 \begin{remark}
-	Suppose that $\pi$ is any irreducible representation of $H$ such that $\pi$ appears as a subrepresentation of $\RTThetaVirtual{T}{H}{\theta}$. Then the central character of $\pi$ satisfies
+	Suppose that $\pi$ is any irreducible representation of $H$ such that $\pi$ appears as a subrepresentation of $\RTThetaVirtual{T_H}{H}{\theta_H}$. Then the central character of $\pi$ satisfies
 	\begin{align*}
 		\centralCharacter{\pi}\left(-1\right) = \theta\left(-1\right).
 	\end{align*}
 	Thus \begin{align*}
-		\dblNegVirtualJacobiSumScalar{\RTTheta{T}{\theta}}{\chi} =& \RTTheta{T}{\theta}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \centralCharacter{\pi}\left(-1\right) g_{T'}\left(\chi, \theta', \fieldCharacter\right).
+		\dblNegVirtualJacobiSumScalar{\RTGTheta{T_H}{H}{\theta_H}}{\chi} =& \RTTheta{T_H}{H}{\theta_H}\left(1\right) c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \centralCharacter{\pi}\left(-1\right) \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter}.
 	\end{align*}
 \end{remark}
 
@@ -1124,7 +1124,7 @@ Here $\chi \colon \multiplicativegroup{\finiteFieldExtension{m}} \to \multiplica
 	\[
 	g_{T,\rho}(\chi,\theta,\psi) = \GaussSumTorusCharacter{T}{\theta}{\chi}{\fieldCharacter} = \left(-1\right)^n \GaussSumScalar{\tau \times \chi}{\fieldCharacter},
 	\]
-	where $\tau$ is any irreducible subrepresentation of $\RTThetaVirtual{T}{\GL_n\left(\finiteField\right)}{\theta}$. By \Cref{thm:KondoClassical}, this only depends on geometric conjugacy class of $(T,\theta)$ hence the semisimple conjugacy class of $(s_{T,\theta})$.
+	where $\tau$ is any irreducible subrepresentation of $\RTThetaVirtual{T}{\GL_n\left(\finiteField\right)}{\theta}$. By \Cref{thm:KondoClassical}, this only depends on geometric conjugacy class of $(T,\theta)$ and hence on the semisimple conjugacy class of $(s_{T,\theta})$.
 	\item For a Frobenius stable semisimple conjugacy class $(s)$ in $\GL_n$, we define
 	\[
 	g_{(s)}(\psi,\chi) := g_{T,\rho}(\chi,\theta,\psi) \textnormal{ for some } (T,\theta) \textnormal{ such that } (s_{T,\theta}) = (s)
@@ -1403,10 +1403,11 @@ The goal of this section is to compute $\dblJacobiSumScalar{\pi}{\fieldCharacter
 
 \begin{theorem}
 \label{thm:doubling-method-gamma-factor-for-deligne-lusztig}
-Let $H \in \{G, \GroupExtension{G}\}$.  If $c_{\pi}$ is non-zero in the virtual representation $\RTThetaVirtual{T}{G}{\theta} = \sum_{\pi} c_{\pi} \pi$ then
-$$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_{T \cap G}\left(\chi,\theta|_{T \cap G}, \fieldCharacter\right)$$
+Let $H \in \{G, \GroupExtension{G}\}$. Using the same notation as in \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}, if $\pi$ is an irreducible representation of $H$ that appears as a subrepresentation of the virtual representation $\RTThetaVirtual{T_H}{H}{\theta_{H}}$ then \begin{equation}\label{eq:doubling-method-gamma-factor-is-gauss-sum-of-functorial-lift}
+	\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter}.
+\end{equation}
 \end{theorem}
-\calvin{add in $\chi$} the right hand side of which we showed in \Cref{lem:indep_geo_conj} only depends on the geometric conjugacy class of $(T,\theta)$ hence on the Lusztig series $\LusztigSeries{G}{s}$ which contains $\pi$, implying \Cref{thm:Phi_stable}.
+Recall that in \Cref{lem:indep_geo_conj}, we showed that the right hand side of \eqref{eq:doubling-method-gamma-factor-is-gauss-sum-of-functorial-lift} only depends on the geometric conjugacy class of $(T,\theta)$ and hence only on the Lusztig series $\LusztigSeries{G}{s}$ which contains $\pi$, implying \Cref{thm:Phi_stable}.
 
 The proof strategy is to prove the following inductive statements
 \begin{enumerate}[(a)]
@@ -1416,28 +1417,28 @@ The proof strategy is to prove the following inductive statements
 The key input to (\ref{item:follows-for-non-cuspidal}) is the multiplicativity of the $\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter}$ factor. The key input to (\ref{item:follows-for-cuspidal}) is \Cref{lem:indep_geo_conj} along with results of Lusztig controlling the cupsidal elements in a Lusztig series.
 
 \subsubsection{Proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig}}
-We first reduce \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} to the case $G$ has connected center. Suppose that $\tilde{\pi}$ is an irreducible representation of $\GroupExtension{G}$ and that $\pi$ is an irreducible representation of $G$ that appears as a subrepresentation of the restriction of $\tilde{\pi}$ to $G$. Then since $\dblJacobiSum{\tilde{\pi}}{\chi}$ and $\dblJacobiSum{\pi}{\chi}$ are scalar operators and the restriction of $\dblJacobiSum{\tilde{\pi}}{\chi}$ to $\pi$ is $\dblJacobiSum{\pi}{\chi}$, we have that $$\dblJacobiSumScalar{\pi}{\chi} = \dblJacobiSumScalar{\tilde{\pi}}{\chi}$$ and thus
+We first reduce \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} to the case $H = \GroupExtension{G}$. We start with the following observation. Suppose that $\tilde{\pi}$ is an irreducible representation of $\GroupExtension{G}$ and that $\pi$ is an irreducible representation of $G$ that appears as a subrepresentation of the restriction of $\tilde{\pi}$ to $G$. Then since $\dblJacobiSum{\tilde{\pi}}{\chi}$ and $\dblJacobiSum{\pi}{\chi}$ are scalar operators and the restriction of $\dblJacobiSum{\tilde{\pi}}{\chi}$ to the subspace $\pi$ is $\dblJacobiSum{\pi}{\chi}$, we have that $$\dblJacobiSumScalar{\pi}{\chi} = \dblJacobiSumScalar{\tilde{\pi}}{\chi}$$ and thus
 $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace}{\tilde{\pi}}{\chi}{\fieldCharacter}.$$
 
-Since the map $\algebraicGroup{\GroupExtension{G}}^*(\finiteField) \to \algebraicGroup{G}^*(\finiteField)$ is surjective \calvin{check this!}, by \Cref{prop:lusztig-series-and-restriction} there exists $\tilde{s}$ depending on $s$ such that each $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$ is an irreducible subrepresentation of the restriction to $G$ of some $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$. It thus suffices to prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for $\GroupExtension{G}$. 
+Since the map $\algebraicGroup{\GroupExtension{G}}^*(\finiteField) \to \algebraicGroup{G}^*(\finiteField)$ is surjective \calvin{check this!}, by \Cref{prop:lusztig-series-and-restriction} there exists $\tilde{s}$ depending on $s$ such that for every $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$, the exists some $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ such that $\pi$ is an irreducible subrepresentation of the restriction to $G$ of $\tilde{\pi}$. It thus suffices to prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for $\GroupExtension{G}$. 
 
 
 We now prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for the extension $\GroupExtension{G}$. Henceforth we denote $H = \GroupExtension{G}$. Our proof will be via induction as described above.
 
 \begin{proof}[Proof of \eqref{item:follows-for-non-cuspidal}]
-	Since every proper parabolic subgroup of $H = \GroupExtension{G}$ is contained in a proper parabolic subgroup group with Levi part of the form $\GL_n\left(\quadraticExtension\right) \times H'$ where $H'$ is as in \Cref{subsec:multiplicativity}, the multiplicativity of the left hand side of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} follows from \Cref{thm:multiplicativity-in-terms-of-gamma-factors}.
+	We will show that both sides of \eqref{eq:doubling-method-gamma-factor-is-gauss-sum-of-functorial-lift} have a multiplicativity property. Since every proper parabolic subgroup of $H = \GroupExtension{G}$ is contained in a proper parabolic subgroup group with Levi part of the form $\GL_n\left(\quadraticExtension\right) \times H'$ where $H'$ is as in \Cref{subsec:multiplicativity}, the multiplicativity of the left hand side of \eqref{eq:doubling-method-gamma-factor-is-gauss-sum-of-functorial-lift} follows from \Cref{thm:multiplicativity-in-terms-of-gamma-factors}.
 	
 	For the right hand side, first \Cref{prop:lusztig-series-are-unions-of-harish-chandra-series} tells us that if $\pi \in \LusztigSeries{
-		\GroupExtension{\algebraicGroup{G}}^{\Frobenius}}{(s)}$ is a subrepresentation of the parabolically induced representation $\Ind{H}{G}{\pi}$ where $\sigma$ is an irreducible representation of the Levi part $L$ of $P$, then $\sigma \in \LusztigSeries{
+		\GroupExtension{\algebraicGroup{G}}^{\Frobenius}}{(s)}$ is a subrepresentation of the parabolically induced representation $\Ind{H}{G}{\sigma}$ where $\sigma$ is an irreducible representation of the Levi part $L$ of $P$, then $\sigma \in \LusztigSeries{
 		\algebraicGroup{L}^{\Frobenius}}{(s)}$.
 		
 	Thus if $\pi$ is a subrepresentation of a parabolically induced representation as above, then $(T_H,\theta_H)$ is geometrically conjugate to $(T_1 \times T_2,\theta_1 \times \theta_2)$ for $T_1 \times T_2$ a torus of $L$. As proved in \Cref{lem:indep_geo_conj}, $$g_{T \cap G}(\chi,\theta|_{T \cap G},\psi) = g_{(T_1 \times T_2) \cap G}(\chi,\left(\theta_1\times \theta_2\right)|_{(T_1 \times T_2) \cap G},\psi).$$ The right hand of the above is multiplicative since Gauss sums are multiplicative by \eqref{eq:Gauss_multiplicitive}.
 \end{proof}
 \begin{proof}[Proof of \eqref{item:follows-for-cuspidal}]
-By \Cref{lem:indep_geo_conj}, we know that for $\RTThetaVirtual{T}{G}{\theta} = \sum_{\pi} c_{\pi} \pi$, 
-$$\sum_{\pi} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = (\sum_{\pi} c_{\pi})g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right).$$
+By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and \Cref{lem:indep_geo_conj}, we have that if $\RTThetaVirtual{T_H}{H}{\theta_H} = \sum_{\pi} c_{\pi} \pi$, where $\pi$ goes over all the irreducible representations of $H$ and $c_{\pi} \in \zIntegers$, then
+$$\sum_{\pi} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter} \RTGTheta{T_H}{H}{\theta_H}\left(1\right) = \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter} \left(\sum_{\pi} c_{\pi}\right).$$
 Subtracting the equality for non-cuspidal $\pi$ established by (\ref{item:follows-for-non-cuspidal}), we are left with the equality
-$$ \sum_{\pi \textnormal{ cuspidal}} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \left(\sum_{\pi \textnormal{ cuspidal}} c_{\pi}\right)g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right).$$
+$$ \sum_{\pi \textnormal{ cuspidal}} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \left(\sum_{\pi \textnormal{ cuspidal}} c_{\pi}\right)\GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter}.$$
 But by \Cref{prop:at-most-one-cuspidal-lusztig-series} there is at most one cuspidal $\pi$ appearing in our sum. Thus the proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} is complete.
 \end{proof}
 
