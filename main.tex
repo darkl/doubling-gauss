@@ -1083,7 +1083,7 @@ Given a torus character pair $(\algebraicGroup{T},\theta)$ with associated $\Fro
 \[
     g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) := \tau_{\Tilde{\algebraicGroup{T}}}(\tilde{\theta} \times \chi \circ \det,\psi) = q^{-(nm)/2}\epsilon_{\Tilde{\algebraicGroup{T}}}\sum_{t \in \tilde{\algebraicGroup{T}}^{\Frobenius}} \tilde{\theta}^{-1}(t)\chi^{-1}(\det(t)) \psi(\trace(t)).
 \]
-\calvin{should the power be $q^{(-nm)/2}$ or $q^{-n/2}$?}
+\calvin{should the power be $q^{(-nm)/2}$ or $q^{-n/2}$? \elad{$q^{-nm/2}$}}
 Here $\chi \colon \multiplicativegroup{\finiteFieldExtension{m}} \to \multiplicativegroup{\cComplex}$ and $\fieldCharacter \colon \finiteFieldExtension{m} \to \multiplicativegroup{\cComplex}$ are characters and $\chi_0 \circ \det \colon \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}\left(\finiteField\right) \to \multiplicativegroup{\cComplex}$ is given by $$\left(\chi \circ \det\right)\left(g_0,\dots,g_{m-1}\right) = \chi\left(\det g_0\right)$$ \elad{This is weird. Maybe we should just say that we identify $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}\left(\finiteField\right) = \GL_n\left(\finiteFieldExtension{m}\right)$ by $\left(g_0,\dots,g_{m-1}\right) \mapsto g_0$?}\calvin{yeah that makes sense}.
 The following lemma shows that this is well defined.
 
