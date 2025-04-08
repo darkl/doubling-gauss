@@ -650,9 +650,32 @@ The virtual representations $R_T^G(\theta)$ and $R_{T'}^G(\theta')$ share an irr
 		$\algebraicGroup{\GSO}^{-}_{2n}$ & $\multiplcativeScheme^{n-1} \times \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ & $\left(1\right)^{\times {\left(n-1\right)}} \times \sigma^{\ast}$ & $\algebraicGroup{GSpin}_{2n}^{-}$ &  $\multiplcativeScheme^{n-1} \times \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ \tabularnewline \hline
 	\end{tabular}
 \end{center}
-\calvin{maybe we don't need to mention how $\Frobenius$ acts on the Weyl group because we stated it in section 2.3.4}
 In the last row, $\sigma \colon \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme} \to \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ is the automorphism $a + b\sqrt{d} \mapsto a - b\sqrt{d}$ where $d \in \multiplicativegroup{\finiteField}$ is a non-square.
-The Frobenius root acts on the Weyl group is described in section \ref{subsubsec:rational-tori}. 
+The Frobenius root action on the Weyl group is described in \Cref{subsubsec:rational-tori}. 
+
+We will need the following facts about Lusztig series. 
+
+The first fact tells us that Lusztig series of $\GroupExtension{\algebraicGroup{G}}$ are unions of Harish-Chandra series, and establishes a relation between the corresponding semisimple conjugacy classes.
+\begin{proposition}[{\cite[Proof of Corollary 3.3.21]{GeckMalle2020}}]\label{prop:lusztig-series-are-unions-of-harish-chandra-series}
+	For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(\FrobeniusFixedPoints{\algebraicGroup{P}},\sigma\right)$ where $\algebraicGroup{P}$ is a parabolic subgroup of $\algebraicGroup{\GroupExtension{G}}$ with Levi part $\algebraicGroup{L}$ with $s \in \DualFrobeniusFixedPoints{L}$ and $\sigma \in \LusztigSeries{\FrobeniusFixedPoints{L}}{s}$ is an irreducible cuspidal representation.
+\end{proposition}
+
+The next fact establishes a relation between the Lusztig series of $\GroupExtension{\algebraicGroup{G}}$ and of $\algebraicGroup{G}$.
+\elad{Explain $i^{\ast}$}\elad{Should we deprecate the notation $\Frobenius^{\ast}$?}
+
+\begin{proposition}[{\cite[Proposition 11.7]{Bonnafe2006}}]\label{prop:lusztig-series-and-restriction}
+	Let $\tilde{s}$ be a semisimple element of $\DualFrobeniusFixedPoints{\GroupExtension{G}}$ and let $s = i^{\ast}\left(\tilde{s}\right)$. Then
+	\begin{enumerate}
+		\item If $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ and if $\pi$ is an irreducible subrepresentation of the restriction of $\tilde{\pi}$ to $\FrobeniusFixedPoints{G}$, then $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$.
+		\item Let $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$. Then there exists $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ such that $\pi$ is an irreducible subrepresentation of the restriction of $\tilde{\pi}$ to $\FrobeniusFixedPoints{G}$.
+	\end{enumerate}
+\end{proposition}
+
+Finally, the next fact concerns the number of cuspidal representations in a Lusztig series of $\GroupExtension{\algebraicGroup{G}}$.
+
+\begin{proposition}[{\cite[Page 172]{Lusztig1977}}]\label{prop:at-most-one-cuspidal-lusztig-series}
+	For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ contains at most one cuspidal element.
+\end{proposition}
 
 \section{Doubling method Jacobi sums}
 
@@ -1383,115 +1406,36 @@ $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_{T \cap 
 \calvin{add in $\chi$} the right hand side of which we showed in \Cref{lem:indep_geo_conj} only depends on the geometric conjugacy class of $(T,\theta)$ hence on the Lusztig series $\LusztigSeries{G}{s}$ which contains $\pi$, implying \Cref{thm:Phi_stable}.
 
 The proof strategy is to prove the following inductive statements
-\begin{enumerate}[(A)]
-	\item If for all representations with $\dim_{\mathbb{E}} V < n$, \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} holds, then \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} holds for all non cuspidal representations with $\dim_{\mathbb{E}} V = n$.
-	\item If \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} holds for all non cuspidal representations with $\dim_{\mathbb{E}} V = n$, then it holds for all cuspidal representations with $\dim_{\mathbb{E}} V = n$.
+\begin{enumerate}[(a)]
+	\item \label{item:follows-for-non-cuspidal}If for all representations with $\dim_{\mathbb{E}} V < n$, \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} holds, then \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} holds for all non-cuspidal irreducible representations of $H$ with $\dim_{\mathbb{E}} V = n$.
+	\item \label{item:follows-for-cuspidal}If \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} holds for all non-cuspidal irreducible representations of $H$ with $\dim_{\mathbb{E}} V = n$, then it holds for all irreducible cuspidal representations of $H$ with $\dim_{\mathbb{E}} V = n$.
 \end{enumerate}
-The key input to (A) is the multiplicativity of the $\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter}$ factor. The key input to (B) \Cref{lem:indep_geo_conj} along with results of Lusztig controlling the cupsidal elements in a Lusztig series.
+The key input to (\ref{item:follows-for-non-cuspidal}) is the multiplicativity of the $\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter}$ factor. The key input to (\ref{item:follows-for-cuspidal}) is \Cref{lem:indep_geo_conj} along with results of Lusztig controlling the cupsidal elements in a Lusztig series.
 
 \subsubsection{Proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig}}
-We first reduce \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} to the case $G$ has connected center. For any irreducible representation $\pi$ of $G$ which is subrepresentation of an irreducible representation $\tilde{\pi}$ of $\GroupExtension{G}$ restricted to $\pi$,
-\[
-    \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace}{\tilde{\pi}}{\chi}{\fieldCharacter}.
-\]
+We first reduce \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} to the case $G$ has connected center. Suppose that $\tilde{\pi}$ is an irreducible representation of $\GroupExtension{G}$ and that $\pi$ is an irreducible representation of $G$ that appears as a subrepresentation of the restriction of $\tilde{\pi}$ to $G$. Then since $\dblJacobiSum{\tilde{\pi}}{\chi}$ and $\dblJacobiSum{\pi}{\chi}$ are scalar operators and the restriction of $\dblJacobiSum{\tilde{\pi}}{\chi}$ to $\pi$ is $\dblJacobiSum{\pi}{\chi}$, we have that $$\dblJacobiSumScalar{\pi}{\chi} = \dblJacobiSumScalar{\tilde{\pi}}{\chi}$$ and thus
+$$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace}{\tilde{\pi}}{\chi}{\fieldCharacter}.$$
 
-Since the map $\algebraicGroup{\GroupExtension{G}}^*(\finiteField) \to \algebraicGroup{G}^*(\finiteField)$ is surjective \calvin{check this!}, the following proposition implies that there exists $\tilde{s}$ depending on $s$ such that each $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$ is an irreducible subrepresentation of some $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ restricted to $G$. Thus \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for $G$ follows from \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for $\GroupExtension{G}$. 
+Since the map $\algebraicGroup{\GroupExtension{G}}^*(\finiteField) \to \algebraicGroup{G}^*(\finiteField)$ is surjective \calvin{check this!}, by \Cref{prop:lusztig-series-and-restriction} there exists $\tilde{s}$ depending on $s$ such that each $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$ is an irreducible subrepresentation of the restriction to $G$ of some $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$. Thus \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for $G$ follows from \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for $\GroupExtension{G}$. 
 
-\begin{proposition}[{\cite[Proposition 11.7]{Bonnafe2006}}]
-	Let $\tilde{s}$ be a semisimple element of $\DualFrobeniusFixedPoints{\GroupExtension{G}}$ and let $s = i^{\ast}\left(\tilde{s}\right)$. Then
-	\begin{enumerate}
-		\item If $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ and if $\pi$ is an irreducible subrepresentation of the restriction of $\tilde{\pi}$ to $\FrobeniusFixedPoints{G}$, then $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$.
-		\item Let $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$. Then there exists $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ such that $\pi$ is an irreducible subrepresentation of the restriction of $\tilde{\pi}$ to $\FrobeniusFixedPoints{G}$.
-	\end{enumerate}
-\end{proposition}
 
-We now prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for the extension $\GroupExtension{G}$.
+We now prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for the extension $\GroupExtension{G}$. Henceforth we denote $H = \GroupExtension{G}$. Our proof will be via induction as described above.
 
-Our proof will be via induction as described in \ref{subsec:stability}.
-%First we will use \Cref{thm:multiplicativity-in-terms-of-gamma-factors}  and MULTIPLICAATIVITY-OF-GTTHETA to prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for any non cuspidal $\pi$ assuming \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for all Levi factors. \\
-\begin{proof}[Proof of (A)]
-	Since every proper parabolic of $H$ is contained in a proper parabolic of the form $\algebraicGroup{\GL}_n \times H'$ where $H'$ is as in \Cref{subsec:multiplicativity}, the multiplicativity of the left hand side of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} follows from \Cref{thm:multiplicativity-in-terms-of-gamma-factors}. \\
-	For the right hand side, first the following result of Lusztig tells us that if $\pi \in \LusztigSeries{
-		\algebraicGroup{G}^{\Frobenius}}{(s)}$ is contained in the parabolical induction of $\sigma$ from a Levi $L$, then $\sigma \in \LusztigSeries{
+\begin{proof}[Proof of \eqref{item:follows-for-non-cuspidal}]
+	Since every proper parabolic subgroup of $H = \GroupExtension{G}$ is contained in a proper parabolic subgroup group with Levi part of the form $\GL_n\left(\quadraticExtension\right) \times H'$ where $H'$ is as in \Cref{subsec:multiplicativity}, the multiplicativity of the left hand side of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} follows from \Cref{thm:multiplicativity-in-terms-of-gamma-factors}.
+	
+	For the right hand side, first \Cref{prop:lusztig-series-are-unions-of-harish-chandra-series} tells us that if $\pi \in \LusztigSeries{
+		\GroupExtension{\algebraicGroup{G}}^{\Frobenius}}{(s)}$ is a subrepresentation of the parabolically induced representation $\Ind{H}{G}{\pi}$ where $\sigma$ is an irreducible representation of the Levi part $L$ of $P$, then $\sigma \in \LusztigSeries{
 		\algebraicGroup{L}^{\Frobenius}}{(s)}$.
-		\begin{proposition}[{\cite[Proof of Corollary 3.3.21]{GeckMalle2020}}]
-			For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(\FrobeniusFixedPoints{\algebraicGroup{P}},\sigma\right)$ where $\algebraicGroup{P}$ is a parabolic subgroup of $\algebraicGroup{\GroupExtension{G}}$ with Levi part $\algebraicGroup{L}$ with $s \in \DualFrobeniusFixedPoints{L}$ and $\sigma \in \LusztigSeries{\FrobeniusFixedPoints{L}}{s}$ is an irreducible cuspidal representation.
-		\end{proposition}
-	Thus if $\pi$ is contained in the parabolical induction from a proper Levi $L$ then $(T,\theta)$ is geometrically conjugate to $(T_1 \times T_2,\theta_1 \times \theta_2)$ for $T_1 \times T_2$ a torus of $L$. As proved in \Cref{lem:indep_geo_conj}, $$g_{T \cap G}(\chi,\theta|_{T \cap G},\psi) = g_{(T_1 \times T_2) \cap G}(\chi,\left(\theta_1\times \theta_2\right)|_{(T_1 \times T_2) \cap G},\psi).$$ The right hand of the above is multiplicative since Gauss sums are multiplicative by \Cref{eq:Gauss_multiplicitive}.
+		
+	Thus if $\pi$ is a subrepresentation of a parabolically induced representation as above, then $(T_H,\theta_H)$ is geometrically conjugate to $(T_1 \times T_2,\theta_1 \times \theta_2)$ for $T_1 \times T_2$ a torus of $L$. As proved in \Cref{lem:indep_geo_conj}, $$g_{T \cap G}(\chi,\theta|_{T \cap G},\psi) = g_{(T_1 \times T_2) \cap G}(\chi,\left(\theta_1\times \theta_2\right)|_{(T_1 \times T_2) \cap G},\psi).$$ The right hand of the above is multiplicative since Gauss sums are multiplicative by \eqref{eq:Gauss_multiplicitive}.
 \end{proof}
-\begin{proof}[Proof of (B)]
-%Combining this with our inductive hypothesis implies \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for non cupsidal $\pi$.
-By \Cref{lem:indep_geo_conj}, we know that for $R_T(\theta) = \sum c_{\pi} \pi$, 
-$$\sum c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = (\sum c_{\pi})g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right).$$Subtracting our the equality for non-cupsidal $\pi$ we are left with:
-$$ \sum_{\pi \textnormal{ cuspidal}} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \left(\sum_{\pi \textnormal{ cuspidal}} c_{\pi}\right)g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right)$$.
-
-But it is well known that there is only one cuspidal $\pi$ appearing in our sum:
-\begin{proposition}[{\cite[Page 172]{Lusztig1977}}]
-	Let $\GroupExtension{G}$ be a classical group with connected center. For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ contains at most one cuspidal element.
-\end{proposition}
-
-So the proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} is complete.
-\end{proof}
-\calvin{end alternate writeup 2}
-
-\subsection{Stability (another option)}
-\calvin{retitle: Stability of Jacobi sums}
-
-The goal of this section is to use \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and results of Lusztig to determine $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ for any irreducible representation $\pi$ such that $\trace \pi$ appears with non-zero coefficient in $R_{T,\theta}$.
-
-\begin{theorem}\label{thm:doubling-method-gamma-factor-for-deligne-lusztig}
-	Let $T \subset H$ be a maximal torus and let $\theta \colon T \to \multiplicativegroup{\cComplex}$ be a character. Write $$R_{T,\theta} = \sum_{\Pi} c_{\Pi} \trace \Pi,$$
-	where $\Pi$ goes over all the irreducible representations of $H$ and $c_{\Pi} \in \zIntegers$. Suppose that $\pi$ is an irreducible representation such that $c_{\pi} \ne 0$. Then $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = g_T\left(\theta, \fieldCharacter\right).$$
-\end{theorem}
-\subsubsection{Proof of the main result \calvin{\Cref{thm:Phi_stable}}}
-
-\elad{Merge with Calvin's stuff}
-The \emph{Lusztig series} $\LusztigSeries{G}{s}$ consists of (equivalence classes of) the irreducible representations $\pi$ of $R_{T, \theta}$ with $c_{\pi} \ne 0$ as in the theorem.
-
-Let $L \subset G$ be a Levi subgroup of $G$, and suppose that $L \cong \prod_{j=1}^\ell \GL_{t_j}\left(\finiteField\right) \times G'$ where $G' = \IsometryGroup\left(\hermitianSpace'\right)$ where $\hermitianSpace'$ is a non-degenerate hermitian subspace and $\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic$, where $\xIsotropic$ and $\yIsotropic$ are totally isotropic subspace in duality. Suppose that $s \in L$, and denote by $s_i$ the projection of $s$ to $\GL_{t_i}\left(\finiteField\right)$ for $1 \le i \le \ell$ and by $s_0$ the projection of $s$ to $G'$. We denote
-$$\LusztigSeries{L}{s} = \left(\bigotimes_{j=1}^{\ell} \LusztigSeries{\GL_{t_j}\left(\finiteField\right)}{s_j}\right) \otimes \LusztigSeries{G'}{s_0}.$$
-
-We collect some facts that will be used for proving \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig}.
-
-The following proposition allows us to make use of the multiplicativity property (\Cref{thm:multiplicativity-in-terms-of-gamma-factors}) for non-cuspidal elements in a given Lusztig series.
-\begin{proposition}[{\cite[Proof of Corollary 3.3.21]{GeckMalle2020}}]
-	For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(\FrobeniusFixedPoints{\algebraicGroup{P}},\sigma\right)$ where $\algebraicGroup{P}$ is a parabolic subgroup of $\algebraicGroup{\GroupExtension{G}}$ with Levi part $\algebraicGroup{L}$ with $s \in \DualFrobeniusFixedPoints{L}$ and $\sigma \in \LusztigSeries{\FrobeniusFixedPoints{L}}{s}$ is an irreducible cuspidal representation.
-\end{proposition}
-
-The following Proposition shows that is suffices to prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for the group $\GroupExtension{G}$.
-\begin{proposition}[{\cite[Proposition 11.7]{Bonnafe2006}}]
-	Let $\tilde{s}$ be a semisimple element of $\DualFrobeniusFixedPoints{\GroupExtension{G}}$ and let $s = i^{\ast}\left(\tilde{s}\right)$. Then
-	\begin{enumerate}
-		\item If $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ and if $\pi$ is an irreducible subrepresentation of the restriction of $\tilde{\pi}$ to $\FrobeniusFixedPoints{G}$, then $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$.
-		\item Let $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$. Then there exists $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ such that $\pi$ is an irreducible subrepresentation of the restriction of $\tilde{\pi}$ to $\FrobeniusFixedPoints{G}$.
-	\end{enumerate}
-\end{proposition}
-
-Finally, the following proposition shows that the multiplicativity property takes care of all but at most one element in a given Lusztig series.
-\begin{proposition}[{\cite[Page 172]{Lusztig1977}}]
-	For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ contains at most one cuspidal element.
-\end{proposition}
-
-\Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} is now equivalent to the following statement.
-\begin{proposition}\label{prop:gamma-factor-is-constant-on-lusztig-series}
-	Keep the notations as above. Suppose that $\algebraicGroup{P}$ is a parabolic subgroup of $\algebraicGroup{\GroupExtension{G}}$ with Levi part $\algebraicGroup{L}$ with $s \in \DualFrobeniusFixedPoints{L}$. Then for any irreducible cuspidal $\sigma \in \LusztigSeries{\FrobeniusFixedPoints{L}}{s}$ and for any irreducible subrepresentation $\pi \subset \Ind{\FrobeniusFixedPoints{P}}{\FrobeniusFixedPoints{\GroupExtension{G}}}{\sigma}$, $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \tau_{\GroupExtension{G}, \chi, \fieldCharacter}\left(s\right).$$
-	\elad{Many things are not defined anymore. Need to define $\tau_{\GroupExtension{G}, \chi, \fieldCharacter}\left(s\right)$, etc.}
-\end{proposition}
-\begin{proof}
-	The proof is by induction on $\dim_{\quadraticExtension} \hermitianSpace$.
-	
-	Suppose first that $L \ne G$. Then by using the multiplicativity property repeatedly (\Cref{thm:multiplicativity-in-terms-of-gamma-factors}), we have $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace'}{\pi'}{\chi}{\fieldCharacter} \cdot \prod_{j=1}^r \tau_{\GL_{t_j}\left(\finiteField\right), \chi, \fieldCharacter}\left(s_j\right) \tau_{\GL_{t_j}\left(\finiteField\right), \chi, \fieldCharacter}\left(s_j^{-1}\right),$$
-	where $\pi'$ is an irreducible cuspidal representation of $G'$ that lies in the Lusztig series $\LusztigSeries{\pi'}{s_0}$. By the induction hypothesis, we have $$\dblGammaFactorSpace{\hermitianSpace'}{\pi'}{\chi}{\fieldCharacter} = \tau_{G', \chi, \fieldCharacter}\left(s_0\right),$$
-	which implies the result.
-	
-	Next, suppose that $L = G$ and that $\pi = \sigma$ is an irreducible cuspidal representation. Let us write $$R_{T, \theta} = \sum_{\Pi} c_\Pi \trace \Pi,$$
-	where $\Pi$ goes over all the irreducible representations of $G$ and $c_{\Pi} \in \zIntegers$. For every $\Pi$ with $c_{\Pi} \ne 0$ and $\Pi \ne \pi$, we have that $\Pi$ lies in a Harish--Chandra series with $L \ne G$ as above, and therefore $$\dblVirtualJacobiSumScalar{\trace \Pi}{\chi} = \dim \Pi \cdot \centralCharacter{\Pi}\left(-1\right) \cdot c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
-	By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}, we have $$\dblVirtualJacobiSumScalar{R_{T,\theta}}{\fieldCharacter} = R_{T,\theta}\left(1\right) \cdot \theta\left(-1\right) \cdot c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
-	Since $\centralCharacter{\Pi}\left(-1\right) = \theta\left(-1\right)$ for every $\Pi$ with $c_{\Pi} \ne 0$,
-	$$c_{\pi} \cdot \dblVirtualJacobiSumScalar{\trace \pi}{\fieldCharacter} = \left(R_{T,\theta}\left(1\right) - \sum_{\substack{\Pi \ne \pi\\
-	c_{\Pi} \ne 0}} c_{\Pi} \dim \Pi\right) \cdot \theta\left(-1\right) \cdot c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
-	Since $$R_{T,\theta}\left(1\right) = \sum_{\Pi} c_{\Pi} \trace \Pi,$$ it follows that $$\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dim \pi \cdot \centralCharacter{\pi}\left(-1\right) \cdot c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) \cdot \tau_{G, \chi, \fieldCharacter}\left(s\right).$$
-	Since $\dblVirtualJacobiSumScalar{\trace \pi}{\chi} = \dim \pi \cdot \dblJacobiSumScalar{\pi}{\chi}$, the result follows.
+\begin{proof}[Proof of \eqref{item:follows-for-cuspidal}]
+By \Cref{lem:indep_geo_conj}, we know that for $R_T(\theta) = \sum_{\pi} c_{\pi} \pi$, 
+$$\sum_{\pi} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = (\sum_{\pi} c_{\pi})g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right).$$
+Subtracting the equality for non-cuspidal $\pi$ established by (\ref{item:follows-for-non-cuspidal}), we are left with the equality
+$$ \sum_{\pi \textnormal{ cuspidal}} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \left(\sum_{\pi \textnormal{ cuspidal}} c_{\pi}\right)g_{T \cap G}\left(\theta|_{T \cap G}, \fieldCharacter\right).$$
+But by \Cref{prop:at-most-one-cuspidal-lusztig-series} there is at most one cuspidal $\pi$ appearing in our sum. Thus the proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} is complete.
 \end{proof}
 
 \subsection{Kloosterman type sums}
