@@ -826,43 +826,7 @@ The assumption in \Cref{prop:multiplicativity-of-jacobi-sum-given-support} holds
 	Hence, we have that $\dblJacobiSum{\rho}{\chi} f$ is supported on $P$. 
 \end{proof}
 
-\subsubsection{Gamma factors}\label{subsec:normalization-factor}
-In order to make the computations more tolerable, it is beneficial to work with fully multiplicative functions. We introduce the doubling method gamma factors.
-
-Let $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex}$ be a character.
-
-We define a normalization factor as follows $$c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) = \begin{dcases}
-	\left(-\GaussSumSingleCharacter{\chi^{-2}}{\fieldCharacter}\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is even,}\\
-	\chi\left(2\right) \left(-\GaussSumSingleCharacter{\chi^{-2}}{\fieldCharacter}\right)^{\frac{\dim_{\finiteField} \hermitianSpace - 1}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is odd,}	\\
-	\left(-\GaussSumSingleCharacter{\chi^{-1}\restriction_{\multiplicativegroup{\finiteField}}}{\fieldCharacter}\right)^{\dim_{\quadraticExtension} \hermitianSpace} & \quadraticExtension \ne \finiteField.
-\end{dcases}$$
-Notice that if $\quadraticExtension \ne \finiteField$ then by the Hasse--Davenport relation $\GaussSumSingleCharacter{\chi^{-1}\restriction_{\multiplicativegroup{\finiteField}}}{\fieldCharacter}^{2} = \GaussSumSingleCharacter{\minusInvolutionMinusOne{\chi}} {\fieldCharacter_{\quadraticExtension}}$.
-
-For an irreducible representation  $\tau$ of $\GL_k\left(\quadraticExtension\right)$, define $$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \GaussSumScalar{\Contragradient{\tau} \times \involution{\chi}}{\fieldCharacter} \GaussSumScalar{\tau \times \chi}{\fieldCharacter}.$$
-For an irreducible representation $\pi$ of $G$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \frac{\posDblJacobiSumScalar{\pi}{\chi}}{c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)}.$$
-
-Using this notation and using the multiplicativity property of Kondo's Gauss sum and \Cref{thm:multiplicativity-in-terms-of-gauss-sums}, we have the following multiplicativity property.
-
-\begin{theorem}\label{thm:multiplicativity-in-terms-of-gamma-factors}
-	\begin{enumerate}
-		\item If $\tau_1$ and $\tau_2$ are irreducible representations of $\GL_{k_1}\left(\finiteField\right)$ and $\GL_{k_2}\left(\finiteField\right)$, respectively, then for any irreducible subrepresentation $\tau$ of the parabolic induction $\tau_1 \circ \tau_2$, we have
-		$$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \dblGammaFactor{\tau_1}{\chi}{\fieldCharacter} \dblGammaFactor{\tau_2}{\chi}{\fieldCharacter}.$$
-		\item If $\tau$, $\pi'$ and $\pi$ are as in \Cref{thm:multiplicativity-in-terms-of-gauss-sums} and $\involutionPlusOne{\chi} \ne 1$, then
-		$$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace'}{\pi'}{\chi}{\fieldCharacter} \dblGammaFactor{\tau}{\chi}{\fieldCharacter}.$$
-	\end{enumerate}
-\end{theorem}
-
-\begin{remark}
-	The ``correct'' gamma factor (expected by Langlands functoriality) is given by $$\dblLanglandsGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} \cdot \begin{dcases}
-				1 & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = 1\\
-				-\GaussSumSingleCharacter{\chi} {\fieldCharacter} & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = -1 \\
-				\left(-1\right)^{\dim_{\quadraticExtension} \hermitianSpace} & \text{otherwise.}
-	\end{dcases}$$
-	However, we will not need this version for our purposes. \elad{Maybe this is the better version for Calvin's computations}
-\end{remark}
-
 \subsection{Pairing with Deligne--Lusztig characters}
-\calvin{old title: Computation of character sums attached to Deligne--Lusztig data}
 
 The goal of the next two sections is to compute $\dblJacobiSumScalar{\pi}{\chi}$ for $\pi$ that appears in a Deligne--Lusztig virtual representation $\RTThetaVirtual{T}{H}{\theta_H}$ for a suitable maximal torus $T_H$ and $\theta_H \colon T_H \to \multiplicativegroup{\cComplex}$.
 
@@ -964,7 +928,7 @@ To summarize, we have
 \end{align*}
 where $\theta'\left(t\right) = \theta\left(t^{1-q^m}\right)$.
 Since $\tau\left(\chi^{-1}, \fieldCharacter\right) = \chi\left(-1\right) \conjugate{\tau\left(\chi, \fieldCharacter\right)}$ and since $\chi \ne 1$, we have that $\tau\left(\chi, \fieldCharacter\right) \tau\left(\chi^{-1}, \fieldCharacter\right) = \chi\left(-1\right)$. Combining this with the fact that $\left(\theta'\right)^{-1} = \left(\theta'\right)^{q^m}$ lies in the same Frobenius orbit as $\theta'$, we get the following theorem.
-\begin{theorem}
+\begin{theorem}\label{thm:computation-norm-one-case}
 	We have the identity $$\sum_{\substack{x \in \NormOneGroup{2m}\\
 			x \ne -1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteField}\left(1 + x\right)\right) = q^{\frac{m}{2}} \GaussSumSingleCharacter{\chi^{-2}}{\fieldCharacter}^m \GaussSumCharacter{\theta'}{\chi}{\fieldCharacter_{2m}}.$$
 \end{theorem}
@@ -980,10 +944,43 @@ $$q^{\frac{m}{2}} \tau\left(\chi^{-1} \restriction_{\multiplicativegroup{\finite
 where we recall that $\theta' \colon \multiplicativegroup{\finiteFieldExtension{2m}} \to \multiplicativegroup{\cComplex}$ is given by $\theta'\left(x\right) = \theta\left(x^{1-q^m}\right)$.
 
 Thus, we obtained the following.
-\begin{theorem}
+\begin{theorem}\label{thm:computation-unitary-norm-one-case}
 	We have the following identity $$\sum_{\substack{x \in \NormOneGroup{2m}\\
 			x \ne -1}} \theta \left(x\right) \chi\left(\aFieldNorm_{\finiteFieldExtension{2m} \slash \finiteFieldExtension{2}}\left(1 + x\right)\right) = q^{\frac{m}{2}} \GaussSumSingleCharacter{\chi^{-1} \restriction_{\multiplicativegroup{\finiteField}}}{\fieldCharacter}^m \GaussSumCharacter{\theta'}{\chi}{\fieldCharacter_{2m}}.$$
 \end{theorem}
+
+\subsubsection{Gamma factors}\label{subsec:normalization-factor}
+The multiplicativity property (\Cref{thm:multiplicativity-in-terms-of-gauss-sums}) and the computations performed above (Theorems \ref{thm:split-case-deligne-lusztig-computation}-\ref{thm:computation-unitary-norm-one-case}) suggest to normalize our Jacobi sums correctly so that they will satisfy a full multiplicativity property.
+
+Let $\chi \colon \multiplicativegroup{\quadraticExtension} \to \multiplicativegroup{\cComplex} $ be a character. We define a normalization factor as follows $$c_{\hermitianSpace}\left(\chi, \fieldCharacter\right) = \begin{dcases}
+	\left(-\GaussSumSingleCharacter{\chi^{-2}}{\fieldCharacter}\right)^{\frac{\dim_{\finiteField} \hermitianSpace}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is even,}\\
+	\chi\left(2\right) \left(-\GaussSumSingleCharacter{\chi^{-2}}{\fieldCharacter}\right)^{\frac{\dim_{\finiteField} \hermitianSpace - 1}{2}} & \quadraticExtension = \finiteField,\,\, \dim_{\finiteField} \hermitianSpace \text{ is odd,}	\\
+	\left(-\GaussSumSingleCharacter{\chi^{-1}\restriction_{\multiplicativegroup{\finiteField}}}{\fieldCharacter}\right)^{\dim_{\quadraticExtension} \hermitianSpace} & \quadraticExtension \ne \finiteField.
+\end{dcases}$$
+Notice that if $\quadraticExtension \ne \finiteField$ then by the Hasse--Davenport relation $\GaussSumSingleCharacter{\chi^{-1}\restriction_{\multiplicativegroup{\finiteField}}}{\fieldCharacter}^{2} = \GaussSumSingleCharacter{\minusInvolutionMinusOne{\chi}} {\fieldCharacter_{\quadraticExtension}}$. The factor on the left hand side appears in \Cref{thm:computation-unitary-norm-one-case}, while the one on the right hand side appears in \Cref{thm:multiplicativity-in-terms-of-gauss-sums}.
+
+For an irreducible representation $\tau$ of $\GL_k\left(\quadraticExtension\right)$ define $$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \GaussSumScalar{\Contragradient{\tau} \times \involution{\chi}}{\fieldCharacter} \GaussSumScalar{\tau \times \chi}{\fieldCharacter}.$$
+For an irreducible representation $\pi$ of $H$, define the \emph{doubling method gamma factor} $$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \frac{\posDblJacobiSumScalar{\pi}{\chi}}{c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)}.$$
+
+Using this notation and using the multiplicativity property of Kondo's Gauss sum and \Cref{thm:multiplicativity-in-terms-of-gauss-sums}, we have the following multiplicativity property.
+
+\begin{theorem}\label{thm:multiplicativity-in-terms-of-gamma-factors}
+	\begin{enumerate}
+		\item If $\tau_1$ and $\tau_2$ are irreducible representations of $\GL_{k_1}\left(\finiteField\right)$ and $\GL_{k_2}\left(\finiteField\right)$, respectively, then for any irreducible subrepresentation $\tau$ of the parabolic induction $\tau_1 \circ \tau_2$, we have
+		$$\dblGammaFactor{\tau}{\chi}{\fieldCharacter} = \dblGammaFactor{\tau_1}{\chi}{\fieldCharacter} \dblGammaFactor{\tau_2}{\chi}{\fieldCharacter}.$$
+		\item If $\tau$, $\pi'$ and $\pi$ are as in \Cref{thm:multiplicativity-in-terms-of-gauss-sums} and $\involutionPlusOne{\chi} \ne 1$, then
+		$$\dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace'}{\pi'}{\chi}{\fieldCharacter} \dblGammaFactor{\tau}{\chi}{\fieldCharacter}.$$
+	\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+	The ``correct'' gamma factor (expected by Langlands functoriality) is given by $$\dblLanglandsGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} \cdot \begin{dcases}
+		1 & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = 1\\
+		-\GaussSumSingleCharacter{\chi} {\fieldCharacter} & \quadraticExtension = \finiteField \text{ and } \epsilon_{\hermitianSpace} = -1 \\
+		\left(-1\right)^{\dim_{\quadraticExtension} \hermitianSpace} & \text{otherwise.}
+	\end{dcases}$$
+	However, we will not need this version for our purposes. \elad{Maybe this is the better version for Calvin's computations}
+\end{remark}
 
 \subsubsection{Some notation}
 Recall that by \Cref{subsubsec:rational-tori} maximal rational tori of $\algebraicGroup{G}$ correspond to certain pairs of partitions $\left(\lambda^+, \lambda^-\right)$ and we have that the $\Frobenius$ fixed points of a maximal torus $\algebraicGroup{T}$ corresponding to the pair $\left(\lambda^+, \lambda^-\right)$ are of the form $$T = \algebraicGroup{T}^{\Frobenius} \cong \prod_{j=1}^{\lengthof(\lambda^+)} \multiplicativegroup{\finiteFieldExtension{\lambda_j^{+}}} \times \prod_{i=1}^{\lengthof(\lambda^-)} \NormOneGroup{2 \lambda_i^{-}},$$
@@ -1438,7 +1435,7 @@ We now prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for the
 By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and \Cref{lem:indep_geo_conj}, we have that if $\RTThetaVirtual{T_H}{H}{\theta_H} = \sum_{\pi} c_{\pi} \pi$, where $\pi$ goes over all (equivalence classes of) irreducible representations of $H$ and $c_{\pi} \in \zIntegers$, then
 $$\sum_{\pi} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter} \RTGTheta{T_H}{H}{\theta_H}\left(1\right) = \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter} \left(\sum_{\pi} c_{\pi}\right).$$
 Subtracting the equality for non-cuspidal $\pi$ established by (\ref{item:follows-for-non-cuspidal}), we are left with the equality
-$$ \sum_{\pi \textnormal{ cuspidal}} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \left(\sum_{\pi \textnormal{ cuspidal}} c_{\pi}\right)\GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter}.$$
+$$\sum_{\pi \textnormal{ cuspidal}} c_{\pi} \dblGammaFactorSpace{\hermitianSpace}{\pi}{\chi}{\fieldCharacter} = \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter} \left(\sum_{\pi \textnormal{ cuspidal}} c_{\pi}\right).$$
 But by \Cref{prop:at-most-one-cuspidal-lusztig-series} there is at most one cuspidal $\pi$ appearing in our sum. Thus the proof of \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} is complete.
 \end{proof}
 
