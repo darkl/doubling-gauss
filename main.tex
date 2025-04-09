@@ -261,7 +261,7 @@ As before, we have that $\posDblJacobiSum{\pi}{\chi}$ and $\negDblJacobiSum{\pi}
 Here $c_{\hermitianSpace}\left(\chi, \fieldCharacter\right)$ is an explicit factor and
 $g_T\left(\chi, \theta, \fieldCharacter\right)$ is a product of Gauss sums, see \Cref{subsec:normalization-factor} and \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}.
 \end{theorem}
-In this paper, we study the doubling method Jacobi sums $\dblJacobiSum{\pi}{\chi}$. We compute the scalars $\dblJacobiSumScalar{\pi}{\chi}$ in terms of the Deligne--Lusztig data corresponding to $\pi$ and show that, up to some well understood factors, they match the Kondo Gauss sum of the conjectural functorial transfer of $\pi$ to a general linear group. This is done by combining a couple of ingredients. The first ingredient is a lemma of Saito--Shinoda \cite{SaitoShinoda2000} that allows us to explicitly compute the analogous character sums for Deligne--Lusztig virtual representations $\RTTheta{T}{\theta}$.  The second ingredient, which is a key ingredient for this computation, is that these Jacobi sums are well behaved, in the sense that they are constant on Lusztig series. To show this, we utilize a multiplicativity property of these Jacobi sums from \cite{GirschZelingher2025} and combine it with a careful analysis of the Deligne--Lusztig data corresponding to $\pi$ after functorial transfer. 
+In this paper, we study the doubling method Jacobi sums $\dblJacobiSum{\pi}{\chi}$. We compute the scalars $\dblJacobiSumScalar{\pi}{\chi}$ in terms of the Deligne--Lusztig data corresponding to $\pi$ and show that, up to some well understood factors, they match the Kondo Gauss sum of the conjectural functorial transfer of $\pi$ to a general linear group. This is done by combining a couple of ingredients. The first ingredient is a lemma of Saito--Shinoda \cite{SaitoShinoda2000} that allows us to explicitly compute the analogous character sums for Deligne--Lusztig virtual representations $\RTThetaVirtual{T}{G}{\theta}$.  The second ingredient, which is a key ingredient for this computation, is that these Jacobi sums are well behaved, in the sense that they are constant on Lusztig series. To show this, we utilize a multiplicativity property of these Jacobi sums from \cite{GirschZelingher2025} and combine it with a careful analysis of the Deligne--Lusztig data corresponding to $\pi$ after functorial transfer. 
 
 
 \elad{Write about the Braverman--Kazhdan proposal that generalizes Godement--Jacquet to all groups and all representations, but is not explicit.}
@@ -292,7 +292,7 @@ In order to state Kondo's result, we need to introduce some Gauss sum notation w
 If $\alpha \colon \multiplicativegroup{\finiteFieldExtension{n}} \to \multiplicativegroup{\cComplex}$ is a character, denote the \emph{Gauss sum} $$\GaussSumSingleCharacter{\alpha}{\fieldCharacter_n} = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha^{-1}\left(x\right) \fieldCharacter_n\left(x\right),$$where $\fieldCharacter_n \colon \finiteFieldExtension{n} \to \multiplicativegroup{\cComplex}$ is given by $\fieldCharacter_n = \fieldCharacter \circ \trace_{\finiteFieldExtension{n} \slash \finiteField}$. If $\chi \colon \multiplicativegroup{\finiteField} \to \multiplicativegroup{\cComplex}$ is a character and if $\alpha$ is as above, denote the \emph{twisted Gauss sum}
 $$\GaussSumCharacter{\alpha}{\chi}{\fieldCharacter_n} = -q^{-\frac{n}{2}}\sum_{x \in \multiplicativegroup{\finiteFieldExtension{n}}} \alpha^{-1}\left(x\right) \chi^{-1}\left( \FieldNorm{n}{1}\left(x\right)\right) \fieldCharacter_n\left(x\right).$$
 
-Given a torus $T \subset \GL_n\left(\finiteField\right)$ of the form $T \cong \multiplicativegroup{\finiteFieldExtension{\lambda}}$ where $\lambda \vdash n$ is a partition and given characters $\alpha \colon \multiplicativegroup{\finiteFieldExtension{\lambda}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon T \to \multiplicativegroup{\cComplex}$, we define $$\GaussSumTorusCharacter{T}{\alpha}{\chi}{\fieldCharacter} = \left(-1\right)^{\lengthof\left(\lambda\right)} q^{-\frac{n}{2}} \sum_{t \in T} \alpha^{-1}\left(t\right) \chi^{-1}\left(\det t\right) \fieldCharacter\left(\trace t\right).$$
+Given a maximal torus $T \subset \GL_n\left(\finiteField\right)$ of the form $T \cong \multiplicativegroup{\finiteFieldExtension{\lambda}}$ where $\lambda \vdash n$ is a partition and given characters $\alpha \colon \multiplicativegroup{\finiteFieldExtension{\lambda}} \to \multiplicativegroup{\cComplex}$ and $\chi \colon T \to \multiplicativegroup{\cComplex}$, we define $$\GaussSumTorusCharacter{T}{\alpha}{\chi}{\fieldCharacter} = \left(-1\right)^{\lengthof\left(\lambda\right)} q^{-\frac{n}{2}} \sum_{t \in T} \alpha^{-1}\left(t\right) \chi^{-1}\left(\det t\right) \fieldCharacter\left(\trace t\right).$$
 We also define $$\GaussSumSingleTorusCharacter{T}{\alpha}{\fieldCharacter} = \GaussSumTorusCharacter{T}{\alpha}{1}{\fieldCharacter}.$$
 Notice that if $\alpha = \alpha_1 \times \dots \times \alpha_{\lengthof\left(\lambda\right)}$, where $\alpha_j \colon \multiplicativegroup{\finiteFieldExtension{\lambda_j}} \to \multiplicativegroup{\cComplex}$ is a character for every $j$, then
 \begin{align}
@@ -350,6 +350,9 @@ We will need the following lemma that allows us to determine whether a degenerat
 
 In this section, we recall the notion of classical groups and their corresponding similitude groups. These are the main groups which we will study in this paper.
 
+\subsubsection{Algebraic groups}
+\elad{Tell the reader that the notation $\algebraicGroup{G}$ refers to an algebraic group, which can be thought of as the $\algebraicClosure{\finiteField}$ points of a variety over $\finiteField$ with an action of $\Frobenius$}
+
 \subsubsection{$\epsilon$-sesquilinear spaces}
 Let $\quadraticExtension \slash \finiteField$ be a field extension of degree $1$ or $2$ contained in $\algebraicClosure{\finiteField}$. For any $k \ge 1$, let $\quadraticFieldExtension{k} \slash \quadraticExtension$ be the unique field extension of degree $k$ contained in $\algebraicClosure{\finiteField}$. Let $x \mapsto \involution{x}$ be the generator of $\Galois\left(\quadraticExtension \slash \finiteField\right)$.
 
@@ -370,8 +373,8 @@ Let $$w_n = \begin{pmatrix}
 	& \iddots\\
 	1
 \end{pmatrix} \in \GL_n\left(\finiteField\right)$$ be the longest Weyl element.
-\calvin{we should standardize an order between Unitary, Special Orthogonal Symplectic and try to kinda stick with it throughout.}
 \begin{enumerate}
+	\item (Unitary groups): $\quadraticExtension \ne \finiteField$. Denote $\dim_{\quadraticExtension} \hermitianSpace = n$. In this case, the group $G = \GroupExtension{G}$ is isomorphic to the group $\UnitaryGroup_n\left(\finiteField\right) \subset\GL_{n}\left(\quadraticExtension\right)$ defined as the $\finiteField$-points of $$\algebraicGroup{\UnitaryGroup}_n = \left\{ g \in \restrictionOfScalars{\quadraticExtension}{\finiteField}{\algebraicGroup{\GL}_n} \mid \involution{\left(\transpose{g}\right)} w_n g = w_n \right\}.$$
 	\item (Special orthogonal groups): $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = 1$. It follows by definition that every element $g \in \IsometryGroup\left(\hermitianSpace\right)$ satisfies $\left(\det g\right)^2 = 1$.  In this case, we obtain the connected components of the identity by adding a restriction on the determinant: We have that $G$ consists of all elements $g \in \IsometryGroup\left(\hermitianSpace\right)$ with $\det g = 1$. There are two cases here.
 	\begin{enumerate}
 		\item Split case: in this case, we can write $$\hermitianSpace = \begin{dcases}
@@ -398,7 +401,6 @@ Let $$w_n = \begin{pmatrix}
 		& w_n\\
 		-w_n
 	\end{pmatrix}\right\}.$$
-	\item (Unitary groups): $\quadraticExtension \ne \finiteField$. Denote $\dim_{\quadraticExtension} \hermitianSpace = n$. In this case, the group $G = \GroupExtension{G}$ is isomorphic to the group $\UnitaryGroup_n\left(\finiteField\right) \subset\GL_{n}\left(\quadraticExtension\right)$ defined as the $\finiteField$-points of $$\algebraicGroup{\UnitaryGroup}_n = \left\{ g \in \restrictionOfScalars{\quadraticExtension}{\finiteField}{\algebraicGroup{\GL}_n} \mid \involution{\left(\transpose{g}\right)} w_n g = w_n \right\}.$$
 \end{enumerate}
 
 Let $\lieAlgebra$ be the Lie algebra of $G$, consisting of all elements $A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)$ satisfying $\innerproduct{Ax}{y} + \involution{\innerproduct{x}{AY}} = 0$ for every $x, y \in \hermitianSpace$.
@@ -828,7 +830,7 @@ The assumption in \Cref{prop:multiplicativity-of-jacobi-sum-given-support} holds
 
 \subsection{Pairing with Deligne--Lusztig characters}
 
-The goal of the next two sections is to compute $\dblJacobiSumScalar{\pi}{\chi}$ for $\pi$ that appears in a Deligne--Lusztig virtual representation $\RTThetaVirtual{T}{H}{\theta_H}$ for a suitable maximal torus $T_H$ and $\theta_H \colon T_H \to \multiplicativegroup{\cComplex}$.
+The goal of the next two sections is to compute $\dblJacobiSumScalar{\pi}{\chi}$ for $\pi$ that appears in a Deligne--Lusztig virtual representation $\RTThetaVirtual{T_H}{H}{\theta_H}$ for a suitable maximal torus $T_H$ and $\theta_H \colon T_H \to \multiplicativegroup{\cComplex}$.
 
 In this section, we focus on the computing the analogous character sum corresponding to $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ for the virtual character $\RTGTheta{T_H}{H}{\theta_H}$.
 
@@ -1429,7 +1431,7 @@ We now prove \Cref{thm:doubling-method-gamma-factor-for-deligne-lusztig} for the
 		\GroupExtension{\algebraicGroup{G}}^{\Frobenius}}{s}$ is a subrepresentation of the parabolically induced representation $\Ind{H}{G}{\sigma}$ where $\sigma$ is an irreducible representation of the Levi part $L$ of $P$, then $\sigma \in \LusztigSeries{
 		\algebraicGroup{L}^{\Frobenius}}{s}$.
 		
-	Thus if $\pi$ is a subrepresentation of a parabolically induced representation as above, then $(T_H,\theta_H)$ is geometrically conjugate to $(T_{\GL_k\left(\quadraticExtension\right)} \times T_{H'}, \theta_{\GL_k\left(\quadraticExtension\right)} \times \theta_{H'})$ for $T_{\GL_k\left(\quadraticExtension\right)} \times H'$ a torus of $L = \GL_k\left(\quadraticExtension\right) \times H'$. As proved in \Cref{lem:indep_geo_conj}, $$g_{T \cap G}\left(\chi,\theta_H\restriction_{T \cap G},\psi\right) = g_{\left(T_{\GL_k\left(\quadraticExtension\right)} \times T_{H}'\right) \cap G}\left(\chi,\left(\theta_{\GL_k\left(\quadraticExtension\right)}\times \theta_{H'}\right)\restriction_{\left(T_{\GL_k\left(\quadraticExtension\right)} \times T_{H'}\right) \cap G},\psi\right).$$ The right hand of the last equality is multiplicative since Gauss sums are multiplicative by \eqref{eq:Gauss_multiplicitive}.
+	Thus if $\pi$ is a subrepresentation of a parabolically induced representation as above, then $(T_H,\theta_H)$ is geometrically conjugate to $(T_{\GL_k\left(\quadraticExtension\right)} \times T_{H'}, \theta_{\GL_k\left(\quadraticExtension\right)} \times \theta_{H'})$ for $T_{\GL_k\left(\quadraticExtension\right)} \times T_{H'}$ a torus of $L = \GL_k\left(\quadraticExtension\right) \times H'$. As proved in \Cref{lem:indep_geo_conj}, $$g_{T}\left(\chi,\theta_H\restriction_{T \cap G},\psi\right) = g_{\left(T_{\GL_k\left(\quadraticExtension\right)} \times T_{H}'\right) \cap G}\left(\chi,\left(\theta_{\GL_k\left(\quadraticExtension\right)}\times \theta_{H'}\right)\restriction_{\left(T_{\GL_k\left(\quadraticExtension\right)} \times T_{H'}\right) \cap G},\psi\right).$$ The right hand of the last equality is multiplicative since Gauss sums are multiplicative by \eqref{eq:Gauss_multiplicitive}.
 \end{proof}
 \begin{proof}[Proof of \eqref{item:follows-for-cuspidal}]
 By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} and \Cref{lem:indep_geo_conj}, we have that if $\RTThetaVirtual{T_H}{H}{\theta_H} = \sum_{\pi} c_{\pi} \pi$, where $\pi$ goes over all (equivalence classes of) irreducible representations of $H$ and $c_{\pi} \in \zIntegers$, then
