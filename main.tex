@@ -613,7 +613,7 @@ The \emph{dual group over $\finiteField$} of $\algebraicGroup{G}$ with respect t
 \[
 (\CharacterLattice{\algebraicGroup{T}^*},\Phi_{\algebraicGroup{T}^*},\CocharacterLattice{\algebraicGroup{T}^*},\Phi_{\algebraicGroup{T}^*}^\vee) \cong (\CocharacterLattice{\algebraicGroup{T}},\Phi_{\algebraicGroup{T}}^\vee,\CharacterLattice{\algebraicGroup{T}},\Phi_{\algebraicGroup{T}})
 \]
-such that the isomorphism respects the Frobenius actions on $\CharacterLattice{\cdot}$ and $\CocharacterLattice{\cdot}$.
+such that the isomorphism respects the Frobenius actions on $\CharacterLattice{\cdot}$ and $\CocharacterLattice{\cdot}$. Some authors distinguish the Frobenius actions on $\algebraicGroup{G}$ and $\algebraicGroup{G}^{\ast}$ by writing $\Frobenius$ and $\Frobenius^{\ast}$, respectively, but we will not do so and simply denote both actions by $\Frobenius$.
 
 Fix an isomorphism $\multiplicativegroup{\algebraicClosure{\finiteField}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}$ and an embedding $\exp:(\mathbb{Q}/\mathbb{Z})_{p'} \to \overline{\mathbb{Q}_\ell}^\times$. 
 By \cite[Proposition 13.7 (ii)]{DigneMichel1991}, we have an exact sequence
@@ -662,18 +662,18 @@ The virtual representations $\RTThetaVirtual{T}{G}{\theta}$ and $\RTThetaVirtual
 In the last row, $\sigma \colon \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme} \to \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ is the automorphism $a + b\sqrt{d} \mapsto a - b\sqrt{d}$ where $d \in \multiplicativegroup{\finiteField}$ is a non-square.
 The Frobenius root action on the Weyl group is described in \Cref{subsubsec:rational-tori}. 
 
-We will need the following facts about Lusztig series. 
+Let us specialize to the classical groups $\algebraicGroup{G}$ and their extensions $\GroupExtension{\algebraicGroup{G}}$ from Sections \ref{subsec:isometry-groups} and \ref{subsec:similitute-groups}. We will need the following facts about Lusztig series of $\algebraicGroup{G}$ and $\GroupExtension{\algebraicGroup{G}}$. 
 
 The first fact tells us that Lusztig series of $\GroupExtension{\algebraicGroup{G}}$ are unions of Harish-Chandra series, and establishes a relation between the corresponding semisimple conjugacy classes.
 \begin{proposition}[{\cite[Proof of Corollary 3.3.21]{GeckMalle2020}}]\label{prop:lusztig-series-are-unions-of-harish-chandra-series}
-	For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(\FrobeniusFixedPoints{\algebraicGroup{P}},\sigma\right)$ where $\algebraicGroup{P}$ is a parabolic subgroup of $\algebraicGroup{\GroupExtension{G}}$ with Levi part $\algebraicGroup{L}$ with $s \in \DualFrobeniusFixedPoints{L}$ and $\sigma \in \LusztigSeries{\FrobeniusFixedPoints{L}}{s}$ is an irreducible cuspidal representation.
+	For any semisimple element $s \in \FrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(\FrobeniusFixedPoints{\algebraicGroup{P}},\sigma\right)$ where $\algebraicGroup{P}$ is a parabolic subgroup of $\algebraicGroup{\GroupExtension{G}}$ with Levi part $\algebraicGroup{L}$ with $s \in \FrobeniusFixedPoints{L}$ and $\sigma \in \LusztigSeries{\FrobeniusFixedPoints{L}}{s}$ is an irreducible cuspidal representation.
 \end{proposition}
 
 The next fact establishes a relation between the Lusztig series of $\GroupExtension{\algebraicGroup{G}}$ and of $\algebraicGroup{G}$.
-\elad{Explain $i^{\ast}$}\elad{Should we deprecate the notation $\Frobenius^{\ast}$?}
+\elad{Explain $i^{\ast}$}
 
 \begin{proposition}[{\cite[Proposition 11.7]{Bonnafe2006}}]\label{prop:lusztig-series-and-restriction}
-	Let $\tilde{s}$ be a semisimple element of $\DualFrobeniusFixedPoints{\GroupExtension{G}}$ and let $s = i^{\ast}\left(\tilde{s}\right)$. Then
+	Let $\tilde{s}$ be a semisimple element of $\FrobeniusFixedPoints{\GroupExtension{G}}$ and let $s = i^{\ast}\left(\tilde{s}\right)$. Then
 	\begin{enumerate}
 		\item If $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ and if $\pi$ is an irreducible subrepresentation of the restriction of $\tilde{\pi}$ to $\FrobeniusFixedPoints{G}$, then $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$.
 		\item Let $\pi \in \LusztigSeries{\FrobeniusFixedPoints{G}}{s}$. Then there exists $\tilde{\pi} \in \LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{\tilde{s}}$ such that $\pi$ is an irreducible subrepresentation of the restriction of $\tilde{\pi}$ to $\FrobeniusFixedPoints{G}$.
@@ -683,7 +683,7 @@ The next fact establishes a relation between the Lusztig series of $\GroupExtens
 Finally, the next fact concerns the number of cuspidal representations in a Lusztig series of $\GroupExtension{\algebraicGroup{G}}$.
 
 \begin{proposition}[{\cite[Page 172]{Lusztig1977}}]\label{prop:at-most-one-cuspidal-lusztig-series}
-	For any semisimple element $s \in \DualFrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ contains at most one cuspidal element.
+	For any semisimple element $s \in \FrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ contains at most one cuspidal element.
 \end{proposition}
 
 \section{Doubling method Jacobi sums}
