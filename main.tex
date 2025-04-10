@@ -992,7 +992,7 @@ Combining the results of the previous sections with \Cref{prop:reduction-of-gaus
 
 \subsection{Invariance of $\innerproduct{\genHermitianJacobiKernel{\hermitianSpace}{\chi}}{\RTTheta{T}{\theta}}$ under geometric conjugacy}
 
-Let $f \colon \algebraicGroup{G}^{\Frobenius} \to \cComplex$ be a class function. Then by Schur's lemma for any irreducible representation $\pi$, there exists $\gamma_{f}\left(\pi\right) \in \cComplex$ such that $$\sum_{g \in G} f(g)\pi(g) = \gamma_{f}\left(\pi\right) \cdot \idmap_{\pi}.$$
+Let $f \colon \algebraicGroup{G}^{\Frobenius} \to \cComplex$ be a class function. Then by Schur's lemma for any irreducible representation $\pi$, there exists $\gamma_{f}\left(\pi\right) \in \cComplex$ such that $$\sum_{g \in \algebraicGroup{G}^{\Frobenius}} f(g)\pi(g) = \gamma_{f}\left(\pi\right) \cdot \idmap_{\pi}.$$
 
 \begin{definition}
 	We say that  $f \colon \algebraicGroup{G}^{\Frobenius} \to \cComplex$ is a \emph{stable function} on $\algebraicGroup{G}^{\Frobenius}$ if it satisfies the following property: if $\pi$ and $\pi'$ are irreducible representations of $\algebraicGroup{G}^{\Frobenius}$ such that lie in the same geometric Lusztig series, then $$\gamma_{f}\left(\pi\right) = \gamma_{f}\left(\pi'\right).$$
@@ -1031,9 +1031,9 @@ The main result of this paper is
     If $(\algebraicGroup{T},\theta)$ and $(\algebraicGroup{T}', \theta)$ are geometrically conjugate, then $$\frac{\dblVirtualJacobiSumScalar{\RTTheta{T}{\theta}}{\chi}}{\RTTheta{T}{\theta}(1)} = \frac{\dblVirtualJacobiSumScalar{\RTTheta{T'}{\theta'}}{\chi}}{\RTTheta{T'}{\theta'}\left(1\right)}.$$
 \end{lemma}
 
-We recall that \[
-	\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n} = \prod_{a \in \mathbb{Z}/m\mathbb{Z}} \left(\algebraicGroup{\GL}_n\right)_a
-\]
+We recall that $$
+	\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n} = \prod_{a \in \mathbb{Z}/m\mathbb{Z}} \left(\algebraicGroup{\GL}_n\right)_a,
+$$
 with Frobenius root action $$\Frobenius(g_0,g_1, \hdots, g_{m-1}) = (\Frobenius(g_{m-1}), \Frobenius(g_0), \Frobenius(g_1), \hdots, \Frobenius(g_{m-2})).$$ We will freely identify $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}(\finiteField) = \GL_n(\finiteFieldExtension{m})$ via the map $\left(g_0,\dots,g_{m-1}\right) \mapsto g_0$.
 
 \begin{remark}
@@ -1047,18 +1047,17 @@ Torus character pairs for $\restrictionOfScalars{\finiteFieldExtension{m}}{\fini
 %\]
 %\calvin{maybe should do inverses in the definition. Not sure if $\tau$ or $g$ make more sense.}
 
-Given a torus character pair $(\algebraicGroup{T},\theta)$ with associated $\Frobenius$-twisted conjugacy class $(w) \in W(\algebraicGroup{T}_0)$ along with an embedding $\rho:\algebraicGroup{G}^* \to \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$ and a Frobenius stable maximal torus $\algebraicGroup{T}^* \subset \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$ such that $\rho(\algebraicGroup{T}_0^*) \subset \algebraicGroup{T}^*$, let $\tilde{\algebraicGroup{T}}$ be the torus of $\algebraicGroup{\GL}_n$ corresponding to the $\Frobenius$-twisted conjugacy class of $\rho(w) \in W(\algebraicGroup{T})$ and $\tilde{\theta}$ such that $(\rho(s_{\algebraicGroup{T},\theta})) = (s_{\tilde{\algebraicGroup{T}},\tilde{\theta}})$. Define
+Given a torus character pair $(\algebraicGroup{T},\theta)$ with associated $\Frobenius$-twisted conjugacy class $(w) \in W(\algebraicGroup{T}_0)$ along with an embedding $\rho:\algebraicGroup{G}^* \to \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$ and a Frobenius stable maximal torus $\algebraicGroup{T}^* \subset \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$ such that $\rho(\algebraicGroup{T}_0^*) \subset \algebraicGroup{T}^*$, let $\tilde{\algebraicGroup{T}}$ be the torus of $\algebraicGroup{\GL}_n$ \elad{of $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$?} corresponding to the $\Frobenius$-twisted conjugacy class of $\rho(w) \in W(\algebraicGroup{T})$ \elad{of $W\left(\algebraicGroup{T}^{\ast}\right)$? Or maybe $W\left(\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{A_n}\right)$?} and let $\tilde{\theta} \colon \tilde{\algebraicGroup{T}}^{\Frobenius} \to \multiplicativegroup{\cComplex}$ be a character such that $(\rho(s_{\algebraicGroup{T},\theta})) = (s_{\tilde{\algebraicGroup{T}},\tilde{\theta}})$. We define
 \[
     g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) := \tau_{\Tilde{\algebraicGroup{T}}}(\tilde{\theta} \times \chi \circ \det,\psi) = \epsilon_{\Tilde{\algebraicGroup{T}}} q^{-nm/2}\sum_{t \in \tilde{\algebraicGroup{T}}^{\Frobenius}} \tilde{\theta}^{-1}(t)\chi^{-1}({\det}_{\finiteFieldExtension{m}}t) \psi(\trace_{\finiteFieldExtension{m}}t).
 \]
-\calvin{should the power be $q^{(-nm)/2}$ or $q^{-n/2}$? \elad{$q^{-nm/2}$}}
 Here $\chi \colon \multiplicativegroup{\finiteFieldExtension{m}} \to \multiplicativegroup{\cComplex}$ and $\fieldCharacter \colon \finiteFieldExtension{m} \to \multiplicativegroup{\cComplex}$ are characters. The following lemma shows that this is well defined.
 
 \begin{lemma}
 \label{lemma:gl_invariance}
 \begin{enumerate}[(i)]
 	\item \label{item:gl-n-hasse-davenport-gauss-sum-implies-well-defined} In the case that $\rho$ is the identity map, $g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi)$ depends only on the semisimple conjugacy class of $(s_{\algebraicGroup{T},\theta})$ and the character $\chi$.
-	\item The value $g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi)$ is well defined, i.e., independent of choice of $\algebraicGroup{T}_0$, $\algebraicGroup{T}^*$ and the conjugacy class representative $w$.
+	\item The value $g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi)$ is well defined, i.e., it is independent of the choices $\algebraicGroup{T}_0$, $\algebraicGroup{T}^*$ and of the conjugacy class representative $w$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -1067,16 +1066,16 @@ Here $\chi \colon \multiplicativegroup{\finiteFieldExtension{m}} \to \multiplica
 	\[
 	g_{T,\rho}(\chi,\theta,\psi) = \GaussSumTorusCharacter{T}{\theta}{\chi}{\fieldCharacter} = \left(-1\right)^n \GaussSumScalar{\tau \times \chi}{\fieldCharacter},
 	\]
-	where $\tau$ is any irreducible subrepresentation of $\RTThetaVirtual{T}{\GL_n\left(\finiteField\right)}{\theta}$. By \Cref{thm:KondoClassical}, this only depends on geometric conjugacy class of $(T,\theta)$ and hence on the semisimple conjugacy class of $(s_{T,\theta})$.
+	where $\tau$ is any irreducible subrepresentation of $\RTThetaVirtual{T}{\GL_n\left(\finiteField\right)}{\theta}$. By \Cref{thm:KondoClassical}, this only depends on the geometric conjugacy class of $(T,\theta)$ and hence only on the semisimple conjugacy class of $(s_{T,\theta})$.
 	\item For a Frobenius stable semisimple conjugacy class $(s)$ in $\GL_n$, we define
-	\[
-	g_{(s)}(\psi,\chi) := g_{T,\rho}(\chi,\theta,\psi) \textnormal{ for some } (T,\theta) \textnormal{ such that } (s_{T,\theta}) = (s)
-	\]
+	$$
+	g_{(s)}(\chi,\fieldCharacter) := g_{T,\rho}(\chi,\theta,\fieldCharacter)$$
+	where $(T,\theta)$ is a torus character pair such that $\left(s_{T,\theta}\right) = (s)$.
 	By (\ref{item:gl-n-hasse-davenport-gauss-sum-implies-well-defined}) this is well defined. Then
-	\[
-	g_{T,\rho}(\chi,\theta,\psi)  = g_{(\rho(s_{T,\theta}))}(\psi,\chi)
-	\]
-	which is independent of of choice of $\algebraicGroup{T}^* \subset G^*$ and $\algebraicGroup{T} \subset \GL_n$.
+	$$
+	g_{T,\rho}(\chi,\theta,\fieldCharacter)  = g_{(\rho(s_{T,\theta}))}(\chi,\fieldCharacter),
+	$$
+	which is independent of the choices $\algebraicGroup{T}^* \subset \algebraicGroup{G}^*$ and $\algebraicGroup{T} \subset \algebraicGroup{\GL}_n$.
 \end{enumerate}
 \end{proof}
 
