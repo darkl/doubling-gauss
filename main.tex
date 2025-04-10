@@ -755,8 +755,6 @@ We call $\posDblJacobiSumScalar{\pi}{\chi}$ and $\negDblJacobiSumScalar{\pi}{\ch
 \subsection{Multiplicativity}\label{subsec:multiplicativity}
 The goal of this section is to understand how the doubling method Jacobi sums behave under parabolic induction.
 
-\elad{TODO: work on section}
-
 Let $\xIsotropic$ and $\yIsotropic$ be isotropic spaces of $\hermitianSpace$ of dimension $k$, such that $\xIsotropic$ and $\yIsotropic$ are in duality with respect to form $\innerproduct{\cdot}{\cdot}$. Let us write $$\hermitianSpace = \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic,$$
 where $\hermitianSpace' \subset \hermitianSpace$ is a non-degenerate subspace, orthogonal to $\xIsotropic$ and $\yIsotropic$. Let $P$ be the parabolic subgroup of $H$, consisting of all elements stabilizing the flag $$0 \subset \xIsotropic \subset \xIsotropic \oplus \hermitianSpace' \subset \xIsotropic \oplus \hermitianSpace' \oplus \yIsotropic = \hermitianSpace.$$
 Let $G' = \IsometryGroup\left(\hermitianSpace'\right)$. Write $P = L \ltimes N$, where $L$ is the Levi part of $P$ and $N$ is the unipotent radical of $P$. Then $L$ is isomorphic to $H' \times \GL_k\left(\quadraticExtension\right)$, where $H' \in \{G',\GroupExtension{G'}\}$ is of the same type as $H$. 
@@ -772,66 +770,7 @@ $$\minusInvolution{\chi}\left(x\right) = \chi^{-1}\left(\involution{x}\right).$$
 	$$\dblJacobiSumScalar{\pi}{\chi} = \centralCharacter{\tau}\left(\pm 1\right) \chi\left(\pm 1\right)^k \left(-\GaussSumSingleCharacter{\minusInvolutionMinusOne{\chi}}{\fieldCharacter_{\quadraticExtension}}\right)^k \GaussSumScalar{\involution{\left(\Contragradient{\tau}\right)} \times \chi}{\fieldCharacter_{\quadraticExtension}} \GaussSumScalar{\tau \times \chi}{\fieldCharacter_{\quadraticExtension}} \dblJacobiSumScalar{\pi'}{\chi}.$$
 \end{theorem}
 
-This theorem was proved in \cite{GirschZelingher2025} under the assumption that $\pi' \subset \Ind{P}{H'}{\tau' \overline{\otimes} \pi''}$, where $\pi''$ is an irreducible cuspidal representation of $H''$ and $\tau'$ is an irreducible representation of $\GL_{k'}\left(\finiteField\right)$ such that $\chi$ nor $\minusInvolution{\chi}$ appear in the cuspidal support of $\tau''$. \elad{TODO: check the exact condition. The Gauss sums appearing here suggest that we should replace $\chi$ with $\involution{\chi}$ and $\minusInvolution{\chi}$ with $\chi^{-1}$}
-
-In order to prove a more general form of this theorem, let $v_{\pi'} \in \pi'$ and $v_{\tau} \in \tau$. Consider $f \in \rho$ defined as follows. The function $f \in \rho$ is the unique element supported on $P$, such that $f\left(\idmap_{\hermitianSpace}\right) = v_{\tau} \otimes v_{\pi'}$. The projection $f$ to any non-zero invariant subspace of $\rho$ is non-zero. We claim the following.
-\begin{proposition}\label{prop:multiplicativity-of-jacobi-sum-given-support}
-	Suppose that $\dblJacobiSum{\rho}{\chi} f$ is supported on $P$. Then \Cref{thm:multiplicativity-in-terms-of-gauss-sums} is true.
-\end{proposition}
-\begin{proof}
-	We compute $\left(\dblJacobiSum{\rho}{\chi} f\right)\left(\idmap_{\hermitianSpace}\right)$. It is given by
-	\begin{equation}\label{eq:recursive-doubling-gauss-sum}
-		\frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{\substack{p \in P \cap G\\
-				\detQuadratic\left(\idmap_{\hermitianSpace}\pm p\right) \ne 0}} \chi\left(\detQuadratic\left(\idmap_{\hermitianSpace} \pm p\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_{\tau} \otimes v_{\pi'}.
-	\end{equation}
-	Decomposing the sum \eqref{eq:recursive-doubling-gauss-sum} as a sum over $L$ and $N$, and using the fact that if $p \in P \cap G$ has Levi part with image $\left(a, g'\right) \in \GL_k\left(\quadraticExtension\right) \times G'$ then $$\detQuadratic\left(\idmap_{\hermitianSpace} \pm p\right) = \left(\pm 1\right)^k \detQuadratic\left(\involution{a}\right)^{-1}\detQuadratic\left(\IdentityMatrix{k} \pm a\right) \det\left(\involution{\left(\IdentityMatrix{k} \pm a\right)}\right) \detQuadratic\left(\idmap_{\hermitianSpace'} \pm g'\right),$$
-	and using the fact that $\sizeof{\lieAlgebra} = \sizeof{\lieAlgebra'} \sizeof{\squareMatrix_k\left(\finiteField\right)} \sizeof{N}^2$, where $\lieAlgebra'$ is the Lie algebra of $G'$,
-	we get that \eqref{eq:recursive-doubling-gauss-sum} equals
-	\begin{equation}
-		\chi\left(\pm 1\right)^k q^{-\frac{k^2}{2}} \sum_{a \in \GL_k\left(\quadraticExtension\right)} \genJacobiKernel{\involutionPlusOne{\chi}}\left(a\right) \minusInvolution{\chi}\left(\detQuadratic a\right) \tau\left(a\right) v_{\tau} \otimes \frac{1}{\sqrt{\sizeof{\lieAlgebra'}}} \sum_{g' \in G'} \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(g'\right) \pi'\left(g'\right) v_{\pi'},
-	\end{equation}
-	which in turn is
-	\begin{align*}
-		&\chi\left(\pm 1\right)^k \dblJacobiSum{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} v_{\tau} \otimes \dblJacobiSum{\pi'}{\chi} v_{\pi'}\\
-		=& \chi\left(\pm 1\right)^k\dblJacobiSumScalar{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} \dblJacobiSumScalar{\pi'}{\chi} v_{\tau} \otimes v_{\pi'}.
-	\end{align*}
-	
-	It follows that $$\dblJacobiSum{\rho}{\chi} f = \chi\left(\pm 1\right)^k\dblJacobiSumScalar{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} \dblJacobiSumScalar{\pi'}{\chi} f.$$
-	
-	Write $\rho = \bigoplus_i \sigma_i$ where $\sigma_i$ are irreducible representations of $\sigma_i$ and the $\sigma_i$'s need not be non-isomorphic. By writing $f = \sum_{i} f_i$ where $0 \ne f_i \in \sigma_i$, we have that $$\sum_i \dblJacobiSum{\sigma_i}{\chi} f_i = \dblJacobiSum{\rho}{\chi} f,$$
-	and therefore $$\dblJacobiSum{\sigma_i}{\chi} f_i = \chi\left(\pm 1\right)^k\dblJacobiSumScalar{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} \dblJacobiSumScalar{\pi'}{\chi} f_i,$$
-	for every $i$. The result now follows.
-\end{proof}
-The assumption in \Cref{prop:multiplicativity-of-jacobi-sum-given-support} holds in certain cases. For example, if $\rho$ is an irreducible representation, this assumption holds. It seems difficult to prove that this assumption holds in general. However, it is possible in a special case which suffices given the results of \cite{GirschZelingher2025}.
-
-\begin{proposition}
-	Suppose that $k=1$. Then the assumption of \Cref{prop:multiplicativity-of-jacobi-sum-given-support} holds.
-\end{proposition}
-\begin{proof}\elad{Work on this}
-	Notice that for $x \in G$, $$\left(\dblJacobiSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} f\left(xg\right) \genJacobiKernel{\chi}\left(g\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in G \cap P} f\left(p\right) \genJacobiKernel{\chi}\left(x^{-1} p\right),$$
-	which can be rewritten as
-	$$\left(\dblJacobiSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in G \cap P}  \genJacobiKernel{\chi}\left(x^{-1} p\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_\tau \otimes v_{\pi'}.$$
-	As before, we may write
-	$$\genJacobiKernel{\chi}\left(g\right) = q^{-k^2} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic h\right) \fieldCharacter_{\quadraticExtension}\left(\trace\left(A \left(\idmap_{\hermitianSpace} \pm g - h \right)\right)\right).$$
-	Hence, \begin{align*}
-		q^{k^2} \sum_{p \in G \cap P} \genJacobiKernel{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic h\right)\fieldCharacter_{\quadraticExtension}\left(\trace\left(-Ah\right)\right) \\
-		& \times \sum_{p \in P} \fieldCharacter_{\quadraticExtension}\left(\trace\left(A \left(\idmap_{\hermitianSpace} \pm x^{-1} p\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
-	\end{align*}
-	Assume that $\chi \ne 1$. By \Cref{lem:sum-vanishes-for-singular-matrices}, we can reduce the sum to $A \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)$. Let us replace $h$ with $-A^{-1} h$. We get the sum
-	\begin{align*}
-		& \chi\left(-1\right)^k \sum_{A \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi^{-1}\left(\detQuadratic A\right) \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic h\right)\fieldCharacter_{\quadraticExtension}\left(\trace h\right)\\
-		& \times \sum_{p \in P} \fieldCharacter_{\quadraticExtension}\left(\trace\left(A \left(\idmap_{\hermitianSpace} \pm x^{-1}p\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
-	\end{align*}
-	Consider the inner sum over $P$, written as $$\sum_{l \in L} \sum_{u \in N} \fieldCharacter_{\quadraticExtension}\left(\trace\left(\pm A x^{-1} l u\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(l\right).$$
-	The inner sum over $N$ will vanish unless $\pm Ax^{-1} \in P$ \elad{This is not true in general}. Thus we have
-	\begin{align*}
-		q^{k^2} \sum_{p \in G \cap P} \genJacobiKernel{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)}  \chi\left(\detQuadratic\left(xh\right)\right) \fieldCharacter_{\quadraticExtension}\left(\trace h\right) \\
-		& \times \sum_{p' \in G \cap P} \sum_{p \in G \cap P} \chi^{-1}\left(\detQuadratic p'\right) \fieldCharacter_{\quadraticExtension}\left(\trace\left(p' \left( p \mp x  \right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
-	\end{align*}
-	By decomposing the sum over $p' \in P$ into a sum over $N$ and $L$, we see that the inner sum over $N$ will vanish unless $p \mp x \in P$, which implies that $x \in P \cap G$.
-	
-	Hence, we have that $\dblJacobiSum{\rho}{\chi} f$ is supported on $P$. 
-\end{proof}
+This theorem follows from the results of \cite{GirschZelingher2025}. See \Cref{appendix:multiplicativity-of-jacobi-sums} for more information.
 
 \subsection{Pairing with Deligne--Lusztig characters}
 
@@ -1507,6 +1446,70 @@ $$\frac{1}{q-1} \sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension
 	$$\frac{1}{q} \sum_{x \in \multiplicativegroup{\finiteFieldExtension{2}}}\theta'\left(x\right)  \chi^{-q}\left(x\right) \fieldCharacter\left(\trace_{\finiteFieldExtension{2} \slash \finiteField} \left(x\right)\right) \sum_{y \in \multiplicativegroup{\finiteField}}   \chi\left(y\right) \fieldCharacter\left(y\right),$$
 	which by changing variables $x \mapsto x^q$ equals
 	$$q^{\frac{1}{2}} \GaussSumCharacter{\theta'}{\chi}{\fieldCharacter_{2}} \tau\left(\chi^{-1} \restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right).$$
+
+\section{Multiplicativity of Jacobi sums} \label{appendix:multiplicativity-of-jacobi-sums}
+\elad{TODO: Work on appendix}
+
+\Cref{thm:multiplicativity-in-terms-of-gauss-sums} was proved in \cite{GirschZelingher2025} under the assumption that $\pi' \subset \Ind{P}{H'}{\tau' \overline{\otimes} \pi''}$, where $\pi''$ is an irreducible cuspidal representation of $H''$ and $\tau'$ is an irreducible representation of $\GL_{k'}\left(\finiteField\right)$ such that $\chi^{-1}$ nor $\involution{\chi}$ appear in the cuspidal support of $\tau'$.
+
+In order to prove a more general form of this theorem, let $v_{\pi'} \in \pi'$ and $v_{\tau} \in \tau$. Consider $f \in \rho$ defined as follows. The function $f \in \rho$ is the unique element supported on $P$, such that $f\left(\idmap_{\hermitianSpace}\right) = v_{\tau} \otimes v_{\pi'}$. The projection $f$ to any non-zero invariant subspace of $\rho$ is non-zero. We claim the following.
+\begin{proposition}\label{prop:multiplicativity-of-jacobi-sum-given-support}
+	Suppose that $\dblJacobiSum{\rho}{\chi} f$ is supported on $P$. Then \Cref{thm:multiplicativity-in-terms-of-gauss-sums} is true.
+\end{proposition}
+\begin{proof}
+	We compute $\left(\dblJacobiSum{\rho}{\chi} f\right)\left(\idmap_{\hermitianSpace}\right)$. It is given by
+	\begin{equation}\label{eq:recursive-doubling-gauss-sum}
+		\frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{\substack{p \in P \cap G\\
+				\detQuadratic\left(\idmap_{\hermitianSpace}\pm p\right) \ne 0}} \chi\left(\detQuadratic\left(\idmap_{\hermitianSpace} \pm p\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_{\tau} \otimes v_{\pi'}.
+	\end{equation}
+	Decomposing the sum \eqref{eq:recursive-doubling-gauss-sum} as a sum over $L$ and $N$, and using the fact that if $p \in P \cap G$ has Levi part with image $\left(a, g'\right) \in \GL_k\left(\quadraticExtension\right) \times G'$ then $$\detQuadratic\left(\idmap_{\hermitianSpace} \pm p\right) = \left(\pm 1\right)^k \detQuadratic\left(\involution{a}\right)^{-1}\detQuadratic\left(\IdentityMatrix{k} \pm a\right) \det\left(\involution{\left(\IdentityMatrix{k} \pm a\right)}\right) \detQuadratic\left(\idmap_{\hermitianSpace'} \pm g'\right),$$
+	and using the fact that $\sizeof{\lieAlgebra} = \sizeof{\lieAlgebra'} \sizeof{\squareMatrix_k\left(\finiteField\right)} \sizeof{N}^2$, where $\lieAlgebra'$ is the Lie algebra of $G'$,
+	we get that \eqref{eq:recursive-doubling-gauss-sum} equals
+	\begin{equation}
+		\chi\left(\pm 1\right)^k q^{-\frac{k^2}{2}} \sum_{a \in \GL_k\left(\quadraticExtension\right)} \genJacobiKernel{\involutionPlusOne{\chi}}\left(a\right) \minusInvolution{\chi}\left(\detQuadratic a\right) \tau\left(a\right) v_{\tau} \otimes \frac{1}{\sqrt{\sizeof{\lieAlgebra'}}} \sum_{g' \in G'} \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(g'\right) \pi'\left(g'\right) v_{\pi'},
+	\end{equation}
+	which in turn is
+	\begin{align*}
+		&\chi\left(\pm 1\right)^k \dblJacobiSum{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} v_{\tau} \otimes \dblJacobiSum{\pi'}{\chi} v_{\pi'}\\
+		=& \chi\left(\pm 1\right)^k\dblJacobiSumScalar{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} \dblJacobiSumScalar{\pi'}{\chi} v_{\tau} \otimes v_{\pi'}.
+	\end{align*}
+	
+	It follows that $$\dblJacobiSum{\rho}{\chi} f = \chi\left(\pm 1\right)^k\dblJacobiSumScalar{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} \dblJacobiSumScalar{\pi'}{\chi} f.$$
+	
+	Write $\rho = \bigoplus_i \sigma_i$ where $\sigma_i$ are irreducible representations of $\sigma_i$ and the $\sigma_i$'s need not be non-isomorphic. By writing $f = \sum_{i} f_i$ where $0 \ne f_i \in \sigma_i$, we have that $$\sum_i \dblJacobiSum{\sigma_i}{\chi} f_i = \dblJacobiSum{\rho}{\chi} f,$$
+	and therefore $$\dblJacobiSum{\sigma_i}{\chi} f_i = \chi\left(\pm 1\right)^k\dblJacobiSumScalar{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} \dblJacobiSumScalar{\pi'}{\chi} f_i,$$
+	for every $i$. The result now follows.
+\end{proof}
+The assumption in \Cref{prop:multiplicativity-of-jacobi-sum-given-support} holds in certain cases. For example, if $\rho$ is an irreducible representation, this assumption holds. It seems difficult to prove that this assumption holds in general. However, it is possible in a special case which suffices given the results of \cite{GirschZelingher2025}.
+
+\begin{proposition}
+	Suppose that $k=1$. Then the assumption of \Cref{prop:multiplicativity-of-jacobi-sum-given-support} holds.
+\end{proposition}
+\begin{proof}\elad{Work on this}
+	Notice that for $x \in G$, $$\left(\dblJacobiSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} f\left(xg\right) \genJacobiKernel{\chi}\left(g\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in G \cap P} f\left(p\right) \genJacobiKernel{\chi}\left(x^{-1} p\right),$$
+	which can be rewritten as
+	$$\left(\dblJacobiSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in G \cap P}  \genJacobiKernel{\chi}\left(x^{-1} p\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_\tau \otimes v_{\pi'}.$$
+	As before, we may write
+	$$\genJacobiKernel{\chi}\left(g\right) = q^{-k^2} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic h\right) \fieldCharacter_{\quadraticExtension}\left(\trace\left(A \left(\idmap_{\hermitianSpace} \pm g - h \right)\right)\right).$$
+	Hence, \begin{align*}
+		q^{k^2} \sum_{p \in G \cap P} \genJacobiKernel{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic h\right)\fieldCharacter_{\quadraticExtension}\left(\trace\left(-Ah\right)\right) \\
+		& \times \sum_{p \in P} \fieldCharacter_{\quadraticExtension}\left(\trace\left(A \left(\idmap_{\hermitianSpace} \pm x^{-1} p\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
+	\end{align*}
+	Assume that $\chi \ne 1$. By \Cref{lem:sum-vanishes-for-singular-matrices}, we can reduce the sum to $A \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)$. Let us replace $h$ with $-A^{-1} h$. We get the sum
+	\begin{align*}
+		& \chi\left(-1\right)^k \sum_{A \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi^{-1}\left(\detQuadratic A\right) \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic h\right)\fieldCharacter_{\quadraticExtension}\left(\trace h\right)\\
+		& \times \sum_{p \in P} \fieldCharacter_{\quadraticExtension}\left(\trace\left(A \left(\idmap_{\hermitianSpace} \pm x^{-1}p\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
+	\end{align*}
+	Consider the inner sum over $P$, written as $$\sum_{l \in L} \sum_{u \in N} \fieldCharacter_{\quadraticExtension}\left(\trace\left(\pm A x^{-1} l u\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(l\right).$$
+	The inner sum over $N$ will vanish unless $\pm Ax^{-1} \in P$ \elad{This is not true in general}. Thus we have
+	\begin{align*}
+		q^{k^2} \sum_{p \in G \cap P} \genJacobiKernel{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)}  \chi\left(\detQuadratic\left(xh\right)\right) \fieldCharacter_{\quadraticExtension}\left(\trace h\right) \\
+		& \times \sum_{p' \in G \cap P} \sum_{p \in G \cap P} \chi^{-1}\left(\detQuadratic p'\right) \fieldCharacter_{\quadraticExtension}\left(\trace\left(p' \left( p \mp x  \right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
+	\end{align*}
+	By decomposing the sum over $p' \in P$ into a sum over $N$ and $L$, we see that the inner sum over $N$ will vanish unless $p \mp x \in P$, which implies that $x \in P \cap G$.
+	
+	Hence, we have that $\dblJacobiSum{\rho}{\chi} f$ is supported on $P$. 
+\end{proof}
 
 \bibliographystyle{abbrv}
 \bibliography{references}
