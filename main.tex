@@ -1024,20 +1024,19 @@ The main result of this paper is
 \label{thm:Phi_stable}
 	The assignments $H \to \cComplex$ given by $$h \mapsto \genHermitianJacobiKernel{\hermitianSpace}{\chi}\left(h\right)$$ are stable functions. Equivalently, the assignments $$\pi \mapsto \dblJacobiSumScalar{\pi}{\chi}$$ are constant on geometric Lusztig series.
 \end{theorem}
-%In the $\GL_n$ case, \Cref{thm:gln-doubling-gauss-sum-in-terms-of-kondo} 
-
+This result will be proved in \Cref{subsec:stability}. Our next goal is to prove the following intermediate result.
 \begin{lemma}
 \label{lem:indep_geo_conj}
-    If $(\algebraicGroup{T},\theta)$ and $(\algebraicGroup{T}', \theta)$ are geometrically conjugate, then $$\frac{\dblVirtualJacobiSumScalar{\RTTheta{T}{\theta}}{\chi}}{\RTTheta{T}{\theta}(1)} = \frac{\dblVirtualJacobiSumScalar{\RTTheta{T'}{\theta'}}{\chi}}{\RTTheta{T'}{\theta'}\left(1\right)}.$$
+    If $(\algebraicGroup{T}_H,\theta_H)$ and $(\algebraicGroup{T}'_H, \theta_H)$ are geometrically conjugate, then $$\frac{\dblVirtualJacobiSumScalar{\RTTheta{T_H}{\theta_H}}{\chi}}{\RTTheta{T_H}{\theta}(1)} = \frac{\dblVirtualJacobiSumScalar{\RTTheta{T'_H}{\theta'}}{\chi}}{\RTTheta{T'_H}{\theta'_H}\left(1\right)}.$$
 \end{lemma}
 
 We recall that \elad{Maybe we can help the reader and tell them that $m=1,2$} $$
-	\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n} = \prod_{a \in \mathbb{Z}/m\mathbb{Z}} \left(\algebraicGroup{\GL}_n\right)_a,
+	\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_N} = \prod_{a \in \mathbb{Z}/m\mathbb{Z}} \left(\algebraicGroup{\GL}_N\right)_a,
 $$
-with Frobenius root action $$\Frobenius(g_0,g_1, \hdots, g_{m-1}) = (\Frobenius(g_{m-1}), \Frobenius(g_0), \Frobenius(g_1), \hdots, \Frobenius(g_{m-2})).$$ We will freely identify $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}(\finiteField) = \GL_n(\finiteFieldExtension{m})$ via the map $\left(g_0,\dots,g_{m-1}\right) \mapsto g_0$.
+with Frobenius root action $$\Frobenius(g_0,g_1, \hdots, g_{m-1}) = (\Frobenius(g_{m-1}), \Frobenius(g_0), \Frobenius(g_1), \hdots, \Frobenius(g_{m-2})).$$ We will freely identify $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_N}(\finiteField) = \GL_N(\finiteFieldExtension{m})$ via the map $\left(g_0,\dots,g_{m-1}\right) \mapsto g_0$.
 
 \begin{remark}
-Torus character pairs for $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$ are the same as torus character pairs for $\algebraicGroup{\GL}_n$ as a group over $\finiteFieldExtension{m}$.
+Torus character pairs for $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_N}$ are the same as torus character pairs for $\algebraicGroup{\GL}_N$ as a group over $\finiteFieldExtension{m}$.
 \end{remark}
 
 %Given a rational maximal torus $\algebraicGroup{T} \subset \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$, a character of $\algebraicGroup{T}(\mathbb{F})$, and a non-trivial additive character $\psi$ of $\finiteFieldExtension{m}$, we define a Guass sum
@@ -1047,7 +1046,7 @@ Torus character pairs for $\restrictionOfScalars{\finiteFieldExtension{m}}{\fini
 %\]
 %\calvin{maybe should do inverses in the definition. Not sure if $\tau$ or $g$ make more sense.}
 
-Given a torus character pair $(\algebraicGroup{T},\theta)$ with associated $\Frobenius$-twisted conjugacy class $(w) \in W(\algebraicGroup{T}_0)$ along with an embedding $\rho:\algebraicGroup{G}^* \to \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$ and a Frobenius stable maximal torus $\algebraicGroup{T}^* \subset \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$ such that $\rho(\algebraicGroup{T}_0^*) \subset \algebraicGroup{T}^*$, let $\tilde{\algebraicGroup{T}}$ be the torus of $\algebraicGroup{\GL}_n$ \elad{of $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_n}$?} corresponding to the $\Frobenius$-twisted conjugacy class of $\rho(w) \in W(\algebraicGroup{T})$ \elad{of $W\left(\algebraicGroup{T}^{\ast}\right)$? Or maybe $W\left(\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{A_n}\right)$?} and let $\tilde{\theta} \colon \tilde{\algebraicGroup{T}}^{\Frobenius} \to \multiplicativegroup{\cComplex}$ be a character such that $(\rho(s_{\algebraicGroup{T},\theta})) = (s_{\tilde{\algebraicGroup{T}},\tilde{\theta}})$. We define
+Given a torus character pair $(\algebraicGroup{T},\theta)$ with associated $\Frobenius$-twisted conjugacy class $(w) \in W(\algebraicGroup{T}_0)$ along with an embedding $\rho:\algebraicGroup{G}^* \to \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_N}$ and a Frobenius stable maximal torus $\algebraicGroup{T}^* \subset \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_N}$ such that $\rho(\algebraicGroup{T}_0^*) \subset \algebraicGroup{T}^*$, let $\tilde{\algebraicGroup{T}}$ be the torus of $\algebraicGroup{\GL}_N$ \elad{of $\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_N}$?} corresponding to the $\Frobenius$-twisted conjugacy class of $\rho(w) \in W(\algebraicGroup{T})$ \elad{of $W\left(\algebraicGroup{T}^{\ast}\right)$? Or maybe $W\left(\restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{A_N}\right)$?} and let $\tilde{\theta} \colon \tilde{\algebraicGroup{T}}^{\Frobenius} \to \multiplicativegroup{\cComplex}$ be a character such that $(\rho(s_{\algebraicGroup{T},\theta})) = (s_{\tilde{\algebraicGroup{T}},\tilde{\theta}})$. We define
 \[
     g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) := \tau_{\Tilde{\algebraicGroup{T}}}(\tilde{\theta} \times \chi \circ \det,\psi) = \epsilon_{\Tilde{\algebraicGroup{T}}} q^{-nm/2}\sum_{t \in \tilde{\algebraicGroup{T}}^{\Frobenius}} \tilde{\theta}^{-1}(t)\chi^{-1}({\det}_{\finiteFieldExtension{m}}t) \psi(\trace_{\finiteFieldExtension{m}}t).
 \]
@@ -1066,8 +1065,8 @@ Here $\chi \colon \multiplicativegroup{\finiteFieldExtension{m}} \to \multiplica
 	\[
 	g_{T,\rho}(\chi,\theta,\psi) = \GaussSumTorusCharacter{T}{\theta}{\chi}{\fieldCharacter} = \left(-1\right)^n \GaussSumScalar{\tau \times \chi}{\fieldCharacter},
 	\]
-	where $\tau$ is any irreducible subrepresentation of $\RTThetaVirtual{T}{\GL_n\left(\finiteField\right)}{\theta}$. By \Cref{thm:KondoClassical}, this only depends on the geometric conjugacy class of $(T,\theta)$ and hence only on the semisimple conjugacy class of $(s_{T,\theta})$.
-	\item For a Frobenius stable semisimple conjugacy class $(s)$ in $\GL_n$, we define
+	where $\tau$ is any irreducible subrepresentation of $\RTThetaVirtual{T}{\GL_N\left(\finiteField\right)}{\theta}$. By \Cref{thm:KondoClassical}, this only depends on the geometric conjugacy class of $(T,\theta)$ and hence only on the semisimple conjugacy class of $(s_{T,\theta})$.
+	\item For a Frobenius stable semisimple conjugacy class $(s)$ in $\GL_N$, we define
 	$$
 	g_{(s)}(\chi,\fieldCharacter) := g_{T,\rho}(\chi,\theta,\fieldCharacter)$$
 	where $(T,\theta)$ is a torus character pair such that $\left(s_{T,\theta}\right) = (s)$.
@@ -1075,7 +1074,7 @@ Here $\chi \colon \multiplicativegroup{\finiteFieldExtension{m}} \to \multiplica
 	$$
 	g_{T,\rho}(\chi,\theta,\fieldCharacter)  = g_{(\rho(s_{T,\theta}))}(\chi,\fieldCharacter),
 	$$
-	which is independent of the choices $\algebraicGroup{T}^* \subset \algebraicGroup{G}^*$ and $\algebraicGroup{T} \subset \algebraicGroup{\GL}_n$.
+	which is independent of the choices $\algebraicGroup{T}^* \subset \algebraicGroup{G}^*$ and $\algebraicGroup{T} \subset \algebraicGroup{\GL}_N$.
 \end{enumerate}
 \end{proof}
 
@@ -1092,11 +1091,11 @@ Both are equal to $g_{(\rho(s_{T,\theta}))}(\psi,\chi) = g_{(\rho(s_{T',\theta'}
 	The above work is not surpising as it is really a rephrasing that the eigenvalues of $\rho(s)$ are independent of conjugacy.
 \end{remark}
 
-The idea behind the proof of \Cref{lem:indep_geo_conj} is that the formula from \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} relates $\dblVirtualJacobiSumScalar{\RTTheta{T}{\theta}}{\chi}/\RTTheta{T}{\theta}\left(1\right)$ to $g_{T,\rho}(\chi,\theta,\psi)$ for the appropriate \calvin{doubling representation} $\rho$ in the table below. 
+The idea behind the proof of \Cref{lem:indep_geo_conj} is that the formula from \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters} relates $\dblVirtualJacobiSumScalar{\RTGTheta{T_H}{H}{\theta_H}}{\chi}/\RTGTheta{T_H}{H}{\theta_H}\left(1\right)$ to $g_{T,\rho}(\chi,\theta,\psi)$ for the appropriate \calvin{doubling representation} $\rho$ in the table below. 
 
 \begin{center}
 	\begin{tabular}{|c|c|} \hline
-		$\algebraicGroup{G}$ & $\rho \colon \algebraicGroup{G}^{\ast} \to \left(\restrictionOfScalars{\quadraticExtension}{\finiteField}{}\right) \algebraicGroup{\GL}_N$  \tabularnewline \hline \hline
+		$\algebraicGroup{G}$ & $\rho \colon \algebraicGroup{G}^{\ast} \to \restrictionOfScalars{\finiteFieldExtension{m}}{\finiteField}{\algebraicGroup{\GL}_N}$  \tabularnewline \hline \hline
 		$\algebraicGroup{GL}_n$ &  $\algebraicGroup{\GL}_n \to \algebraicGroup{GL}_{2n}$ \tabularnewline \hline
 		$\algebraicGroup{\UnitaryGroup}_{n}$ &  $\algebraicGroup{\UnitaryGroup}_{n} \to \restrictionOfScalars{\quadraticExtension}{\finiteField}{\algebraicGroup{GL}_n}$\tabularnewline \hline		 				 
 		$\algebraicGroup{\SO}_{2n+1}$ &$\algebraicGroup{\Sp}_{2n} \to \algebraicGroup{\GL}_{2n}$ \tabularnewline \hline
@@ -1108,7 +1107,7 @@ The idea behind the proof of \Cref{lem:indep_geo_conj} is that the formula from 
 		$\algebraicGroup{\GSO}^{-}_{2n}$& $\algebraicGroup{GSpin}_{2n}^{-}\to\algebraicGroup{\GL}_{2n}$\tabularnewline \hline
 	\end{tabular}
 \end{center}
-In each of the cases in the table, the map on cocharacters $\rho_{\ast}:\CocharacterLattice{\algebraicGroup{T}^{\ast}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}^n \to \CocharacterLattice{\tilde{\algebraicGroup{T}}^{\ast}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}^{2n}$ sends $x$ to $(x,-w_n x)$. \calvin{in the GSpin cases might scale up by 2}
+In each of the cases in the table, $m = 1$, except for the unitary group case where $m=2$. In each case, the map on cocharacters $\rho_{\ast}:\CocharacterLattice{\algebraicGroup{T}^{\ast}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}^n \to \CocharacterLattice{\tilde{\algebraicGroup{T}}^{\ast}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}^{2n}$ sends $x$ to $(x,-w_n x)$. \calvin{in the GSpin cases might scale up by 2}
 %Note that in the $SO$ and $GSO$ case, the map $\rho$ sends the split torus of $G^*$ into the split torus of $\GL(2n)$ and the induced map of cocharacters sends $x \mapsto (x,-x)$. In the $Sp,GSp$ cases the map is similar: the induced map of cocharacters sends $x \mapsto (x,1,-x)$. In the unitary case, the torus whose $\finiteField$ points are $(\NormOneGroup{2})^n \subset G^*(\finiteField)$ includes into the torus in $\GL(2n)$ whose $\finiteField$ points are $(\finiteFieldExtension{2}^\times)^n$ and the induced map of cocharacters is $(x_1,x_2, \hdots, x_n) \mapsto (x_1,-x_1,x_2,-x_2, \hdots ,x_n,-x_n)$. 
 
 
