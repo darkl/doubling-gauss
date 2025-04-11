@@ -1121,13 +1121,13 @@ We will prove \Cref{lem:cochar_computation} by checking that if $\rho(s_{T,\thet
 \label{lem:cochar_computation}
     Let $\phi:X_*(\algebraicGroup{T}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^n \to X_*(\tilde{\algebraicGroup{T}}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^{2n}$ send $x$ to $(x,-w_n x)$ be a $\Frobenius$ equivariant map. Then:
     \begin{enumerate}
-        \item (Types B,C,D Case 1) $w$ is conjugate to a cycle of length $n$. \calvin{Add in note about the two type B cases. Maybe really should just talk about $\Frobenius$ action} In this case $\algebraicGroup{T} = \restrictionOfScalars{\finiteFieldExtension{n}}{\finiteField}{\multiplcativeScheme}$ with $\Frobenius$ acting by $w$ on the domain and by the cycle $(w,w_n w w_n)$ on the image, and $$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\multiplicativegroup{\finiteFieldExtension{n}},\alpha}).$$
+        \item (Types B,C,D Case 1) $w$ is conjugate to a cycle of length $n$. \calvin{Add in note about the two type B cases. Maybe really should just talk about $\Frobenius$ action} In this case $\algebraicGroup{T} = \restrictionOfScalars{\finiteFieldExtension{n}}{\finiteField}{\multiplcativeScheme}$ with $\Frobenius$ acting by $w$ on the domain and by the cycle $(w,w_n w w_n)$ on the image, and $$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi\left(x_{\multiplicativegroup{\finiteFieldExtension{n}},\alpha}\right).$$
         \item (Types B,C,D Case 2) $w$ is conjugate to a cycle of length $n$ with one negative sign.
- In this case $\algebraicGroup{T} = \restrictionOfScalars{\finiteFieldExtension{n}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}$ with $\Frobenius$ acting by $w$ on the domain and by a cycle of length $2n$ on the image, and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n}).$
+ In this case $\algebraicGroup{T} = \restrictionOfScalars{\finiteFieldExtension{n}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}$ with $\Frobenius$ acting by $w$ on the domain and by a cycle of length $2n$ on the image, and $$x_{\finiteField_{2n}^\times,\theta'}=\phi \left(x_{\NormOneGroup{2n},\theta}\right)$$ where $\theta'\left(t\right) = \theta\left(t^{1-q^n}\right).$
     \item ($\algebraicGroup{G}=\algebraicGroup{U}$ Case 1) $w$ is conjugate to cycle of length $n$, where $n$ is even. In this case $\algebraicGroup{T} = \restrictionOfScalars{\finiteFieldExtension{n}}{\finiteField}{\multiplcativeScheme}$ with $\Frobenius$ acting by $-1\cdot w$ on the domain and by the cycle $\left(\begin{smallmatrix} 0 & w_nw \\
         w w_n & 0
         \end{smallmatrix}\right)$ on the image, and 
-		$$x_{\multiplicativegroup{\finiteFieldExtension{n}} \times \multiplicativegroup{\finiteFieldExtension{n}},\alpha \times \alpha^{-q}} = \phi(x_{\multiplicativegroup{\finiteFieldExtension{n}},\alpha}).$$
+		$$x_{\multiplicativegroup{\finiteFieldExtension{n}} \times \multiplicativegroup{\finiteFieldExtension{n}},\alpha \times \alpha^{-q}} = \phi\left(x_{\multiplicativegroup{\finiteFieldExtension{n}},\alpha}\right).$$
 		Here $\left(\multiplicativegroup{\finiteFieldExtension{n}} \times \multiplicativegroup{\finiteFieldExtension{n}},\alpha \times \alpha^{-q}\right)$ is realized explicitly as follows. For $z = \left(x,y\right) \in \multiplicativegroup{\finiteFieldExtension{n}} \times \multiplicativegroup{\finiteFieldExtension{n}}$ denote $Dz = \left(\begin{smallmatrix}
 			x & 0\\
 			0 & y
@@ -1135,7 +1135,7 @@ We will prove \Cref{lem:cochar_computation} by checking that if $\rho(s_{T,\thet
 		and the character $\alpha \times \alpha^{-q}$ is given by $$z = \left(x,y\right) \mapsto \alpha\left(x\right) \alpha^{-q}\left(y\right).$$
     \item ($\algebraicGroup{G}=\algebraicGroup{\UnitaryGroup}_n$ Case 2) $w$ is conjugate a cycle of length $n$ where $n$ is odd. In this case $\algebraicGroup{T} = \restrictionOfScalars{\finiteFieldExtension{n}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}$ with $\Frobenius$ acting by $-1\cdot w$ on the domain and by the cycle $\left(\begin{smallmatrix} 0 & w_nw \\
         w w_n& 0
-        \end{smallmatrix}\right)$ on the image, and $$x_{\multiplicativegroup{\finiteFieldExtension{2n}},\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n})$
+        \end{smallmatrix}\right)$ on the image, and $$x_{\multiplicativegroup{\finiteFieldExtension{2n}},\theta'}=\phi\left(x_{\NormOneGroup{2n},\theta}\right)$$ where $\theta'\left(t\right) = \theta\left(t^{1-q^n}\right)$.
     \end{enumerate}
 \end{lemma}
 \begin{proof}
