@@ -179,7 +179,7 @@
 \newcommand{\RTGTheta}[3]{R_{#1}^{#2}(#3)}
 \newcommand{\RTThetaVirtual}[3]{\mathcal{R}_{#1}^{#2}(#3)}
 \newcommand{\Cocharacter}{\mathrm{cochar}}
-
+\newcommand{\Character}{\mathrm{char}}
 \newcommand{\calvin}[1]{\textcolor{orange}{\sffamily ((CALVIN: #1))}}
 \newcommand{\elad}[1]{\textcolor{blue}{\sffamily ((ELAD: #1))}}
 
@@ -1108,7 +1108,7 @@ The idea behind the proof of \Cref{lem:indep_geo_conj} is that the formula from 
 		$\algebraicGroup{\GSO}^{-}_{2n}$& $\algebraicGroup{GSpin}_{2n}^{-}\to\algebraicGroup{\GL}_{2n}$\tabularnewline \hline
 	\end{tabular}
 \end{center}
-In each of the cases in the table, $m = 1$, except for the unitary group case where $m=2$. In each case, the map on cocharacters $\rho_{\ast}:\CocharacterLattice{\algebraicGroup{T}^{\ast}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}^n \to \CocharacterLattice{\tilde{\algebraicGroup{T}}^{\ast}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}^{2n}$ sends $x$ to $(x,-w_n x)$. \calvin{in the GSpin cases might scale up by 2}
+In each of the cases in the table, $m = 1$, except for the unitary group case where $m=2$. In each case, the map on cocharacters $\rho_{\ast}:\CocharacterLattice{\algebraicGroup{T}^{\ast}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}^n \to \CocharacterLattice{\tilde{\algebraicGroup{T}}^{\ast}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}^{2n}$ sending $x$ to $(x,-w_n x)$. \calvin{in the GSpin cases might scale up by 2}
 %Note that in the $SO$ and $GSO$ case, the map $\rho$ sends the split torus of $G^*$ into the split torus of $\GL(2n)$ and the induced map of cocharacters sends $x \mapsto (x,-x)$. In the $Sp,GSp$ cases the map is similar: the induced map of cocharacters sends $x \mapsto (x,1,-x)$. In the unitary case, the torus whose $\finiteField$ points are $(\NormOneGroup{2})^n \subset G^*(\finiteField)$ includes into the torus in $\GL(2n)$ whose $\finiteField$ points are $(\finiteFieldExtension{2}^\times)^n$ and the induced map of cocharacters is $(x_1,x_2, \hdots, x_n) \mapsto (x_1,-x_1,x_2,-x_2, \hdots ,x_n,-x_n)$. 
 
 
@@ -1157,7 +1157,10 @@ Recall that $x_{T,\theta}$ is defined by for sufficiently large $m$ with $\zeta_
 \[
     \exp\left(\innerproduct{x_{T,\theta}}{y}\right) = \theta\left(\aFieldNorm_{\algebraicGroup{T}(\finiteField_m):\algebraicGroup{T}(\finiteField)}\left(y(\zeta_m\right)\right).
 \]
-In the following computations, we will choose $m$ to be sufficiently large so such that the torus $\algebraicGroup{T}\left(\finiteField_m\right)$ is isomorphic to $\left(\multiplicativegroup{\finiteFieldExtension{m}}\right)^N$. We will then identify the cocharacter lattice $\CocharacterLattice{\algebraicGroup{T}}$ with $\zIntegers^N$ by the map $\Cocharacter \colon \zIntegers^N \to \CocharacterLattice{\algebraicGroup{T}}$ given by $\left(y_1,\dots,y_N\right) \mapsto \left(\Cocharacter_{(y_1,\dots,y_N)}\left(t\right) = \left(t^{y_1},\dots,t^{y_N}\right)\right)$.
+In the following computations, we will choose $m$ to be sufficiently large so such that the torus $\algebraicGroup{T}\left(\finiteField_m\right)$ is isomorphic to $\left(\multiplicativegroup{\finiteFieldExtension{m}}\right)^N$. We will then identify the cocharacter lattice $\CocharacterLattice{\algebraicGroup{T}}$ with $\zIntegers^N$ by the map $\Cocharacter \colon \zIntegers^N \to \CocharacterLattice{\algebraicGroup{T}}$ given by $\left(y_1,\dots,y_N\right) \mapsto \left(\Cocharacter_{(y_1,\dots,y_N)}\left(t\right) = \left(t^{y_1},\dots,t^{y_N}\right)\right)$. Similarly using the above identifications denote for $\left(x_1,\dots,x_N\right) \in \zIntegers^N$ the character $\Character_{(x_1,\dots,x_{N})}$ given by the formula $$\Character_{(x_1,\dots,x_{N})}\left(\Cocharacter_{(y_1,\dots, y_N)}\left(t\right)\right) = t^{\sum_{i=1}^N x_i y_i}.$$
+
+We have that $$\innerproduct{\phi \Character_{(x_1,\dots,x_{n})}}{\Cocharacter_{(y_1,\dots, y_{2n})}\left(t\right)} = \innerproduct{\Character_{(x_1,\dots,x_n, -x_n,\dots,-x_1)}}{\Cocharacter_{(y_1,\dots, y_{2n})}\left(t\right)},$$
+which equals $$\innerproduct{\Character_{(x_1,x_2,\dots,x_{n})}}{\Cocharacter_{(y_1-y_{2n},y_2-y_{2n-1},\dots, y_n-y_{n+1})}\left(t\right)}.$$
 For different tori with Frob action we get
 \begin{enumerate}
     \item (cycle of length $n$) $\algebraicGroup{T}(\finiteField) \cong \finiteField_n^\times$ and $\algebraicGroup{T}\left(\finiteFieldExtension{nm}\right) \cong \left(\multiplicativegroup{\finiteFieldExtension{m}}\right)^n$ with $$\FieldNorm{\algebraicGroup{T}(\finiteField_{mn})}{\algebraicGroup{T}(\finiteField)}\left(\Cocharacter_{(y_1,\dots,y_n)}(\zeta_{mn})\right) = \prod_{i=0}^{n-1} \left(\zeta_n\right)^{q^{i} y_{i+1}}.$$
@@ -1168,16 +1171,34 @@ For different tori with Frob action we get
     where $\beta_n = \zeta_{2n}^{1-q^n}$.
 \end{enumerate}
 The results now follow from the equalities
+\begin{enumerate}
+	\item $$\prod_{i=0}^{n-1} \alpha\left(\zeta_n^{q^i \left(y_{i+1}-y_{2n-i}\right)}\right) = \prod_{i=0}^{n-1} \alpha\left(\zeta_n^{q^i y_{i+1}}\right) \cdot \prod_{i=0}^{n-1} \alpha^{-1}\left(\zeta_n^{q^i y_{2n-i}}\right).$$
+	\item \begin{align*}
+		\prod_{i=0}^{n-1} \theta\left(\beta_n^{ q^i \left(y_{i+1}-y_{2n-i}\right)}\right) &= \prod_{i=0}^{n-1} \theta\left(\beta_n^{ q^i y_{i+1}}\right) \cdot \prod_{i=0}^{n-1} \theta\left(\beta_n^{ q^{i+n} y_{2n-i}}\right) \\
+		&= \prod_{i=0}^{n-1} \theta'\left(\zeta_n^{q^i y_{i+1}}\right) \cdot \prod_{i=0}^{n-1} \theta'\left(\zeta_n^{q^{n+i} y_{2n-i}}\right).
+	\end{align*}
+	\item \begin{align*}
+		\prod_{i=0}^{n-1} \alpha\left(\zeta_n^{\left(-1\right)^i q^i \left(y_{i+1} - y_{2n-i}\right)}\right) =& \prod_{i=0}^{\frac{n}{2}-1} \alpha\left(\zeta_n^{q^{2i} y_{2i+1} + q^{2i+1} y_{2n-2i-1}}\right) \\
+		& \times \prod_{i=0}^{\frac{n}{2}-1} \alpha^{-q}\left(\zeta_n^{q^{2i} y_{2i+2} + q^{2i+1} y_{2n-2i-2}}\right).
+	\end{align*}
+	\item \begin{align*}
+		&\prod_{i=0}^{n-1} \theta\left( \beta_n^{\left(-1\right)^i q^i \left(y_{i+1} - y_{2n - i}\right)}\right)\\
+		 = & \prod_{\substack{0 \le i \le n-1\\
+				i \text{ is even}}} \theta\left(\beta_n^{q^{i} y_{i+1} + q^{i+n} y_{2n-i}}\right) \cdot \prod_{\substack{0 \le i \le n-1\\
+				i \text{ is odd}}} \theta\left(\beta_n^{q^{i+n} y_{i+1} + q^{i} y_{2n-i}}\right)\\
+			= &\prod_{\substack{0 \le i \le n-1\\
+			i \text{ is even}}} \theta'\left(\zeta_n^{q^{i} y_{i+1} + q^{n-i} y_{n+i}}\right) \cdot \prod_{\substack{0 \le i \le n-1\\
+		i \text{ is odd}}} \theta'\left(\zeta_n^{q^{i+n} y_{i+1} + q^{2n-i} y_{n+i}}\right).
+	\end{align*}
+\end{enumerate}
 \begin{align*}
-	\alpha(\zeta^{((y_1-y_{2n})+q(y_2-y_{2n-1}) + \hdots +q^{n-1}(y_{n}-y_{n+1}))})&=\alpha(\zeta^{(y_1+qy_2 + \hdots +q^{n-1}y_{n})}) \alpha^{-1}(\zeta^{(y_{2n}+qy_{2n-1} + \hdots +q^{n-1}y_{n+1})}) \\
-	\theta(\beta^{((y_1-y_{2n})+q(y_2-y_{2n-1}) + \hdots +q^{n-1}(y_{n}-y_{n+1}))})&=\theta(\beta^{(y_1+qy_2 + \hdots + q^{n-1}y_{n} + q^ny_{2n}+q^{n+1}y_{2n-1} \hdots +q^{2n-1}y_{n+1})}) \\
-	&=\theta'(\zeta^{(y_1+qy_2 + \hdots + q^{n-1}y_{n} + q^ny_{2n}+q^{n+1}y_{2n-1} \hdots +q^{2n-1}y_{n+1})})\\
 	\alpha(\zeta^{((y_1-y_{2n})-q(y_2-y_{2n-1}) +q^2(y_3-y_{2n-2}) \hdots -q^{n-1}(y_{n}-y_{n+1}))})&= \alpha(\zeta^{(y_1+qy_{2n-1}+q^2y_3 +q^3y_{2n-3} \hdots +q^{n-1}y_{n+1})}) \\
 	&\quad \cdot \alpha^{-1}(\zeta^{(qy_{2} + q^2y_{2n-2} + \hdots +q^{n-1}y_{n}+q^ny_{2n})}) \\
 	\theta(\beta^{((y_1-y_{2n})-q(y_2-y_{2n-1}) +q^2(y_3-y_{2n-2}) \hdots +q^{n-1}(y_{n}-y_{n+1}))})&=\theta(\beta^{(y_1+qy_{2n-1} +q^2y_3 \hdots + q^{n-1}y_{n} + q^ny_{2n}+q^{n+1}y_{2} \hdots +q^{2n-1}y_{n+1})}) \\
 	&=\theta'(\zeta^{(y_1+qy_{2n-1} +q^2y_3 \hdots + q^{n-1}y_{n} + q^ny_{2n}+q^{n+1}y_{2} \hdots +q^{2n-1}y_{n+1})})
 \end{align*}
-where $\zeta = \zeta_n = 1/(q^n-1)$ under the fixed identification $\multiplicativegroup{\algebraicClosure{\finiteField}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}$ and $\beta = \beta_n = \zeta_{2n}^{1-q^n}$.
+
+=
 %Now the results follow from checking that
 %\[
 %    (\theta_1 \times \theta_1^{-1}) \circ \FieldNorm{\algebraicGroup{T}_1(\finiteField_r)}{\algebraicGroup{T}_1(\finiteField)} (\vec{y})(\zeta_r) = \theta_2\circ \FieldNorm{\algebraicGroup{T}_2(\finiteField_r)}{\algebraicGroup{T}_2(\finiteField)}(\vec{y})(\zeta_r)
