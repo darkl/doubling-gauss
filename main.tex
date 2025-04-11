@@ -1170,7 +1170,7 @@ For different tori with Frob action we get
     \item (cycle of length $n$ with $n$ negative signs, $n$ odd) $\algebraicGroup{T}(\finiteField) \cong \NormOneGroup{2n}$ and $\algebraicGroup{T}\left(\finiteFieldExtension{2mn}\right) \cong \left(\multiplicativegroup{\finiteFieldExtension{2mn}}\right)^{n}$ with $$\FieldNorm{\algebraicGroup{T}(\finiteField_{2mn})}{\algebraicGroup{T}(\finiteField)}\left(\Cocharacter_{(y_1,\dots, y_n)}\left(\zeta_{2mn}\right)\right) = \prod_{i=0}^{n-1} (\beta_n)^{\left(-1\right)^{i}q^{i}y_{i+1}},$$
     where $\beta_n = \zeta_{2n}^{1-q^n}$.
 \end{enumerate}
-The results now follow from the equalities
+Notice that we have the following equalities:
 \begin{enumerate}
 	\item $$\prod_{i=0}^{n-1} \alpha\left(\zeta_n^{q^i \left(y_{i+1}-y_{2n-i}\right)}\right) = \prod_{i=0}^{n-1} \alpha\left(\zeta_n^{q^i y_{i+1}}\right) \cdot \prod_{i=0}^{n-1} \alpha^{-1}\left(\zeta_n^{q^i y_{2n-i}}\right).$$
 	\item \begin{align*}
@@ -1191,14 +1191,7 @@ The results now follow from the equalities
 		i \text{ is odd}}} \theta'\left(\zeta_n^{q^{i+n} y_{i+1} + q^{2n-i} y_{n+i}}\right).
 	\end{align*}
 \end{enumerate}
-\begin{align*}
-	\alpha(\zeta^{((y_1-y_{2n})-q(y_2-y_{2n-1}) +q^2(y_3-y_{2n-2}) \hdots -q^{n-1}(y_{n}-y_{n+1}))})&= \alpha(\zeta^{(y_1+qy_{2n-1}+q^2y_3 +q^3y_{2n-3} \hdots +q^{n-1}y_{n+1})}) \\
-	&\quad \cdot \alpha^{-1}(\zeta^{(qy_{2} + q^2y_{2n-2} + \hdots +q^{n-1}y_{n}+q^ny_{2n})}) \\
-	\theta(\beta^{((y_1-y_{2n})-q(y_2-y_{2n-1}) +q^2(y_3-y_{2n-2}) \hdots +q^{n-1}(y_{n}-y_{n+1}))})&=\theta(\beta^{(y_1+qy_{2n-1} +q^2y_3 \hdots + q^{n-1}y_{n} + q^ny_{2n}+q^{n+1}y_{2} \hdots +q^{2n-1}y_{n+1})}) \\
-	&=\theta'(\zeta^{(y_1+qy_{2n-1} +q^2y_3 \hdots + q^{n-1}y_{n} + q^ny_{2n}+q^{n+1}y_{2} \hdots +q^{2n-1}y_{n+1})})
-\end{align*}
-
-=
+The results now follow from these equalities, since we can easily find a permutation matrix in $\GL_{2n}$ that conjugates the character that corresponds to $\phi\left(x_{T,\bullet}\right)$ to the desired character from the proposition. This permutation matrix simply corresponds to the permutation that permutes the $y_i$'s so that the coefficient of $q^i$ is $y_{i+1}$ for every $0 \le i \le 2n-1$.
 %Now the results follow from checking that
 %\[
 %    (\theta_1 \times \theta_1^{-1}) \circ \FieldNorm{\algebraicGroup{T}_1(\finiteField_r)}{\algebraicGroup{T}_1(\finiteField)} (\vec{y})(\zeta_r) = \theta_2\circ \FieldNorm{\algebraicGroup{T}_2(\finiteField_r)}{\algebraicGroup{T}_2(\finiteField)}(\vec{y})(\zeta_r)
