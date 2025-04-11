@@ -1131,7 +1131,7 @@ We will prove \Cref{lem:cochar_computation} by checking that if $\rho(s_{T,\thet
 		Here $\left(\multiplicativegroup{\finiteFieldExtension{n}} \times \multiplicativegroup{\finiteFieldExtension{n}},\alpha \times \alpha^{-q}\right)$ is realized explicitly as follows. For $z = \left(x,y\right) \in \multiplicativegroup{\finiteFieldExtension{n}} \times \multiplicativegroup{\finiteFieldExtension{n}}$ denote $Dz = \left(\begin{smallmatrix}
 			x & 0\\
 			0 & y
-		\end{smallmatrix}\right) \in \GL_2\left(\finiteFieldExtension{n}\right)$and $$\Frobenius\left(z\right) = \left(\Frobenius x, \Frobenius y\right) = \left(x^q,y^q\right).$$ Then $\multiplicativegroup{\finiteFieldExtension{n}} \times \multiplicativegroup{\finiteFieldExtension{n}}$ is realized as the subgroup of $\GL_{2n}\left(\finiteFieldExtension{n}\right) \times \GL_{2n}\left(\finiteFieldExtension{n}\right)$ given by the image of the map $$z \mapsto \left(\diag\left(Dz,D\Frobenius^2 z,\dots, D\Frobenius^{n-2} z\right), \diag\left(D\Frobenius z, D\Frobenius^3 z, \dots, D\Frobenius^{n-1} z\right)\right),$$
+		\end{smallmatrix}\right) \in \GL_2\left(\finiteFieldExtension{n}\right)$and $$\Frobenius\left(z\right) = \left(\Frobenius x, \Frobenius y\right) = \left(x^q,y^q\right).$$ Then $\multiplicativegroup{\finiteFieldExtension{n}} \times \multiplicativegroup{\finiteFieldExtension{n}}$ is realized as the subgroup of $\restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\algebraicGroup{\GL}_n}\left(\finiteFieldExtension{n}\right) = \GL_{n}\left(\finiteFieldExtension{n}\right) \times \GL_{n}\left(\finiteFieldExtension{n}\right)$ given by the image of the map $$z \mapsto \left(\diag\left(Dz,D\Frobenius^2 z,\dots, D\Frobenius^{n-2} z\right), \diag\left(D\Frobenius z, D\Frobenius^3 z, \dots, D\Frobenius^{n-1} z\right)\right),$$
 		and the character $\alpha \times \alpha^{-q}$ is given by $$z = \left(x,y\right) \mapsto \alpha\left(x\right) \alpha^{-q}\left(y\right).$$
     \item ($\algebraicGroup{G}=\algebraicGroup{\UnitaryGroup}_n$ Case 2) $w$ is conjugate a cycle of length $n$ where $n$ is odd. In this case $\algebraicGroup{T} = \restrictionOfScalars{\finiteFieldExtension{n}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}$ with $\Frobenius$ acting by $-1\cdot w$ on the domain and by the cycle $\left(\begin{smallmatrix} 0 & w_nw \\
         w w_n& 0
@@ -1147,7 +1147,7 @@ In the following computations, we will choose $m$ to be sufficiently large so su
 
 We have that $$\innerproduct{\phi \Character_{(x_1,\dots,x_{n})}}{\Cocharacter_{(y_1,\dots, y_{2n})}\left(t\right)} = \innerproduct{\Character_{(x_1,\dots,x_n, -x_n,\dots,-x_1)}}{\Cocharacter_{(y_1,\dots, y_{2n})}\left(t\right)},$$
 which equals $$\innerproduct{\Character_{(x_1,x_2,\dots,x_{n})}}{\Cocharacter_{(y_1-y_{2n},y_2-y_{2n-1},\dots, y_n-y_{n+1})}\left(t\right)}.$$
-For different tori with Frob action we get
+For different tori with $\Frobenius$ actions we get
 \begin{enumerate}
     \item (cycle of length $n$) $\algebraicGroup{T}(\finiteField) \cong \finiteField_n^\times$ and $\algebraicGroup{T}\left(\finiteFieldExtension{nm}\right) \cong \left(\multiplicativegroup{\finiteFieldExtension{m}}\right)^n$ with $$\FieldNorm{\algebraicGroup{T}(\finiteField_{mn})}{\algebraicGroup{T}(\finiteField)}\left(\Cocharacter_{(y_1,\dots,y_n)}(\zeta_{mn})\right) = \prod_{i=0}^{n-1} \left(\zeta_n\right)^{q^{i} y_{i+1}}.$$
     \item (cycle of length $n$ with one negative sign) $\algebraicGroup{T}(\finiteField) \cong \NormOneGroup{2n}$ and $\algebraicGroup{T}\left(\finiteFieldExtension{2mn}\right) \cong \left(\multiplicativegroup{\finiteFieldExtension{2mn}}\right)^{n}$ with $$\FieldNorm{\algebraicGroup{T}(\finiteField_{2mn})}{\algebraicGroup{T}(\finiteField)}\left(\Cocharacter_{(y_1,\dots, y_n)}\left(\zeta_{2mn}\right)\right) = \prod_{i=0}^{n-1}(\beta_n)^{q^{i} y_{i+1}},$$
@@ -1177,7 +1177,7 @@ Notice that we have the following equalities:
 		i \text{ is odd}}} \theta'\left(\zeta_n^{q^{i+n} y_{i+1} + q^{2n-i} y_{n+i}}\right).
 	\end{align*}
 \end{enumerate}
-The results now follow from these equalities, since we can easily find a permutation matrix in $\GL_{2n}$ that conjugates the character that corresponds to $\phi\left(x_{T,\bullet}\right)$ to the desired character from the proposition. This permutation matrix simply corresponds to the permutation that permutes the $y_i$'s so that $q^i$ is the coefficient of $y_{i+1}$ in the exponent of the right hand side of the corresponding equation for every $0 \le i \le 2n-1$.
+The results now follow from these equalities and the norm computations, since we can easily find a permutation matrix in $\GL_{2n}$ that conjugates the character that corresponds to $\phi\left(x_{T,\bullet}\right)$ to the desired character from the proposition. This permutation matrix simply corresponds to the permutation that permutes the $y_i$'s so that $q^i$ is the coefficient of $y_{i+1}$ in the exponent of the right hand side of the corresponding equation for every $0 \le i \le 2n-1$.
 %Now the results follow from checking that
 %\[
 %    (\theta_1 \times \theta_1^{-1}) \circ \FieldNorm{\algebraicGroup{T}_1(\finiteField_r)}{\algebraicGroup{T}_1(\finiteField)} (\vec{y})(\zeta_r) = \theta_2\circ \FieldNorm{\algebraicGroup{T}_2(\finiteField_r)}{\algebraicGroup{T}_2(\finiteField)}(\vec{y})(\zeta_r)
