@@ -1164,8 +1164,13 @@ Notice that we have the following equalities:
 		&= \prod_{i=0}^{n-1} \theta'\left(\zeta_n^{q^i y_{i+1}}\right) \cdot \prod_{i=0}^{n-1} \theta'\left(\zeta_n^{q^{n+i} y_{2n-i}}\right).
 	\end{align*}
 	\item \begin{align*}
-		\prod_{i=0}^{n-1} \alpha\left(\zeta_n^{\left(-1\right)^i q^i \left(y_{i+1} - y_{2n-i}\right)}\right) =& \prod_{i=0}^{\frac{n}{2}-1} \alpha\left(\zeta_n^{q^{2i} y_{2i+1} + q^{2i+1} y_{2n-2i-1}}\right) \\
-		& \times \prod_{i=0}^{\frac{n}{2}-1} \alpha^{-q}\left(\zeta_n^{q^{2i} y_{2i+2} + q^{2i+1} y_{2n-2i-2}}\right).
+		& \prod_{i=0}^{n-1} \alpha\left(\zeta_n^{\left(-1\right)^i q^i \left(y_{i+1} - y_{2n-i}\right)}\right)\\
+		=& \prod_{\substack{0 \le i \le n-1\\
+				i \text{ is even}}} \alpha\left(\zeta_n^{q^{i} y_{i+1} - q^{i} y_{2n-i}}\right) \cdot \prod_{\substack{0 \le i \le n-1\\
+				i \text{ is odd}}} \alpha\left(\zeta_n^{-q^{i} y_{i+1} + q^{i} y_{2n-i}}\right) \\
+			=& \prod_{\substack{0 \le i \le n-1\\
+					i \text{ is even}}} \alpha\left(\zeta_n^{q^{i} y_{i+1} + q^{i + 1} y_{2n-i-1}}\right) \cdot \prod_{\substack{0 \le i \le n-1\\
+					i \text{ is even}}} \alpha^{-q}\left(\zeta_n^{q^{i} y_{i+2} + q^{i-1} y_{2n-i}}\right).
 	\end{align*}
 	\item \begin{align*}
 		&\prod_{i=0}^{n-1} \theta\left( \beta_n^{\left(-1\right)^i q^i \left(y_{i+1} - y_{2n - i}\right)}\right)\\
@@ -1177,7 +1182,7 @@ Notice that we have the following equalities:
 		i \text{ is odd}}} \theta'\left(\zeta_n^{q^{i+n} y_{i+1} + q^{2n-i} y_{n+i}}\right).
 	\end{align*}
 \end{enumerate}
-The results now follow from these equalities and the norm computations, since we can easily find a permutation matrix in $\GL_{2n}$ that conjugates the character that corresponds to $\phi\left(x_{T,\bullet}\right)$ to the desired character from the proposition. This permutation matrix simply corresponds to the permutation that permutes the $y_i$'s so that $q^i$ is the coefficient of $y_{i+1}$ in the exponent of the right hand side of the corresponding equation for every $0 \le i \le 2n-1$.
+The results now follow from these equalities and the norm computations, since we can easily find a permutation matrix in $\GL_{2n}$ that conjugates the character that corresponds to $\phi\left(x_{T,\bullet}\right)$ to the desired character from the proposition. This permutation matrix simply corresponds to the permutation that permutes the $y_i$'s so that the coefficient of $y_{i+1}$ in the exponent of the right hand side of the corresponding equation matches the one of the desired character. For example, in the norm one cases it is the permutation matrix that permutes the $y_i$'s so that the coefficient of $y_{i+1}$ is $q^{i}$ for every $0 \le i \le n-1$.
 %Now the results follow from checking that
 %\[
 %    (\theta_1 \times \theta_1^{-1}) \circ \FieldNorm{\algebraicGroup{T}_1(\finiteField_r)}{\algebraicGroup{T}_1(\finiteField)} (\vec{y})(\zeta_r) = \theta_2\circ \FieldNorm{\algebraicGroup{T}_2(\finiteField_r)}{\algebraicGroup{T}_2(\finiteField)}(\vec{y})(\zeta_r)
