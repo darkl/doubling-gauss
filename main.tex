@@ -1121,42 +1121,28 @@ We will prove \Cref{lem:cochar_computation} by checking that if $\rho(s_{T,\thet
 \label{lem:cochar_computation}
     Let $\phi:X_*(\algebraicGroup{T}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^n \to X_*(\tilde{\algebraicGroup{T}}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^{2n}$ send $x$ to $(x,-w_n x)$ be a $\Frobenius$ equivariant map. Then:
     \begin{enumerate}
-        \item[B,C,D Case 1)] $w$ is conjugate to an $n$-cycle: \calvin{Add in note about the two type B cases. Maybe really should just talk about $\Frobenius$ action} In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $w$ on the preimage and the cycle $(w,w^\ast)$ on the image, and $$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\finiteFieldExtension{n},\alpha}).$$
-        \item[B,C,D Case 2)] $w$ is conjugate to an $n$-cycle with one negative:
- In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $w$ on the preimage and by a $2n$ cycle on the image, and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n}).$
-    \item[$G=\algebraicGroup{U}$ Case 1)] $w$ is conjugate to $(1,2 \hdots n)$ an even cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{G}_m$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the product of two $n$ cycles $\begin{pmatrix} 0 & w_nw \\
+        \item (Types B,C,D Case 1) $w$ is conjugate to a cycle of length $n$. \calvin{Add in note about the two type B cases. Maybe really should just talk about $\Frobenius$ action} In this case $\algebraicGroup{T} = \restrictionOfScalars{\finiteFieldExtension{n}}{\finiteField}{\multiplcativeScheme}$ with $\Frobenius$ acting by $w$ on the domain and by the cycle $(w,w_n w w_n)$ on the image, and $$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi(x_{\finiteFieldExtension{n},\alpha}).$$
+        \item (Types B,C,D Case 2) $w$ is conjugate to a cycle of length $n$ with one negative sign.
+ In this case $\algebraicGroup{T} = \restrictionOfScalars{\finiteFieldExtension{n}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}$ with $\Frobenius$ acting by $w$ on the domain and by a cycle of length $2n$ on the image, and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n}).$
+    \item ($\algebraicGroup{G}=\algebraicGroup{U}$ Case 1) $w$ is conjugate to cycle of length $n$, where $n$ is even. In this case $\algebraicGroup{T} = \restrictionOfScalars{\finiteFieldExtension{n}}{\finiteField}{\multiplcativeScheme}$ with $\Frobenius$ acting by $-1\cdot w$ on the domain and by the cycle $\left(\begin{smallmatrix} 0 & w_nw \\
         w w_n & 0
-        \end{pmatrix}$  on the image, and 
-		$$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-q}} = \phi(x_{\finiteFieldExtension{n},\alpha}).$$
-		where explitely $\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-q}$ refers to the torus character pair
-		\[
-\left(\begin{pmatrix}
-x_0 & 0 & 0 & 0 & \hdots & 0 \\
-0 & y_0 & 0 & 0 & \hdots & 0 \\
-0 & 0 & F^2(x_0) & 0 & \hdots & 0 \\
-0 & 0 & 0 & F^2(y_0) & \hdots & 0 \\
-\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-0 & 0 & 0 & 0 & \hdots & F^{n-2}(y_0) \\
-\end{pmatrix},\begin{pmatrix}
-	F(x_0) & 0 & 0 & 0 & \hdots & 0 \\
-	0 & F(y_0) & 0 & 0 & \hdots & 0 \\
-	0 & 0 & F^3(x_0) & 0 & \hdots & 0 \\
-	0 & 0 & 0 & F^3(y_0) & \hdots & 0 \\
-	\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-	0 & 0 & 0 & 0 & \hdots & F^{n-1}(y_0) \\
-	\end{pmatrix} \right)
-		\]
-		mapping to $\alpha(x_0)\alpha^{-q}(y_0)$.
-    \item[$G=\algebraicGroup{U}$ Case 2)] $w$ is conjugate to $(1,2 \hdots n)$ an odd cycle: In this case $\algebraicGroup{T} = \mathrm{Res}_{\mathbb{F}_n:\mathbb{F}}\algebraicGroup{U}(1)$ with $\Frobenius$ acting by $-1\cdot w$ on the preimage and by the $2n$ cycle $\begin{pmatrix} 0 & w_nw \\
+        \end{smallmatrix}\right)$ on the image, and 
+		$$x_{\multiplicativegroup{\finiteFieldExtension{n}} \times \multiplicativegroup{\finiteFieldExtension{n}},\alpha \times \alpha^{-q}} = \phi(x_{\finiteFieldExtension{n},\alpha}).$$
+		Here $\left(\multiplicativegroup{\finiteFieldExtension{n}} \times \multiplicativegroup{\finiteFieldExtension{n}},\alpha \times \alpha^{-q}\right)$ is realized explicitly as follows. For $z = \left(x,y\right) \in \multiplicativegroup{\finiteFieldExtension{n}} \times \multiplicativegroup{\finiteFieldExtension{n}}$ denote $Dz = \left(\begin{smallmatrix}
+			x & 0\\
+			0 & y
+		\end{smallmatrix}\right) \in \GL_2\left(\finiteFieldExtension{n}\right)$and $$\Frobenius\left(z\right) = \left(\Frobenius x, \Frobenius y\right) = \left(x^q,y^q\right).$$ Then $\multiplicativegroup{\finiteFieldExtension{n}} \times \multiplicativegroup{\finiteFieldExtension{n}}$ is realized as the subgroup of $\GL_{2n}\left(\finiteFieldExtension{n}\right) \times \GL_{2n}\left(\finiteFieldExtension{n}\right)$ given by the image of the map $$z \mapsto \left(\diag\left(Dz,D\Frobenius^2 z,\dots, D\Frobenius^{n-2} z\right), \diag\left(D\Frobenius z, D\Frobenius^3 z, \dots, D\Frobenius^{n-1} z\right)\right),$$
+		and the character $\alpha \times \alpha^{-q}$ is given by $$z = \left(x,y\right) \mapsto \alpha\left(x\right) \alpha^{-q}\left(y\right).$$
+    \item ($\algebraicGroup{G}=\algebraicGroup{\UnitaryGroup}_n$ Case 2) $w$ is conjugate a cycle of length $n$ where $n$ is odd. In this case $\algebraicGroup{T} = \restrictionOfScalars{\finiteFieldExtension{n}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}$ with $\Frobenius$ acting by $-1\cdot w$ on the domain and by the cycle $\left(\begin{smallmatrix} 0 & w_nw \\
         w w_n& 0
-        \end{pmatrix}$ on the image, and $$x_{\finiteField_{2n}^\times,\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n})$
+        \end{smallmatrix}\right)$ on the image, and $$x_{\multiplicativegroup{\finiteFieldExtension{2n}},\theta'}=\phi(x_{\NormOneGroup{2n},\theta})$$ where $\theta'(t) = \theta(t^{1-q^n})$
     \end{enumerate}
 \end{lemma}
 \begin{proof}
 Recall that $x_{T,\theta}$ is defined by for sufficiently large $m$ with $\zeta_m = 1/(q^m-1)$ under the fixed identification $\multiplicativegroup{\algebraicClosure{\finiteField}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}$
-\[
-    \exp\left(\innerproduct{x_{T,\theta}}{y}\right) = \theta\left(\aFieldNorm_{\algebraicGroup{T}(\finiteField_m):\algebraicGroup{T}(\finiteField)}\left(y(\zeta_m\right)\right).
-\]
+$$
+    \exp\left(\innerproduct{x_{T,\theta}}{y}\right) = \theta\left(\aFieldNorm_{\algebraicGroup{T}(\finiteField_m):\algebraicGroup{T}(\finiteField)}\left(y\left(\zeta_m\right)\right)\right).
+$$
 In the following computations, we will choose $m$ to be sufficiently large so such that the torus $\algebraicGroup{T}\left(\finiteField_m\right)$ is isomorphic to $\left(\multiplicativegroup{\finiteFieldExtension{m}}\right)^N$. We will then identify the cocharacter lattice $\CocharacterLattice{\algebraicGroup{T}}$ with $\zIntegers^N$ by the map $\Cocharacter \colon \zIntegers^N \to \CocharacterLattice{\algebraicGroup{T}}$ given by $\left(y_1,\dots,y_N\right) \mapsto \left(\Cocharacter_{(y_1,\dots,y_N)}\left(t\right) = \left(t^{y_1},\dots,t^{y_N}\right)\right)$. Similarly using the above identifications denote for $\left(x_1,\dots,x_N\right) \in \zIntegers^N$ the character $\Character_{(x_1,\dots,x_{N})}$ given by the formula $$\Character_{(x_1,\dots,x_{N})}\left(\Cocharacter_{(y_1,\dots, y_N)}\left(t\right)\right) = t^{\sum_{i=1}^N x_i y_i}.$$
 
 We have that $$\innerproduct{\phi \Character_{(x_1,\dots,x_{n})}}{\Cocharacter_{(y_1,\dots, y_{2n})}\left(t\right)} = \innerproduct{\Character_{(x_1,\dots,x_n, -x_n,\dots,-x_1)}}{\Cocharacter_{(y_1,\dots, y_{2n})}\left(t\right)},$$
@@ -1191,7 +1177,7 @@ Notice that we have the following equalities:
 		i \text{ is odd}}} \theta'\left(\zeta_n^{q^{i+n} y_{i+1} + q^{2n-i} y_{n+i}}\right).
 	\end{align*}
 \end{enumerate}
-The results now follow from these equalities, since we can easily find a permutation matrix in $\GL_{2n}$ that conjugates the character that corresponds to $\phi\left(x_{T,\bullet}\right)$ to the desired character from the proposition. This permutation matrix simply corresponds to the permutation that permutes the $y_i$'s so that the coefficient of $q^i$ is $y_{i+1}$ for every $0 \le i \le 2n-1$.
+The results now follow from these equalities, since we can easily find a permutation matrix in $\GL_{2n}$ that conjugates the character that corresponds to $\phi\left(x_{T,\bullet}\right)$ to the desired character from the proposition. This permutation matrix simply corresponds to the permutation that permutes the $y_i$'s so that $q^i$ is the coefficient of $y_{i+1}$ in the exponent of the right hand side of the corresponding equation for every $0 \le i \le 2n-1$.
 %Now the results follow from checking that
 %\[
 %    (\theta_1 \times \theta_1^{-1}) \circ \FieldNorm{\algebraicGroup{T}_1(\finiteField_r)}{\algebraicGroup{T}_1(\finiteField)} (\vec{y})(\zeta_r) = \theta_2\circ \FieldNorm{\algebraicGroup{T}_2(\finiteField_r)}{\algebraicGroup{T}_2(\finiteField)}(\vec{y})(\zeta_r)
@@ -1354,7 +1340,7 @@ So all the cuspidal $\pi$ in a Lusztig packet $\LusztigSeries{G}{s}$ are irreduc
 
 \calvin{end alternate writeup}
 \end{comment}
-\calvin{start alternate writeup 2 of section 3.4/3.4.1}
+
 \subsection{Stability}\label{subsec:stability}
 The goal of this section is to compute $\dblJacobiSumScalar{\pi}{\fieldCharacter}$ proving \Cref{thm:Phi_stable}.
 
