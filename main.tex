@@ -522,7 +522,7 @@ In the unitary group case, the action of $\Frobenius$ on the Weyl group $W\left(
 \end{pmatrix}.$$ In all other cases, the action of $\Frobenius$ on $W(\algebraicGroup{T}_0)$ is trivial. We now parameterize the Weyl group $\Frobenius$-twisted conjugacy classes and their corresponding tori.
 
 \begin{enumerate}
-    \item Unitary groups: The Weyl group $W\left(\algebraicGroup{T}_{0}\right)$ is isomorphic to the symmetric group $\SymmetricGroup_n$. If $\dot{w} \in \algebraicGroup{\UnitaryGroup}_n$ is a lift of $w \in W\left(\algebraicGroup{T}_{0}\right)$, the map $w \mapsto \dot{w} \cdot w_n$ sends a $w_n$-twisted $\SymmetricGroup_n$ conjugacy class to a $\SymmetricGroup_n$ conjugacy class. Thus twisted conjugacy classes are determined by the cycle partition $\lambda \vdash n$ associated to $\dot{w} \cdot w_n$. Let us denote by $\lambda^+$ the partition formed by taking the even parts of $\lambda$ and by $\lambda^{-}$ the partition formed by taking the odd parts of $\lambda$. The corresponding algebraic torus is
+    \item (Unitary groups) The Weyl group $W\left(\algebraicGroup{T}_{0}\right)$ is isomorphic to the symmetric group $\SymmetricGroup_n$. If $\dot{w} \in \algebraicGroup{\UnitaryGroup}_n$ is a lift of $w \in W\left(\algebraicGroup{T}_{0}\right)$, the map $w \mapsto \dot{w} \cdot w_n$ sends a $w_n$-twisted $\SymmetricGroup_n$ conjugacy class to a $\SymmetricGroup_n$ conjugacy class. Thus twisted conjugacy classes are determined by the cycle partition $\lambda \vdash n$ associated to $\dot{w} \cdot w_n$. Let us denote by $\lambda^+$ the partition formed by taking the even parts of $\lambda$ and by $\lambda^{-}$ the partition formed by taking the odd parts of $\lambda$. The corresponding algebraic torus is
 	$$^{L^{-1}w}\algebraicGroup{T}_0 \cong \restrictionOfScalars{\finiteFieldExtension{\lambda^{+}}}{\finiteField}{\multiplcativeScheme} \times \restrictionOfScalars{\finiteFieldExtension{\lambda^{-}}}{\finiteField}{\algebraicGroup{\UnitaryGroup}_1}.$$
 	% The embedding into the unitary group requires conjugation by \diag(1,1,1,\sqrt{d},\sqrt{d},\sqrt{d}). I would rather not write it.
 	
@@ -929,7 +929,7 @@ Using this notation and using the multiplicativity property of Kondo's Gauss sum
 	However, we will not need this version for our purposes. \elad{Maybe this is the better version for Calvin's computations}
 \end{remark}
 
-\subsubsection{Some notation}
+\subsubsection{Some notation}\label{subsec:some-notation}
 Recall that by \Cref{subsubsec:rational-tori} maximal rational tori of $\algebraicGroup{G}$ correspond to certain pairs of partitions $\left(\lambda^+, \lambda^-\right)$ and we have that the $\Frobenius$ fixed points of a maximal torus $\algebraicGroup{T}$ corresponding to the pair $\left(\lambda^+, \lambda^-\right)$ are of the form $$T = \algebraicGroup{T}^{\Frobenius} \cong \prod_{j=1}^{\lengthof(\lambda^+)} \multiplicativegroup{\finiteFieldExtension{\lambda_j^{+}}} \times \prod_{i=1}^{\lengthof(\lambda^-)} \NormOneGroup{2 \lambda_i^{-}},$$
 where if $\algebraicGroup{G}$ is a unitary group then $\lambda_j^{+}$ is even for every $j$, and thus $\finiteFieldExtension{\lambda^+_j}$ is always a field extension of $\quadraticExtension$.
 
@@ -1114,11 +1114,11 @@ In each of the cases in the table, $m = 1$, except for the unitary group case wh
 %In particular 
 %To analyze $g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi)$ for these $\rho$, we need to understand what torus character pair of $\GL$ corresponds to $\phi((s))$ under a map $\phi(x) = (x,-x)$:
 %The following computation in the proof of theorem \ref{lem:indep_geo_conj}.
-We will prove \Cref{lem:cochar_computation} by checking that if $\rho(s_{T,\theta}) = (s_{\Tilde{T},\Tilde{\theta}})$ then $g_{T}(\chi,\theta,\psi)$ equals to $\GaussSumTorusCharacter{\tilde{T}}{\tilde{\theta}}{\chi}{\fieldCharacter}$ up to some factors. We will do so by breaking our tori into irreducible rational factors with the following lemma handling each possible factor.
+We will prove \Cref{lem:indep_geo_conj} by checking that if $\rho(s_{T,\theta}) = (s_{\Tilde{T},\Tilde{\theta}})$ then $g_{T}(\chi,\theta,\psi)$ equals to $\GaussSumTorusCharacter{\tilde{T}}{\tilde{\theta}}{\chi}{\fieldCharacter}$ up to some factors. We will do so by breaking our tori into irreducible rational factors with the following lemma handling each possible factor.
 
 \begin{lemma}
 \label{lem:cochar_computation}
-    Let $\phi:X_*(\algebraicGroup{T}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^n \to X_*(\tilde{\algebraicGroup{T}}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^{2n}$ send $x$ to $(x,-w_n x)$ be a $\Frobenius$ equivariant map. Then:
+    Let $\phi:X_*(\algebraicGroup{T}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^n \to X_*(\tilde{\algebraicGroup{T}}^*) \cong (\mathbb{Q}/\mathbb{Z})_{p'}^{2n}$ be the $\Frobenius$ equivariant map sending $x$ to $(x,-w_n x)$. Then:
     \begin{enumerate}
         \item (Types B,C,D Case 1) $w$ is conjugate to a cycle of length $n$. \calvin{Add in note about the two type B cases. Maybe really should just talk about $\Frobenius$ action} In this case $\algebraicGroup{T} = \restrictionOfScalars{\finiteFieldExtension{n}}{\finiteField}{\multiplcativeScheme}$ with $\Frobenius$ acting by $w$ on the domain and by the cycle $(w,w_n w w_n)$ on the image, and $$x_{\finiteFieldExtension{n}^\times \times \finiteFieldExtension{n}^\times,\alpha \times \alpha^{-1}} = \phi\left(x_{\multiplicativegroup{\finiteFieldExtension{n}},\alpha}\right).$$
         \item (Types B,C,D Case 2) $w$ is conjugate to a cycle of length $n$ with one negative sign.
@@ -1204,81 +1204,94 @@ Thus the result follows from the computations:
 \end{comment}
 \end{proof}
 
-
-We let $\phi_{B,\lambda_i^+}, \phi_{B,\lambda_i^-}$ denote the $\phi$'s above in cases 1 and 2 respectivitly with $n = |\lambda_i|$. 
-Let $\phi_{U,\lambda_i}$ denote the $\phi$'s above in cases 3 and 4 with $n = |\lambda_i|$.
-
-
 \begin{proof}[Proof of \Cref{lem:indep_geo_conj}] 
 By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-characters}, it is enough to show that $g_{T}(\chi,\theta,\psi)$ and $\omega_{\pi}(-1) = \theta(-1)$ only depend of the geometric conjugacy of $(T,\theta)$. The latter only depends on geometric conjugacy by \Cref{prop:central_char}.
 
 For the former we will show
 \[
-g_{T,\rho}(\chi,\theta,\fieldCharacter)= g_{T}(\chi^{-1},\theta^{-1},\fieldCharacter) \cdot \begin{cases}
-        1  & G \neq Sp, GSp\\
-        \tau\left(\chi^{-1}, \fieldCharacter\right) & G = Sp \textnormal{ or } GSp
-    \end{cases}.
+g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) = \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter} \cdot \begin{cases}
+        \GaussSumSingleCharacter{\chi}{\fieldCharacter} & \algebraicGroup{G} = \algebraicGroup{\Sp}_{2n} \textnormal{ or } \algebraicGroup{G} = \algebraicGroup{GSp}_{2n},\\
+        1 & \text{otherwise.}        
+    \end{cases}
 \]
-\calvin{$\chi$ or $\chi^{-1}$? Check throughout proof!}
-We will do this casewise, demonstrating in each case that the Frobeinus equivariant map $X_*(\algebraicGroup{T}) \to X_*(\algebraicGroup{G})$ decomposes into a direct sum of $\phi$'s appearing in \Cref{lem:cochar_computation}. Useful here is the description of the rational maximal tori $\algebraicGroup{T} \subseteq \algebraicGroup{G}$ and geometric Frobeinus action on $X_*(\algebraicGroup{T})$. 
-\calvin{add in GL case}
-\begin{enumerate}
-    \item[($\algebraicGroup{U}$)] Given $(T,\theta)$, let $T$ correspond to the $w_n$-twisted conjugacy class $[w]$. Let $w \circ w_n$ have cycle decomposition $\lambda$ 
-	and $\theta$ decompose as a product over $\lambda_i$ of $\alpha_i$ if $\lambda_i$ is even and $\theta_i$ if $\lambda_i$ is odd. Then
-	$$\rho_* = \bigoplus_{\lambda_i} \phi_{U,\lambda_i}$$
-	and applying \Cref{lem:cochar_computation}
-    \begin{align*}
-		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-q}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} 
-	\end{align*}
-	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.
-	\begin{comment}old hacky version
-	\calvin{right now can only deal with the case that $\chi$ is a square} Given $(T,\theta)$, let $T$ correspond to the $w_n$-twisted conjugacy class $[w]$. Let $w \circ w_n$ have cycle decomposition $\lambda$ 
-	and $\theta$ decompose as a product over $\lambda_i$ of $\alpha_i$ if $\lambda_i$ is even and $\theta_i$ if $\lambda_i$ is odd. 
-	Write $\chi = \chi'+\chi_{\mathbb{F}}\circ \FieldNorm{\quadraticExtension}{\mathbb{F}}$ and $\chi'^{-1} = (\chi')^c$. 
-	Then
-	$$\rho_* = \bigoplus_{\lambda_i} \phi_{U,\lambda_i}$$
-	and applying \Cref{lem:cochar_computation}
-	\begin{align*}
-		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i} \begin{cases}
-			\GaussSumCharacter{\left(\alpha_i \times \chi'\right)}{\left(\chi_{\mathbb{F}}\circ \FieldNorm{\quadraticExtension}{\mathbb{F}}\right)}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i/2}}} \times \GaussSumCharacter{\left(\alpha_i^{-1}\times \chi'^c\right)}{\left(\chi_{\mathbb{F}}\circ \FieldNorm{\quadraticExtension}{\mathbb{F}}\right)}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i/2}}} & \lambda_i \textnormal{ even} \\
-			\GaussSumCharacter{\left(\theta'_i \times \chi'\right)}{\left(\chi_{\mathbb{F}}\circ \FieldNorm{\quadraticExtension}{\mathbb{F}}\right)}{\fieldCharacter_{2\lambda_i}} & \lambda_i \textnormal{ odd}
-		\end{cases}
-	\end{align*}
-	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.\
-	\end{comment}
-	\item[($\algebraicGroup{SO}_{2n+1}$)] Given $(T,\theta)$, let $T$ correspond to the conjugacy class $[w]$ with cycle decomposition $(\lambda^+,\lambda^-)$ 
-	and $\theta$ decompose as a product $\Pi_{\lambda_i^+ }\alpha_{i+} \times \Pi_{\lambda_i^-}\theta_{i-}$. Then
-	$$\rho_* = \bigoplus_{\lambda_i^+} \phi_{B,\lambda_i^+} \oplus \bigoplus_{\lambda_i^-} \phi_{B,\lambda_i^-} $$
-	and applying \Cref{lem:cochar_computation}
-	\begin{align*}
-		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} 
-	\end{align*}
-	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.
-	\item[($\algebraicGroup{Sp}$)] Given $(T,\theta)$, let $T$ correspond to the conjugacy class $[w]$ with cycle decomposition $(\lambda^+,\lambda^-)$ 
-	and $\theta$ decompose as a product $\Pi_{\lambda_i^+ }\alpha_{i+} \times \Pi_{\lambda_i^-}\theta_{i-}$. Then
-	$$\rho_* = \bigoplus_{\lambda_i^+} \phi_{B,\lambda_i^+} \oplus \bigoplus_{\lambda_i^-} \phi_{B,\lambda_i^-} \oplus \left(0:X_*(\algebraicGroup{T}) \to \mathbb{Z}\right)$$
-	applying \Cref{lem:cochar_computation}
-	\begin{align*}
-		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} \times \tau(\chi,\psi)
-	\end{align*}
-	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi) \cdot \tau(\chi,\psi)$. \calvin{check inverses}
-	\item[($\algebraicGroup{SO}_{2n}^+$)] Let $T$ correspond to the signed permutation conjugacy class $[w]$ with cycle decomposition $(\lambda^+,\lambda^-)$ 
-	and $\theta$ decompose as a product $\Pi_{\lambda_i^+ }\alpha_{i+} \times \Pi_{\lambda_i^-}\theta_{i-}$. Then
-	$$\rho_* = \bigoplus_{\lambda_i^+} \phi_{B,\lambda_i^+} \oplus \bigoplus_{\lambda_i^-} \phi_{B,\lambda_i^-}$$
-	applying \Cref{lem:cochar_computation}
-	\begin{align*}
-		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} 
-	\end{align*}
-	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.
-	\item[($\algebraicGroup{SO}_{2n}^-$)] Let $T$ correspond to the $(-n,n)$-twisted permutation conjugacy class $[w]$ with cycle decompositionof $[w \cdot (-n,n)]$ equal to $(\lambda^+,\lambda^-)$ 
-	and $\theta$ decompose as a product $\Pi_{\lambda_i^+ }\alpha_{i+} \times \Pi_{\lambda_i^-}\theta_{i-}$. Then
-	$$\rho_* = \bigoplus_{\lambda_i^+} \phi_{B,\lambda_i^+} \oplus \bigoplus_{\lambda_i^-} \phi_{B,\lambda_i^-}$$
-	applying \Cref{lem:cochar_computation}
-	\begin{align*}
-		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} 
-	\end{align*}
-	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.
-\end{enumerate}
+
+We prove this by showing that the Frobeinus equivariant map $\CharacterLattice{\algebraicGroup{T}} \to \CharacterLattice{\algebraicGroup{G}}$ decomposes into a direct sum of $\phi$'s appearing in \Cref{lem:cochar_computation}. Useful here is the description of the rational maximal tori $\algebraicGroup{T} \subset \algebraicGroup{G}$ and the geometric Frobeinus action on $\CocharacterLattice{\algebraicGroup{T}}$.
+
+Assume that $\left(T, \theta\right)$ corresponds to the pair of partitions $\left(\lambda^+, \lambda^-\right)$ and to the characters $\alpha_1 \times \dots \times \alpha_{\lengthof\left(\lambda^+\right)} \colon \multiplicativegroup{\finiteFieldExtension{\lambda^+}} \to \multiplicativegroup{\cComplex}$ and $\theta_1 \times \dots \times \theta_{\lengthof\left(\lambda^-\right)} \colon \NormOneGroup{2 \lambda^{-}} \to \multiplicativegroup{\cComplex}$ as in \Cref{subsubsec:rational-tori} and \Cref{subsec:some-notation}.
+
+Let $\algebraicGroup{T}_{i,+} \subset \algebraicGroup{T}$ be the component corresponding to $\multiplicativegroup{\finiteFieldExtension{\lambda_i}}$ in the description above. Similarly, let $\algebraicGroup{T}_{i,-} \subset \algebraicGroup{T}$ and be the component corresponding to $\NormOneGroup{2 \lambda_i^{-}}$. Let us denote by $\tilde{\algebraicGroup{T}}_{i,+} \subset \tilde{\algebraicGroup{T}}$ the component corresponding to $\multiplicativegroup{\finiteFieldExtension{\lambda_i^+}} \times \multiplicativegroup{\finiteFieldExtension{\lambda_i^+}}$ and by $\tilde{\algebraicGroup{T}}_{i,-} \subset \tilde{\algebraicGroup{T}}$ the component corresponding $\multiplicativegroup{\finiteFieldExtension{2 \lambda_i^-}}$. Let $$\phi_{\pm,i} \colon \CocharacterLattice{\algebraicGroup{T}^{\ast}_{i,\pm}} \to \CocharacterLattice{\tilde{\algebraicGroup{T}}^{\ast}_{i,\pm}}$$ be the map as in \Cref{lem:cochar_computation}. 
+
+In all cases except for the case where $\algebraicGroup{G} = \algebraicGroup{\Sp}_{2n}$ or $\algebraicGroup{G} = \algebraicGroup{\GSp}_{2n}$, we have that $\phi \colon \CocharacterLattice{\algebraicGroup{T^{\ast}}} \to \CocharacterLattice{\algebraicGroup{\tilde{T}^{\ast}}}$ is given by $$\phi = \left(\bigoplus_{i = 1}^{\lengthof\left(\lambda^+\right)} \phi_{+,i}\right) \oplus \left(\bigoplus_{i=1}^{\lengthof\left(\lambda^-\right)} \phi_{-,i}\right).$$
+By \Cref{lem:cochar_computation}, we have in these cases $\left(\tilde{\algebraicGroup{T}}, \tilde{\theta}\right) = \left(T', \theta'\right)$ and thus
+$$g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) = \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter}.$$
+
+If $\algebraicGroup{G} = \algebraicGroup{\Sp}_{2n}$ or $\algebraicGroup{G} = \algebraicGroup{\GSp}_{2n}$ then we have that $\phi \colon \CocharacterLattice{\algebraicGroup{T^{\ast}}} \to \CocharacterLattice{\algebraicGroup{\tilde{T}^{\ast}}}$ is given by $$\phi = \left(\bigoplus_{i = 1}^{\lengthof\left(\lambda^+\right)} \phi_{+,i}\right) \oplus \left(\bigoplus_{i=1}^{\lengthof\left(\lambda^-\right)} \phi_{-,i}\right) \oplus 0.$$ This comes from the fact that the split torus of $\algebraicGroup{\SO}_{2n + 1}$ has one as its middle component. Thus by \Cref{lem:cochar_computation}, we have in this case $\left(\tilde{\algebraicGroup{T}}, \tilde{\theta}\right) = \left(T' \times \multiplcativeScheme, \theta' \times 1\right)$ and therefore
+$$g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) = \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter} \GaussSumSingleCharacter{\chi}{\fieldCharacter}.$$
+\end{proof}
+
+%\begin{proof}
+%We let $\phi_{B,\lambda_i^+}, \phi_{B,\lambda_i^-}$ denote the $\phi$'s above in cases 1 and 2 respectivitly with $n = |\lambda_i|$. 
+%Let $\phi_{U,\lambda_i}$ denote the $\phi$'s above in cases 3 and 4 with $n = |\lambda_i|$.
+%
+%
+%\calvin{add in GL case}
+%\begin{enumerate}
+%    \item[($\algebraicGroup{U}$)] Given $(T,\theta)$, let $T$ correspond to the $w_n$-twisted conjugacy class $[w]$. Let $w \circ w_n$ have cycle decomposition $\lambda$ 
+%	and $\theta$ decompose as a product over $\lambda_i$ of $\alpha_i$ if $\lambda_i$ is even and $\theta_i$ if $\lambda_i$ is odd. Then
+%	$$\rho_* = \bigoplus_{\lambda_i} \phi_{U,\lambda_i}$$
+%	and applying \Cref{lem:cochar_computation}
+%    \begin{align*}
+%		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-q}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} 
+%	\end{align*}
+%	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.
+%	\begin{comment}old hacky version
+%	\calvin{right now can only deal with the case that $\chi$ is a square} Given $(T,\theta)$, let $T$ correspond to the $w_n$-twisted conjugacy class $[w]$. Let $w \circ w_n$ have cycle decomposition $\lambda$ 
+%	and $\theta$ decompose as a product over $\lambda_i$ of $\alpha_i$ if $\lambda_i$ is even and $\theta_i$ if $\lambda_i$ is odd. 
+%	Write $\chi = \chi'+\chi_{\mathbb{F}}\circ \FieldNorm{\quadraticExtension}{\mathbb{F}}$ and $\chi'^{-1} = (\chi')^c$. 
+%	Then
+%	$$\rho_* = \bigoplus_{\lambda_i} \phi_{U,\lambda_i}$$
+%	and applying \Cref{lem:cochar_computation}
+%	\begin{align*}
+%		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i} \begin{cases}
+%			\GaussSumCharacter{\left(\alpha_i \times \chi'\right)}{\left(\chi_{\mathbb{F}}\circ \FieldNorm{\quadraticExtension}{\mathbb{F}}\right)}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i/2}}} \times \GaussSumCharacter{\left(\alpha_i^{-1}\times \chi'^c\right)}{\left(\chi_{\mathbb{F}}\circ \FieldNorm{\quadraticExtension}{\mathbb{F}}\right)}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i/2}}} & \lambda_i \textnormal{ even} \\
+%			\GaussSumCharacter{\left(\theta'_i \times \chi'\right)}{\left(\chi_{\mathbb{F}}\circ \FieldNorm{\quadraticExtension}{\mathbb{F}}\right)}{\fieldCharacter_{2\lambda_i}} & \lambda_i \textnormal{ odd}
+%		\end{cases}
+%	\end{align*}
+%	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.\
+%	\end{comment}
+%	\item[($\algebraicGroup{SO}_{2n+1}$)] Given $(T,\theta)$, let $T$ correspond to the conjugacy class $[w]$ with cycle decomposition $(\lambda^+,\lambda^-)$ 
+%	and $\theta$ decompose as a product $\Pi_{\lambda_i^+ }\alpha_{i+} \times \Pi_{\lambda_i^-}\theta_{i-}$. Then
+%	$$\rho_* = \bigoplus_{\lambda_i^+} \phi_{B,\lambda_i^+} \oplus \bigoplus_{\lambda_i^-} \phi_{B,\lambda_i^-} $$
+%	and applying \Cref{lem:cochar_computation}
+%	\begin{align*}
+%		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} 
+%	\end{align*}
+%	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.
+%	\item[($\algebraicGroup{Sp}$)] Given $(T,\theta)$, let $T$ correspond to the conjugacy class $[w]$ with cycle decomposition $(\lambda^+,\lambda^-)$ 
+%	and $\theta$ decompose as a product $\Pi_{\lambda_i^+ }\alpha_{i+} \times \Pi_{\lambda_i^-}\theta_{i-}$. Then
+%	$$\rho_* = \bigoplus_{\lambda_i^+} \phi_{B,\lambda_i^+} \oplus \bigoplus_{\lambda_i^-} \phi_{B,\lambda_i^-} \oplus \left(0:X_*(\algebraicGroup{T}) \to \mathbb{Z}\right)$$
+%	applying \Cref{lem:cochar_computation}
+%	\begin{align*}
+%		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} \times \tau(\chi,\psi)
+%	\end{align*}
+%	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi) \cdot \tau(\chi,\psi)$. \calvin{check inverses}
+%	\item[($\algebraicGroup{SO}_{2n}^+$)] Let $T$ correspond to the signed permutation conjugacy class $[w]$ with cycle decomposition $(\lambda^+,\lambda^-)$ 
+%	and $\theta$ decompose as a product $\Pi_{\lambda_i^+ }\alpha_{i+} \times \Pi_{\lambda_i^-}\theta_{i-}$. Then
+%	$$\rho_* = \bigoplus_{\lambda_i^+} \phi_{B,\lambda_i^+} \oplus \bigoplus_{\lambda_i^-} \phi_{B,\lambda_i^-}$$
+%	applying \Cref{lem:cochar_computation}
+%	\begin{align*}
+%		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} 
+%	\end{align*}
+%	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.
+%	\item[($\algebraicGroup{SO}_{2n}^-$)] Let $T$ correspond to the $(-n,n)$-twisted permutation conjugacy class $[w]$ with cycle decompositionof $[w \cdot (-n,n)]$ equal to $(\lambda^+,\lambda^-)$ 
+%	and $\theta$ decompose as a product $\Pi_{\lambda_i^+ }\alpha_{i+} \times \Pi_{\lambda_i^-}\theta_{i-}$. Then
+%	$$\rho_* = \bigoplus_{\lambda_i^+} \phi_{B,\lambda_i^+} \oplus \bigoplus_{\lambda_i^-} \phi_{B,\lambda_i^-}$$
+%	applying \Cref{lem:cochar_computation}
+%	\begin{align*}
+%		g_{T,\rho}(\chi,\theta,\psi) &= \Pi_{\lambda_i^+} \GaussSumCharacter{\alpha_i}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \GaussSumCharacter{\alpha_i^{-1}}{\chi}{\fieldCharacter_{\quadraticFieldExtension{\lambda_i^+}}} \times \Pi_{\lambda_i^-} \GaussSumCharacter{\theta'_i}{\chi}{\fieldCharacter_{2\lambda_i^-}} 
+%	\end{align*}
+%	which is equal to $g_{T}(\chi^{-1},\theta^{-1},\psi)$.
+%\end{enumerate}
    
 \begin{comment}
 We will have to treat the unitary group case seperatedly. First for the non-unitary group case:\\
@@ -1300,7 +1313,7 @@ Write $T \cong \prod_{j=1}^r \multiplicativegroup{\finiteFieldExtension{k_j}} \t
 \]
 Since the sum above is a Gauss sum for $\GL$ it is equal to the Gauss sum attatched to the semisimple element $\Phi(s)$.
 \end{comment}
-\end{proof}
+%\end{proof}
 
 \begin{comment}
 \calvin{start alternate writeup of section 3.4/3.4.1:}
