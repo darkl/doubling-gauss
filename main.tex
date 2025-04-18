@@ -615,6 +615,25 @@ The \emph{dual group over $\finiteField$} of $\algebraicGroup{G}$ with respect t
 (\CharacterLattice{\algebraicGroup{T}^*},\Phi_{\algebraicGroup{T}^*},\CocharacterLattice{\algebraicGroup{T}^*},\Phi_{\algebraicGroup{T}^*}^\vee) \cong (\CocharacterLattice{\algebraicGroup{T}},\Phi_{\algebraicGroup{T}}^\vee,\CharacterLattice{\algebraicGroup{T}},\Phi_{\algebraicGroup{T}})
 \]
 such that the isomorphism respects the Frobenius actions on $\CharacterLattice{\cdot}$ and $\CocharacterLattice{\cdot}$. Some authors distinguish the Frobenius actions on $\algebraicGroup{G}$ and $\algebraicGroup{G}^{\ast}$ by writing $\Frobenius$ and $\Frobenius^{\ast}$, respectively, but we will not do so and simply denote both actions by $\Frobenius$.
+\begin{table}
+\begin{center}
+\caption{Dual groups for $\algebraicGroup{G}$ and $\algebraicGroup{\GroupExtension{G}}$.}
+	\begin{tabular}{|c|c|c|c|c|c|} \hline
+		$\algebraicGroup{G}$ & $\algebraicGroup{T} \subset \algebraicGroup{G}$ & $\Frobenius$ action on $\CharacterLattice{\algebraicGroup{T}}$ & $\algebraicGroup{G}^{\ast}$ & $\algebraicGroup{T}^{\ast} \subset \algebraicGroup{G}^{\ast}$ \tabularnewline \hline \hline
+		$\algebraicGroup{\UnitaryGroup}_{2n}$ & $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}}$ & $-1\circ w_{2n}$ & $\algebraicGroup{\UnitaryGroup}_{2n}$ &  $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}}$ \tabularnewline \hline
+		$\algebraicGroup{\UnitaryGroup}_{2n+1}$ & $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}} \times \algebraicGroup{\UnitaryGroup}_1$ & $-1 \circ w_{2n+1}$ & $\algebraicGroup{\UnitaryGroup}_{2n+1}$ &  $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n} \times \algebraicGroup{\UnitaryGroup}}_1$ \tabularnewline \hline		 				 
+		$\algebraicGroup{\SO}_{2n+1}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\Sp}_{2n}$ &  $\multiplcativeScheme^n$ \tabularnewline \hline
+		$\algebraicGroup{\Sp}_{2n}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\SO}_{2n+1}$ & $\multiplcativeScheme^n$ \tabularnewline \hline		 
+		$\algebraicGroup{\SO}^{+}_{2n}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\SO}^{+}_{2n}$ &  $\multiplcativeScheme^n$ \tabularnewline \hline
+		$\algebraicGroup{\SO}^{-}_{2n}$ & $\multiplcativeScheme^{n-1} \times \algebraicGroup{\UnitaryGroup}_1$ & $\left(1\right)^{\times {\left(n-1\right)}} \times \left(-1\right)$ &$\algebraicGroup{\SO}^{-}_{2n}$ &  $\multiplcativeScheme^{n-1} \times \algebraicGroup{\UnitaryGroup}_1$ \tabularnewline \hline
+		$\algebraicGroup{\GSp}_{2n}$ & $\multiplcativeScheme \times \multiplcativeScheme^{n}$ & 1 &$\algebraicGroup{GSpin}_{2n+1}$ &  $\multiplcativeScheme \times \multiplcativeScheme^{n}$ \tabularnewline \hline
+		$\algebraicGroup{\GSO}^{+}_{2n}$ & $\multiplcativeScheme \times \multiplcativeScheme^{n}$ & 1 & $\algebraicGroup{GSpin}_{2n}^{+}$ &  $\multiplcativeScheme \times \multiplcativeScheme^{n}$ \tabularnewline \hline
+		$\algebraicGroup{\GSO}^{-}_{2n}$ & $\multiplcativeScheme^{n-1} \times \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ & $\left(1\right)^{\times {\left(n-1\right)}} \times \sigma^{\ast}$ & $\algebraicGroup{GSpin}_{2n}^{-}$ &  $\multiplcativeScheme^{n-1} \times \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ \tabularnewline \hline
+	\end{tabular}
+\end{center}
+In the last row, $\sigma \colon \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme} \to \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ is the automorphism $a + b\sqrt{d} \mapsto a - b\sqrt{d}$ where $d \in \multiplicativegroup{\finiteField}$ is a non-square.
+The Frobenius root action on the Weyl group is described in \Cref{subsubsec:rational-tori}. 
+\end{table}
 
 Fix an isomorphism $\multiplicativegroup{\algebraicClosure{\finiteField}} \cong (\mathbb{Q}/\mathbb{Z})_{p'}$ and an embedding $\exp:(\mathbb{Q}/\mathbb{Z})_{p'} \to \overline{\mathbb{Q}_\ell}^\times$. 
 By \cite[Proposition 13.7 (ii)]{DigneMichel1991}, we have an exact sequence
@@ -646,32 +665,27 @@ We say that the torus character pairs $(\algebraicGroup{T},\theta)$ and $(\algeb
 
 The virtual representations $\RTThetaVirtual{T}{G}{\theta}$ and $\RTThetaVirtual{T'}{G}{\theta'}$ share an irreducible subrepresentation only if $(T,\theta),(T',\theta')$ are geometrically conjugate. This yields a natural partitioning of the irreducible representations of $\algebraicGroup{G}(\finiteField)$: the \emph{geometric Lusztig series} $\LusztigSeries{\algebraicGroup{G}^{\Frobenius}}{s}$ associated to a Frobenius stable geometric conjugacy class $(s) \subset \algebraicGroup{G}^*$ consists of all (equivalence classes of) irreducible representations $\pi$ which appear with non-zero multiplicity in $\RTTheta{T}{\theta}$ for some $(T,\theta)$ such that $(s_{\algebraicGroup{T},\theta}) = (s)$.
 
-\begin{center}
-	\begin{tabular}{|c|c|c|c|c|c|} \hline
-		$\algebraicGroup{G}$ & $\algebraicGroup{T} \subset \algebraicGroup{G}$ & $\Frobenius$ action on $\CharacterLattice{\algebraicGroup{T}}$ & $\algebraicGroup{G}^{\ast}$ & $\algebraicGroup{T}^{\ast} \subset \algebraicGroup{G}^{\ast}$ \tabularnewline \hline \hline
-		$\algebraicGroup{\UnitaryGroup}_{2n}$ & $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}}$ & $-1\circ w_{2n}$ & $\algebraicGroup{\UnitaryGroup}_{2n}$ &  $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}}$ \tabularnewline \hline
-		$\algebraicGroup{\UnitaryGroup}_{2n+1}$ & $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n}} \times \algebraicGroup{\UnitaryGroup}_1$ & $-1 \circ w_{2n+1}$ & $\algebraicGroup{\UnitaryGroup}_{2n+1}$ &  $\restrictionOfScalars{\quadraticExtension}{\finiteField}{\multiplcativeScheme^{n} \times \algebraicGroup{\UnitaryGroup}}_1$ \tabularnewline \hline		 				 
-		$\algebraicGroup{\SO}_{2n+1}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\Sp}_{2n}$ &  $\multiplcativeScheme^n$ \tabularnewline \hline
-		$\algebraicGroup{\Sp}_{2n}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\SO}_{2n+1}$ & $\multiplcativeScheme^n$ \tabularnewline \hline		 
-		$\algebraicGroup{\SO}^{+}_{2n}$ & $\multiplcativeScheme^n$ & 1 &$\algebraicGroup{\SO}^{+}_{2n}$ &  $\multiplcativeScheme^n$ \tabularnewline \hline
-		$\algebraicGroup{\SO}^{-}_{2n}$ & $\multiplcativeScheme^{n-1} \times \algebraicGroup{\UnitaryGroup}_1$ & $\left(1\right)^{\times {\left(n-1\right)}} \times \left(-1\right)$ &$\algebraicGroup{\SO}^{-}_{2n}$ &  $\multiplcativeScheme^{n-1} \times \algebraicGroup{\UnitaryGroup}_1$ \tabularnewline \hline
-		$\algebraicGroup{\GSp}_{2n}$ & $\multiplcativeScheme \times \multiplcativeScheme^{n}$ & 1 &$\algebraicGroup{GSpin}_{2n+1}$ &  $\multiplcativeScheme \times \multiplcativeScheme^{n}$ \tabularnewline \hline
-		$\algebraicGroup{\GSO}^{+}_{2n}$ & $\multiplcativeScheme \times \multiplcativeScheme^{n}$ & 1 & $\algebraicGroup{GSpin}_{2n}^{+}$ &  $\multiplcativeScheme \times \multiplcativeScheme^{n}$ \tabularnewline \hline
-		$\algebraicGroup{\GSO}^{-}_{2n}$ & $\multiplcativeScheme^{n-1} \times \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ & $\left(1\right)^{\times {\left(n-1\right)}} \times \sigma^{\ast}$ & $\algebraicGroup{GSpin}_{2n}^{-}$ &  $\multiplcativeScheme^{n-1} \times \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ \tabularnewline \hline
-	\end{tabular}
-\end{center}
-In the last row, $\sigma \colon \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme} \to \restrictionOfScalars{\finiteFieldExtension{2}}{\finiteField}{\multiplcativeScheme}$ is the automorphism $a + b\sqrt{d} \mapsto a - b\sqrt{d}$ where $d \in \multiplicativegroup{\finiteField}$ is a non-square.
-The Frobenius root action on the Weyl group is described in \Cref{subsubsec:rational-tori}. 
-
-Let us specialize to the classical groups $\algebraicGroup{G}$ and their extensions $\GroupExtension{\algebraicGroup{G}}$ from Sections \ref{subsec:isometry-groups} and \ref{subsec:similitute-groups}. We will need the following facts about Lusztig series of $\algebraicGroup{G}$ and $\GroupExtension{\algebraicGroup{G}}$. 
-
-The first fact tells us that Lusztig series of $\GroupExtension{\algebraicGroup{G}}$ are unions of Harish-Chandra series, and establishes a relation between the corresponding semisimple conjugacy classes.
+For later use, we note Lusztig series are a coarsening of Harish-Chandra series.
+%The first fact tells us that Lusztig series of $\GroupExtension{\algebraicGroup{G}}$ are unions of Harish-Chandra series, and establishes a relation between the corresponding semisimple conjugacy classes.
 \begin{proposition}[{\cite[Proof of Corollary 3.3.21]{GeckMalle2020}}]\label{prop:lusztig-series-are-unions-of-harish-chandra-series}
 	For any semisimple element $s \in \FrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ is a union of Harrish--Chandra series corresponding to Harrish-Chandra data of the form $\left(\FrobeniusFixedPoints{\algebraicGroup{P}},\sigma\right)$ where $\algebraicGroup{P}$ is a parabolic subgroup of $\algebraicGroup{\GroupExtension{G}}$ with Levi part $\algebraicGroup{L}$ with $s \in \FrobeniusFixedPoints{L}$ and $\sigma \in \LusztigSeries{\FrobeniusFixedPoints{L}}{s}$ is an irreducible cuspidal representation.
 \end{proposition}
 
-The next fact establishes a relation between the Lusztig series of $\GroupExtension{\algebraicGroup{G}}$ and of $\algebraicGroup{G}$.
-\elad{Explain $i^{\ast}$}
+Let us now specialize to the classical groups $\algebraicGroup{G}$ and their extensions $\GroupExtension{\algebraicGroup{G}}$ from Sections \ref{subsec:isometry-groups} and \ref{subsec:similitute-groups}. 
+
+In these cases, the map $i:\algebraicGroup{G} \to \GroupExtension{\algebraicGroup{G}}$ yields a pullback map $i^*:\GroupExtension{\algebraicGroup{G}}^* \to \algebraicGroup{G}^*$ well defined up to composing with an inner automorphism induced by an $\Frobenius$-stable element of the maximal torus. From chasing definitions, one finds
+
+\begin{proposition}[{\cite[Corollary 9.7]{Bonnafe2006}}]
+	\label{prop:i*isrestriction}
+	$i^*(s_{\algebraicGroup{T},\theta}) = s_{\algebraicGroup{T} \cap G, \theta|_{G}}$.
+\end{proposition}
+
+
+This gives a natural \calvin{check that this is correct} $|\algebraicGroup{Z}(\GroupExtension{\algebraicGroup{G}})(\finiteField)|/|\algebraicGroup{Z}(\algebraicGroup{G}
+)(\finiteField)|$-to-one map from Lusztig packets for $\GroupExtension{\algebraicGroup{G}}$ to those for $\algebraicGroup{G}$.
+
+
+The following proposition explains how $i^*$ relates irreducible representations of $\GroupExtension{\algebraicGroup{G}}$ with their restriction to $\algebraicGroup{G}$.
 
 \begin{proposition}[{\cite[Proposition 11.7]{Bonnafe2006}}]\label{prop:lusztig-series-and-restriction}
 	Let $\tilde{s}$ be a semisimple element of $\FrobeniusFixedPoints{\GroupExtension{G}}$ and let $s = i^{\ast}\left(\tilde{s}\right)$. Then
@@ -681,7 +695,7 @@ The next fact establishes a relation between the Lusztig series of $\GroupExtens
 	\end{enumerate}
 \end{proposition}
 
-Finally, the next fact concerns the number of cuspidal representations in a Lusztig series of $\GroupExtension{\algebraicGroup{G}}$.
+For our later arguments, it is useful to only have one cuspidal representation in a Lusztig packet. Unfortunately, this is rarely the case for $\algebraicGroup{G}$. However, it is true for  $\GroupExtension{\algebraicGroup{G}}$.
 
 \begin{proposition}[{\cite[Page 172]{Lusztig1977}}]\label{prop:at-most-one-cuspidal-lusztig-series}
 	For any semisimple element $s \in \FrobeniusFixedPoints{\GroupExtension{G}}$, the Lusztig series $\LusztigSeries{\FrobeniusFixedPoints{\GroupExtension{G}}}{s}$ contains at most one cuspidal element.
@@ -1210,12 +1224,12 @@ By \Cref{thm:computation-of-doubling-gauss-sum-scalar-for-deligne-lusztig-charac
 For the former we will show
 \[
 g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) = \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter} \cdot \begin{cases}
-        \GaussSumSingleCharacter{\chi}{\fieldCharacter} & \algebraicGroup{G} = \algebraicGroup{\Sp}_{2n} \textnormal{ or } \algebraicGroup{G} = \algebraicGroup{GSp}_{2n},\\
+        \GaussSumSingleCharacter{\chi}{\fieldCharacter} & \algebraicGroup{H} = \algebraicGroup{\Sp}_{2n} \textnormal{ or } \algebraicGroup{H} = \algebraicGroup{GSp}_{2n},\\
         1 & \text{otherwise.}        
     \end{cases}
 \]
 
-We prove this by showing that the Frobeinus equivariant map $\CharacterLattice{\algebraicGroup{T}} \to \CharacterLattice{\algebraicGroup{G}}$ decomposes into a direct sum of $\phi$'s appearing in \Cref{lem:cochar_computation}. Useful here is the description of the rational maximal tori $\algebraicGroup{T} \subset \algebraicGroup{G}$ and the geometric Frobeinus action on $\CocharacterLattice{\algebraicGroup{T}}$.
+In the $\algebraicGroup{G}$ case, we prove this by showing that the Frobeinus equivariant map $\CharacterLattice{\algebraicGroup{T}} \to \CharacterLattice{\algebraicGroup{G}}$ decomposes into a direct sum of $\phi$'s appearing in \Cref{lem:cochar_computation}. Useful here is the description of the rational maximal tori $\algebraicGroup{T} \subset \algebraicGroup{G}$ and the geometric Frobeinus action on $\CocharacterLattice{\algebraicGroup{T}}$.
 
 Assume that $\left(T, \theta\right)$ corresponds to the pair of partitions $\left(\lambda^+, \lambda^-\right)$ and to the characters $\alpha_1 \times \dots \times \alpha_{\lengthof\left(\lambda^+\right)} \colon \multiplicativegroup{\finiteFieldExtension{\lambda^+}} \to \multiplicativegroup{\cComplex}$ and $\theta_1 \times \dots \times \theta_{\lengthof\left(\lambda^-\right)} \colon \NormOneGroup{2 \lambda^{-}} \to \multiplicativegroup{\cComplex}$ as in \Cref{subsubsec:rational-tori} and \Cref{subsec:some-notation}.
 
@@ -1227,6 +1241,22 @@ $$g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) = \GaussSumTorusCharacter{T'}{\t
 
 If $\algebraicGroup{G} = \algebraicGroup{\Sp}_{2n}$ or $\algebraicGroup{G} = \algebraicGroup{\GSp}_{2n}$ then we have that $\phi \colon \CocharacterLattice{\algebraicGroup{T^{\ast}}} \to \CocharacterLattice{\algebraicGroup{\tilde{T}^{\ast}}}$ is given by $$\phi = \left(\bigoplus_{i = 1}^{\lengthof\left(\lambda^+\right)} \phi_{+,i}\right) \oplus \left(\bigoplus_{i=1}^{\lengthof\left(\lambda^-\right)} \phi_{-,i}\right) \oplus 0.$$ This comes from the fact that the split torus of $\algebraicGroup{\SO}_{2n + 1}$ has one as its middle component. Thus by \Cref{lem:cochar_computation}, we have in this case $\left(\tilde{\algebraicGroup{T}}, \tilde{\theta}\right) = \left(T' \times \multiplcativeScheme, \theta' \times 1\right)$ and therefore
 $$g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) = \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter} \GaussSumSingleCharacter{\chi}{\fieldCharacter}.$$
+
+In the general $\GroupExtension{\algebraicGroup{G}}$ case, $\rho$ factors as
+\[
+	\GroupExtension{\algebraicGroup{G}}^* \to_{i^*} \algebraicGroup{G}^* \to_{\rho_{\algebraicGroup{G}}} \algebraicGroup{GL}_n.
+\]
+By \Cref{prop:i*isrestriction}, $\rho(s_{\algebraicGroup{T},\theta}) = \rho_{\algebraicGroup{G}}(s_{\algebraicGroup{T} \cap \algebraicGroup{G},\theta|_{\algebraicGroup{T} \cap \algebraicGroup{G}}})$ and so 
+\[
+	g_{\algebraicGroup{T},\rho}(\chi,\theta,\psi) = g_{\algebraicGroup{T} \cap \algebraicGroup{G},\rho}(\chi,\theta|_{\algebraicGroup{T} \cap \algebraicGroup{G}},\psi)
+\]
+which aplying our above work on $\algebraicGroup{G}$ and $\rho_{\algebraicGroup{G}}$ is equal to
+\begin{align*}
+	g_{\algebraicGroup{T} \cap \algebraicGroup{G},\rho_{\algebraicGroup{G}}}(\chi,\theta|_{\algebraicGroup{T} \cap \algebraicGroup{G}},\psi) = \GaussSumTorusCharacter{T'}{\theta'}{\chi}{\fieldCharacter} \cdot \begin{cases}
+        \GaussSumSingleCharacter{\chi}{\fieldCharacter} & \algebraicGroup{G} = \algebraicGroup{\Sp}_{2n} \textnormal{ or } \algebraicGroup{G} = \algebraicGroup{GSp}_{2n},\\
+        1 & \text{otherwise.}        
+    \end{cases}
+\end{align*}
 \end{proof}
 
 %\begin{proof}
