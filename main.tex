@@ -673,16 +673,16 @@ For later use, we note Lusztig series are a coarsening of Harish-Chandra series.
 
 Let us now specialize to the classical groups $\algebraicGroup{G}$ and their extensions $\GroupExtension{\algebraicGroup{G}}$ from Sections \ref{subsec:isometry-groups} and \ref{subsec:similitute-groups}. 
 
-In these cases, the map $i:\algebraicGroup{G} \to \GroupExtension{\algebraicGroup{G}}$ yields a pullback map $i^*:\GroupExtension{\algebraicGroup{G}}^* \to \algebraicGroup{G}^*$ well defined up to composing with an inner automorphism induced by an $\Frobenius$-stable element of the maximal torus. From chasing definitions, one finds
+In these cases, the map $i:\algebraicGroup{G} \to \GroupExtension{\algebraicGroup{G}}$ yields a pullback map $i^*:\GroupExtension{\algebraicGroup{G}}^* \to \algebraicGroup{G}^*$ well defined up to composing with an inner automorphism induced by an $\Frobenius$-stable element of the maximal torus. From chasing definitions, one finds the following.
 
 \begin{proposition}[{\cite[Corollary 9.7]{Bonnafe2006}}]
 	\label{prop:i*isrestriction}
-	$i^*(s_{\algebraicGroup{T},\theta}) = s_{\algebraicGroup{T} \cap G, \theta|_{G}}$.
+	$i^*(s_{\algebraicGroup{T},\theta}) = s_{\algebraicGroup{T} \cap G, \theta\restriction_{\algebraicGroup{T} \cap G}}$.
 \end{proposition}
 
 
 This gives a natural \calvin{check that this is correct} $|\algebraicGroup{Z}(\GroupExtension{\algebraicGroup{G}})(\finiteField)|/|\algebraicGroup{Z}(\algebraicGroup{G}
-)(\finiteField)|$-to-one map from Lusztig packets for $\GroupExtension{\algebraicGroup{G}}$ to those for $\algebraicGroup{G}$.
+)(\finiteField)|$-to-one map from geometric Lusztig series for $\GroupExtension{\algebraicGroup{G}}$ to those for $\algebraicGroup{G}$.
 
 
 The following proposition explains how $i^*$ relates irreducible representations of $\GroupExtension{\algebraicGroup{G}}$ with their restriction to $\algebraicGroup{G}$.
