@@ -1495,9 +1495,10 @@ $$\frac{1}{q-1} \sum_{\substack{x \in \multiplicativegroup{\finiteFieldExtension
 	$$q^{\frac{1}{2}} \GaussSumCharacter{\theta'}{\chi}{\fieldCharacter_{2}} \tau\left(\chi^{-1} \restriction_{\multiplicativegroup{\finiteField}}, \fieldCharacter\right).$$
 
 \section{Multiplicativity of Jacobi sums} \label{appendix:multiplicativity-of-jacobi-sums}
-\elad{TODO: Work on appendix}
 
-\Cref{thm:multiplicativity-in-terms-of-gauss-sums} was proved in \cite{GirschZelingher2025} under the assumption that $\pi' \subset \Ind{P}{H'}{\tau' \overline{\otimes} \pi''}$, where $\pi''$ is an irreducible cuspidal representation of $H''$ and $\tau'$ is an irreducible representation of $\GL_{k'}\left(\finiteField\right)$ such that $\chi^{-1}$ nor $\involution{\chi}$ appear in the cuspidal support of $\tau'$.
+In this section, we explain how to deduce \Cref{thm:multiplicativity-in-terms-of-gauss-sums} from the results of \cite{GirschZelingher2025}.
+
+Let us keep the notations as in \Cref{subsec:multiplicativity}. \Cref{thm:multiplicativity-in-terms-of-gauss-sums} was proved in \cite{GirschZelingher2025} under the assumption that $\pi' \subset \Ind{P}{H'}{\tau' \overline{\otimes} \pi''}$, where $\pi''$ is an irreducible cuspidal representation of $H''$ and $\tau'$ is an irreducible representation of $\GL_{k'}\left(\finiteField\right)$ such that $\chi^{-1}$ nor $\involution{\chi}$ appear in the cuspidal support of $\tau'$.
 
 In order to prove a more general form of this theorem, let $v_{\pi'} \in \pi'$ and $v_{\tau} \in \tau$. Consider $f \in \rho$ defined as follows. The function $f \in \rho$ is the unique element supported on $P$, such that $f\left(\idmap_{\hermitianSpace}\right) = v_{\tau} \otimes v_{\pi'}$. The projection $f$ to any non-zero invariant subspace of $\rho$ is non-zero. We claim the following.
 \begin{proposition}\label{prop:multiplicativity-of-jacobi-sum-given-support}
@@ -1519,36 +1520,79 @@ In order to prove a more general form of this theorem, let $v_{\pi'} \in \pi'$ a
 	\begin{align*}
 		&\chi\left(\pm 1\right)^k \dblJacobiSum{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} v_{\tau} \otimes \dblJacobiSum{\pi'}{\chi} v_{\pi'}\\
 		=& \chi\left(\pm 1\right)^k\dblJacobiSumScalar{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} \dblJacobiSumScalar{\pi'}{\chi} v_{\tau} \otimes v_{\pi'}.
-	\end{align*}
-	
+	\end{align*}	
 	It follows that $$\dblJacobiSum{\rho}{\chi} f = \chi\left(\pm 1\right)^k\dblJacobiSumScalar{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} \dblJacobiSumScalar{\pi'}{\chi} f.$$
 	
 	Write $\rho = \bigoplus_i \sigma_i$ where $\sigma_i$ are irreducible representations of $\sigma_i$ and the $\sigma_i$'s need not be non-isomorphic. By writing $f = \sum_{i} f_i$ where $0 \ne f_i \in \sigma_i$, we have that $$\sum_i \dblJacobiSum{\sigma_i}{\chi} f_i = \dblJacobiSum{\rho}{\chi} f,$$
 	and therefore $$\dblJacobiSum{\sigma_i}{\chi} f_i = \chi\left(\pm 1\right)^k\dblJacobiSumScalar{\tau \otimes \minusInvolution{\chi_{\GL_k}}}{\involutionPlusOne{\chi}} \dblJacobiSumScalar{\pi'}{\chi} f_i,$$
 	for every $i$. The result now follows.
 \end{proof}
+\begin{remark}
+	This proof is similar to the one in \cite{Chang1997}.
+\end{remark}
 The assumption in \Cref{prop:multiplicativity-of-jacobi-sum-given-support} holds in certain cases. For example, if $\rho$ is an irreducible representation, this assumption holds. It seems difficult to prove that this assumption holds in general. However, it is possible in a special case which suffices given the results of \cite{GirschZelingher2025}.
 
-\begin{proposition}
+\begin{theorem}\label{prop:when-k-equals-one-hypothesis-holds}
 	Suppose that $k=1$. Then the assumption of \Cref{prop:multiplicativity-of-jacobi-sum-given-support} holds.
-\end{proposition}
-\begin{proof}\elad{Work on this}
+\end{theorem}
+
+Before the proof, we prove a lemma.
+\begin{lemma}
+	Suppose that $k = 1$. Then for any $B \in \EndomorphismRing\left(\hermitianSpace\right)$ with $B \notin P$, there exists $t \in \multiplicativegroup{\quadraticExtension}$ such that $$\sum_{u \in N} \fieldCharacter_{\quadraticExtension}\left(t \trace\left(B u\right)\right) = 0.$$
+\end{lemma}
+\begin{proof}
+	We have that $\xIsotropic$ and $\yIsotropic$ are one-dimensional spaces over $\quadraticExtension$. Let $b_{+}$ and $b_{-}$ be bases of $\xIsotropic$ and $\yIsotropic$, respectively, such that $\innerproduct{b_{+}}{b_{-}} = 1$. Let us choose a basis $\mathcal{B'}$ for $\hermitianSpace'$. Then with respect to the basis $\mathcal{B} = (b_{+}) \vee \mathcal{B'} \vee (b_{-})$, elements in $N$ are represented by matrices of the form
+	$$\begin{pmatrix}
+		1 & X & z\\
+		& \IdentityMatrix{\dim_{\quadraticExtension}\hermitianSpace'} & Y\\
+		& & 1
+	\end{pmatrix},$$
+	where $X,Y$ and $z$ satisfy certain relations. The center of $N$ denoted $Z\left(N\right)$ consists of matrices of the form
+	$$c\left(z\right) = \begin{pmatrix}
+	1 &  & z\\
+	& \IdentityMatrix{\dim_{\quadraticExtension}\hermitianSpace'} & \\
+	& & 1
+\end{pmatrix},$$ where	
+	\begin{enumerate}
+		\item $z \in \quadraticExtension$ and $z + \epsilon_{\hermitianSpace} \cdot \involution{z} = 0$ if $\quadraticExtension \ne \finiteField$.
+		\item $z = 0$ if $\epsilon_{\hermitianSpace} = 1$ and $\quadraticExtension = \finiteField$.
+		\item $z \in \finiteField$ if $\epsilon_{\hermitianSpace} = -1$ and $\quadraticExtension = \finiteField$.
+	\end{enumerate}
+	Let us write 
+	$$\sum_{u \in N} \fieldCharacter_{\quadraticExtension}\left(t \trace\left(B u\right)\right) = \sum_{u \in N \slash Z\left(N\right)} \sum_{z} \fieldCharacter_{\quadraticExtension}\left(t \trace\left(B u c\left(z\right)\right)\right).$$
+	Fix $u$. Let us write $$Bu = \begin{pmatrix}
+		a_{1 \times 1} & b_{1 \times \dim_{\quadraticExtension}\hermitianSpace'} & c_{1 \times 1}\\
+		a'_{\dim_{\quadraticExtension}\hermitianSpace' \times 1} & b'_{\dim_{\quadraticExtension}\hermitianSpace' \times \dim_{\quadraticExtension}\hermitianSpace'} & c'_{\dim_{\quadraticExtension}\hermitianSpace' \times 1}\\
+		a''_{1 \times 1} & b''_{1 \times \dim_{\quadraticExtension}\hermitianSpace'} & c''_{1 \times 1}\\		
+	\end{pmatrix}.$$
+	Then $$\trace\left(B u c \left(z\right)\right) = \trace\left(B u\right) + a''_{1 \times 1} z.$$
+	Suppose that $a''_{1 \times 1} \ne 0$. We claim that except for the case $\left(\epsilon_{\hermitianSpace}, \quadraticExtension\right) = \left(1,\finiteField\right)$ we can find $t \in \multiplicativegroup{\quadraticExtension}$ such that the inner sum $$\sum_{z} \fieldCharacter_{\quadraticExtension}\left(t a_{1 \times 1}'' z\right)$$ vanishes.
+	\begin{enumerate}
+		\item If $\quadraticExtension \ne \finiteField$ and $\epsilon_{\hermitianSpace} = -1$, take $t = \left(a''_{1 \times 1}\right)^{-1}$. Since $z = \involution{z}$ it follows that $z \in \finiteField$ and $\trace_{\quadraticExtension \slash \finiteField}\left(z\right) = 2z$ and thus the inner sum will vanish.
+		\item If $\quadraticExtension \ne \finiteField$ and $\epsilon_{\hermitianSpace} = 1$, let $\delta \in \multiplicativegroup{\quadraticExtension}$ be a trace zero element. Then $\delta \cdot z = \involution{\left(\delta \cdot z\right)}$ and thus $\delta \cdot z \in \finiteField$. Taking $t = \delta \left(a_{1 \times 1}''\right)^{-1}$ gives a sum of a non-trivial character of $\finiteField$ over $\finiteField$ and thus this sum vanishes.
+		\item $\quadraticExtension = \finiteField$ and $\epsilon_{\hermitianSpace} = -1$. In this case we simply take $t =
+		\left(a''_{1 \times 1}\right)^{-1}$ and get an inner sum of a non-trivial character of $\finiteField$ over $\finiteField$ and thus it vanishes.
+	\end{enumerate}
+	Thus in all cases except for the case $\left(\epsilon_{\hermitianSpace}, \quadraticExtension\right) = \left(1,\quadraticExtension\right)$ we showed that $a''_{1 \times 1} = 0$. We have in all cases that $N \slash N\left(Z\right)$ is isomorphic to the additive group $\quadraticExtension^{\dim_{\quadraticExtension}\hermitianSpace'}$.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{prop:when-k-equals-one-hypothesis-holds}]
 	Notice that for $x \in G$, $$\left(\dblJacobiSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{g \in G} f\left(xg\right) \genJacobiKernel{\chi}\left(g\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in G \cap P} f\left(p\right) \genJacobiKernel{\chi}\left(x^{-1} p\right),$$
 	which can be rewritten as
 	$$\left(\dblJacobiSum{\rho}{\chi} f\right)\left(x\right) = \frac{1}{\sqrt{\sizeof{\lieAlgebra}}} \sum_{p \in G \cap P}  \genJacobiKernel{\chi}\left(x^{-1} p\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) v_\tau \otimes v_{\pi'}.$$
-	As before, we may write
-	$$\genJacobiKernel{\chi}\left(g\right) = q^{-k^2} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic h\right) \fieldCharacter_{\quadraticExtension}\left(\trace\left(A \left(\idmap_{\hermitianSpace} \pm g - h \right)\right)\right).$$
+	Let $t \in \multiplicativegroup{\quadraticExtension}$. As before, we can write
+	$$\genJacobiKernel{\chi}\left(g\right) = q^{-k^2} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic h\right) \fieldCharacter_{\quadraticExtension}\left(t \trace\left(A \left(\idmap_{\hermitianSpace} \pm g - h \right)\right)\right).$$
 	Hence, \begin{align*}
-		q^{k^2} \sum_{p \in G \cap P} \genJacobiKernel{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic h\right)\fieldCharacter_{\quadraticExtension}\left(\trace\left(-Ah\right)\right) \\
-		& \times \sum_{p \in P} \fieldCharacter_{\quadraticExtension}\left(\trace\left(A \left(\idmap_{\hermitianSpace} \pm x^{-1} p\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
+		q^{k^2} \sum_{p \in G \cap P} \genJacobiKernel{\chi}\left(x^{-1} p\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{A \in \EndomorphismRing_{\quadraticExtension}\left(\hermitianSpace\right)} \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic h\right)\fieldCharacter_{\quadraticExtension}\left(t \trace\left(-Ah\right)\right) \\
+		& \times \sum_{p \in P} \fieldCharacter_{\quadraticExtension}\left(t \trace\left(A \left(\idmap_{\hermitianSpace} \pm x^{-1} p\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
 	\end{align*}
-	Assume that $\chi \ne 1$. By \Cref{lem:sum-vanishes-for-singular-matrices}, we can reduce the sum to $A \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)$. Let us replace $h$ with $-A^{-1} h$. We get the sum
+	Since $\chi \ne 1$, by \Cref{lem:sum-vanishes-for-singular-matrices}, we can reduce the sum to $A \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)$. Let us replace $h$ with $-A^{-1} h$. We get the sum
 	\begin{align*}
-		& \chi\left(-1\right)^k \sum_{A \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi^{-1}\left(\detQuadratic A\right) \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic h\right)\fieldCharacter_{\quadraticExtension}\left(\trace h\right)\\
-		& \times \sum_{p \in P} \fieldCharacter_{\quadraticExtension}\left(\trace\left(A \left(\idmap_{\hermitianSpace} \pm x^{-1}p\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
+		& \chi\left(-1\right)^k \sum_{A \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi^{-1}\left(\detQuadratic A\right) \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)} \chi\left(\detQuadratic h\right)\fieldCharacter_{\quadraticExtension}\left(t \trace h\right)\\
+		& \times \sum_{p \in P} \fieldCharacter_{\quadraticExtension}\left(t \trace\left(A \left(\idmap_{\hermitianSpace} \pm x^{-1}p\right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
 	\end{align*}
-	Consider the inner sum over $P$, written as $$\sum_{l \in L} \sum_{u \in N} \fieldCharacter_{\quadraticExtension}\left(\trace\left(\pm A x^{-1} l u\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(l\right).$$
-	The inner sum over $N$ will vanish unless $\pm Ax^{-1} \in P$ \elad{This is not true in general}. Thus we have
+	Consider the inner sum over $P$, written as $$\sum_{l \in L} \sum_{u \in N} \fieldCharacter_{\quadraticExtension}\left(t \trace\left(\idmap_{\hermitianSpace} \pm A x^{-1} l u\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(l\right).$$
+	The inner sum over $N$ will vanish unless $\pm Ax^{-1} l \in P$ which is equivalent to $A x^{-1} \in P$. Thus we have
 	\begin{align*}
 		q^{k^2} \sum_{p \in G \cap P} \genJacobiKernel{\chi}\left(xp\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right) =& \sum_{h \in \GL_{\quadraticExtension}\left(\hermitianSpace\right)}  \chi\left(\detQuadratic\left(xh\right)\right) \fieldCharacter_{\quadraticExtension}\left(\trace h\right) \\
 		& \times \sum_{p' \in G \cap P} \sum_{p \in G \cap P} \chi^{-1}\left(\detQuadratic p'\right) \fieldCharacter_{\quadraticExtension}\left(\trace\left(p' \left( p \mp x  \right)\right)\right) \left(\tau \overline{\otimes} \pi'\right)\left(p\right).
